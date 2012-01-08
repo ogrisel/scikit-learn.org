@@ -1,0 +1,25 @@
+
+
+.. _example_linear_model_plot_ols.py:
+
+
+======================
+Ordinary Least Squares
+======================
+
+Simple Ordinary Least Squares example, we draw the linear least
+squares solution for a random set of points in the plane.
+
+
+
+.. image:: images/plot_ols_1.png
+    :align: center
+
+
+
+
+**Python source code:** :download:`plot_ols.py <plot_ols.py>`
+
+.. literalinclude:: plot_ols.py
+    :lines: 9-
+    

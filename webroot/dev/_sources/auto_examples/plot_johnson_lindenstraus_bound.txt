@@ -1,0 +1,113 @@
+
+
+.. _example_plot_johnson_lindenstraus_bound.py:
+
+
+=====================================================================
+The Johnson-Lindenstrauss bound for embedding with random projections
+=====================================================================
+
+
+The Johnson-Lindenstrauss states that any high dimensional dataset can
+be randomly projected into a lower dimensional Euclidean space while
+controlling the distortion in the pairwise distances.
+
+
+Theoretical bounds
+==================
+
+The distortion introduced by a random projection `p` is asserted by
+the fact that `p` is defining an eps-embedding with good probability
+as defined by:
+
+  (1 - eps) ||u - v||^2 < ||p(u) - p(v)||^2 < (1 + eps) ||u - v||^2
+
+Where u and v are any rows taken from a dataset of shape [n_samples,
+n_features] and p is a projection by a random gaussian N(0, 1) matrix
+with shape [n_components, n_features] (or a sparse Achlioptas matrix).
+
+The minimum number of components to guarantees the eps-embedding is
+given by:
+
+  n_components >= 4 log(n_samples) / (eps^2 / 2 - eps^3 / 3)
+
+
+The first plot gives a visualization of the minimum number dimensions
+(n_components) on the number of samples (n_samples) to embed through
+random projections various values of the admissible distorion eps.
+
+
+Empirical validation
+====================
+
+We validate those bounds on the Olivetti faces dataset: 400 gray level
+images of 64 x 64 pixels = 4096 dimensions is projected using a sparse
+random matrix to smaller euclidean spaces with various values for the target
+number of dimensions n_components.
+
+For each value of n_components we plot:
+
+- 2D distribution of sample pairs with pairwise distances in original
+  and projected spaces as x and y axis respectively.
+
+- 1D histogram of the ratio of those distances (projected / original).
+
+We can see that for low values of n_components the distribution is wide
+with many distorted paired and a skewed distribution (due to the hard
+limit of zero ratio on the left as distances are always positives)
+while for larger values of n_components the distortion is controlled
+and the distances are well preserved by the random projection.
+
+
+
+
+.. rst-class:: horizontal
+
+
+    *
+
+      .. image:: images/plot_johnson_lindenstraus_bound_1.png
+            :scale: 50
+
+    *
+
+      .. image:: images/plot_johnson_lindenstraus_bound_2.png
+            :scale: 50
+
+    *
+
+      .. image:: images/plot_johnson_lindenstraus_bound_3.png
+            :scale: 50
+
+    *
+
+      .. image:: images/plot_johnson_lindenstraus_bound_4.png
+            :scale: 50
+
+    *
+
+      .. image:: images/plot_johnson_lindenstraus_bound_5.png
+            :scale: 50
+
+    *
+
+      .. image:: images/plot_johnson_lindenstraus_bound_6.png
+            :scale: 50
+
+    *
+
+      .. image:: images/plot_johnson_lindenstraus_bound_7.png
+            :scale: 50
+
+
+**Script output**::
+
+  Embedding 400 faces with dim 4096 using various random projections
+
+
+
+**Python source code:** :download:`plot_johnson_lindenstraus_bound.py <plot_johnson_lindenstraus_bound.py>`
+
+.. literalinclude:: plot_johnson_lindenstraus_bound.py
+    :lines: 58-
+    

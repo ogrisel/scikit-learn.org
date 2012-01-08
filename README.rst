@@ -34,13 +34,33 @@ prefix it with ``sudo``.
 Building the doc for the dev version of scikit-learn
 ----------------------------------------------------
 
-TODO: write me!
+The following will fetch the source from the repo, build ``scikit-learn``
+in ``inplace`` mode, build the html documentation with sphinx_ along
+with the examples, copy the result to the target folder of the website,
+update the ``gh-pages`` branch with ghp-import_ and upload to github::
+
+  $ make SOURCE_BRANCH=master TARGET_FOLDER=dev
 
 
 Building the doc for an official stable release
 -----------------------------------------------
 
 TODO: write me!
+
+
+Reusing a local scikit-learn clone
+----------------------------------
+
+By default the ``Makefile`` will attempt to clone the scikit-learn_
+repository to fetch the source of the documentation to build
+with sphinx. This clone will be hosted in a local folder named
+``scikit-learn``.
+
+If you already have a local scikit-learn, you can reuse it by creating
+a symlink called ``scikit-learn``. However when-ever you are building
+the documentation you should make sure that you have **no uncommitted
+changes** in your working directory or staging area as the Makefile
+might try to checkout out of it.
 
 
 Continuous Integration configuration
