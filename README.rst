@@ -19,9 +19,9 @@ level source folder.
 
 Install the latest stable version of sphinx_ and matplotlib_.
 
-.. _`scikit-learn`:: https://github.com/scikit-learn/scikit-learn
-.. _sphinx:: http://sphinx.pocoo.org/
-.. _matplotlib:: http://matplotlib.sourceforge.net/
+.. _`scikit-learn`: https://github.com/scikit-learn/scikit-learn
+.. _sphinx: http://sphinx.pocoo.org/
+.. _matplotlib: http://matplotlib.sourceforge.net/
 
 
 Building the doc for the dev version of scikit-learn
