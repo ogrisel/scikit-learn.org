@@ -17,9 +17,16 @@ We assume that you already git-cloned and built `scikit-learn`_
 sucessfully and that all tests pass when running ``make`` in the top
 level source folder.
 
-Install the latest stable version of sphinx_ and matplotlib_.
+Install the latest stable version of ghp-import_, sphinx_ and matplotlib_::
+
+    $ pip install -U ghp-import sphinx matplotlib
+
+If you run the above command outside of any virtualenv you might need to
+prefix it with ``sudo``.
+
 
 .. _`scikit-learn`: https://github.com/scikit-learn/scikit-learn
+.. _ghp-import: http://sphinx.pocoo.org/
 .. _sphinx: http://sphinx.pocoo.org/
 .. _matplotlib: http://matplotlib.sourceforge.net/
 
