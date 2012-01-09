@@ -41,6 +41,19 @@ update the ``gh-pages`` branch with ghp-import_ and upload to github::
 
   $ make
 
+You can also execute each of this steps individually::
+
+  $ make clone
+  $ make fetch
+  $ make build
+  $ make html
+  $ make github
+
+In particular only the last step is required if you make a manual change
+to the ``webroot/index.html`` file for instance.
+
+Also, don't forget to commit your changes to ``master`` and push them too.
+
 
 Building the doc for an official stable release
 -----------------------------------------------
