@@ -47,11 +47,11 @@ Building the doc for an official stable release
 
 Here is the command to build the 0.9 from its tag::
 
-  $ make SOURCE_BRANCH=origin/0.9 TARGET_FOLDER=0.9
+  $ make SOURCE_BRANCH=0.9 TARGET_FOLDER=0.9
 
 If the release is also the latest stable release, then::
 
-  $ make SOURCE_BRANCH=origin/0.9 TARGET_FOLDER=stable
+  $ make SOURCE_BRANCH=0.9 TARGET_FOLDER=stable
 
 
 Reusing a local scikit-learn clone

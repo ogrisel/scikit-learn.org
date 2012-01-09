@@ -5,7 +5,7 @@ SKLEARN_FOLDER ?= scikit-learn
 WEB_REPO_ALIAS ?= origin  # alias of the remote repo where to upload the doc to
 WEB_FOLDER ?= webroot
 
-SOURCE_BRANCH ?= master
+SOURCE_BRANCH ?= ${SKLEARN_REPO_ALIAS}/master
 TARGET_FOLDER ?= dev
 
 default: clone fetch build html github
@@ -32,3 +32,8 @@ html:
 github:
 	@echo "Send to github"
 	ghp-import -p ${WEB_FOLDER} -r ${WEB_REPO_ALIAS}
+
+clean:
+	(cd ${SKLEARN_FOLDER}/doc && make clean)
+	rm -rf ${WEB_FOLDER}/${TARGET_FOLDER}
+
