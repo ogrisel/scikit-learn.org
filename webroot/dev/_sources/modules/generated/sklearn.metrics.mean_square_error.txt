@@ -1,7 +1,0 @@
-sklearn.metrics.mean_square_error
-=================================
-
-.. currentmodule:: sklearn.metrics
-
-.. autofunction:: mean_square_error
-

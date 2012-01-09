@@ -1,7 +1,0 @@
-sklearn.decomposition.sparse_encode_parallel
-============================================
-
-.. currentmodule:: sklearn.decomposition
-
-.. autofunction:: sparse_encode_parallel
-
