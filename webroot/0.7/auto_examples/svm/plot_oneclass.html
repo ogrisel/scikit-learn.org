@@ -1,0 +1,155 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>One-class SVM with non-linear kernel (RBF) &mdash; scikits.learn 0.7.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.7.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn 0.7.1 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="SVM: Maximum margin separating hyperplane" href="plot_separating_hyperplane.html" />
+    <link rel="prev" title="Plot different SVM classifiers in the iris dataset" href="plot_iris.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="plot_iris.html" title="Plot different SVM classifiers in the iris dataset"
+             accesskey="P">previous</a> |
+          <a href="plot_separating_hyperplane.html" title="SVM: Maximum margin separating hyperplane"
+             accesskey="N">next</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">One-class SVM with non-linear kernel (RBF)</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="one-class-svm-with-non-linear-kernel-rbf">
+<span id="example-svm-plot-oneclass-py"></span><h1>One-class SVM with non-linear kernel (RBF)<a class="headerlink" href="#one-class-svm-with-non-linear-kernel-rbf" title="Permalink to this headline">¶</a></h1>
+<p>One-class SVM is an unsupervised algorithm that
+estimates outliers in a dataset.</p>
+<img alt="../../_images/plot_oneclass.png" class="align-center" src="../../_images/plot_oneclass.png" />
+<p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_oneclass.py"><tt class="xref download docutils literal"><span class="pre">plot_oneclass.py</span></tt></a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
+<span class="kn">from</span> <span class="nn">scikits.learn</span> <span class="kn">import</span> <span class="n">svm</span>
+
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
+<span class="n">X</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="n">X</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="n">X</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c"># Add 10 % of outliers (leads to nu=0.1)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mi">6</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">))]</span>
+
+<span class="c"># fit the model</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">OneClassSVM</span><span class="p">(</span><span class="n">nu</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="s">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c"># plot the line, the points, and the nearest vectors to the plane</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">set_cmap</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">y_pred</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">y_pred</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;inliers&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">y_pred</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">y_pred</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;outliers&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.7.1<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

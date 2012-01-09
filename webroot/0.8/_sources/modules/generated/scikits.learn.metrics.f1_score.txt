@@ -1,0 +1,7 @@
+scikits.learn.metrics.f1_score
+==============================
+
+.. currentmodule:: scikits.learn.metrics
+
+.. autofunction:: f1_score
+

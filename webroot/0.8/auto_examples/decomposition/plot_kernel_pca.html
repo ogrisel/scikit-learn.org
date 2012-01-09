@@ -1,0 +1,227 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Kernel PCA &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="NMF for digits feature extraction" href="plot_nmf.html" />
+    <link rel="prev" title="FastICA on 2D point clouds" href="plot_ica_vs_pca.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="plot_ica_vs_pca.html" title="FastICA on 2D point clouds"
+             accesskey="P">previous</a> |
+          <a href="plot_nmf.html" title="NMF for digits feature extraction"
+             accesskey="N">next</a> |
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">Kernel PCA</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="kernel-pca">
+<span id="example-decomposition-plot-kernel-pca-py"></span><h1>Kernel PCA<a class="headerlink" href="#kernel-pca" title="Permalink to this headline">¶</a></h1>
+<p>This example shows that Kernel PCA is able to find a projection of the data
+that makes data linearly separable.</p>
+<div align="center" class="align-center"><img alt="../../_images/plot_kernel_pca_1.png" class="align-center" src="../../_images/plot_kernel_pca_1.png" /></div>
+<p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_kernel_pca.py"><tt class="xref download docutils literal"><span class="pre">plot_kernel_pca.py</span></tt></a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+
+<span class="c"># Authors: Mathieu Blondel</span>
+<span class="c"># License: BSD</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
+
+<span class="kn">from</span> <span class="nn">scikits.learn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span><span class="p">,</span> <span class="n">KernelPCA</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">genenerate_rings</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
+    <span class="n">x_red</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">n_samples</span><span class="p">,))</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">signs_red</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">x_red</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">y_red</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x_red</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">signs_red</span>
+
+    <span class="n">x_blue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">n_samples</span><span class="p">,))</span> <span class="o">*</span> <span class="mi">6</span> <span class="o">-</span> <span class="mi">3</span>
+    <span class="n">signs_blue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">x_blue</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">y_blue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x_blue</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">9</span><span class="p">))</span> <span class="o">*</span> <span class="n">signs_blue</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(([</span><span class="n">x_red</span><span class="p">,</span> <span class="n">y_red</span><span class="p">],</span> <span class="p">[</span><span class="n">x_blue</span><span class="p">,</span> <span class="n">y_blue</span><span class="p">]))</span><span class="o">.</span><span class="n">T</span>
+
+
+<span class="k">def</span> <span class="nf">generate_clusters</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
+    <span class="n">mean1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">mean2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]])</span>
+    <span class="n">X_red</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean1</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span>
+    <span class="n">X_blue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean2</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">X_red</span><span class="p">,</span> <span class="n">X_blue</span><span class="p">))</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">genenerate_rings</span><span class="p">()</span>
+<span class="c">#X = generate_clusters()</span>
+
+<span class="n">kpca</span> <span class="o">=</span> <span class="n">KernelPCA</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&quot;rbf&quot;</span><span class="p">,</span> <span class="n">fit_inverse_transform</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">X_kpca</span> <span class="o">=</span> <span class="n">kpca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">X_back</span> <span class="o">=</span> <span class="n">kpca</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">X_kpca</span><span class="p">)</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span>
+<span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c"># Plot results</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Original space&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">&quot;ro&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">200</span><span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">200</span><span class="p">:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">&quot;bo&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;$x_1$&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;$x_2$&quot;</span><span class="p">)</span>
+
+<span class="n">X1</span><span class="p">,</span> <span class="n">X2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="n">X_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">X1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">X2</span><span class="p">)])</span><span class="o">.</span><span class="n">T</span>
+<span class="c"># projection on the first principal component (in the phi space)</span>
+<span class="n">Z_grid</span> <span class="o">=</span> <span class="n">kpca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_grid</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">,</span> <span class="n">Z_grid</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s">&#39;grey&#39;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s">&#39;lower&#39;</span><span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_kpca</span><span class="p">[:</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_pca</span><span class="p">[:</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">&quot;ro&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_pca</span><span class="p">[</span><span class="mi">200</span><span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_pca</span><span class="p">[</span><span class="mi">200</span><span class="p">:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">&quot;bo&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Projection by PCA&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;1st principal component&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;2nd component&quot;</span><span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_kpca</span><span class="p">[:</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_kpca</span><span class="p">[:</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">&quot;ro&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_kpca</span><span class="p">[</span><span class="mi">200</span><span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_kpca</span><span class="p">[</span><span class="mi">200</span><span class="p">:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">&quot;bo&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Projection by KPCA&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;1st principal component in space induced by $\phi$&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;2nd component&quot;</span><span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_back</span><span class="p">[:</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_back</span><span class="p">[:</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">&quot;ro&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_back</span><span class="p">[</span><span class="mi">200</span><span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_back</span><span class="p">[</span><span class="mi">200</span><span class="p">:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">&quot;bo&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Original space after inverse transform&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;$x_1$&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;$x_2$&quot;</span><span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.98</span><span class="p">,</span> <span class="mf">0.94</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">)</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/auto_examples/decomposition/plot_kernel_pca.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

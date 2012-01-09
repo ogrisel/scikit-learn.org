@@ -1,0 +1,11 @@
+scikits.learn.naive_bayes.GNB
+=============================
+
+.. currentmodule:: scikits.learn.naive_bayes
+
+.. autoclass:: GNB
+
+   
+   .. automethod:: __init__
+   
+

@@ -1,0 +1,7 @@
+scikits.learn.metrics.confusion_matrix
+======================================
+
+.. currentmodule:: scikits.learn.metrics
+
+.. autofunction:: confusion_matrix
+

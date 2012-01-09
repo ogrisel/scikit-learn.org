@@ -1,0 +1,11 @@
+scikits.learn.linear_model.LogisticRegression
+=============================================
+
+.. currentmodule:: scikits.learn.linear_model
+
+.. autoclass:: LogisticRegression
+
+   
+   .. automethod:: __init__
+   
+

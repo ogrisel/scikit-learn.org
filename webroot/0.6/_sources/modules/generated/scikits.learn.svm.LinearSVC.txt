@@ -1,0 +1,11 @@
+scikits.learn.svm.LinearSVC
+===========================
+
+.. currentmodule:: scikits.learn.svm
+
+.. autoclass:: LinearSVC
+
+   
+   .. automethod:: __init__
+   
+

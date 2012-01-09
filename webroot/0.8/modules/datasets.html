@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6. Dataset loading utilities &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../index.html" />
+    <link rel="up" title="&lt;no title&gt;" href="../contents.html" />
+    <link rel="next" title="7. Class reference" href="classes.html" />
+    <link rel="prev" title="5.2. Grid Search" href="grid_search.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../install.html">Download</a></li>
+            <li><a href="../support.html">Support</a></li>
+            <li><a href="../user_guide.html">User Guide</a></li>
+            <li><a href="../auto_examples/index.html">Examples</a></li>
+            <li><a href="../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="grid_search.html" title="5.2. Grid Search"
+             accesskey="P">previous</a> |
+          <a href="classes.html" title="7. Class reference"
+             accesskey="N">next</a> |
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">6. Dataset loading utilities</a><ul>
+<li><a class="reference internal" href="#datasets-shipped-with-the-scikit-learn">6.1. Datasets shipped with the scikit learn</a></li>
+<li><a class="reference internal" href="#dataset-generators">6.2. Dataset generators</a></li>
+<li><a class="reference internal" href="#the-labeled-faces-in-the-wild-face-recognition-dataset">6.3. The Labeled Faces in the Wild face recognition dataset</a><ul>
+<li><a class="reference internal" href="#usage">6.3.1. Usage</a></li>
+<li><a class="reference internal" href="#examples">6.3.2. Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-20-newsgroups-text-dataset">6.4. The 20 newsgroups text dataset</a><ul>
+<li><a class="reference internal" href="#id1">6.4.1. Usage</a></li>
+<li><a class="reference internal" href="#id2">6.4.2. Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dataset-loading-utilities">
+<span id="datasets"></span><h1>6. Dataset loading utilities<a class="headerlink" href="#dataset-loading-utilities" title="Permalink to this headline">¶</a></h1>
+<p>The <tt class="docutils literal"><span class="pre">scikits.learn.datasets</span></tt> package embeds some small toy datasets
+as introduced in the &#8220;Getting Started&#8221; section.</p>
+<p>To evaluate the impact of the scale of the dataset (<tt class="docutils literal"><span class="pre">n_features</span></tt> and
+<tt class="docutils literal"><span class="pre">n_samples</span></tt>) while controlling the statistical properties of the data
+(typically the correlation and informativeness of the features), it is
+also possible to generate synthetic data data</p>
+<p>This package also features helpers to fetch larger datasets commonly
+used by the machine learning community to benchmark algorithm on data
+that comes from the &#8216;real world&#8217;.</p>
+<div class="section" id="datasets-shipped-with-the-scikit-learn">
+<h2>6.1. Datasets shipped with the scikit learn<a class="headerlink" href="#datasets-shipped-with-the-scikit-learn" title="Permalink to this headline">¶</a></h2>
+<p>The scikit learn comes with a few standard datasets:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a class="reference internal" href="generated/scikits.learn.datasets.load_iris.html#scikits.learn.datasets.load_iris" title="scikits.learn.datasets.load_iris"><tt class="xref py py-obj docutils literal"><span class="pre">load_iris</span></tt></a>()</td>
+<td>load the iris dataset and returns it.</td>
+</tr>
+<tr><td><a class="reference internal" href="generated/scikits.learn.datasets.load_diabetes.html#scikits.learn.datasets.load_diabetes" title="scikits.learn.datasets.load_diabetes"><tt class="xref py py-obj docutils literal"><span class="pre">load_diabetes</span></tt></a>()</td>
+<td>Load the diabetes dataset and returns it.</td>
+</tr>
+<tr><td><a class="reference internal" href="generated/scikits.learn.datasets.load_digits.html#scikits.learn.datasets.load_digits" title="scikits.learn.datasets.load_digits"><tt class="xref py py-obj docutils literal"><span class="pre">load_digits</span></tt></a>([n_class])</td>
+<td>load the digits dataset and returns it.</td>
+</tr>
+<tr><td><a class="reference internal" href="generated/scikits.learn.datasets.load_linnerud.html#scikits.learn.datasets.load_linnerud" title="scikits.learn.datasets.load_linnerud"><tt class="xref py py-obj docutils literal"><span class="pre">load_linnerud</span></tt></a>()</td>
+<td>Load the linnerud dataset and returns it.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dataset-generators">
+<h2>6.2. Dataset generators<a class="headerlink" href="#dataset-generators" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+</div>
+<div class="section" id="the-labeled-faces-in-the-wild-face-recognition-dataset">
+<span id="labeled-faces-in-the-wild"></span><h2>6.3. The Labeled Faces in the Wild face recognition dataset<a class="headerlink" href="#the-labeled-faces-in-the-wild-face-recognition-dataset" title="Permalink to this headline">¶</a></h2>
+<p>This dataset is a collection of JPEG pictures of famous people collected
+over the internet, all details are available on the official website:</p>
+<blockquote>
+<a class="reference external" href="http://vis-www.cs.umass.edu/lfw/">http://vis-www.cs.umass.edu/lfw/</a></blockquote>
+<p>Each picture is centered on a single face. The typical task is called
+Face Verification: given a pair of two pictures, a binary classifier
+must predict whether the two images are from the same person.</p>
+<p>An alternative task, Face Recognition or Face Identification is:
+given the picture of the face of an unknown person, identify the name
+of the person by refering to a gallery of previously seen pictures of
+identified persons.</p>
+<p>Both Face Verification and Face Recognition are tasks that are typically
+performed on the output of a model trained to perform Face Detection. The
+most popular model for Face Detection is called Viola-Johns and is
+implemented in the OpenCV library. The LFW faces were extracted by this
+face detector from various online websites.</p>
+<div class="section" id="usage">
+<h3>6.3.1. Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">scikit-learn</span></tt> provides two loaders that will automatically download,
+cache, parse the metadata files, decode the jpeg and convert the
+interesting slices into memmaped numpy arrays. This dataset size if more
+than 200 MB. The first load typically takes more than a couple of minutes
+to fully decode the relevant part of the JPEG files into numpy arrays. If
+the dataset has  been loaded once, the following times the loading times
+less than 200ms by using a memmaped version memoized on the disk in the
+<tt class="docutils literal"><span class="pre">~/scikit_learn_data/lfw_home/</span></tt> folder using <tt class="docutils literal"><span class="pre">joblib</span></tt>.</p>
+<p>The first loader is used for the Face Identification task: a multi-class
+classification task (hence supervised learning):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.datasets</span> <span class="kn">import</span> <span class="n">fetch_lfw_people</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lfw_people</span> <span class="o">=</span> <span class="n">fetch_lfw_people</span><span class="p">(</span><span class="n">min_faces_per_person</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">resize</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">lfw_people</span><span class="o">.</span><span class="n">target_names</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="n">name</span>
+<span class="gp">...</span>
+<span class="go">Ariel Sharon</span>
+<span class="go">Colin Powell</span>
+<span class="go">Donald Rumsfeld</span>
+<span class="go">George W Bush</span>
+<span class="go">Gerhard Schroeder</span>
+<span class="go">Hugo Chavez</span>
+<span class="go">Tony Blair</span>
+</pre></div>
+</div>
+<p>The default slice is a rectangular shape around the face, removing
+most of the background:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">lfw_people</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span>
+<span class="go">dtype(&#39;float32&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lfw_people</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(1288, 50, 37)</span>
+</pre></div>
+</div>
+<p>Each of the <tt class="docutils literal"><span class="pre">1140</span></tt> faces is assigned to a single person id in the <tt class="docutils literal"><span class="pre">target</span></tt>
+array:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">lfw_people</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(1288,)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">lfw_people</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="go">[5, 6, 3, 1, 0, 1, 3, 4, 3, 0]</span>
+</pre></div>
+</div>
+<p>The second loader is typically used for the face verification task: each sample
+is a pair of two picture belonging or not to the same person:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.datasets</span> <span class="kn">import</span> <span class="n">fetch_lfw_pairs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lfw_pairs_train</span> <span class="o">=</span> <span class="n">fetch_lfw_pairs</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">&#39;train&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">lfw_pairs_train</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
+<span class="go">[&#39;Different persons&#39;, &#39;Same person&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lfw_pairs_train</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(2200, 2, 62, 47)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lfw_pairs_train</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(2200,)</span>
+</pre></div>
+</div>
+<p>Both for the <tt class="docutils literal"><span class="pre">fetch_lfw_people</span></tt> and <tt class="docutils literal"><span class="pre">fetch_lfw_pairs</span></tt> function it is
+possible to get an additional dimension with the RGB color channels by
+passing <tt class="docutils literal"><span class="pre">color=True</span></tt>, in that case the shape will be
+<tt class="docutils literal"><span class="pre">(2200,</span> <span class="pre">2,</span> <span class="pre">62,</span> <span class="pre">47,</span> <span class="pre">3)</span></tt>.</p>
+<p>The <tt class="docutils literal"><span class="pre">fetch_lfw_pairs</span></tt> datasets is subdived in 3 subsets: the development
+<tt class="docutils literal"><span class="pre">train</span></tt> set, the development <tt class="docutils literal"><span class="pre">test</span></tt> set and an evaluation <tt class="docutils literal"><span class="pre">10_folds</span></tt>
+set meant to compute performance metrics using a 10-folds cross
+validation scheme.</p>
+<div class="topic">
+<p class="topic-title first">References:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://vis-www.cs.umass.edu/lfw/lfw.pdf">Labeled Faces in the Wild: A Database for Studying Face Recognition
+in Unconstrained Environments.</a>
+Gary B. Huang, Manu Ramesh, Tamara Berg, and Erik Learned-Miller.
+University of Massachusetts, Amherst, Technical Report 07-49, October, 2007.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="examples">
+<h3>6.3.2. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="../auto_examples/applications/face_recognition.html#example-applications-face-recognition-py"><em>Faces recognition example using eigenfaces and SVMs</em></a></p>
+</div>
+</div>
+<div class="section" id="the-20-newsgroups-text-dataset">
+<h2>6.4. The 20 newsgroups text dataset<a class="headerlink" href="#the-20-newsgroups-text-dataset" title="Permalink to this headline">¶</a></h2>
+<p>The 20 newsgroups dataset comprises around 18000 newsgroups posts on
+20 topics splitted in two subsets: one for training (or development)
+and the other one for testing (or for performance evaluation). The split
+between the train and test set is based upon a messages posted before
+and after a specific date.</p>
+<div class="section" id="id1">
+<h3>6.4.1. Usage<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">scikits.learn.datasets.fetch_20newsgroups</span></tt> function is a data
+fetching / caching functions that downloads the data archive from
+the original <a class="reference external" href="http://people.csail.mit.edu/jrennie/20Newsgroups/">20 newsgroups website</a>, extracts the archive contents
+in the <tt class="docutils literal"><span class="pre">~/scikit_learn_data/20news_home</span></tt> folder and calls the
+<tt class="docutils literal"><span class="pre">scikits.learn.datasets.load_filenames</span></tt> on either the training or
+testing set folder:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.datasets</span> <span class="kn">import</span> <span class="n">fetch_20newsgroups</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">newsgroups_train</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">&#39;train&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">newsgroups_train</span><span class="o">.</span><span class="n">target_names</span><span class="p">))</span>
+<span class="go">[&#39;alt.atheism&#39;,</span>
+<span class="go"> &#39;comp.graphics&#39;,</span>
+<span class="go"> &#39;comp.os.ms-windows.misc&#39;,</span>
+<span class="go"> &#39;comp.sys.ibm.pc.hardware&#39;,</span>
+<span class="go"> &#39;comp.sys.mac.hardware&#39;,</span>
+<span class="go"> &#39;comp.windows.x&#39;,</span>
+<span class="go"> &#39;misc.forsale&#39;,</span>
+<span class="go"> &#39;rec.autos&#39;,</span>
+<span class="go"> &#39;rec.motorcycles&#39;,</span>
+<span class="go"> &#39;rec.sport.baseball&#39;,</span>
+<span class="go"> &#39;rec.sport.hockey&#39;,</span>
+<span class="go"> &#39;sci.crypt&#39;,</span>
+<span class="go"> &#39;sci.electronics&#39;,</span>
+<span class="go"> &#39;sci.med&#39;,</span>
+<span class="go"> &#39;sci.space&#39;,</span>
+<span class="go"> &#39;soc.religion.christian&#39;,</span>
+<span class="go"> &#39;talk.politics.guns&#39;,</span>
+<span class="go"> &#39;talk.politics.mideast&#39;,</span>
+<span class="go"> &#39;talk.politics.misc&#39;,</span>
+<span class="go"> &#39;talk.religion.misc&#39;]</span>
+</pre></div>
+</div>
+<p>The real data lies in the <tt class="docutils literal"><span class="pre">filenames</span></tt> and <tt class="docutils literal"><span class="pre">target</span></tt> attributes. The target
+attribute is the integer index of the category:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">newsgroups_train</span><span class="o">.</span><span class="n">filenames</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(11314,)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">newsgroups_train</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(11314,)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">newsgroups_train</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="go">array([12,  6,  9,  8,  6,  7,  9,  2, 13, 19])</span>
+</pre></div>
+</div>
+<p>It is possible to load only a sub-selection of the categories by passing the
+list of the categories to load to the <tt class="docutils literal"><span class="pre">fetch_20newsgroups</span></tt> function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cats</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;alt.atheism&#39;</span><span class="p">,</span> <span class="s">&#39;sci.space&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">newsgroups_train</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">&#39;train&#39;</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">cats</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">newsgroups_train</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
+<span class="go">[&#39;alt.atheism&#39;, &#39;sci.space&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">newsgroups_train</span><span class="o">.</span><span class="n">filenames</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(1073,)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">newsgroups_train</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(1073,)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">newsgroups_train</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="go">array([1, 1, 1, 0, 1, 0, 0, 1, 1, 1])</span>
+</pre></div>
+</div>
+<p>In order to feed predictive or clustering models with the text data,
+one first need to turn the text into vectors of numerical values suitable
+for statistical analysis. This can be achieved with the utilities of the
+<tt class="docutils literal"><span class="pre">scikits.learn.feature_extraction.text</span></tt> as demonstrated in the following
+example that extract <a class="reference external" href="http://en.wikipedia.org/wiki/Tf-idf">TF-IDF</a> vectors of unigram tokens:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">Vectorizer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">documents</span> <span class="o">=</span> <span class="p">[</span><span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">newsgroups_train</span><span class="o">.</span><span class="n">filenames</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span> <span class="o">=</span> <span class="n">Vectorizer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectors</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectors</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(1073, 21108)</span>
+</pre></div>
+</div>
+<p>The extracted TF-IDF vectors are very sparse with an average of 118 non zero
+components by sample in a more than 20000 dimensional space (less than 1% non
+zero features):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vectors</span><span class="o">.</span><span class="n">nnz</span> <span class="o">/</span> <span class="n">vectors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">118</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>6.4.2. Examples<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="../auto_examples/grid_search_text_feature_extraction.html#example-grid-search-text-feature-extraction-py"><em>Sample pipeline for text feature extraction and evaluation</em></a></p>
+<p><a class="reference internal" href="../auto_examples/document_classification_20newsgroups.html#example-document-classification-20newsgroups-py"><em>Classification of text documents using sparse features</em></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../_sources/modules/datasets.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

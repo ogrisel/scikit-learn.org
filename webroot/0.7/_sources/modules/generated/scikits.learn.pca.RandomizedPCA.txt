@@ -1,0 +1,11 @@
+scikits.learn.pca.RandomizedPCA
+===============================
+
+.. currentmodule:: scikits.learn.pca
+
+.. autoclass:: RandomizedPCA
+
+   
+   .. automethod:: __init__
+   
+

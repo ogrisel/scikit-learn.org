@@ -1,0 +1,11 @@
+scikits.learn.decomposition.ProbabilisticPCA
+============================================
+
+.. currentmodule:: scikits.learn.decomposition
+
+.. autoclass:: ProbabilisticPCA
+
+   
+   .. automethod:: __init__
+   
+

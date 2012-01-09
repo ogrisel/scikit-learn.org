@@ -1,0 +1,7 @@
+scikits.learn.svm.libsvm.predict
+================================
+
+.. currentmodule:: scikits.learn.svm.libsvm
+
+.. autofunction:: predict
+

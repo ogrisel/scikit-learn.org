@@ -1,0 +1,22 @@
+
+
+.. _example_svm_plot_weighted_classes.py:
+
+
+================================================
+SVM: Separating hyperplane with weighted classes
+================================================
+
+Fit linear SVMs with and without class weighting.
+Allows to handle problems with unbalanced classes.
+
+
+
+.. image:: images/plot_weighted_classes.png
+    :align: center
+
+**Python source code:** :download:`plot_weighted_classes.py <plot_weighted_classes.py>`
+
+.. literalinclude:: plot_weighted_classes.py
+    :lines: 10-
+    

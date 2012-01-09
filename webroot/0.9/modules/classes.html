@@ -1,0 +1,1281 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>9. Class reference &mdash; scikit-learn 0.9 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="up" title="&lt;no title&gt;" href="../contents.html" />
+    <link rel="next" title="9.1.1. sklearn.svm.SVC" href="generated/sklearn.svm.SVC.html" />
+    <link rel="prev" title="8. Feature extraction" href="feature_extraction.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../install.html">Download</a></li>
+            <li><a href="../support.html">Support</a></li>
+            <li><a href="../user_guide.html">User Guide</a></li>
+            <li><a href="../auto_examples/index.html">Examples</a></li>
+            <li><a href="../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="feature_extraction.html" title="8. Feature extraction"
+             accesskey="P">previous</a> |
+          <a href="generated/sklearn.svm.SVC.html" title="9.1.1. sklearn.svm.SVC"
+             accesskey="N">next</a> |
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">9. Class reference</a><ul>
+<li><a class="reference internal" href="#module-sklearn.svm">9.1. Support Vector Machines</a><ul>
+<li><a class="reference internal" href="#module-sklearn.svm.sparse">9.1.8. For sparse data</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#low-level-methods">9.1.9. Low-level methods</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.linear_model">9.2. Generalized Linear Models</a><ul>
+<li><a class="reference internal" href="#id1">9.2.23. For sparse data</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.naive_bayes">9.3. Naive Bayes</a><ul>
+<li><a class="reference internal" href="#naive-bayes-models">9.3.1. Naive Bayes models</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.neighbors">9.4. Nearest Neighbors</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.mixture">9.5. Gaussian Mixture Models</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.hmm">9.6. Hidden Markov Models</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.cluster">9.7. Clustering</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#metrics">9.8. Metrics</a><ul>
+<li><a class="reference internal" href="#module-sklearn.metrics">9.8.1. Classification metrics</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.metrics">9.8.2. Regression metrics</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.metrics.cluster">9.8.3. Clustering metrics</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.metrics.pairwise">9.8.4. Pairwise metrics</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.covariance">9.9. Covariance Estimators</a><ul>
+<li><a class="reference internal" href="#id4">9.9.1. Covariance estimators</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.decomposition">9.10. Signal Decomposition</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#linear-discriminant-analysis">9.11. Linear Discriminant Analysis</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.pls">9.12. Partial Least Squares</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.cross_validation">9.13. Cross Validation</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.grid_search">9.14. Grid Search</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.feature_selection">9.15. Feature Selection</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.feature_extraction">9.16. Feature Extraction</a><ul>
+<li><a class="reference internal" href="#module-sklearn.feature_extraction.image">9.16.1. From images</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.feature_extraction.text">9.16.2. From text</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.preprocessing">9.17. Preprocessing and normalization</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#manifold-learning">9.18. Manifold learning</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#datasets">9.19. Datasets</a><ul>
+<li><a class="reference internal" href="#module-sklearn.datasets">9.19.1. Loaders</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.datasets">9.19.2. Samples generator</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.pipeline">9.20. Pipeline</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sklearn.utils">9.21. Utilities</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        <h3>Citing</h3>
+        <p>Please consider
+	<a href="about.html#citing-the-scikit-learn">citing the
+	scikit-learn</a>.
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="class-reference">
+<h1>9. Class reference<a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-sklearn.svm">
+<span id="support-vector-machines"></span><h2>9.1. Support Vector Machines<a class="headerlink" href="#module-sklearn.svm" title="Permalink to this headline">¶</a></h2>
+<p>Support Vector Machine algorithms.</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.svm.SVC.html#sklearn.svm.SVC" title="sklearn.svm.SVC"><tt class="xref py py-obj docutils literal"><span class="pre">svm.SVC</span></tt></a>([C,&nbsp;kernel,&nbsp;degree,&nbsp;gamma,&nbsp;coef0,&nbsp;...])</td>
+<td>C-Support Vector Classification.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.svm.LinearSVC.html#sklearn.svm.LinearSVC" title="sklearn.svm.LinearSVC"><tt class="xref py py-obj docutils literal"><span class="pre">svm.LinearSVC</span></tt></a>([penalty,&nbsp;loss,&nbsp;dual,&nbsp;tol,&nbsp;C,&nbsp;...])</td>
+<td>Linear Support Vector Classification.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.svm.NuSVC.html#sklearn.svm.NuSVC" title="sklearn.svm.NuSVC"><tt class="xref py py-obj docutils literal"><span class="pre">svm.NuSVC</span></tt></a>([nu,&nbsp;kernel,&nbsp;degree,&nbsp;gamma,&nbsp;...])</td>
+<td>Nu-Support Vector Classification.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.svm.SVR.html#sklearn.svm.SVR" title="sklearn.svm.SVR"><tt class="xref py py-obj docutils literal"><span class="pre">svm.SVR</span></tt></a>([kernel,&nbsp;degree,&nbsp;gamma,&nbsp;coef0,&nbsp;tol,&nbsp;...])</td>
+<td>epsilon-Support Vector Regression.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.svm.NuSVR.html#sklearn.svm.NuSVR" title="sklearn.svm.NuSVR"><tt class="xref py py-obj docutils literal"><span class="pre">svm.NuSVR</span></tt></a>([nu,&nbsp;C,&nbsp;kernel,&nbsp;degree,&nbsp;gamma,&nbsp;...])</td>
+<td>Nu Support Vector Regression.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM" title="sklearn.svm.OneClassSVM"><tt class="xref py py-obj docutils literal"><span class="pre">svm.OneClassSVM</span></tt></a>([kernel,&nbsp;degree,&nbsp;gamma,&nbsp;...])</td>
+<td>Unsupervised Outliers Detection.</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.svm.l1_min_c.html#sklearn.svm.l1_min_c" title="sklearn.svm.l1_min_c"><tt class="xref py py-obj docutils literal"><span class="pre">svm.l1_min_c</span></tt></a>(X,&nbsp;y[,&nbsp;loss,&nbsp;fit_intercept,&nbsp;...])</td>
+<td>Return the maximum value for C that yields a model with coefficients</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="module-sklearn.svm.sparse">
+<span id="for-sparse-data"></span><h3>9.1.8. For sparse data<a class="headerlink" href="#module-sklearn.svm.sparse" title="Permalink to this headline">¶</a></h3>
+<p>Support Vector Machine algorithms for sparse matrices.</p>
+<p>This module should have the same API as <a class="reference internal" href="#module-sklearn.svm" title="sklearn.svm"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.svm</span></tt></a>, except
+that matrices are expected to be in some sparse format supported by
+scipy.sparse.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Some fields, like <cite>dual_coef_</cite> are not sparse matrices strictly speaking.
+However, they are converted to a sparse matrix for consistency and
+efficiency when multiplying to other sparse matrices.</p>
+</div>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.svm.sparse.SVC.html#sklearn.svm.sparse.SVC" title="sklearn.svm.sparse.SVC"><tt class="xref py py-obj docutils literal"><span class="pre">svm.sparse.SVC</span></tt></a>([C,&nbsp;kernel,&nbsp;degree,&nbsp;gamma,&nbsp;...])</td>
+<td>SVC for sparse matrices (csr).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.svm.sparse.NuSVC.html#sklearn.svm.sparse.NuSVC" title="sklearn.svm.sparse.NuSVC"><tt class="xref py py-obj docutils literal"><span class="pre">svm.sparse.NuSVC</span></tt></a>([nu,&nbsp;kernel,&nbsp;degree,&nbsp;...])</td>
+<td>NuSVC for sparse matrices (csr).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.svm.sparse.SVR.html#sklearn.svm.sparse.SVR" title="sklearn.svm.sparse.SVR"><tt class="xref py py-obj docutils literal"><span class="pre">svm.sparse.SVR</span></tt></a>([kernel,&nbsp;degree,&nbsp;gamma,&nbsp;...])</td>
+<td>SVR for sparse matrices (csr)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.svm.sparse.NuSVR.html#sklearn.svm.sparse.NuSVR" title="sklearn.svm.sparse.NuSVR"><tt class="xref py py-obj docutils literal"><span class="pre">svm.sparse.NuSVR</span></tt></a>([nu,&nbsp;C,&nbsp;kernel,&nbsp;degree,&nbsp;...])</td>
+<td>NuSVR for sparse matrices (csr)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.svm.sparse.OneClassSVM.html#sklearn.svm.sparse.OneClassSVM" title="sklearn.svm.sparse.OneClassSVM"><tt class="xref py py-obj docutils literal"><span class="pre">svm.sparse.OneClassSVM</span></tt></a>([kernel,&nbsp;degree,&nbsp;...])</td>
+<td>NuSVR for sparse matrices (csr)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.svm.sparse.LinearSVC.html#sklearn.svm.sparse.LinearSVC" title="sklearn.svm.sparse.LinearSVC"><tt class="xref py py-obj docutils literal"><span class="pre">svm.sparse.LinearSVC</span></tt></a>([penalty,&nbsp;loss,&nbsp;dual,&nbsp;...])</td>
+<td>Linear Support Vector Classification, Sparse Version</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="low-level-methods">
+<h3>9.1.9. Low-level methods<a class="headerlink" href="#low-level-methods" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.svm.libsvm.fit.html#sklearn.svm.libsvm.fit" title="sklearn.svm.libsvm.fit"><tt class="xref py py-obj docutils literal"><span class="pre">svm.libsvm.fit</span></tt></a></td>
+<td>Train the model using libsvm (low-level method)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.svm.libsvm.decision_function.html#sklearn.svm.libsvm.decision_function" title="sklearn.svm.libsvm.decision_function"><tt class="xref py py-obj docutils literal"><span class="pre">svm.libsvm.decision_function</span></tt></a></td>
+<td>Predict margin (libsvm name for this is predict_values)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.svm.libsvm.predict.html#sklearn.svm.libsvm.predict" title="sklearn.svm.libsvm.predict"><tt class="xref py py-obj docutils literal"><span class="pre">svm.libsvm.predict</span></tt></a></td>
+<td>Predict target values of X given a model (low-level method)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.svm.libsvm.predict_proba.html#sklearn.svm.libsvm.predict_proba" title="sklearn.svm.libsvm.predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">svm.libsvm.predict_proba</span></tt></a></td>
+<td>Predict probabilities  svm_model stores all parameters needed to predict a given value.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.svm.libsvm.cross_validation.html#sklearn.svm.libsvm.cross_validation" title="sklearn.svm.libsvm.cross_validation"><tt class="xref py py-obj docutils literal"><span class="pre">svm.libsvm.cross_validation</span></tt></a></td>
+<td>Binding of the cross-validation routine (low-level routine)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-sklearn.linear_model">
+<span id="generalized-linear-models"></span><h2>9.2. Generalized Linear Models<a class="headerlink" href="#module-sklearn.linear_model" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#module-sklearn.linear_model" title="sklearn.linear_model"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.linear_model</span></tt></a> is a module to fit genelarized linear
+models.  It includes Ridge regression, Bayesian Regression, Lasso and
+Elastic Net estimators computed with Least Angle Regression and
+coordinate descent.</p>
+<p>It also implements Stochastic Gradient Descent related algorithms.</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="sklearn.linear_model.LinearRegression"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LinearRegression</span></tt></a>([...])</td>
+<td>Ordinary least squares Linear Regression.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge" title="sklearn.linear_model.Ridge"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.Ridge</span></tt></a>([alpha,&nbsp;fit_intercept,&nbsp;...])</td>
+<td>Ridge regression.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV" title="sklearn.linear_model.RidgeCV"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.RidgeCV</span></tt></a>([alphas,&nbsp;...])</td>
+<td>Ridge regression with built-in cross-validation.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="sklearn.linear_model.Lasso"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.Lasso</span></tt></a>([alpha,&nbsp;fit_intercept,&nbsp;...])</td>
+<td>Linear Model trained with L1 prior as regularizer (aka the Lasso)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV" title="sklearn.linear_model.LassoCV"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LassoCV</span></tt></a>([eps,&nbsp;n_alphas,&nbsp;...])</td>
+<td>Lasso linear model with iterative fitting along a regularization path</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet" title="sklearn.linear_model.ElasticNet"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.ElasticNet</span></tt></a>([alpha,&nbsp;rho,&nbsp;...])</td>
+<td>Linear Model trained with L1 and L2 prior as regularizer</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.ElasticNetCV.html#sklearn.linear_model.ElasticNetCV" title="sklearn.linear_model.ElasticNetCV"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.ElasticNetCV</span></tt></a>([rho,&nbsp;eps,&nbsp;...])</td>
+<td>Elastic Net model with iterative fitting along a regularization path</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.Lars.html#sklearn.linear_model.Lars" title="sklearn.linear_model.Lars"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.Lars</span></tt></a>([fit_intercept,&nbsp;verbose,&nbsp;...])</td>
+<td>Least Angle Regression model a.k.a. LAR</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.LassoLars.html#sklearn.linear_model.LassoLars" title="sklearn.linear_model.LassoLars"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LassoLars</span></tt></a>([alpha,&nbsp;...])</td>
+<td>Lasso model fit with Least Angle Regression a.k.a. Lars</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.LarsCV.html#sklearn.linear_model.LarsCV" title="sklearn.linear_model.LarsCV"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LarsCV</span></tt></a>([fit_intercept,&nbsp;...])</td>
+<td>Cross-validated Least Angle Regression model</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV" title="sklearn.linear_model.LassoLarsCV"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LassoLarsCV</span></tt></a>([fit_intercept,&nbsp;...])</td>
+<td>Cross-validated Lasso, using the LARS algorithm</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.LassoLarsIC.html#sklearn.linear_model.LassoLarsIC" title="sklearn.linear_model.LassoLarsIC"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LassoLarsIC</span></tt></a>([criterion,&nbsp;...])</td>
+<td>Lasso model fit with Lars using BIC or AIC for model selection</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LogisticRegression</span></tt></a>([penalty,&nbsp;...])</td>
+<td>Logistic Regression.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.OrthogonalMatchingPursuit.html#sklearn.linear_model.OrthogonalMatchingPursuit" title="sklearn.linear_model.OrthogonalMatchingPursuit"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.OrthogonalMatchingPursuit</span></tt></a>([...])</td>
+<td>Orthogonal Mathching Pursuit model (OMP)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier" title="sklearn.linear_model.SGDClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.SGDClassifier</span></tt></a>([loss,&nbsp;penalty,&nbsp;...])</td>
+<td>Linear model fitted by minimizing a regularized empirical loss with SGD.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor" title="sklearn.linear_model.SGDRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.SGDRegressor</span></tt></a>([loss,&nbsp;penalty,&nbsp;...])</td>
+<td>Linear model fitted by minimizing a regularized empirical loss with SGD</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.BayesianRidge.html#sklearn.linear_model.BayesianRidge" title="sklearn.linear_model.BayesianRidge"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.BayesianRidge</span></tt></a>([n_iter,&nbsp;tol,&nbsp;...])</td>
+<td>Bayesian ridge regression</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.ARDRegression.html#sklearn.linear_model.ARDRegression" title="sklearn.linear_model.ARDRegression"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.ARDRegression</span></tt></a>([n_iter,&nbsp;tol,&nbsp;...])</td>
+<td>Bayesian ARD regression.</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.lasso_path.html#sklearn.linear_model.lasso_path" title="sklearn.linear_model.lasso_path"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.lasso_path</span></tt></a>(X,&nbsp;y[,&nbsp;eps,&nbsp;...])</td>
+<td>Compute Lasso path with coordinate descent</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.lars_path.html#sklearn.linear_model.lars_path" title="sklearn.linear_model.lars_path"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.lars_path</span></tt></a>(X,&nbsp;y[,&nbsp;Xy,&nbsp;Gram,&nbsp;...])</td>
+<td>Compute Least Angle Regression and LASSO path</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.orthogonal_mp.html#sklearn.linear_model.orthogonal_mp" title="sklearn.linear_model.orthogonal_mp"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.orthogonal_mp</span></tt></a>(X,&nbsp;y[,&nbsp;...])</td>
+<td>Orthogonal Matching Pursuit (OMP)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.orthogonal_mp_gram.html#sklearn.linear_model.orthogonal_mp_gram" title="sklearn.linear_model.orthogonal_mp_gram"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.orthogonal_mp_gram</span></tt></a>(Gram,&nbsp;Xy[,&nbsp;...])</td>
+<td>Gram Orthogonal Matching Pursuit (OMP)</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id1">
+<h3>9.2.23. For sparse data<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="module-sklearn.linear_model.sparse"></span><p><a class="reference internal" href="#module-sklearn.linear_model.sparse" title="sklearn.linear_model.sparse"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.linear_model.sparse</span></tt></a> is the sparse counterpart
+of <a class="reference internal" href="#module-sklearn.linear_model" title="sklearn.linear_model"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.linear_model</span></tt></a>.</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.sparse.Lasso.html#sklearn.linear_model.sparse.Lasso" title="sklearn.linear_model.sparse.Lasso"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.sparse.Lasso</span></tt></a>([alpha,&nbsp;...])</td>
+<td>Linear Model trained with L1 prior as regularizer</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.sparse.ElasticNet.html#sklearn.linear_model.sparse.ElasticNet" title="sklearn.linear_model.sparse.ElasticNet"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.sparse.ElasticNet</span></tt></a>([alpha,&nbsp;rho,&nbsp;...])</td>
+<td>Linear Model trained with L1 and L2 prior as regularizer</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.sparse.SGDClassifier.html#sklearn.linear_model.sparse.SGDClassifier" title="sklearn.linear_model.sparse.SGDClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.sparse.SGDClassifier</span></tt></a>([loss,&nbsp;...])</td>
+<td>Linear model fitted by minimizing a regularized empirical loss with SGD</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.linear_model.sparse.SGDRegressor.html#sklearn.linear_model.sparse.SGDRegressor" title="sklearn.linear_model.sparse.SGDRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.sparse.SGDRegressor</span></tt></a>([loss,&nbsp;...])</td>
+<td>Linear model fitted by minimizing a regularized empirical loss with SGD</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.linear_model.sparse.LogisticRegression.html#sklearn.linear_model.sparse.LogisticRegression" title="sklearn.linear_model.sparse.LogisticRegression"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.sparse.LogisticRegression</span></tt></a>([...])</td>
+<td>Logistic Regression.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-sklearn.naive_bayes">
+<span id="naive-bayes"></span><h2>9.3. Naive Bayes<a class="headerlink" href="#module-sklearn.naive_bayes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="naive-bayes-models">
+<h3>9.3.1. Naive Bayes models<a class="headerlink" href="#naive-bayes-models" title="Permalink to this headline">¶</a></h3>
+<p>Naive Bayes algorithms are a set of supervised learning methods based on
+applying Bayes&#8217; theorem with strong (naive) feature independence assumptions.</p>
+<p>See <a class="reference external" href="http://scikit-learn.sourceforge.net/modules/naive_bayes.html">http://scikit-learn.sourceforge.net/modules/naive_bayes.html</a> for
+complete documentation.</p>
+</div>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.naive_bayes.GaussianNB.html#sklearn.naive_bayes.GaussianNB" title="sklearn.naive_bayes.GaussianNB"><tt class="xref py py-obj docutils literal"><span class="pre">naive_bayes.GaussianNB</span></tt></a></td>
+<td>Gaussian Naive Bayes (GaussianNB)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.naive_bayes.MultinomialNB.html#sklearn.naive_bayes.MultinomialNB" title="sklearn.naive_bayes.MultinomialNB"><tt class="xref py py-obj docutils literal"><span class="pre">naive_bayes.MultinomialNB</span></tt></a>([alpha,&nbsp;fit_prior])</td>
+<td>Naive Bayes classifier for multinomial models</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.naive_bayes.BernoulliNB.html#sklearn.naive_bayes.BernoulliNB" title="sklearn.naive_bayes.BernoulliNB"><tt class="xref py py-obj docutils literal"><span class="pre">naive_bayes.BernoulliNB</span></tt></a>([alpha,&nbsp;binarize,&nbsp;...])</td>
+<td>Naive Bayes classifier for multivariate Bernoulli models.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sklearn.neighbors">
+<span id="nearest-neighbors"></span><h2>9.4. Nearest Neighbors<a class="headerlink" href="#module-sklearn.neighbors" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.neighbors.NearestNeighbors.html#sklearn.neighbors.NearestNeighbors" title="sklearn.neighbors.NearestNeighbors"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.NearestNeighbors</span></tt></a>([n_neighbors,&nbsp;...])</td>
+<td>Unsupervised learner for implementing neighbor searches.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" title="sklearn.neighbors.KNeighborsClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.KNeighborsClassifier</span></tt></a>([...])</td>
+<td>Classifier implementing the k-nearest neighbors vote.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.neighbors.RadiusNeighborsClassifier.html#sklearn.neighbors.RadiusNeighborsClassifier" title="sklearn.neighbors.RadiusNeighborsClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.RadiusNeighborsClassifier</span></tt></a>([...])</td>
+<td>Classifier implementing a vote among neighbors within a given radius</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.neighbors.NeighborsClassifier.html#sklearn.neighbors.NeighborsClassifier" title="sklearn.neighbors.NeighborsClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.NeighborsClassifier</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<td>Classifier implementing the nearest neighbors vote.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.neighbors.KNeighborsRegressor.html#sklearn.neighbors.KNeighborsRegressor" title="sklearn.neighbors.KNeighborsRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.KNeighborsRegressor</span></tt></a>([n_neighbors,&nbsp;...])</td>
+<td>Regression based on k-nearest neighbors.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.neighbors.RadiusNeighborsRegressor.html#sklearn.neighbors.RadiusNeighborsRegressor" title="sklearn.neighbors.RadiusNeighborsRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.RadiusNeighborsRegressor</span></tt></a>([radius,&nbsp;...])</td>
+<td>Regression based on neighbors within a fixed radius.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.neighbors.NeighborsRegressor.html#sklearn.neighbors.NeighborsRegressor" title="sklearn.neighbors.NeighborsRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.NeighborsRegressor</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<td>Regression based on nearest neighbors.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree" title="sklearn.neighbors.BallTree"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.BallTree</span></tt></a></td>
+<td>Ball Tree for fast nearest-neighbor searches :</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.neighbors.kneighbors_graph.html#sklearn.neighbors.kneighbors_graph" title="sklearn.neighbors.kneighbors_graph"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.kneighbors_graph</span></tt></a>(X,&nbsp;n_neighbors[,&nbsp;...])</td>
+<td>Computes the (weighted) graph of k-Neighbors for points in X</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.neighbors.radius_neighbors_graph.html#sklearn.neighbors.radius_neighbors_graph" title="sklearn.neighbors.radius_neighbors_graph"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.radius_neighbors_graph</span></tt></a>(X,&nbsp;radius)</td>
+<td>Computes the (weighted) graph of Neighbors for points in X</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sklearn.mixture">
+<span id="gaussian-mixture-models"></span><h2>9.5. Gaussian Mixture Models<a class="headerlink" href="#module-sklearn.mixture" title="Permalink to this headline">¶</a></h2>
+<p>Mixture modeling algorithms</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.mixture.GMM.html#sklearn.mixture.GMM" title="sklearn.mixture.GMM"><tt class="xref py py-obj docutils literal"><span class="pre">mixture.GMM</span></tt></a>([n_components,&nbsp;cvtype,&nbsp;...])</td>
+<td>Gaussian Mixture Model</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.mixture.DPGMM.html#sklearn.mixture.DPGMM" title="sklearn.mixture.DPGMM"><tt class="xref py py-obj docutils literal"><span class="pre">mixture.DPGMM</span></tt></a>([n_components,&nbsp;cvtype,&nbsp;alpha,&nbsp;...])</td>
+<td>Variational Inference for the Infinite Gaussian Mixture Model.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.mixture.VBGMM.html#sklearn.mixture.VBGMM" title="sklearn.mixture.VBGMM"><tt class="xref py py-obj docutils literal"><span class="pre">mixture.VBGMM</span></tt></a>([n_components,&nbsp;cvtype,&nbsp;alpha,&nbsp;...])</td>
+<td>Variational Inference for the Gaussian Mixture Model</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sklearn.hmm">
+<span id="hidden-markov-models"></span><h2>9.6. Hidden Markov Models<a class="headerlink" href="#module-sklearn.hmm" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.hmm.GaussianHMM.html#sklearn.hmm.GaussianHMM" title="sklearn.hmm.GaussianHMM"><tt class="xref py py-obj docutils literal"><span class="pre">hmm.GaussianHMM</span></tt></a>([n_components,&nbsp;cvtype,&nbsp;...])</td>
+<td>Hidden Markov Model with Gaussian emissions</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.hmm.MultinomialHMM.html#sklearn.hmm.MultinomialHMM" title="sklearn.hmm.MultinomialHMM"><tt class="xref py py-obj docutils literal"><span class="pre">hmm.MultinomialHMM</span></tt></a>([n_components,&nbsp;...])</td>
+<td>Hidden Markov Model with multinomial (discrete) emissions</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.hmm.GMMHMM.html#sklearn.hmm.GMMHMM" title="sklearn.hmm.GMMHMM"><tt class="xref py py-obj docutils literal"><span class="pre">hmm.GMMHMM</span></tt></a>([n_components,&nbsp;n_mix,&nbsp;startprob,&nbsp;...])</td>
+<td>Hidden Markov Model with Gaussin mixture emissions</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sklearn.cluster">
+<span id="clustering"></span><h2>9.7. Clustering<a class="headerlink" href="#module-sklearn.cluster" title="Permalink to this headline">¶</a></h2>
+<p>Clustering algorithms</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="sklearn.cluster.KMeans"><tt class="xref py py-obj docutils literal"><span class="pre">cluster.KMeans</span></tt></a>([k,&nbsp;init,&nbsp;n_init,&nbsp;max_iter,&nbsp;...])</td>
+<td>K-Means clustering</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans" title="sklearn.cluster.MiniBatchKMeans"><tt class="xref py py-obj docutils literal"><span class="pre">cluster.MiniBatchKMeans</span></tt></a>([k,&nbsp;init,&nbsp;max_iter,&nbsp;...])</td>
+<td>Mini-Batch K-Means clustering</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.cluster.MeanShift.html#sklearn.cluster.MeanShift" title="sklearn.cluster.MeanShift"><tt class="xref py py-obj docutils literal"><span class="pre">cluster.MeanShift</span></tt></a>([bandwidth,&nbsp;seeds,&nbsp;...])</td>
+<td>MeanShift clustering</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.cluster.SpectralClustering.html#sklearn.cluster.SpectralClustering" title="sklearn.cluster.SpectralClustering"><tt class="xref py py-obj docutils literal"><span class="pre">cluster.SpectralClustering</span></tt></a>([k,&nbsp;mode,&nbsp;...])</td>
+<td>Apply k-means to a projection to the normalized laplacian</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.cluster.AffinityPropagation.html#sklearn.cluster.AffinityPropagation" title="sklearn.cluster.AffinityPropagation"><tt class="xref py py-obj docutils literal"><span class="pre">cluster.AffinityPropagation</span></tt></a>([damping,&nbsp;...])</td>
+<td>Perform Affinity Propagation Clustering of data</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.cluster.Ward.html#sklearn.cluster.Ward" title="sklearn.cluster.Ward"><tt class="xref py py-obj docutils literal"><span class="pre">cluster.Ward</span></tt></a>([n_clusters,&nbsp;memory,&nbsp;...])</td>
+<td>Ward hierarchical clustering: constructs a tree and cuts it.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="metrics">
+<h2>9.8. Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-sklearn.metrics">
+<span id="classification-metrics"></span><h3>9.8.2. Classification metrics<a class="headerlink" href="#module-sklearn.metrics" title="Permalink to this headline">¶</a></h3>
+<p>Metrics module with score functions, performance metrics and
+pairwise metrics or distances computation</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.confusion_matrix.html#sklearn.metrics.confusion_matrix" title="sklearn.metrics.confusion_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.confusion_matrix</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
+<td>Compute confusion matrix to evaluate the accuracy of a classification</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve" title="sklearn.metrics.roc_curve"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.roc_curve</span></tt></a>(y_true,&nbsp;y_score)</td>
+<td>compute Receiver operating characteristic (ROC)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.auc.html#sklearn.metrics.auc" title="sklearn.metrics.auc"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.auc</span></tt></a>(x,&nbsp;y)</td>
+<td>Compute Area Under the Curve (AUC) using the trapezoidal rule</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.precision_score.html#sklearn.metrics.precision_score" title="sklearn.metrics.precision_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
+<td>Compute the precision</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.recall_score.html#sklearn.metrics.recall_score" title="sklearn.metrics.recall_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.recall_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;pos_label])</td>
+<td>Compute the recall</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.fbeta_score.html#sklearn.metrics.fbeta_score" title="sklearn.metrics.fbeta_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.fbeta_score</span></tt></a>(y_true,&nbsp;y_pred,&nbsp;beta[,&nbsp;...])</td>
+<td>Compute fbeta score</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.f1_score.html#sklearn.metrics.f1_score" title="sklearn.metrics.f1_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.f1_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;pos_label])</td>
+<td>Compute f1 score</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.precision_recall_fscore_support.html#sklearn.metrics.precision_recall_fscore_support" title="sklearn.metrics.precision_recall_fscore_support"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_recall_fscore_support</span></tt></a>(...)</td>
+<td>Compute precisions, recalls, f-measures and support for each class</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.classification_report.html#sklearn.metrics.classification_report" title="sklearn.metrics.classification_report"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.classification_report</span></tt></a>(y_true,&nbsp;y_pred)</td>
+<td>Build a text report showing the main classification metrics</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.precision_recall_curve.html#sklearn.metrics.precision_recall_curve" title="sklearn.metrics.precision_recall_curve"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_recall_curve</span></tt></a>(y_true,&nbsp;...)</td>
+<td>Compute precision-recall pairs for different probability thresholds</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.zero_one_score.html#sklearn.metrics.zero_one_score" title="sklearn.metrics.zero_one_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.zero_one_score</span></tt></a>(y_true,&nbsp;y_pred)</td>
+<td>Zero-One classification score</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.zero_one.html#sklearn.metrics.zero_one" title="sklearn.metrics.zero_one"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.zero_one</span></tt></a>(y_true,&nbsp;y_pred)</td>
+<td>Zero-One classification loss</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.hinge_loss.html#sklearn.metrics.hinge_loss" title="sklearn.metrics.hinge_loss"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.hinge_loss</span></tt></a>(y_true,&nbsp;pred_decision[,&nbsp;...])</td>
+<td>Cumulated hinge loss (non-regularized).</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sklearn.metrics">
+<span id="regression-metrics"></span><h3>9.8.2. Regression metrics<a class="headerlink" href="#module-sklearn.metrics" title="Permalink to this headline">¶</a></h3>
+<p>Metrics module with score functions, performance metrics and
+pairwise metrics or distances computation</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.r2_score</span></tt></a>(y_true,&nbsp;y_pred)</td>
+<td>R^2 (coefficient of determination) regression score function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.mean_square_error.html#sklearn.metrics.mean_square_error" title="sklearn.metrics.mean_square_error"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.mean_square_error</span></tt></a>(y_true,&nbsp;y_pred)</td>
+<td>Mean square error regression loss</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sklearn.metrics.cluster">
+<span id="clustering-metrics"></span><h3>9.8.3. Clustering metrics<a class="headerlink" href="#module-sklearn.metrics.cluster" title="Permalink to this headline">¶</a></h3>
+<p>Utilities to evaluate the clustering performance of models</p>
+<p>Functions named as <a href="#id2"><span class="problematic" id="id3">*</span></a>_score return a scalar value to maximize: the higher the
+better.</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.adjusted_rand_score.html#sklearn.metrics.adjusted_rand_score" title="sklearn.metrics.adjusted_rand_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.adjusted_rand_score</span></tt></a>(labels_true,&nbsp;...)</td>
+<td>Rand index adjusted for chance</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.homogeneity_completeness_v_measure.html#sklearn.metrics.homogeneity_completeness_v_measure" title="sklearn.metrics.homogeneity_completeness_v_measure"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.homogeneity_completeness_v_measure</span></tt></a>(...)</td>
+<td>Compute the homogeneity and completeness and V-measure scores at once</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.homogeneity_score.html#sklearn.metrics.homogeneity_score" title="sklearn.metrics.homogeneity_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.homogeneity_score</span></tt></a>(labels_true,&nbsp;...)</td>
+<td>Homogeneity metric of a cluster labeling given a ground truth</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.completeness_score.html#sklearn.metrics.completeness_score" title="sklearn.metrics.completeness_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.completeness_score</span></tt></a>(labels_true,&nbsp;...)</td>
+<td>Completeness metric of a cluster labeling given a ground truth</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.v_measure_score.html#sklearn.metrics.v_measure_score" title="sklearn.metrics.v_measure_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.v_measure_score</span></tt></a>(labels_true,&nbsp;labels_pred)</td>
+<td>V-Measure cluster labeling given a ground truth</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sklearn.metrics.pairwise">
+<span id="pairwise-metrics"></span><h3>9.8.4. Pairwise metrics<a class="headerlink" href="#module-sklearn.metrics.pairwise" title="Permalink to this headline">¶</a></h3>
+<p>Utilities to evaluate pairwise distances or affinity of sets of samples.</p>
+<p>This module contains both distance metrics and kernels. A brief summary is
+given on the two here.</p>
+<p>Distance metrics are a function d(a, b) such that d(a, b) &lt; d(a, c) if objects
+a and b are considered &#8220;more similar&#8221; to objects a and c. Two objects exactly
+alike would have a distance of zero.
+One of the most popular examples is Euclidean distance.
+To be a &#8216;true&#8217; metric, it must obey the following four conditions:</p>
+<ol class="arabic simple">
+<li>d(a, b) &gt;= 0, for all a and b</li>
+<li>d(a, b) == 0, if and only if a = b, positive definiteness</li>
+<li>d(a, b) == d(b, a), symmetry</li>
+<li>d(a, c) &lt;= d(a, b) + d(b, c), the triangle inequality</li>
+</ol>
+<p>Kernels are measures of similarity, i.e. s(a, b) &gt; s(a, c) if objects a and b
+are considered &#8220;more similar&#8221; to objects a and c. A kernel must also be
+positive semi-definite.</p>
+<p>There are a number of ways to convert between a distance metric and a similarity
+measure, such as a kernel. Let D be the distance, and S be the kernel:</p>
+<ol class="arabic simple">
+<li>S = np.exp(-D * gamma), where one heuristic for choosing
+gamma is 1 / num_features</li>
+<li>S = 1. / (D / np.max(D))</li>
+</ol>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.pairwise.euclidean_distances.html#sklearn.metrics.pairwise.euclidean_distances" title="sklearn.metrics.pairwise.euclidean_distances"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.pairwise.euclidean_distances</span></tt></a>(X[,&nbsp;Y,&nbsp;...])</td>
+<td>Considering the rows of X (and Y=X) as vectors, compute the</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">metrics.pairwise.l1_distances</span></tt></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.pairwise.linear_kernel.html#sklearn.metrics.pairwise.linear_kernel" title="sklearn.metrics.pairwise.linear_kernel"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.pairwise.linear_kernel</span></tt></a>(X[,&nbsp;Y])</td>
+<td>Compute the linear kernel between X and Y.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.pairwise.polynomial_kernel.html#sklearn.metrics.pairwise.polynomial_kernel" title="sklearn.metrics.pairwise.polynomial_kernel"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.pairwise.polynomial_kernel</span></tt></a>(X[,&nbsp;Y,&nbsp;...])</td>
+<td>Compute the polynomial kernel between X and Y.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.pairwise.rbf_kernel.html#sklearn.metrics.pairwise.rbf_kernel" title="sklearn.metrics.pairwise.rbf_kernel"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.pairwise.rbf_kernel</span></tt></a>(X[,&nbsp;Y,&nbsp;gamma])</td>
+<td>Compute the rbf (gaussian) kernel between X and Y.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.pairwise.distance_metrics.html#sklearn.metrics.pairwise.distance_metrics" title="sklearn.metrics.pairwise.distance_metrics"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.pairwise.distance_metrics</span></tt></a>()</td>
+<td>Valid metrics for pairwise_distances</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.pairwise.pairwise_distances.html#sklearn.metrics.pairwise.pairwise_distances" title="sklearn.metrics.pairwise.pairwise_distances"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.pairwise.pairwise_distances</span></tt></a>(X[,&nbsp;Y,&nbsp;...])</td>
+<td>Compute the distance matrix from a vector array X and optional Y.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.metrics.pairwise.kernel_metrics.html#sklearn.metrics.pairwise.kernel_metrics" title="sklearn.metrics.pairwise.kernel_metrics"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.pairwise.kernel_metrics</span></tt></a>()</td>
+<td>Valid metrics for pairwise_kernels</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.metrics.pairwise.pairwise_kernels.html#sklearn.metrics.pairwise.pairwise_kernels" title="sklearn.metrics.pairwise.pairwise_kernels"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.pairwise.pairwise_kernels</span></tt></a>(X[,&nbsp;Y,&nbsp;metric])</td>
+<td>Compute the kernel between arrays X and optional array Y.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-sklearn.covariance">
+<span id="covariance-estimators"></span><h2>9.9. Covariance Estimators<a class="headerlink" href="#module-sklearn.covariance" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>9.9.1. Covariance estimators<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#module-sklearn.covariance" title="sklearn.covariance"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.covariance</span></tt></a> is a module to fit to estimate
+robustly the covariance of features given a set of points.
+The precision matrix defined as the inverse of the covariance
+is also estimated. Covariance estimation is closely related
+to the theory of Gaussian Graphical Models.</p>
+</div>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.covariance.EmpiricalCovariance.html#sklearn.covariance.EmpiricalCovariance" title="sklearn.covariance.EmpiricalCovariance"><tt class="xref py py-obj docutils literal"><span class="pre">covariance.EmpiricalCovariance</span></tt></a>([store_precision])</td>
+<td>Maximum likelihood covariance estimator</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.covariance.ShrunkCovariance.html#sklearn.covariance.ShrunkCovariance" title="sklearn.covariance.ShrunkCovariance"><tt class="xref py py-obj docutils literal"><span class="pre">covariance.ShrunkCovariance</span></tt></a>([...])</td>
+<td>Covariance estimator with shrinkage</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.covariance.LedoitWolf.html#sklearn.covariance.LedoitWolf" title="sklearn.covariance.LedoitWolf"><tt class="xref py py-obj docutils literal"><span class="pre">covariance.LedoitWolf</span></tt></a>([store_precision])</td>
+<td>Ledoit-Wolf shrinkage estimator</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.covariance.OAS.html#sklearn.covariance.OAS" title="sklearn.covariance.OAS"><tt class="xref py py-obj docutils literal"><span class="pre">covariance.OAS</span></tt></a>([store_precision])</td>
+<td>Oracle Approximating Shrinkage Estimator</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.covariance.empirical_covariance.html#sklearn.covariance.empirical_covariance" title="sklearn.covariance.empirical_covariance"><tt class="xref py py-obj docutils literal"><span class="pre">covariance.empirical_covariance</span></tt></a>(X[,&nbsp;...])</td>
+<td>Computes the Maximum likelihood covariance estimator</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.covariance.ledoit_wolf.html#sklearn.covariance.ledoit_wolf" title="sklearn.covariance.ledoit_wolf"><tt class="xref py py-obj docutils literal"><span class="pre">covariance.ledoit_wolf</span></tt></a>(X[,&nbsp;assume_centered])</td>
+<td>Estimates the shrunk Ledoit-Wolf covariance matrix.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.covariance.shrunk_covariance.html#sklearn.covariance.shrunk_covariance" title="sklearn.covariance.shrunk_covariance"><tt class="xref py py-obj docutils literal"><span class="pre">covariance.shrunk_covariance</span></tt></a>(emp_cov[,&nbsp;...])</td>
+<td>Calculates a covariance matrix shrunk on the diagonal</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.covariance.oas.html#sklearn.covariance.oas" title="sklearn.covariance.oas"><tt class="xref py py-obj docutils literal"><span class="pre">covariance.oas</span></tt></a>(X[,&nbsp;assume_centered])</td>
+<td>Estimate covariance with the Oracle Approximating Shrinkage algorithm.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sklearn.decomposition">
+<span id="signal-decomposition"></span><h2>9.10. Signal Decomposition<a class="headerlink" href="#module-sklearn.decomposition" title="Permalink to this headline">¶</a></h2>
+<p>Matrix decomposition algorithms</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.PCA</span></tt></a>([n_components,&nbsp;copy,&nbsp;whiten])</td>
+<td>Principal component analysis (PCA)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.decomposition.ProbabilisticPCA.html#sklearn.decomposition.ProbabilisticPCA" title="sklearn.decomposition.ProbabilisticPCA"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.ProbabilisticPCA</span></tt></a>([...])</td>
+<td>Additional layer on top of PCA that adds a probabilistic evaluation</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.decomposition.ProjectedGradientNMF.html#sklearn.decomposition.ProjectedGradientNMF" title="sklearn.decomposition.ProjectedGradientNMF"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.ProjectedGradientNMF</span></tt></a>([...])</td>
+<td>Non-Negative matrix factorization by Projected Gradient (NMF)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.decomposition.RandomizedPCA.html#sklearn.decomposition.RandomizedPCA" title="sklearn.decomposition.RandomizedPCA"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.RandomizedPCA</span></tt></a>(n_components[,&nbsp;...])</td>
+<td>Principal component analysis (PCA) using randomized SVD</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.decomposition.KernelPCA.html#sklearn.decomposition.KernelPCA" title="sklearn.decomposition.KernelPCA"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.KernelPCA</span></tt></a>([n_components,&nbsp;...])</td>
+<td>Kernel Principal component analysis (KPCA)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.decomposition.FastICA.html#sklearn.decomposition.FastICA" title="sklearn.decomposition.FastICA"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.FastICA</span></tt></a>([n_components,&nbsp;...])</td>
+<td>FastICA; a fast algorithm for Independent Component Analysis</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.NMF</span></tt></a>([n_components,&nbsp;init,&nbsp;...])</td>
+<td>Non-Negative matrix factorization by Projected Gradient (NMF)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.decomposition.SparsePCA.html#sklearn.decomposition.SparsePCA" title="sklearn.decomposition.SparsePCA"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.SparsePCA</span></tt></a>(n_components[,&nbsp;...])</td>
+<td>Sparse Principal Components Analysis (SparsePCA)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.decomposition.MiniBatchSparsePCA.html#sklearn.decomposition.MiniBatchSparsePCA" title="sklearn.decomposition.MiniBatchSparsePCA"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.MiniBatchSparsePCA</span></tt></a>(n_components)</td>
+<td>Mini-batch Sparse Principal Components Analysis</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.decomposition.DictionaryLearning.html#sklearn.decomposition.DictionaryLearning" title="sklearn.decomposition.DictionaryLearning"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.DictionaryLearning</span></tt></a>(n_atoms[,&nbsp;...])</td>
+<td>Dictionary learning</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.decomposition.MiniBatchDictionaryLearning.html#sklearn.decomposition.MiniBatchDictionaryLearning" title="sklearn.decomposition.MiniBatchDictionaryLearning"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.MiniBatchDictionaryLearning</span></tt></a>(n_atoms)</td>
+<td>Mini-batch dictionary learning</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.decomposition.fastica.html#sklearn.decomposition.fastica" title="sklearn.decomposition.fastica"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.fastica</span></tt></a>(X[,&nbsp;n_components,&nbsp;...])</td>
+<td>Perform Fast Independent Component Analysis.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.decomposition.dict_learning.html#sklearn.decomposition.dict_learning" title="sklearn.decomposition.dict_learning"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.dict_learning</span></tt></a>(X,&nbsp;n_atoms,&nbsp;alpha)</td>
+<td>Solves a dictionary learning matrix factorization problem.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.decomposition.dict_learning_online.html#sklearn.decomposition.dict_learning_online" title="sklearn.decomposition.dict_learning_online"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.dict_learning_online</span></tt></a>(X,&nbsp;...[,&nbsp;...])</td>
+<td>Solves a dictionary learning matrix factorization problem online.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.decomposition.sparse_encode.html#sklearn.decomposition.sparse_encode" title="sklearn.decomposition.sparse_encode"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.sparse_encode</span></tt></a>(X,&nbsp;Y[,&nbsp;gram,&nbsp;...])</td>
+<td>Generic sparse coding</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.decomposition.sparse_encode_parallel.html#sklearn.decomposition.sparse_encode_parallel" title="sklearn.decomposition.sparse_encode_parallel"><tt class="xref py py-obj docutils literal"><span class="pre">decomposition.sparse_encode_parallel</span></tt></a>(X,&nbsp;Y[,&nbsp;...])</td>
+<td>Parallel sparse coding using joblib</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="linear-discriminant-analysis">
+<h2>9.11. Linear Discriminant Analysis<a class="headerlink" href="#linear-discriminant-analysis" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.lda.LDA.html#sklearn.lda.LDA" title="sklearn.lda.LDA"><tt class="xref py py-obj docutils literal"><span class="pre">lda.LDA</span></tt></a>([n_components,&nbsp;priors])</td>
+<td>Linear Discriminant Analysis (LDA)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sklearn.pls">
+<span id="partial-least-squares"></span><h2>9.12. Partial Least Squares<a class="headerlink" href="#module-sklearn.pls" title="Permalink to this headline">¶</a></h2>
+<p>Partial Least Squares regression</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.pls.PLSRegression.html#sklearn.pls.PLSRegression" title="sklearn.pls.PLSRegression"><tt class="xref py py-obj docutils literal"><span class="pre">pls.PLSRegression</span></tt></a>([n_components,&nbsp;scale,&nbsp;...])</td>
+<td>PLS regression</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.pls.PLSCanonical.html#sklearn.pls.PLSCanonical" title="sklearn.pls.PLSCanonical"><tt class="xref py py-obj docutils literal"><span class="pre">pls.PLSCanonical</span></tt></a>([n_components,&nbsp;scale,&nbsp;...])</td>
+<td>PLS canonical. PLSCanonical inherits from PLS with mode=&#8221;A&#8221; and</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.pls.CCA.html#sklearn.pls.CCA" title="sklearn.pls.CCA"><tt class="xref py py-obj docutils literal"><span class="pre">pls.CCA</span></tt></a>([n_components,&nbsp;scale,&nbsp;algorithm,&nbsp;...])</td>
+<td>CCA Canonical Correlation Analysis. CCA inherits from PLS with</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.pls.PLSSVD.html#sklearn.pls.PLSSVD" title="sklearn.pls.PLSSVD"><tt class="xref py py-obj docutils literal"><span class="pre">pls.PLSSVD</span></tt></a>([n_components,&nbsp;scale,&nbsp;copy])</td>
+<td>Partial Least Square SVD</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sklearn.cross_validation">
+<span id="cross-validation"></span><h2>9.13. Cross Validation<a class="headerlink" href="#module-sklearn.cross_validation" title="Permalink to this headline">¶</a></h2>
+<p>Utilities for cross validation and performance evaluation</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.cross_validation.LeaveOneOut.html#sklearn.cross_validation.LeaveOneOut" title="sklearn.cross_validation.LeaveOneOut"><tt class="xref py py-obj docutils literal"><span class="pre">cross_validation.LeaveOneOut</span></tt></a>(n[,&nbsp;indices])</td>
+<td>Leave-One-Out cross validation iterator.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.cross_validation.LeavePOut.html#sklearn.cross_validation.LeavePOut" title="sklearn.cross_validation.LeavePOut"><tt class="xref py py-obj docutils literal"><span class="pre">cross_validation.LeavePOut</span></tt></a>(n,&nbsp;p[,&nbsp;indices])</td>
+<td>Leave-P-Out cross validation iterator</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.cross_validation.KFold.html#sklearn.cross_validation.KFold" title="sklearn.cross_validation.KFold"><tt class="xref py py-obj docutils literal"><span class="pre">cross_validation.KFold</span></tt></a>(n,&nbsp;k[,&nbsp;indices])</td>
+<td>K-Folds cross validation iterator</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.cross_validation.StratifiedKFold.html#sklearn.cross_validation.StratifiedKFold" title="sklearn.cross_validation.StratifiedKFold"><tt class="xref py py-obj docutils literal"><span class="pre">cross_validation.StratifiedKFold</span></tt></a>(y,&nbsp;k[,&nbsp;indices])</td>
+<td>Stratified K-Folds cross validation iterator</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.cross_validation.LeaveOneLabelOut.html#sklearn.cross_validation.LeaveOneLabelOut" title="sklearn.cross_validation.LeaveOneLabelOut"><tt class="xref py py-obj docutils literal"><span class="pre">cross_validation.LeaveOneLabelOut</span></tt></a>(labels[,&nbsp;...])</td>
+<td>Leave-One-Label_Out cross-validation iterator</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.cross_validation.LeavePLabelOut.html#sklearn.cross_validation.LeavePLabelOut" title="sklearn.cross_validation.LeavePLabelOut"><tt class="xref py py-obj docutils literal"><span class="pre">cross_validation.LeavePLabelOut</span></tt></a>(labels,&nbsp;p[,&nbsp;...])</td>
+<td>Leave-P-Label_Out cross-validation iterator</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.cross_validation.Bootstrap.html#sklearn.cross_validation.Bootstrap" title="sklearn.cross_validation.Bootstrap"><tt class="xref py py-obj docutils literal"><span class="pre">cross_validation.Bootstrap</span></tt></a>(n[,&nbsp;...])</td>
+<td>Random sampling with replacement cross-validation iterator</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.cross_validation.ShuffleSplit.html#sklearn.cross_validation.ShuffleSplit" title="sklearn.cross_validation.ShuffleSplit"><tt class="xref py py-obj docutils literal"><span class="pre">cross_validation.ShuffleSplit</span></tt></a>(n[,&nbsp;...])</td>
+<td>Random permutation cross-validation iterator.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sklearn.grid_search">
+<span id="grid-search"></span><h2>9.14. Grid Search<a class="headerlink" href="#module-sklearn.grid_search" title="Permalink to this headline">¶</a></h2>
+<p>Tune the parameters of an estimator by cross-validation</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.grid_search.GridSearchCV.html#sklearn.grid_search.GridSearchCV" title="sklearn.grid_search.GridSearchCV"><tt class="xref py py-obj docutils literal"><span class="pre">grid_search.GridSearchCV</span></tt></a>(estimator,&nbsp;param_grid)</td>
+<td>Grid search on the parameters of a classifier</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sklearn.feature_selection">
+<span id="feature-selection"></span><span id="feature-selection-ref"></span><h2>9.15. Feature Selection<a class="headerlink" href="#module-sklearn.feature_selection" title="Permalink to this headline">¶</a></h2>
+<p>Feature slection module for python</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.feature_selection.rfe.RFE.html#sklearn.feature_selection.rfe.RFE" title="sklearn.feature_selection.rfe.RFE"><tt class="xref py py-obj docutils literal"><span class="pre">feature_selection.rfe.RFE</span></tt></a>(estimator,&nbsp;...[,&nbsp;step])</td>
+<td>Feature ranking with recursive feature elimination.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.feature_selection.rfe.RFECV.html#sklearn.feature_selection.rfe.RFECV" title="sklearn.feature_selection.rfe.RFECV"><tt class="xref py py-obj docutils literal"><span class="pre">feature_selection.rfe.RFECV</span></tt></a>(estimator[,&nbsp;...])</td>
+<td>Feature ranking with recursive feature elimination and cross-validated    selection of the best number of features.</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.feature_selection.univariate_selection.chi2.html#sklearn.feature_selection.univariate_selection.chi2" title="sklearn.feature_selection.univariate_selection.chi2"><tt class="xref py py-obj docutils literal"><span class="pre">feature_selection.univariate_selection.chi2</span></tt></a>(X,&nbsp;y)</td>
+<td>Compute χ² (chi-squared) statistic for each class/feature combination.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sklearn.feature_extraction">
+<span id="id5"></span><span id="feature-extraction"></span><h2>9.16. Feature Extraction<a class="headerlink" href="#module-sklearn.feature_extraction" title="Permalink to this headline">¶</a></h2>
+<p>Package for modules that deal with feature extraction from raw data</p>
+<div class="section" id="module-sklearn.feature_extraction.image">
+<span id="from-images"></span><h3>9.16.1. From images<a class="headerlink" href="#module-sklearn.feature_extraction.image" title="Permalink to this headline">¶</a></h3>
+<p>Utilities to extract features from images.</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.feature_extraction.image.img_to_graph.html#sklearn.feature_extraction.image.img_to_graph" title="sklearn.feature_extraction.image.img_to_graph"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.image.img_to_graph</span></tt></a>(img[,&nbsp;...])</td>
+<td>Graph of the pixel-to-pixel gradient connections</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.feature_extraction.image.grid_to_graph.html#sklearn.feature_extraction.image.grid_to_graph" title="sklearn.feature_extraction.image.grid_to_graph"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.image.grid_to_graph</span></tt></a>(n_x,&nbsp;n_y)</td>
+<td>Graph of the pixel-to-pixel connections</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.feature_extraction.image.extract_patches_2d.html#sklearn.feature_extraction.image.extract_patches_2d" title="sklearn.feature_extraction.image.extract_patches_2d"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.image.extract_patches_2d</span></tt></a>(...)</td>
+<td>Reshape a 2D image into a collection of patches</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.feature_extraction.image.reconstruct_from_patches_2d.html#sklearn.feature_extraction.image.reconstruct_from_patches_2d" title="sklearn.feature_extraction.image.reconstruct_from_patches_2d"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.image.reconstruct_from_patches_2d</span></tt></a>(...)</td>
+<td>Reconstruct the image from all of its patches.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.feature_extraction.image.PatchExtractor.html#sklearn.feature_extraction.image.PatchExtractor" title="sklearn.feature_extraction.image.PatchExtractor"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.image.PatchExtractor</span></tt></a>(...)</td>
+<td>Extracts patches from a collection of images</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sklearn.feature_extraction.text">
+<span id="from-text"></span><h3>9.16.2. From text<a class="headerlink" href="#module-sklearn.feature_extraction.text" title="Permalink to this headline">¶</a></h3>
+<p>Utilities to build feature vectors from text documents</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.feature_extraction.text.RomanPreprocessor.html#sklearn.feature_extraction.text.RomanPreprocessor" title="sklearn.feature_extraction.text.RomanPreprocessor"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.RomanPreprocessor</span></tt></a></td>
+<td>Fast preprocessor suitable for Latin alphabet text</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.feature_extraction.text.WordNGramAnalyzer.html#sklearn.feature_extraction.text.WordNGramAnalyzer" title="sklearn.feature_extraction.text.WordNGramAnalyzer"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.WordNGramAnalyzer</span></tt></a>([...])</td>
+<td>Simple analyzer: transform text document into a sequence of word tokens</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.feature_extraction.text.CharNGramAnalyzer.html#sklearn.feature_extraction.text.CharNGramAnalyzer" title="sklearn.feature_extraction.text.CharNGramAnalyzer"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.CharNGramAnalyzer</span></tt></a>([...])</td>
+<td>Compute character n-grams features of a text document</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.CountVectorizer</span></tt>(...)</td>
+<td>Convert a collection of raw documents to a matrix of token counts</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.feature_extraction.text.TfidfTransformer.html#sklearn.feature_extraction.text.TfidfTransformer" title="sklearn.feature_extraction.text.TfidfTransformer"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.TfidfTransformer</span></tt></a>([...])</td>
+<td>Transform a count matrix to a normalized tf or tf–idf representation</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.Vectorizer</span></tt>(...[,&nbsp;...])</td>
+<td>Convert a collection of raw documents to a matrix</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-sklearn.preprocessing">
+<span id="preprocessing-and-normalization"></span><h2>9.17. Preprocessing and normalization<a class="headerlink" href="#module-sklearn.preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>Transformers to perform common preprocessing steps.</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.preprocessing.Scaler.html#sklearn.preprocessing.Scaler" title="sklearn.preprocessing.Scaler"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.Scaler</span></tt></a>([copy,&nbsp;with_mean,&nbsp;with_std])</td>
+<td>Standardize features by removing the mean and scaling to unit variance</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.preprocessing.Normalizer.html#sklearn.preprocessing.Normalizer" title="sklearn.preprocessing.Normalizer"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.Normalizer</span></tt></a>([norm,&nbsp;copy])</td>
+<td>Normalize samples individually to unit norm</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.preprocessing.Binarizer.html#sklearn.preprocessing.Binarizer" title="sklearn.preprocessing.Binarizer"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.Binarizer</span></tt></a>([threshold,&nbsp;copy])</td>
+<td>Binarize data (set feature values to 0 or 1) according to a threshold</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.preprocessing.LabelBinarizer.html#sklearn.preprocessing.LabelBinarizer" title="sklearn.preprocessing.LabelBinarizer"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.LabelBinarizer</span></tt></a></td>
+<td>Binarize labels in a one-vs-all fashion</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.preprocessing.KernelCenterer.html#sklearn.preprocessing.KernelCenterer" title="sklearn.preprocessing.KernelCenterer"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.KernelCenterer</span></tt></a></td>
+<td>Center a kernel matrix</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.preprocessing.scale.html#sklearn.preprocessing.scale" title="sklearn.preprocessing.scale"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.scale</span></tt></a>(X[,&nbsp;axis,&nbsp;with_mean,&nbsp;...])</td>
+<td>Standardize a dataset along any axis</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.preprocessing.normalize.html#sklearn.preprocessing.normalize" title="sklearn.preprocessing.normalize"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.normalize</span></tt></a>(X[,&nbsp;norm,&nbsp;axis,&nbsp;copy])</td>
+<td>Normalize a dataset along any axis</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.preprocessing.binarize.html#sklearn.preprocessing.binarize" title="sklearn.preprocessing.binarize"><tt class="xref py py-obj docutils literal"><span class="pre">preprocessing.binarize</span></tt></a>(X[,&nbsp;threshold,&nbsp;copy])</td>
+<td>Boolean thresholding of array-like or scipy.sparse matrix</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="manifold-learning">
+<h2>9.18. Manifold learning<a class="headerlink" href="#manifold-learning" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.manifold.LocallyLinearEmbedding.html#sklearn.manifold.LocallyLinearEmbedding" title="sklearn.manifold.LocallyLinearEmbedding"><tt class="xref py py-obj docutils literal"><span class="pre">manifold.LocallyLinearEmbedding</span></tt></a>([...])</td>
+<td>Locally Linear Embedding</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.manifold.Isomap.html#sklearn.manifold.Isomap" title="sklearn.manifold.Isomap"><tt class="xref py py-obj docutils literal"><span class="pre">manifold.Isomap</span></tt></a>([n_neighbors,&nbsp;out_dim,&nbsp;...])</td>
+<td>Isomap Embedding</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.manifold.locally_linear_embedding.html#sklearn.manifold.locally_linear_embedding" title="sklearn.manifold.locally_linear_embedding"><tt class="xref py py-obj docutils literal"><span class="pre">manifold.locally_linear_embedding</span></tt></a>(X,&nbsp;...[,&nbsp;...])</td>
+<td>Perform a Locally Linear Embedding analysis on the data.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="datasets">
+<h2>9.19. Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-sklearn.datasets">
+<span id="loaders"></span><h3>9.19.2. Loaders<a class="headerlink" href="#module-sklearn.datasets" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.load_files.html#sklearn.datasets.load_files" title="sklearn.datasets.load_files"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_files</span></tt></a>(container_path[,&nbsp;...])</td>
+<td>Load text files with categories as subfolder names.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.load_diabetes.html#sklearn.datasets.load_diabetes" title="sklearn.datasets.load_diabetes"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_diabetes</span></tt></a>()</td>
+<td>Load and return the diabetes dataset (regression).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.load_digits.html#sklearn.datasets.load_digits" title="sklearn.datasets.load_digits"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_digits</span></tt></a>([n_class])</td>
+<td>Load and return the digits dataset (classification).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="sklearn.datasets.load_iris"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_iris</span></tt></a>()</td>
+<td>Load and return the iris dataset (classification).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.load_linnerud.html#sklearn.datasets.load_linnerud" title="sklearn.datasets.load_linnerud"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_linnerud</span></tt></a>()</td>
+<td>Load and return the linnerud dataset (multivariate regression).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.load_lfw_pairs.html#sklearn.datasets.load_lfw_pairs" title="sklearn.datasets.load_lfw_pairs"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_lfw_pairs</span></tt></a>([download_if_missing])</td>
+<td>Alias for fetch_lfw_pairs(download_if_missing=False)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.fetch_lfw_pairs.html#sklearn.datasets.fetch_lfw_pairs" title="sklearn.datasets.fetch_lfw_pairs"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.fetch_lfw_pairs</span></tt></a>([subset,&nbsp;...])</td>
+<td>Loader for the Labeled Faces in the Wild (LFW) pairs dataset</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.load_lfw_people.html#sklearn.datasets.load_lfw_people" title="sklearn.datasets.load_lfw_people"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_lfw_people</span></tt></a>([download_if_missing])</td>
+<td>Alias for fetch_lfw_people(download_if_missing=False)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.fetch_lfw_people.html#sklearn.datasets.fetch_lfw_people" title="sklearn.datasets.fetch_lfw_people"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.fetch_lfw_people</span></tt></a>([data_home,&nbsp;...])</td>
+<td>Loader for the Labeled Faces in the Wild (LFW) people dataset</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.load_20newsgroups.html#sklearn.datasets.load_20newsgroups" title="sklearn.datasets.load_20newsgroups"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_20newsgroups</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<td>DEPRECATED: Use fetch_20newsgroups instead with download_if_missing=False</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.fetch_20newsgroups.html#sklearn.datasets.fetch_20newsgroups" title="sklearn.datasets.fetch_20newsgroups"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.fetch_20newsgroups</span></tt></a>([data_home,&nbsp;...])</td>
+<td>Load the filenames of the 20 newsgroups dataset</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sklearn.datasets">
+<span id="samples-generator"></span><h3>9.19.2. Samples generator<a class="headerlink" href="#module-sklearn.datasets" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_classification</span></tt></a>([n_samples,&nbsp;...])</td>
+<td>Generate a random n-class classification problem.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.make_regression.html#sklearn.datasets.make_regression" title="sklearn.datasets.make_regression"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_regression</span></tt></a>([n_samples,&nbsp;...])</td>
+<td>Generate a random regression problem.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.make_blobs.html#sklearn.datasets.make_blobs" title="sklearn.datasets.make_blobs"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_blobs</span></tt></a>([n_samples,&nbsp;n_features,&nbsp;...])</td>
+<td>Generate isotropic Gaussian blobs for clustering.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" title="sklearn.datasets.make_friedman1"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_friedman1</span></tt></a>([n_samples,&nbsp;...])</td>
+<td>Generate the &#8220;Friedman #1&#8221; regression problem as described in Friedman [1]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.make_friedman2.html#sklearn.datasets.make_friedman2" title="sklearn.datasets.make_friedman2"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_friedman2</span></tt></a>([n_samples,&nbsp;noise,&nbsp;...])</td>
+<td>Generate the &#8220;Friedman #2&#8221; regression problem as described in Friedman [1]</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.make_friedman3.html#sklearn.datasets.make_friedman3" title="sklearn.datasets.make_friedman3"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_friedman3</span></tt></a>([n_samples,&nbsp;noise,&nbsp;...])</td>
+<td>Generate the &#8220;Friedman #3&#8221; regression problem as described in Friedman [1]</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.make_low_rank_matrix.html#sklearn.datasets.make_low_rank_matrix" title="sklearn.datasets.make_low_rank_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_low_rank_matrix</span></tt></a>([n_samples,&nbsp;...])</td>
+<td>Generate a mostly low rank random matrix with bell-shaped singular values profile.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.make_sparse_coded_signal.html#sklearn.datasets.make_sparse_coded_signal" title="sklearn.datasets.make_sparse_coded_signal"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_sparse_coded_signal</span></tt></a>(n_samples,&nbsp;...)</td>
+<td>Generate a signal as a sparse combination of dictionary elements.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.make_sparse_uncorrelated.html#sklearn.datasets.make_sparse_uncorrelated" title="sklearn.datasets.make_sparse_uncorrelated"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_sparse_uncorrelated</span></tt></a>([...])</td>
+<td>Generate a random regression problem with sparse uncorrelated design as</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.make_spd_matrix.html#sklearn.datasets.make_spd_matrix" title="sklearn.datasets.make_spd_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_spd_matrix</span></tt></a>(n_dim[,&nbsp;random_state])</td>
+<td>Generate a random symmetric, positive-definite matrix.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.make_swiss_roll.html#sklearn.datasets.make_swiss_roll" title="sklearn.datasets.make_swiss_roll"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_swiss_roll</span></tt></a>([n_samples,&nbsp;noise,&nbsp;...])</td>
+<td>Generate a swiss roll dataset.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.make_s_curve.html#sklearn.datasets.make_s_curve" title="sklearn.datasets.make_s_curve"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_s_curve</span></tt></a>([n_samples,&nbsp;noise,&nbsp;...])</td>
+<td>Generate an S curve dataset.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="module-sklearn.pipeline">
+<span id="pipeline"></span><h2>9.20. Pipeline<a class="headerlink" href="#module-sklearn.pipeline" title="Permalink to this headline">¶</a></h2>
+<p>Pipeline: chain transforms and estimators to build a composite estimator.</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="sklearn.pipeline.Pipeline"><tt class="xref py py-obj docutils literal"><span class="pre">pipeline.Pipeline</span></tt></a>(steps)</td>
+<td>Pipeline of transforms with a final estimator</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sklearn.utils">
+<span id="utilities"></span><h2>9.21. Utilities<a class="headerlink" href="#module-sklearn.utils" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.utils.check_random_state.html#sklearn.utils.check_random_state" title="sklearn.utils.check_random_state"><tt class="xref py py-obj docutils literal"><span class="pre">utils.check_random_state</span></tt></a>(seed)</td>
+<td>Turn seed into a np.random.RandomState instance</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.utils.resample.html#sklearn.utils.resample" title="sklearn.utils.resample"><tt class="xref py py-obj docutils literal"><span class="pre">utils.resample</span></tt></a>(*arrays,&nbsp;**options)</td>
+<td>Resample arrays or sparse matrices in a consistent way</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.utils.shuffle.html#sklearn.utils.shuffle" title="sklearn.utils.shuffle"><tt class="xref py py-obj docutils literal"><span class="pre">utils.shuffle</span></tt></a>(*arrays,&nbsp;**options)</td>
+<td>Shuffle arrays or sparse matrices in a consistent way</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikit-learn version 0.9<p>
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../_sources/modules/classes.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

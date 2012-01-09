@@ -1,0 +1,11 @@
+scikits.learn.linear_model.SGDRegressor
+=======================================
+
+.. currentmodule:: scikits.learn.linear_model
+
+.. autoclass:: SGDRegressor
+
+   
+   .. automethod:: __init__
+   
+

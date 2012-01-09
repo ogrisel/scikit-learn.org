@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>scikits.learn.covariance.LedoitWolf &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../../index.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">scikits.learn.covariance.LedoitWolf</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-covariance-ledoitwolf">
+<h1>scikits.learn.covariance.LedoitWolf<a class="headerlink" href="#scikits-learn-covariance-ledoitwolf" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.covariance.LedoitWolf">
+<em class="property">class </em><tt class="descclassname">scikits.learn.covariance.</tt><tt class="descname">LedoitWolf</tt><big>(</big><em>store_precision=True</em><big>)</big><a class="headerlink" href="#scikits.learn.covariance.LedoitWolf" title="Permalink to this definition">¶</a></dt>
+<dd><p>LedoitWolf Estimator</p>
+<p>Ledoit-Wolf is a particular form of shrinkage, where the shrinkage
+coefficient is computed using O.Ledoit and M.Wolf&#8217;s formula as
+described in &#8220;A Well-Conditioned Estimator for Large-Dimensional
+Covariance Matrices&#8221;, Ledoit and Wolf, Journal of Multivariate
+Analysis, Volume 88, Issue 2, February 2004, pages 365-411.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>store_precision</strong> : bool</p>
+<blockquote class="last">
+<p>Specify if the estimated precision is stored</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The regularised covariance is:</p>
+<div class="highlight-python"><pre>(1 - shrinkage)*cov
+        + shrinkage*mu*np.identity(n_features)</pre>
+</div>
+<p>where mu = trace(cov) / n_features
+and shinkage is given by the Ledoit and Wolf formula (see Reference)</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="29%" />
+<col width="43%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><cite>covariance_</cite></td>
+<td>array-like, shape (n_features, n_features)</td>
+<td>Estimated covariance matrix</td>
+</tr>
+<tr><td><cite>precision_</cite></td>
+<td>array-like, shape (n_features, n_features)</td>
+<td>Estimated pseudo inverse matrix.
+(stored only if store_precision is True)</td>
+</tr>
+<tr><td><cite>shrinkage_</cite>: float, 0 &lt;= shrinkage &lt;= 1</td>
+<td>&nbsp;</td>
+<td>coefficient in the convex combination used for the computation
+of the shrunk estimate.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="scikits.learn.covariance.LedoitWolf.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>store_precision=True</em><big>)</big><a class="headerlink" href="#scikits.learn.covariance.LedoitWolf.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.covariance.LedoitWolf.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>assume_centered=False</em><big>)</big><a class="headerlink" href="#scikits.learn.covariance.LedoitWolf.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits the Ledoit-Wolf shrunk covariance model
+according to the given training data and parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<p>Training data, where n_samples is the number of samples
+and n_features is the number of features.</p>
+</blockquote>
+<p><strong>assume_centered: Boolean</strong> :</p>
+<blockquote>
+<p>If True, data are not centered before computation.
+Usefull to work with data whose mean is significantly equal to
+zero but is not exactly zero.
+If False, data are centered before computation.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>self</strong> : object</p>
+<blockquote class="last">
+<p>Returns self.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.covariance.LedoitWolf.mse">
+<tt class="descname">mse</tt><big>(</big><em>comp_cov</em><big>)</big><a class="headerlink" href="#scikits.learn.covariance.LedoitWolf.mse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the Mean Squared Error between two covariance estimators.
+(In the sense of the Frobenius norm)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>comp_cov: array-like, shape = [n_features, n_features]</strong> :</p>
+<blockquote>
+<p>The covariance which to be compared to.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>The Mean Squared Error (in the sense of the Frobenius norm) between</strong> :</p>
+<p class="last"><strong>`self` and `comp_cov` covariance estimators.</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.covariance.LedoitWolf.score">
+<tt class="descname">score</tt><big>(</big><em>X_test</em>, <em>assume_centered=False</em><big>)</big><a class="headerlink" href="#scikits.learn.covariance.LedoitWolf.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the log-likelihood of a gaussian data set with
+<cite>self.covariance_</cite> as an estimator of its covariance matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X_test</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<p>Test data of which we compute the likelihood,
+where n_samples is the number of samples and n_features is
+the number of features.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>res: float</strong> :</p>
+<blockquote class="last">
+<p>The likelihood of the data set with <a href="#id1"><span class="problematic" id="id2">self.covariance_</span></a> as an estimator
+of its covariance matrix.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/scikits.learn.covariance.LedoitWolf.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

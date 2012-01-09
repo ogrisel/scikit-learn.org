@@ -1,0 +1,11 @@
+scikits.learn.linear_model.LinearRegression
+===========================================
+
+.. currentmodule:: scikits.learn.linear_model
+
+.. autoclass:: LinearRegression
+
+   
+   .. automethod:: __init__
+   
+

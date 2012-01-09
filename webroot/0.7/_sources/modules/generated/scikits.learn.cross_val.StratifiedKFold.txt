@@ -1,0 +1,11 @@
+scikits.learn.cross_val.StratifiedKFold
+=======================================
+
+.. currentmodule:: scikits.learn.cross_val
+
+.. autoclass:: StratifiedKFold
+
+   
+   .. automethod:: __init__
+   
+

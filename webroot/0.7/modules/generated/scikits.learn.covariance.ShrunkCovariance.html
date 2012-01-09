@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6.10.2. scikits.learn.covariance.ShrunkCovariance &mdash; scikits.learn 0.7.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.7.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn 0.7.1 documentation" href="../../index.html" />
+    <link rel="up" title="6. Class reference" href="../classes.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">6.10.2. scikits.learn.covariance.ShrunkCovariance</a><ul>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-covariance-shrunkcovariance">
+<h1>6.10.2. scikits.learn.covariance.ShrunkCovariance<a class="headerlink" href="#scikits-learn-covariance-shrunkcovariance" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.covariance.ShrunkCovariance">
+<em class="property">class </em><tt class="descclassname">scikits.learn.covariance.</tt><tt class="descname">ShrunkCovariance</tt><big>(</big><em>store_covariance=True</em>, <em>shrinkage=None</em><big>)</big><a class="headerlink" href="#scikits.learn.covariance.ShrunkCovariance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Covariance estimator with shrinkage</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>store_covariance</strong> : bool</p>
+<blockquote>
+<div><p>Specify if the estimated covariance is stored</p>
+</div></blockquote>
+<p><strong>shrinkage</strong> : float</p>
+<blockquote class="last">
+<div><p>Shrinkage (in [0, 1])</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The regularized covariance is given by</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>(1 - shrinkage)*cov</dt>
+<dd><ul class="first last simple">
+<li>shrinkage*mu*np.identity(n_features)</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<p>where mu = trace(cov) / n_features</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="44%" />
+<col width="43%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><cite>covariance_</cite></td>
+<td>2D ndarray, shape (n_features, n_features)</td>
+<td>Estimated covariance matrix
+(stored only is store_covariance is True)</td>
+</tr>
+<tr class="row-even"><td><cite>precision_</cite></td>
+<td>2D ndarray, shape (n_features, n_features)</td>
+<td>Estimated precision matrix</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt>(X,&nbsp;**params)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">log_likelihood</span></tt>(test_cov)</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt>(X_test)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="scikits.learn.covariance.ShrunkCovariance.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>store_covariance=True</em>, <em>shrinkage=None</em><big>)</big><a class="headerlink" href="#scikits.learn.covariance.ShrunkCovariance.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.7.1<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

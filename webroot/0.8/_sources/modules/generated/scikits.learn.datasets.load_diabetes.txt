@@ -1,0 +1,7 @@
+scikits.learn.datasets.load_diabetes
+====================================
+
+.. currentmodule:: scikits.learn.datasets
+
+.. autofunction:: load_diabetes
+

@@ -1,0 +1,11 @@
+scikits.learn.feature_extraction.text.sparse.CountVectorizer
+============================================================
+
+.. currentmodule:: scikits.learn.feature_extraction.text.sparse
+
+.. autoclass:: CountVectorizer
+
+   
+   .. automethod:: __init__
+   
+

@@ -1,0 +1,7 @@
+scikits.learn.metrics.pairwise.linear_kernel
+============================================
+
+.. currentmodule:: scikits.learn.metrics.pairwise
+
+.. autofunction:: linear_kernel
+

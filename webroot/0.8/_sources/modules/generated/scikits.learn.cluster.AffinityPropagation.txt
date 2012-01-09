@@ -1,0 +1,11 @@
+scikits.learn.cluster.AffinityPropagation
+=========================================
+
+.. currentmodule:: scikits.learn.cluster
+
+.. autoclass:: AffinityPropagation
+
+   
+   .. automethod:: __init__
+   
+

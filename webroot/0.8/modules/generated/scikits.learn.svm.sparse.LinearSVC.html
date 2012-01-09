@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>scikits.learn.svm.sparse.LinearSVC &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../../index.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">scikits.learn.svm.sparse.LinearSVC</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-svm-sparse-linearsvc">
+<h1>scikits.learn.svm.sparse.LinearSVC<a class="headerlink" href="#scikits-learn-svm-sparse-linearsvc" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.svm.sparse.LinearSVC">
+<em class="property">class </em><tt class="descclassname">scikits.learn.svm.sparse.</tt><tt class="descname">LinearSVC</tt><big>(</big><em>penalty='l2'</em>, <em>loss='l2'</em>, <em>dual=True</em>, <em>tol=0.0001</em>, <em>C=1.0</em>, <em>multi_class=False</em>, <em>fit_intercept=True</em>, <em>intercept_scaling=1</em><big>)</big><a class="headerlink" href="#scikits.learn.svm.sparse.LinearSVC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Linear Support Vector Classification, Sparse Version</p>
+<p>Similar to SVC with parameter kernel=&#8217;linear&#8217;, but uses internally
+liblinear rather than libsvm, so it has more flexibility in the
+choice of penalties and loss functions and should be faster for
+huge datasets.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>loss</strong> : string, &#8216;l1&#8217; or &#8216;l2&#8217; (default &#8216;l2&#8217;)</p>
+<blockquote>
+<p>Specifies the loss function. With &#8216;l1&#8217; it is the standard SVM
+loss (a.k.a. hinge Loss) while with &#8216;l2&#8217; it is the squared loss.
+(a.k.a. squared hinge Loss)</p>
+</blockquote>
+<p><strong>penalty</strong> : string, &#8216;l1&#8217; or &#8216;l2&#8217; (default &#8216;l2&#8217;)</p>
+<blockquote>
+<p>Specifies the norm used in the penalization. The &#8216;l2&#8217; penalty
+is the standard used in SVC. The &#8216;l1&#8217; leads to <tt class="docutils literal"><span class="pre">coef_</span></tt>
+vectors that are sparse.</p>
+</blockquote>
+<p><strong>dual</strong> : bool, (default True)</p>
+<blockquote>
+<p>Select the algorithm to either solve the dual or primal
+optimization problem.</p>
+</blockquote>
+<p><strong>intercept_scaling</strong> : float, default: 1</p>
+<blockquote class="last">
+<p>when self.fit_intercept is True, instance vector x becomes
+[x, self.intercept_scaling],
+i.e. a &#8220;synthetic&#8221; feature with constant value equals to
+intercept_scaling is appended to the instance vector.
+The intercept becomes intercept_scaling * synthetic feature weight
+Note! the synthetic feature weight is subject to l1/l2 regularization
+as all other features.
+To lessen the effect of regularization on synthetic feature weight
+(and therefore on the intercept) intercept_scaling has to be increased</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="scikits.learn.svm.sparse.SVC.html#scikits.learn.svm.sparse.SVC" title="scikits.learn.svm.sparse.SVC"><tt class="xref py py-obj docutils literal"><span class="pre">SVC</span></tt></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>The underlying C implementation uses a random number generator to
+select features when fitting the model. It is thus not uncommon,
+to have slightly different results for the same input data. If
+that happens, try with a smaller eps parameter.</p>
+<p class="rubric">References</p>
+<p>LIBLINEAR &#8211; A Library for Large Linear Classification
+<a class="reference external" href="http://www.csie.ntu.edu.tw/~cjlin/liblinear/">http://www.csie.ntu.edu.tw/~cjlin/liblinear/</a></p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="50%" />
+<col width="42%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><cite>coef_</cite></td>
+<td>array, shape = [n_features] if n_classes == 2 else [n_classes, n_features]</td>
+<td>Wiehgiths asigned to the features (coefficients in the primal
+problem). This is only available in the case of linear kernel.</td>
+</tr>
+<tr><td><cite>intercept_</cite></td>
+<td>array, shape = [1] if n_classes == 2 else [n_classes]</td>
+<td>constants in decision function</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="scikits.learn.svm.sparse.LinearSVC.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>penalty='l2'</em>, <em>loss='l2'</em>, <em>dual=True</em>, <em>tol=0.0001</em>, <em>C=1.0</em>, <em>multi_class=False</em>, <em>fit_intercept=True</em>, <em>intercept_scaling=1</em><big>)</big><a class="headerlink" href="#scikits.learn.svm.sparse.LinearSVC.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.svm.sparse.LinearSVC.decision_function">
+<tt class="descname">decision_function</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#scikits.learn.svm.sparse.LinearSVC.decision_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the decision function of X according to the trained
+model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : sparse matrix, shape = [n_samples, n_features]</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>T</strong> : array-like, shape = [n_samples, n_class]</p>
+<blockquote class="last">
+<p>Returns the decision function of the sample for each class
+in the model.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.svm.sparse.LinearSVC.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>class_weight={}</em>, <em>**params</em><big>)</big><a class="headerlink" href="#scikits.learn.svm.sparse.LinearSVC.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the model using X, y as training data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : sparse matrix, shape = [n_samples, n_features]</p>
+<blockquote>
+<p>Training vector, where n_samples in the number of samples and
+n_features is the number of features.</p>
+</blockquote>
+<p><strong>y</strong> : array, shape = [n_samples]</p>
+<blockquote>
+<p>Target vector relative to X</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>self</strong> : object</p>
+<blockquote class="last">
+<p>Returns an instance of self.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.svm.sparse.LinearSVC.predict">
+<tt class="descname">predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#scikits.learn.svm.sparse.LinearSVC.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict target values of X according to the fitted model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><strong>X</strong> : sparse matrix, shape = [n_samples, n_features]</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><strong>C</strong> : array, shape = [n_samples]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.svm.sparse.LinearSVC.score">
+<tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#scikits.learn.svm.sparse.LinearSVC.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the mean error rate on the given test data and labels.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<p>Training set.</p>
+</blockquote>
+<p><strong>y</strong> : array-like, shape = [n_samples]</p>
+<blockquote>
+<p>Labels for X.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>z</strong> : float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/scikits.learn.svm.sparse.LinearSVC.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+scikits.learn.metrics.euclidean_distances
+=========================================
+
+.. currentmodule:: scikits.learn.metrics
+
+.. autofunction:: euclidean_distances
+

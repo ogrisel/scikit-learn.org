@@ -1,0 +1,18 @@
+
+
+.. _example_naive_bayes.py:
+
+
+============================
+Gaussian Naive Bayes
+============================
+
+A classification example using Gaussian Naive Bayes (GNB).
+
+
+
+**Python source code:** :download:`naive_bayes.py <naive_bayes.py>`
+
+.. literalinclude:: naive_bayes.py
+    :lines: 9-
+    

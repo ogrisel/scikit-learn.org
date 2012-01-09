@@ -1,0 +1,11 @@
+scikits.learn.svm.OneClassSVM
+=============================
+
+.. currentmodule:: scikits.learn.svm
+
+.. autoclass:: OneClassSVM
+
+   
+   .. automethod:: __init__
+   
+

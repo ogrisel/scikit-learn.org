@@ -1,0 +1,11 @@
+scikits.learn.pipeline.Pipeline
+===============================
+
+.. currentmodule:: scikits.learn.pipeline
+
+.. autoclass:: Pipeline
+
+   
+   .. automethod:: __init__
+   
+

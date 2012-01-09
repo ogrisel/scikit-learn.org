@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>scikits.learn.svm.sparse.NuSVR &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../../index.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">scikits.learn.svm.sparse.NuSVR</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-svm-sparse-nusvr">
+<h1>scikits.learn.svm.sparse.NuSVR<a class="headerlink" href="#scikits-learn-svm-sparse-nusvr" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.svm.sparse.NuSVR">
+<em class="property">class </em><tt class="descclassname">scikits.learn.svm.sparse.</tt><tt class="descname">NuSVR</tt><big>(</big><em>nu=0.5</em>, <em>C=1.0</em>, <em>kernel='rbf'</em>, <em>degree=3</em>, <em>gamma=0.0</em>, <em>coef0=0.0</em>, <em>shrinking=True</em>, <em>epsilon=0.10000000000000001</em>, <em>probability=False</em>, <em>cache_size=100.0</em>, <em>tol=0.001</em><big>)</big><a class="headerlink" href="#scikits.learn.svm.sparse.NuSVR" title="Permalink to this definition">¶</a></dt>
+<dd><p>NuSVR for sparse matrices (csr)</p>
+<p>See <a class="reference internal" href="scikits.learn.svm.NuSVC.html#scikits.learn.svm.NuSVC" title="scikits.learn.svm.NuSVC"><tt class="xref py py-class docutils literal"><span class="pre">scikits.learn.svm.NuSVC</span></tt></a> for a complete list of parameters</p>
+<p class="rubric">Notes</p>
+<p>For best results, this accepts a matrix in csr format
+(scipy.sparse.csr), but should be able to convert from any array-like
+object (including other sparse representations).</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.svm.sparse</span> <span class="kn">import</span> <span class="n">NuSVR</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">NuSVR</span><span class="p">(</span><span class="n">nu</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="go">NuSVR(kernel=&#39;rbf&#39;, C=1.0, probability=False, degree=3, shrinking=True,</span>
+<span class="go">   tol=0.001, epsilon=0.1, cache_size=100.0, coef0=0.0, nu=0.1, gamma=0.1)</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="scikits.learn.svm.sparse.NuSVR.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>nu=0.5</em>, <em>C=1.0</em>, <em>kernel='rbf'</em>, <em>degree=3</em>, <em>gamma=0.0</em>, <em>coef0=0.0</em>, <em>shrinking=True</em>, <em>epsilon=0.10000000000000001</em>, <em>probability=False</em>, <em>cache_size=100.0</em>, <em>tol=0.001</em><big>)</big><a class="headerlink" href="#scikits.learn.svm.sparse.NuSVR.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.svm.sparse.NuSVR.decision_function">
+<tt class="descname">decision_function</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#scikits.learn.svm.sparse.NuSVR.decision_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the distance of the samples T to the separating hyperplane.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_class * (n_class-1) / 2]</p>
+<blockquote class="last">
+<p>Returns the decision function of the sample for each class
+in the model.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.svm.sparse.NuSVR.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>class_weight={}</em>, <em>sample_weight=</em><span class="optional">[</span><span class="optional">]</span>, <em>**params</em><big>)</big><a class="headerlink" href="#scikits.learn.svm.sparse.NuSVR.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the SVM model according to the given training data and
+parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : sparse matrix, shape = [n_samples, n_features]</p>
+<blockquote>
+<p>Training vectors, where n_samples is the number of samples and
+n_features is the number of features.</p>
+</blockquote>
+<p><strong>y</strong> : array-like, shape = [n_samples]</p>
+<blockquote>
+<p>Target values (integers in classification, real numbers in
+regression)</p>
+</blockquote>
+<p><strong>class_weight</strong> : {dict, &#8216;auto&#8217;}, optional</p>
+<blockquote>
+<p>Weights associated with classes in the form
+{class_label : weight}. If not given, all classes are
+supposed to have weight one.</p>
+<p>The &#8216;auto&#8217; mode uses the values of y to automatically adjust
+weights inversely proportional to class frequencies.</p>
+</blockquote>
+<p><strong>sample_weight</strong> : array-like, shape = [n_samples], optional</p>
+<blockquote>
+<p>Weights applied to individual samples (1. for unweighted).</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>self</strong> : object</p>
+<blockquote class="last">
+<p>Returns an instance of self.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>For maximum effiency, use a sparse matrix in csr format
+(scipy.sparse.csr_matrix)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.svm.sparse.NuSVR.predict">
+<tt class="descname">predict</tt><big>(</big><em>T</em><big>)</big><a class="headerlink" href="#scikits.learn.svm.sparse.NuSVR.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function does classification or regression on an array of
+test vectors T.</p>
+<p>For a classification model, the predicted class for each
+sample in T is returned.  For a regression model, the function
+value of T calculated is returned.</p>
+<p>For an one-class model, +1 or -1 is returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><strong>T</strong> : scipy.sparse.csr, shape = [n_samples, n_features]</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><strong>C</strong> : array, shape = [n_samples]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.svm.sparse.NuSVR.predict_log_proba">
+<tt class="descname">predict_log_proba</tt><big>(</big><em>T</em><big>)</big><a class="headerlink" href="#scikits.learn.svm.sparse.NuSVR.predict_log_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function does classification or regression on a test vector T
+given a model with probability information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>T</strong> : array-like, shape = [n_samples, n_features]</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>T</strong> : array-like, shape = [n_samples, n_classes]</p>
+<blockquote class="last">
+<p>Returns the log-probabilities of the sample for each class in
+the model, where classes are ordered by arithmetical
+order.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The probability model is created using cross validation, so
+the results can be slightly different than those obtained by
+predict. Also, it will meaningless results on very small
+datasets.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.svm.sparse.NuSVR.predict_proba">
+<tt class="descname">predict_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#scikits.learn.svm.sparse.NuSVR.predict_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function does classification or regression on a test vector T
+given a model with probability information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_classes]</p>
+<blockquote class="last">
+<p>Returns the probability of the sample for each class in
+the model, where classes are ordered by arithmetical
+order.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The probability model is created using cross validation, so
+the results can be slightly different than those obtained by
+predict. Also, it will meaningless results on very small
+datasets.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.svm.sparse.NuSVR.score">
+<tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#scikits.learn.svm.sparse.NuSVR.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the coefficient of determination of the prediction</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<p>Training set.</p>
+</blockquote>
+<p><strong>y</strong> : array-like, shape = [n_samples]</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>z</strong> : float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/scikits.learn.svm.sparse.NuSVR.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

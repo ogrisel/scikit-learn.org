@@ -1,0 +1,20 @@
+
+
+.. _example_plot_lda_qda.py:
+
+
+==============================================================================
+Linear Discriminant Analysis & Quadratic Discriminant Analysis with confidence
+==============================================================================
+
+Plot the decision boundary
+
+
+.. image:: images/plot_lda_qda.png
+    :align: center
+
+**Python source code:** :download:`plot_lda_qda.py <plot_lda_qda.py>`
+
+.. literalinclude:: plot_lda_qda.py
+    :lines: 8-
+    

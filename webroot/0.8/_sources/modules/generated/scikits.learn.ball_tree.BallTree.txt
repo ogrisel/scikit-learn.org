@@ -1,0 +1,11 @@
+scikits.learn.ball_tree.BallTree
+================================
+
+.. currentmodule:: scikits.learn.ball_tree
+
+.. autoclass:: BallTree
+
+   
+   .. automethod:: __init__
+   
+

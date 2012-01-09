@@ -1,0 +1,34 @@
+
+
+.. _example_decomposition_plot_nmf.py:
+
+
+===================================================
+NMF for digits feature extraction
+===================================================
+
+:ref:`NMF` with sparseness enforced in the components,
+in comparison with PCA for feature extraction.
+
+
+
+
+.. rst-class:: horizontal
+
+
+    *
+
+      .. image:: images/plot_nmf_1.png
+            :scale: 50
+
+    *
+
+      .. image:: images/plot_nmf_2.png
+            :scale: 50
+
+
+**Python source code:** :download:`plot_nmf.py <plot_nmf.py>`
+
+.. literalinclude:: plot_nmf.py
+    :lines: 10-
+    

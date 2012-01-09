@@ -1,0 +1,540 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6.7.3. scikits.learn.hmm.GMMHMM &mdash; scikits.learn v0.6.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.6.0 documentation" href="../../index.html" />
+    <link rel="up" title="6. Class reference" href="../classes.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">6.7.3. scikits.learn.hmm.GMMHMM</a><ul>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-hmm-gmmhmm">
+<h1>6.7.3. scikits.learn.hmm.GMMHMM<a class="headerlink" href="#scikits-learn-hmm-gmmhmm" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.hmm.GMMHMM">
+<em class="property">class </em><tt class="descclassname">scikits.learn.hmm.</tt><tt class="descname">GMMHMM</tt><big>(</big><em>n_states=1</em>, <em>n_mix=1</em>, <em>startprob=None</em>, <em>transmat=None</em>, <em>startprob_prior=None</em>, <em>transmat_prior=None</em>, <em>gmms=None</em>, <em>cvtype=None</em><big>)</big><a class="headerlink" href="#scikits.learn.hmm.GMMHMM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hidden Markov Model with Gaussin mixture emissions</p>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="scikits.learn.hmm.GaussianHMM.html#scikits.learn.hmm.GaussianHMM" title="scikits.learn.hmm.GaussianHMM"><tt class="xref py py-obj docutils literal"><span class="pre">GaussianHMM</span></tt></a></dt>
+<dd>HMM with Gaussian emissions</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.hmm</span> <span class="kn">import</span> <span class="n">GMMHMM</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">GMMHMM</span><span class="p">(</span><span class="n">n_states</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_mix</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cvtype</span><span class="o">=</span><span class="s">&#39;diag&#39;</span><span class="p">)</span>
+<span class="gp">... </span>
+<span class="go">GMMHMM(n_mix=10, cvtype=&#39;diag&#39;, n_states=2, startprob_prior=1.0,</span>
+<span class="go">    startprob=array([ 0.5,  0.5]),</span>
+<span class="go">    transmat=array([[ 0.5,  0.5],</span>
+<span class="go">       [ 0.5,  0.5]]),</span>
+<span class="go">    transmat_prior=1.0,</span>
+<span class="go">    gmms=[GMM(cvtype=&#39;diag&#39;, n_states=10), GMM(cvtype=&#39;diag&#39;,</span>
+<span class="go">          n_states=10)])</span>
+</pre></div>
+</div>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a class="reference internal" href="#scikits.learn.hmm.GMMHMM.n_states" title="scikits.learn.hmm.GMMHMM.n_states"><tt class="xref py py-obj docutils literal"><span class="pre">n_states</span></tt></a></td>
+<td></td>
+</tr>
+<tr><td><a class="reference internal" href="#scikits.learn.hmm.GMMHMM.transmat" title="scikits.learn.hmm.GMMHMM.transmat"><tt class="xref py py-obj docutils literal"><span class="pre">transmat</span></tt></a></td>
+<td></td>
+</tr>
+<tr><td><a class="reference internal" href="#scikits.learn.hmm.GMMHMM.startprob" title="scikits.learn.hmm.GMMHMM.startprob"><tt class="xref py py-obj docutils literal"><span class="pre">startprob</span></tt></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>gmms: array of GMM objects, length &#8216;n_states`</td>
+<td>GMM emission distributions for each state</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>eval(X)</td>
+<td>Compute the log likelihood of <cite>X</cite> under the HMM.</td>
+</tr>
+<tr><td>decode(X)</td>
+<td>Find most likely state sequence for each point in <cite>X</cite> using the
+Viterbi algorithm.</td>
+</tr>
+<tr><td>rvs(n=1)</td>
+<td>Generate <cite>n</cite> samples from the HMM.</td>
+</tr>
+<tr><td>init(X)</td>
+<td>Initialize HMM parameters from <cite>X</cite>.</td>
+</tr>
+<tr><td>fit(X)</td>
+<td>Estimate HMM parameters from <cite>X</cite> using the Baum-Welch algorithm.</td>
+</tr>
+<tr><td>predict(X)</td>
+<td>Like decode, find most likely state sequence corresponding to <cite>X</cite>.</td>
+</tr>
+<tr><td>score(X)</td>
+<td>Compute the log likelihood of <cite>X</cite> under the model.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="scikits.learn.hmm.GMMHMM.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>n_states=1</em>, <em>n_mix=1</em>, <em>startprob=None</em>, <em>transmat=None</em>, <em>startprob_prior=None</em>, <em>transmat_prior=None</em>, <em>gmms=None</em>, <em>cvtype=None</em><big>)</big><a class="headerlink" href="#scikits.learn.hmm.GMMHMM.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a hidden Markov model with GMM emissions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n_states</strong> : int</p>
+<blockquote class="last">
+<p>Number of states.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.hmm.GMMHMM.decode">
+<tt class="descname">decode</tt><big>(</big><em>obs</em>, <em>maxrank=None</em>, <em>beamlogprob=-inf</em><big>)</big><a class="headerlink" href="#scikits.learn.hmm.GMMHMM.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find most likely state sequence corresponding to <cite>obs</cite>.</p>
+<p>Uses the Viterbi algorithm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n, n_features)</p>
+<blockquote>
+<p>List of n_features-dimensional data points.  Each row
+corresponds to a single data point.</p>
+</blockquote>
+<p><strong>maxrank</strong> : int</p>
+<blockquote>
+<p>Maximum rank to evaluate for rank pruning.  If not None,
+only consider the top <cite>maxrank</cite> states in the inner
+sum of the forward algorithm recursion.  Defaults to None
+(no rank pruning).  See The HTK Book for more details.</p>
+</blockquote>
+<p><strong>beamlogprob</strong> : float</p>
+<blockquote>
+<p>Width of the beam-pruning beam in log-probability units.
+Defaults to -numpy.Inf (no beam pruning).  See The HTK
+Book for more details.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>viterbi_logprob</strong> : float</p>
+<blockquote>
+<p>Log probability of the maximum likelihood path through the HMM</p>
+</blockquote>
+<p><strong>states</strong> : array_like, shape (n,)</p>
+<blockquote class="last">
+<p>Index of the most likely states for each observation</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="#scikits.learn.hmm.GMMHMM.eval" title="scikits.learn.hmm.GMMHMM.eval"><tt class="xref py py-obj docutils literal"><span class="pre">eval</span></tt></a></dt>
+<dd>Compute the log probability under the model and posteriors</dd>
+<dt><a class="reference internal" href="#scikits.learn.hmm.GMMHMM.score" title="scikits.learn.hmm.GMMHMM.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a></dt>
+<dd>Compute the log probability under the model</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.hmm.GMMHMM.eval">
+<tt class="descname">eval</tt><big>(</big><em>obs</em>, <em>maxrank=None</em>, <em>beamlogprob=-inf</em><big>)</big><a class="headerlink" href="#scikits.learn.hmm.GMMHMM.eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the log probability under the model and compute posteriors</p>
+<p>Implements rank and beam pruning in the forward-backward
+algorithm to speed up inference in large models.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n, n_features)</p>
+<blockquote>
+<p>Sequence of n_features-dimensional data points.  Each row
+corresponds to a single point in the sequence.</p>
+</blockquote>
+<p><strong>maxrank</strong> : int</p>
+<blockquote>
+<p>Maximum rank to evaluate for rank pruning.  If not None,
+only consider the top <cite>maxrank</cite> states in the inner
+sum of the forward algorithm recursion.  Defaults to None
+(no rank pruning).  See The HTK Book for more details.</p>
+</blockquote>
+<p><strong>beamlogprob</strong> : float</p>
+<blockquote>
+<p>Width of the beam-pruning beam in log-probability units.
+Defaults to -numpy.Inf (no beam pruning).  See The HTK
+Book for more details.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>logprob</strong> : array_like, shape (n,)</p>
+<blockquote>
+<p>Log probabilities of the sequence <cite>obs</cite></p>
+</blockquote>
+<p><strong>posteriors: array_like, shape (n, n_states)</strong> :</p>
+<blockquote class="last">
+<p>Posterior probabilities of each state for each
+observation</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="#scikits.learn.hmm.GMMHMM.score" title="scikits.learn.hmm.GMMHMM.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a></dt>
+<dd>Compute the log probability under the model</dd>
+<dt><a class="reference internal" href="#scikits.learn.hmm.GMMHMM.decode" title="scikits.learn.hmm.GMMHMM.decode"><tt class="xref py py-obj docutils literal"><span class="pre">decode</span></tt></a></dt>
+<dd>Find most likely state sequence corresponding to a <cite>obs</cite></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.hmm.GMMHMM.fit">
+<tt class="descname">fit</tt><big>(</big><em>obs</em>, <em>n_iter=10</em>, <em>thresh=0.01</em>, <em>params='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'</em>, <em>init_params='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'</em>, <em>maxrank=None</em>, <em>beamlogprob=-inf</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#scikits.learn.hmm.GMMHMM.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimate model parameters.</p>
+<p>An initialization step is performed before entering the EM
+algorithm. If you want to avoid this step, set the keyword
+argument init_params to the empty string &#8216;&#8217;. Likewise, if you
+would like just to do an initialization, call this method with
+n_iter=0.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : list</p>
+<blockquote>
+<p>List of array-like observation sequences (shape (n_i, n_features)).</p>
+</blockquote>
+<p><strong>n_iter</strong> : int, optional</p>
+<blockquote>
+<p>Number of iterations to perform.</p>
+</blockquote>
+<p><strong>thresh</strong> : float, optional</p>
+<blockquote>
+<p>Convergence threshold.</p>
+</blockquote>
+<p><strong>params</strong> : string, optional</p>
+<blockquote>
+<p>Controls which parameters are updated in the training
+process.  Can contain any combination of &#8216;s&#8217; for startprob,
+&#8216;t&#8217; for transmat, &#8216;m&#8217; for means, and &#8216;c&#8217; for covars, etc.
+Defaults to all parameters.</p>
+</blockquote>
+<p><strong>init_params</strong> : string, optional</p>
+<blockquote>
+<p>Controls which parameters are initialized prior to
+training.  Can contain any combination of &#8216;s&#8217; for
+startprob, &#8216;t&#8217; for transmat, &#8216;m&#8217; for means, and &#8216;c&#8217; for
+covars, etc.  Defaults to all parameters.</p>
+</blockquote>
+<p><strong>maxrank</strong> : int, optional</p>
+<blockquote>
+<p>Maximum rank to evaluate for rank pruning.  If not None,
+only consider the top <cite>maxrank</cite> states in the inner
+sum of the forward algorithm recursion.  Defaults to None
+(no rank pruning).  See &#8220;The HTK Book&#8221; for more details.</p>
+</blockquote>
+<p><strong>beamlogprob</strong> : float, optional</p>
+<blockquote class="last">
+<p>Width of the beam-pruning beam in log-probability units.
+Defaults to -numpy.Inf (no beam pruning).  See &#8220;The HTK
+Book&#8221; for more details.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>In general, <cite>logprob</cite> should be non-decreasing unless
+aggressive pruning is used.  Decreasing <cite>logprob</cite> is generally
+a sign of overfitting (e.g. a covariance parameter getting too
+small).  You can fix this by getting more training data, or
+decreasing <cite>covars_prior</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="scikits.learn.hmm.GMMHMM.n_states">
+<tt class="descname">n_states</tt><a class="headerlink" href="#scikits.learn.hmm.GMMHMM.n_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of states in the model.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.hmm.GMMHMM.predict">
+<tt class="descname">predict</tt><big>(</big><em>obs</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#scikits.learn.hmm.GMMHMM.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find most likely state sequence corresponding to <cite>obs</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n, n_features)</p>
+<blockquote>
+<p>List of n_features-dimensional data points.  Each row
+corresponds to a single data point.</p>
+</blockquote>
+<p><strong>maxrank</strong> : int</p>
+<blockquote>
+<p>Maximum rank to evaluate for rank pruning.  If not None,
+only consider the top <cite>maxrank</cite> states in the inner
+sum of the forward algorithm recursion.  Defaults to None
+(no rank pruning).  See The HTK Book for more details.</p>
+</blockquote>
+<p><strong>beamlogprob</strong> : float</p>
+<blockquote>
+<p>Width of the beam-pruning beam in log-probability units.
+Defaults to -numpy.Inf (no beam pruning).  See The HTK
+Book for more details.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>states</strong> : array_like, shape (n,)</p>
+<blockquote class="last">
+<p>Index of the most likely states for each observation</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.hmm.GMMHMM.predict_proba">
+<tt class="descname">predict_proba</tt><big>(</big><em>obs</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#scikits.learn.hmm.GMMHMM.predict_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the posterior probability for each state in the model</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n, n_features)</p>
+<blockquote>
+<p>List of n_features-dimensional data points.  Each row
+corresponds to a single data point.</p>
+</blockquote>
+<p><strong>See eval() for a list of accepted keyword arguments.</strong> :</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>T</strong> : array-like, shape (n, n_states)</p>
+<blockquote class="last">
+<p>Returns the probability of the sample for each state in the model.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.hmm.GMMHMM.rvs">
+<tt class="descname">rvs</tt><big>(</big><em>n=1</em><big>)</big><a class="headerlink" href="#scikits.learn.hmm.GMMHMM.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate random samples from the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n</strong> : int</p>
+<blockquote>
+<p>Number of samples to generate.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, length <cite>n</cite></p>
+<blockquote class="last">
+<p>List of samples</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.hmm.GMMHMM.score">
+<tt class="descname">score</tt><big>(</big><em>obs</em>, <em>maxrank=None</em>, <em>beamlogprob=-inf</em><big>)</big><a class="headerlink" href="#scikits.learn.hmm.GMMHMM.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the log probability under the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n, n_features)</p>
+<blockquote>
+<p>Sequence of n_features-dimensional data points.  Each row
+corresponds to a single data point.</p>
+</blockquote>
+<p><strong>maxrank</strong> : int</p>
+<blockquote>
+<p>Maximum rank to evaluate for rank pruning.  If not None,
+only consider the top <cite>maxrank</cite> states in the inner
+sum of the forward algorithm recursion.  Defaults to None
+(no rank pruning).  See The HTK Book for more details.</p>
+</blockquote>
+<p><strong>beamlogprob</strong> : float</p>
+<blockquote>
+<p>Width of the beam-pruning beam in log-probability units.
+Defaults to -numpy.Inf (no beam pruning).  See The HTK
+Book for more details.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>logprob</strong> : array_like, shape (n,)</p>
+<blockquote class="last">
+<p>Log probabilities of each data point in <cite>obs</cite></p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="#scikits.learn.hmm.GMMHMM.eval" title="scikits.learn.hmm.GMMHMM.eval"><tt class="xref py py-obj docutils literal"><span class="pre">eval</span></tt></a></dt>
+<dd>Compute the log probability under the model and posteriors</dd>
+<dt><a class="reference internal" href="#scikits.learn.hmm.GMMHMM.decode" title="scikits.learn.hmm.GMMHMM.decode"><tt class="xref py py-obj docutils literal"><span class="pre">decode</span></tt></a></dt>
+<dd>Find most likely state sequence corresponding to a <cite>obs</cite></dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="scikits.learn.hmm.GMMHMM.startprob">
+<tt class="descname">startprob</tt><a class="headerlink" href="#scikits.learn.hmm.GMMHMM.startprob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mixing startprob for each state.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="scikits.learn.hmm.GMMHMM.transmat">
+<tt class="descname">transmat</tt><a class="headerlink" href="#scikits.learn.hmm.GMMHMM.transmat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Matrix of transition probabilities.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.6.0<p>
+        &copy; 2010, scikits.learn developers (BSD Lincense).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

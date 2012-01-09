@@ -1,0 +1,11 @@
+scikits.learn.cluster.KMeans
+============================
+
+.. currentmodule:: scikits.learn.cluster
+
+.. autoclass:: KMeans
+
+   
+   .. automethod:: __init__
+   
+

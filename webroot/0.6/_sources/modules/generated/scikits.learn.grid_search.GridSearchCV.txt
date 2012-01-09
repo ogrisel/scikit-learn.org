@@ -1,0 +1,11 @@
+scikits.learn.grid_search.GridSearchCV
+======================================
+
+.. currentmodule:: scikits.learn.grid_search
+
+.. autoclass:: GridSearchCV
+
+   
+   .. automethod:: __init__
+   
+

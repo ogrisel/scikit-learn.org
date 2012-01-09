@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>4.4. Covariance estimation &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../index.html" />
+    <link rel="up" title="4. Unsupervised learning" href="../unsupervised_learning.html" />
+    <link rel="next" title="5. Model Selection" href="../model_selection.html" />
+    <link rel="prev" title="4.3. Decomposing signals in components (matrix factorization problems)" href="decomposition.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../install.html">Download</a></li>
+            <li><a href="../support.html">Support</a></li>
+            <li><a href="../user_guide.html">User Guide</a></li>
+            <li><a href="../auto_examples/index.html">Examples</a></li>
+            <li><a href="../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="decomposition.html" title="4.3. Decomposing signals in components (matrix factorization problems)"
+             accesskey="P">previous</a> |
+          <a href="../model_selection.html" title="5. Model Selection"
+             accesskey="N">next</a> |
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">4.4. Covariance estimation</a><ul>
+<li><a class="reference internal" href="#empirical-covariance">4.4.1. Empirical covariance</a></li>
+<li><a class="reference internal" href="#shrunk-covariance">4.4.2. Shrunk Covariance</a><ul>
+<li><a class="reference internal" href="#basic-shrinkage">4.4.2.1. Basic shrinkage</a></li>
+<li><a class="reference internal" href="#ledoit-wolf-shrinkage">4.4.2.2. Ledoit-Wolf shrinkage</a></li>
+<li><a class="reference internal" href="#oracle-approximating-shrinkage">4.4.2.3. Oracle Approximating Shrinkage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="covariance-estimation">
+<span id="covariance"></span><h1>4.4. Covariance estimation<a class="headerlink" href="#covariance-estimation" title="Permalink to this headline">¶</a></h1>
+<p>Many statistical problems require at some point the estimation of a
+population&#8217;s covariance matrix, which can be seen as an estimation of
+data set scatter plot shape. Most of the time, such an estimation has
+to be done on a sample whose properties (size, structure, homogeneity)
+has a large influence on the estimation&#8217;s quality. The
+<cite>scikits.learn.covariance</cite> package aims at providing tools affording
+an accurate estimation of a population&#8217;s covariance matrix under
+various settings.</p>
+<p>The package does not include robust tools yet, so we assume that the
+data sets do not contain any outlying data. We also assume thah the
+observations are independant and identically distributed.</p>
+<div class="section" id="empirical-covariance">
+<h2>4.4.1. Empirical covariance<a class="headerlink" href="#empirical-covariance" title="Permalink to this headline">¶</a></h2>
+<p>The covariance matrix of a data set is known to be well approximated
+with the classical <cite>Maximum Likelihood Estimator</cite> (or <cite>empirical
+covariance</cite>), provided the number of observations is large enough
+compared to the number of features (the variables describing the
+observations). More precisely, the Maximum Likelihood Estimator of a
+sample is an unbiased estimator of the corresponding population
+covariance matrix.</p>
+<p>The empirical covariance matrix of a sample can be computed using the
+<tt class="xref py py-meth docutils literal"><span class="pre">empirical_covariance</span></tt> function of the package, or by fitting an
+<tt class="xref py py-class docutils literal"><span class="pre">EmpiricalCovariance</span></tt> object to the data sample with the
+<tt class="xref py py-meth docutils literal"><span class="pre">EmpiricalCovariance.fit</span></tt> method.  Be careful that depending
+whether the data are centered or not, the result will be different, so
+one may want to use the <cite>assume_centered</cite> parameter accurately.</p>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li>See <a class="reference internal" href="../auto_examples/covariance/plot_covariance_estimation.html#example-covariance-plot-covariance-estimation-py"><em>Ledoit-Wolf vs Covariance simple estimation</em></a> for
+an example on how to fit an <tt class="xref py py-class docutils literal"><span class="pre">EmpiricalCovariance</span></tt> object
+to data.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="shrunk-covariance">
+<h2>4.4.2. Shrunk Covariance<a class="headerlink" href="#shrunk-covariance" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basic-shrinkage">
+<h3>4.4.2.1. Basic shrinkage<a class="headerlink" href="#basic-shrinkage" title="Permalink to this headline">¶</a></h3>
+<p>Despite it is an unbiased estimator of the covariance matrix, the
+Maximum Likelihood Estimator is not a good estimator of the
+eigenvalues of the covariance matrix, so the precision matrix obtained
+from its inversion is not accurate. Sometimes, it even occurs that the
+empirical covariance matrix cannot be inverted for numerical
+reasons. To avoid such an inversion problem, a transformation of the
+empirical covariance matrix has been introduced: the <cite>shrinkage</cite>. It
+consists in reducing the ratio between the smallest and the largest
+eigenvalue of the empirical covariance matrix. This can be done by
+simply shifting every eigenvalue according to a given offset, which is
+equivalent of finding the l2-Penalized Maximum Likelihood Estimator of
+the covariance matrix, or by reducing the highest eigenvalue while
+increasing the smallest with the help of a convex transformation :
+<img class="math" src="../_images/math/91de73cae1c74c249735028bbabb1850c0be4a54.png" alt="\Sigma_{\rm shrunk} = (1-\alpha)\hat{\Sigma} +
+\alpha\frac{{\rm Tr}\hat{\Sigma}}{p}\rm Id"/>.  The latter approach has been
+implemented in scikit-learn.</p>
+<p>A convex transformation (with a user-defined shrinkage coefficient)
+can be directly applied to a pre-computed covariance with the
+<a class="reference internal" href="generated/scikits.learn.covariance.shrunk_covariance.html#scikits.learn.covariance.shrunk_covariance" title="scikits.learn.covariance.shrunk_covariance"><tt class="xref py py-meth docutils literal"><span class="pre">shrunk_covariance</span></tt></a> method. Also, a shrunk estimator of the
+covariance can be fitted to data with a <a class="reference internal" href="generated/scikits.learn.covariance.ShrunkCovariance.html#scikits.learn.covariance.ShrunkCovariance" title="scikits.learn.covariance.ShrunkCovariance"><tt class="xref py py-class docutils literal"><span class="pre">ShrunkCovariance</span></tt></a>
+object and its <a class="reference internal" href="generated/scikits.learn.covariance.ShrunkCovariance.html#scikits.learn.covariance.ShrunkCovariance.fit" title="scikits.learn.covariance.ShrunkCovariance.fit"><tt class="xref py py-meth docutils literal"><span class="pre">ShrunkCovariance.fit</span></tt></a> method.  Again, depending
+whether the data are centered or not, the result will be different, so
+one may want to use the <cite>assume_centered</cite> parameter accurately.</p>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li>See <a class="reference internal" href="../auto_examples/covariance/plot_covariance_estimation.html#example-covariance-plot-covariance-estimation-py"><em>Ledoit-Wolf vs Covariance simple estimation</em></a> for
+an example on how to fit a <a class="reference internal" href="generated/scikits.learn.covariance.ShrunkCovariance.html#scikits.learn.covariance.ShrunkCovariance" title="scikits.learn.covariance.ShrunkCovariance"><tt class="xref py py-class docutils literal"><span class="pre">ShrunkCovariance</span></tt></a> object
+to data.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="ledoit-wolf-shrinkage">
+<h3>4.4.2.2. Ledoit-Wolf shrinkage<a class="headerlink" href="#ledoit-wolf-shrinkage" title="Permalink to this headline">¶</a></h3>
+<p>In their 2004 paper [1], O. Ledoit and M. Wolf propose a formula so as
+to compute the optimal shrinkage coefficient <img class="math" src="../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha"/> that
+minimizes the Mean Squared Error between the estimated and the real
+covariance matrix in terms of Frobenius norm.</p>
+<p>The Ledoit-Wolf estimator of the covariance matrix can be computed on
+a sample with the <a class="reference internal" href="generated/scikits.learn.covariance.ledoit_wolf.html#scikits.learn.covariance.ledoit_wolf" title="scikits.learn.covariance.ledoit_wolf"><tt class="xref py py-meth docutils literal"><span class="pre">ledoit_wolf</span></tt></a> function of the
+<cite>scikits.learn.covariance</cite> package, or it can be otherwise obtained by
+fitting a <a class="reference internal" href="generated/scikits.learn.covariance.LedoitWolf.html#scikits.learn.covariance.LedoitWolf" title="scikits.learn.covariance.LedoitWolf"><tt class="xref py py-class docutils literal"><span class="pre">LedoitWolf</span></tt></a> object to the same sample.</p>
+<dl class="docutils">
+<dt>[1] &#8220;A Well-Conditioned Estimator for Large-Dimensional Covariance</dt>
+<dd>Matrices&#8221;, Ledoit and Wolf, Journal of Multivariate Analysis,
+Volume 88, Issue 2, February 2004, pages 365-411.</dd>
+</dl>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li>See <a class="reference internal" href="../auto_examples/covariance/plot_covariance_estimation.html#example-covariance-plot-covariance-estimation-py"><em>Ledoit-Wolf vs Covariance simple estimation</em></a> for
+an example on how to fit a <a class="reference internal" href="generated/scikits.learn.covariance.LedoitWolf.html#scikits.learn.covariance.LedoitWolf" title="scikits.learn.covariance.LedoitWolf"><tt class="xref py py-class docutils literal"><span class="pre">LedoitWolf</span></tt></a> object to data and
+for visualizing the performances of the Ledoit-Wolf estimator in
+terms of likelihood.</li>
+</ul>
+</div>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/covariance/plot_covariance_estimation.html"><img alt="../_images/plot_covariance_estimation_-1.png" src="../_images/plot_covariance_estimation_-1.png" style="width: 600.0px; height: 450.0px;" /></a>
+</div>
+</div>
+<div class="section" id="oracle-approximating-shrinkage">
+<span id="oracle-apprroximating-shrinkage"></span><h3>4.4.2.3. Oracle Approximating Shrinkage<a class="headerlink" href="#oracle-approximating-shrinkage" title="Permalink to this headline">¶</a></h3>
+<p>Under the assumption that the data are Gaussian distributed, Chen et
+al. [2] derived a formula aimed at choosing a shrinkage coefficient that
+yields a smaller Mean Squared Error than the one given by Ledoit and
+Wolf&#8217;s formula. The resulting estimator is known as the Oracle
+Shrinkage Approximating estimator of the covariance.</p>
+<p>The OAS estimator of the covariance matrix can be computed on a sample
+with the <a class="reference internal" href="generated/scikits.learn.covariance.oas.html#scikits.learn.covariance.oas" title="scikits.learn.covariance.oas"><tt class="xref py py-meth docutils literal"><span class="pre">oas</span></tt></a> function of the <cite>scikits.learn.covariance</cite>
+package, or it can be otherwise obtained by fitting an <tt class="xref py py-class docutils literal"><span class="pre">OAS</span></tt>
+object to the same sample.  The formula we used to implement the OAS
+does not correspond to the one given in the article. It has been taken
+from the matlab programm available from the authors webpage
+(<a class="reference external" href="https://tbayes.eecs.umich.edu/yilun/covestimation">https://tbayes.eecs.umich.edu/yilun/covestimation</a>).</p>
+<dl class="docutils">
+<dt>[2] &#8220;Shrinkage Algorithms for MMSE Covariance Estimation&#8221; Chen et al.,</dt>
+<dd>IEEE Trans. on Sign. Proc., Volume 58, Issue 10, October 2010.</dd>
+</dl>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li>See <a class="reference internal" href="../auto_examples/covariance/plot_covariance_estimation.html#example-covariance-plot-covariance-estimation-py"><em>Ledoit-Wolf vs Covariance simple estimation</em></a> for
+an example on how to fit an <tt class="xref py py-class docutils literal"><span class="pre">OAS</span></tt> object
+to data.</li>
+<li>See <a class="reference internal" href="../auto_examples/covariance/plot_lw_vs_oas.html#example-covariance-plot-lw-vs-oas-py"><em>Ledoit-Wolf vs OAS estimation</em></a> to visualize the
+Mean Squared Error difference between a <a class="reference internal" href="generated/scikits.learn.covariance.LedoitWolf.html#scikits.learn.covariance.LedoitWolf" title="scikits.learn.covariance.LedoitWolf"><tt class="xref py py-class docutils literal"><span class="pre">LedoitWolf</span></tt></a> and
+an <tt class="xref py py-class docutils literal"><span class="pre">OAS</span></tt> estimator of the covariance.</li>
+</ul>
+</div>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/covariance/plot_lw_vs_oas.html"><img alt="../_images/plot_lw_vs_oas_1.png" src="../_images/plot_lw_vs_oas_1.png" style="width: 600.0px; height: 450.0px;" /></a>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../_sources/modules/covariance.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

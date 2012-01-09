@@ -1,0 +1,493 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6.6.1. scikits.learn.mixture.GMM &mdash; scikits.learn 0.7.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.7.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn 0.7.1 documentation" href="../../index.html" />
+    <link rel="up" title="6. Class reference" href="../classes.html" />
+    <link rel="prev" title="6.5.5. scikits.learn.ball_tree.knn_brute" href="scikits.learn.ball_tree.knn_brute.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="scikits.learn.ball_tree.knn_brute.html" title="6.5.5. scikits.learn.ball_tree.knn_brute"
+             accesskey="P">previous</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">6.6.1. scikits.learn.mixture.GMM</a><ul>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-mixture-gmm">
+<h1>6.6.1. scikits.learn.mixture.GMM<a class="headerlink" href="#scikits-learn-mixture-gmm" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.mixture.GMM">
+<em class="property">class </em><tt class="descclassname">scikits.learn.mixture.</tt><tt class="descname">GMM</tt><big>(</big><em>n_states=1</em>, <em>cvtype='diag'</em><big>)</big><a class="headerlink" href="#scikits.learn.mixture.GMM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gaussian Mixture Model</p>
+<p>Representation of a Gaussian mixture model probability distribution.
+This class allows for easy evaluation of, sampling from, and
+maximum-likelihood estimation of the parameters of a GMM distribution.</p>
+<p>Initializes parameters such that every mixture component has zero
+mean and identity covariance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n_states</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of mixture components. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>cvtype</strong> : string (read-only), optional</p>
+<blockquote class="last">
+<div><p>String describing the type of covariance parameters to
+use.  Must be one of &#8216;spherical&#8217;, &#8216;tied&#8217;, &#8216;diag&#8217;, &#8216;full&#8217;.
+Defaults to &#8216;diag&#8217;.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn</span> <span class="kn">import</span> <span class="n">mixture</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">mixture</span><span class="o">.</span><span class="n">GMM</span><span class="p">(</span><span class="n">n_states</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># Generate random observations with two modes centered on 0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># and 10 to use for training.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">obs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="gp">... </span>                      <span class="mi">10</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+<span class="go">GMM(cvtype=&#39;diag&#39;, n_states=2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">weights</span>
+<span class="go">array([ 0.25,  0.75])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">means</span>
+<span class="go">array([[ 0.05980802],</span>
+<span class="go">       [ 9.94199467]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">covars</span>
+<span class="go">[array([[ 1.01682662]]), array([[ 0.96080513]])]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">array([ 0.25,  0.75])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">means</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">array([[ 0.06],</span>
+<span class="go">       [ 9.94]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">covars</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">... </span>
+<span class="go">array([[[ 1.02]],</span>
+<span class="go">       [[ 0.96]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">]])</span>
+<span class="go">array([0, 0, 1, 1])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">score</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">]]),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">array([-2.32, -4.16, -1.65, -1.19])</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># Refit the model on new data (initial parameters remain the</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># same), this time with an even split between the two modes.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">20</span> <span class="o">*</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span>  <span class="mi">20</span> <span class="o">*</span> <span class="p">[[</span><span class="mi">10</span><span class="p">]])</span>
+<span class="go">GMM(cvtype=&#39;diag&#39;, n_states=2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">array([ 0.5,  0.5])</span>
+</pre></div>
+</div>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#scikits.learn.mixture.GMM.cvtype" title="scikits.learn.mixture.GMM.cvtype"><tt class="xref py py-obj docutils literal"><span class="pre">cvtype</span></tt></a></td>
+<td>Covariance type of the model.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#scikits.learn.mixture.GMM.n_states" title="scikits.learn.mixture.GMM.n_states"><tt class="xref py py-obj docutils literal"><span class="pre">n_states</span></tt></a></td>
+<td>Number of mixture components in the model.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#scikits.learn.mixture.GMM.weights" title="scikits.learn.mixture.GMM.weights"><tt class="xref py py-obj docutils literal"><span class="pre">weights</span></tt></a></td>
+<td>Mixing weights for each mixture component.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#scikits.learn.mixture.GMM.means" title="scikits.learn.mixture.GMM.means"><tt class="xref py py-obj docutils literal"><span class="pre">means</span></tt></a></td>
+<td>Mean parameters for each mixture component.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#scikits.learn.mixture.GMM.covars" title="scikits.learn.mixture.GMM.covars"><tt class="xref py py-obj docutils literal"><span class="pre">covars</span></tt></a></td>
+<td>Return covars as a full matrix.</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="7%" />
+<col width="71%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>n_features</td>
+<td>int</td>
+<td>Dimensionality of the Gaussians.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>decode(X)</td>
+<td>Find most likely mixture components for each point in <cite>X</cite>.</td>
+</tr>
+<tr class="row-even"><td>eval(X)</td>
+<td>Compute the log likelihood of <cite>X</cite> under the model and the
+posterior distribution over mixture components.</td>
+</tr>
+<tr class="row-odd"><td>fit(X)</td>
+<td>Estimate model parameters from <cite>X</cite> using the EM algorithm.</td>
+</tr>
+<tr class="row-even"><td>predict(X)</td>
+<td>Like decode, find most likely mixtures components for each
+observation in <cite>X</cite>.</td>
+</tr>
+<tr class="row-odd"><td>rvs(n=1)</td>
+<td>Generate <cite>n</cite> samples from the model.</td>
+</tr>
+<tr class="row-even"><td>score(X)</td>
+<td>Compute the log likelihood of <cite>X</cite> under the model.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="scikits.learn.mixture.GMM.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>n_states=1</em>, <em>cvtype='diag'</em><big>)</big><a class="headerlink" href="#scikits.learn.mixture.GMM.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="scikits.learn.mixture.GMM.covars">
+<tt class="descname">covars</tt><a class="headerlink" href="#scikits.learn.mixture.GMM.covars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return covars as a full matrix.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="scikits.learn.mixture.GMM.cvtype">
+<tt class="descname">cvtype</tt><a class="headerlink" href="#scikits.learn.mixture.GMM.cvtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Covariance type of the model.</p>
+<p>Must be one of &#8216;spherical&#8217;, &#8216;tied&#8217;, &#8216;diag&#8217;, &#8216;full&#8217;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.mixture.GMM.decode">
+<tt class="descname">decode</tt><big>(</big><em>obs</em><big>)</big><a class="headerlink" href="#scikits.learn.mixture.GMM.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find most likely mixture components for each point in <cite>obs</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n, n_features)</p>
+<blockquote>
+<div><p>List of n_features-dimensional data points.  Each row
+corresponds to a single data point.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>logprobs</strong> : array_like, shape (n_samples,)</p>
+<blockquote>
+<div><p>Log probability of each point in <cite>obs</cite> under the model.</p>
+</div></blockquote>
+<p><strong>components</strong> : array_like, shape (n_samples,)</p>
+<blockquote class="last">
+<div><p>Index of the most likelihod mixture components for each observation</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.mixture.GMM.eval">
+<tt class="descname">eval</tt><big>(</big><em>obs</em><big>)</big><a class="headerlink" href="#scikits.learn.mixture.GMM.eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the model on data</p>
+<p>Compute the log probability of <cite>obs</cite> under the model and
+return the posterior distribution (responsibilities) of each
+mixture component for each element of <cite>obs</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n_samples, n_features)</p>
+<blockquote>
+<div><p>List of n_features-dimensional data points.  Each row
+corresponds to a single data point.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>logprob</strong> : array_like, shape (n_samples,)</p>
+<blockquote>
+<div><p>Log probabilities of each data point in <cite>obs</cite></p>
+</div></blockquote>
+<p><strong>posteriors: array_like, shape (n_samples, n_states)</strong> :</p>
+<blockquote class="last">
+<div><p>Posterior probabilities of each mixture component for each
+observation</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.mixture.GMM.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>n_iter=10</em>, <em>min_covar=0.001</em>, <em>thresh=0.01</em>, <em>params='wmc'</em>, <em>init_params='wmc'</em><big>)</big><a class="headerlink" href="#scikits.learn.mixture.GMM.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimate model parameters with the expectation-maximization
+algorithm.</p>
+<p>A initialization step is performed before entering the em
+algorithm. If you want to avoid this step, set the keyword
+argument init_params to the empty string &#8216;&#8217;. Likewise, if you
+would like just to do an initialization, call this method with
+n_iter=0.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array_like, shape (n, n_features)</p>
+<blockquote>
+<div><p>List of n_features-dimensional data points.  Each row
+corresponds to a single data point.</p>
+</div></blockquote>
+<p><strong>n_iter</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of EM iterations to perform.</p>
+</div></blockquote>
+<p><strong>min_covar</strong> : float, optional</p>
+<blockquote>
+<div><p>Floor on the diagonal of the covariance matrix to prevent
+overfitting.  Defaults to 1e-3.</p>
+</div></blockquote>
+<p><strong>thresh</strong> : float, optional</p>
+<blockquote>
+<div><p>Convergence threshold.</p>
+</div></blockquote>
+<p><strong>params</strong> : string, optional</p>
+<blockquote>
+<div><p>Controls which parameters are updated in the training
+process.  Can contain any combination of &#8216;w&#8217; for weights,
+&#8216;m&#8217; for means, and &#8216;c&#8217; for covars.  Defaults to &#8216;wmc&#8217;.</p>
+</div></blockquote>
+<p><strong>init_params</strong> : string, optional</p>
+<blockquote class="last">
+<div><p>Controls which parameters are updated in the initialization
+process.  Can contain any combination of &#8216;w&#8217; for weights,
+&#8216;m&#8217; for means, and &#8216;c&#8217; for covars.  Defaults to &#8216;wmc&#8217;.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="scikits.learn.mixture.GMM.means">
+<tt class="descname">means</tt><a class="headerlink" href="#scikits.learn.mixture.GMM.means" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mean parameters for each mixture component.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="scikits.learn.mixture.GMM.n_states">
+<tt class="descname">n_states</tt><a class="headerlink" href="#scikits.learn.mixture.GMM.n_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of mixture components in the model.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.mixture.GMM.predict">
+<tt class="descname">predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#scikits.learn.mixture.GMM.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict label for data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><strong>X</strong> : array-like, shape = [n_samples, n_features]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><strong>C</strong> : array, shape = (n_samples,)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.mixture.GMM.predict_proba">
+<tt class="descname">predict_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#scikits.learn.mixture.GMM.predict_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict posterior probability of data under each Gaussian
+in the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>T</strong> : array-like, shape = (n_samples, n_states)</p>
+<blockquote class="last">
+<div><p>Returns the probability of the sample for each Gaussian
+(state) in the model.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.mixture.GMM.rvs">
+<tt class="descname">rvs</tt><big>(</big><em>n_samples=1</em><big>)</big><a class="headerlink" href="#scikits.learn.mixture.GMM.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate random samples from the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n_samples</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of samples to generate. Defaults to 1.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n_samples, n_features)</p>
+<blockquote class="last">
+<div><p>List of samples</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.mixture.GMM.score">
+<tt class="descname">score</tt><big>(</big><em>obs</em><big>)</big><a class="headerlink" href="#scikits.learn.mixture.GMM.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the log probability under the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n_samples, n_features)</p>
+<blockquote>
+<div><p>List of n_features-dimensional data points.  Each row
+corresponds to a single data point.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>logprob</strong> : array_like, shape (n_samples,)</p>
+<blockquote class="last">
+<div><p>Log probabilities of each data point in <cite>obs</cite></p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="scikits.learn.mixture.GMM.weights">
+<tt class="descname">weights</tt><a class="headerlink" href="#scikits.learn.mixture.GMM.weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mixing weights for each mixture component.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.7.1<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

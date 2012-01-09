@@ -1,0 +1,233 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>scikits.learn.cluster.KMeans &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../../index.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">scikits.learn.cluster.KMeans</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-cluster-kmeans">
+<h1>scikits.learn.cluster.KMeans<a class="headerlink" href="#scikits-learn-cluster-kmeans" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.cluster.KMeans">
+<em class="property">class </em><tt class="descclassname">scikits.learn.cluster.</tt><tt class="descname">KMeans</tt><big>(</big><em>k=8</em>, <em>init='random'</em>, <em>n_init=10</em>, <em>max_iter=300</em>, <em>tol=0.0001</em>, <em>verbose=0</em>, <em>random_state=None</em>, <em>copy_x=True</em><big>)</big><a class="headerlink" href="#scikits.learn.cluster.KMeans" title="Permalink to this definition">¶</a></dt>
+<dd><p>K-Means clustering</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>k</strong> : int or ndarray</p>
+<blockquote>
+<p>The number of clusters to form as well as the number of
+centroids to generate. If init initialization string is
+&#8216;matrix&#8217;, or if a ndarray is given instead, it is
+interpreted as initial cluster to use instead.</p>
+</blockquote>
+<p><strong>max_iter</strong> : int</p>
+<blockquote>
+<p>Maximum number of iterations of the k-means algorithm for a
+single run.</p>
+</blockquote>
+<p><strong>n_init: int, optional, default: 10</strong> :</p>
+<blockquote>
+<p>Number of time the k-means algorithm will be run with different
+centroid seeds. The final results will be the best output of
+n_init consecutive runs in terms of inertia.</p>
+</blockquote>
+<p><strong>init</strong> : {&#8216;k-means++&#8217;, &#8216;random&#8217;, &#8216;points&#8217;, &#8216;matrix&#8217;}</p>
+<blockquote>
+<p>Method for initialization, defaults to &#8216;random&#8217;:</p>
+<p>&#8216;k-means++&#8217; : selects initial cluster centers for k-mean
+clustering in a smart way to speed up convergence. See section
+Notes in k_init for more details.</p>
+<p>&#8216;random&#8217;: generate k centroids from a Gaussian with mean and
+variance estimated from the data.</p>
+<p>&#8216;points&#8217;: choose k observations (rows) at random from data for
+the initial centroids.</p>
+<p>&#8216;matrix&#8217;: interpret the k parameter as a k by M (or length k
+array for one-dimensional data) array of initial centroids.</p>
+</blockquote>
+<p><strong>tol: float, optional default: 1e-4</strong> :</p>
+<blockquote class="last">
+<p>Relative tolerance w.r.t. inertia to declare convergence</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The k-means problem is solved using the Lloyd algorithm.</p>
+<p>The average complexity is given by O(k n T), were n is the number of
+samples and T is the number of iteration.</p>
+<p>The worst case complexity is given by O(n^(k+2/p)) with
+n = n_samples, p = n_features. (D. Arthur and S. Vassilvitskii,
+&#8216;How slow is the k-means method?&#8217; SoCG2006)</p>
+<p>In practice, the K-means algorithm is very fast (one of the fastest
+clustering algorithms available), but it falls in local minima. That&#8217;s why
+it can be useful to restart it several times.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="45%" />
+<col width="55%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a href="#id1"><span class="problematic" id="id2">cluster_centers_</span></a>: array, [n_clusters, n_features]</td>
+<td>Coordinates of cluster centers</td>
+</tr>
+<tr><td><a href="#id3"><span class="problematic" id="id4">labels_</span></a>:</td>
+<td>Labels of each point</td>
+</tr>
+<tr><td><a href="#id5"><span class="problematic" id="id6">inertia_</span></a>: float</td>
+<td>The value of the inertia criterion associated with the chosen
+partition.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>fit(X):</td>
+<td>Compute K-Means clustering</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="scikits.learn.cluster.KMeans.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>k=8</em>, <em>init='random'</em>, <em>n_init=10</em>, <em>max_iter=300</em>, <em>tol=0.0001</em>, <em>verbose=0</em>, <em>random_state=None</em>, <em>copy_x=True</em><big>)</big><a class="headerlink" href="#scikits.learn.cluster.KMeans.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.cluster.KMeans.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>**params</em><big>)</big><a class="headerlink" href="#scikits.learn.cluster.KMeans.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute k-means</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/scikits.learn.cluster.KMeans.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

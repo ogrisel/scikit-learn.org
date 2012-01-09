@@ -1,0 +1,23 @@
+
+
+.. _example_grid_search_digits.py:
+
+
+=====================================================================
+Parameter estimation using grid search with a nested cross-validation
+=====================================================================
+
+The classifier is optimized by "nested" cross-validation using the
+GridSearchCV object.
+
+The performance of the selected parameters is evaluated using
+cross-validation (different than the nested cross-validation that is used
+to select the best classifier).
+
+
+
+**Python source code:** :download:`grid_search_digits.py <grid_search_digits.py>`
+
+.. literalinclude:: grid_search_digits.py
+    :lines: 14-
+    

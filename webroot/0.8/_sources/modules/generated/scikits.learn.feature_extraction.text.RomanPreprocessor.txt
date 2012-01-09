@@ -1,0 +1,11 @@
+scikits.learn.feature_extraction.text.RomanPreprocessor
+=======================================================
+
+.. currentmodule:: scikits.learn.feature_extraction.text
+
+.. autoclass:: RomanPreprocessor
+
+   
+   .. automethod:: __init__
+   
+

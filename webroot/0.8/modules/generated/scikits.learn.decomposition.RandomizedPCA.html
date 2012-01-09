@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>scikits.learn.decomposition.RandomizedPCA &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../../index.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">scikits.learn.decomposition.RandomizedPCA</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-decomposition-randomizedpca">
+<h1>scikits.learn.decomposition.RandomizedPCA<a class="headerlink" href="#scikits-learn-decomposition-randomizedpca" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.decomposition.RandomizedPCA">
+<em class="property">class </em><tt class="descclassname">scikits.learn.decomposition.</tt><tt class="descname">RandomizedPCA</tt><big>(</big><em>n_components</em>, <em>copy=True</em>, <em>iterated_power=3</em>, <em>whiten=False</em><big>)</big><a class="headerlink" href="#scikits.learn.decomposition.RandomizedPCA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Principal component analysis (PCA) using randomized SVD</p>
+<p>Linear dimensionality reduction using approximated Singular Value
+Decomposition of the data and keeping only the most significant
+singular vectors to project the data to a lower dimensional space.</p>
+<p>This implementation uses a randomized SVD implementation and can
+handle both scipy.sparse and numpy dense arrays as input.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n_components: int</strong> :</p>
+<blockquote>
+<p>Maximum number of components to keep: default is 50.</p>
+</blockquote>
+<p><strong>copy: bool</strong> :</p>
+<blockquote>
+<p>If False, data passed to fit are overwritten</p>
+</blockquote>
+<p><strong>iterated_power: int, optional</strong> :</p>
+<blockquote>
+<p>Number of iteration for the power method. 3 by default.</p>
+</blockquote>
+<p><strong>whiten: bool, optional</strong> :</p>
+<blockquote class="last">
+<p>When True (False by default) the <a href="#id1"><span class="problematic" id="id2">components_</span></a> vectors are divided
+by the singular values to ensure uncorrelated outputs with unit
+component-wise variances.</p>
+<p>Whitening will remove some information from the transformed signal
+(the relative variance scales of the components) but can sometime
+improve the predictive accuracy of the downstream estimators by
+making there data respect some hard-wired assumptions.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="scikits.learn.decomposition.PCA.html#scikits.learn.decomposition.PCA" title="scikits.learn.decomposition.PCA"><tt class="xref py py-obj docutils literal"><span class="pre">PCA</span></tt></a>, <a class="reference internal" href="scikits.learn.decomposition.ProbabilisticPCA.html#scikits.learn.decomposition.ProbabilisticPCA" title="scikits.learn.decomposition.ProbabilisticPCA"><tt class="xref py py-obj docutils literal"><span class="pre">ProbabilisticPCA</span></tt></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>References:</p>
+<ul class="simple">
+<li>Finding structure with randomness: Stochastic algorithms for
+constructing approximate matrix decompositions Halko, et al., 2009
+(arXiv:909)</li>
+<li>A randomized algorithm for the decomposition of matrices
+Per-Gunnar Martinsson, Vladimir Rokhlin and Mark Tygert</li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.decomposition</span> <span class="kn">import</span> <span class="n">RandomizedPCA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pca</span> <span class="o">=</span> <span class="n">RandomizedPCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">RandomizedPCA(copy=True, n_components=2, iterated_power=3, whiten=False)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+<span class="go">[ 0.99244289  0.00755711]</span>
+</pre></div>
+</div>
+<p class="rubric">Attributes</p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="scikits.learn.decomposition.RandomizedPCA.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>n_components</em>, <em>copy=True</em>, <em>iterated_power=3</em>, <em>whiten=False</em><big>)</big><a class="headerlink" href="#scikits.learn.decomposition.RandomizedPCA.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.decomposition.RandomizedPCA.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y=None</em>, <em>**params</em><big>)</big><a class="headerlink" href="#scikits.learn.decomposition.RandomizedPCA.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the model to the data X.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like or scipy.sparse matrix, shape (n_samples, n_features)</strong> :</p>
+<blockquote>
+<p>Training vector, where n_samples in the number of samples and
+n_features is the number of features.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>self</strong> : object</p>
+<blockquote class="last">
+<p>Returns the instance itself.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.decomposition.RandomizedPCA.inverse_transform">
+<tt class="descname">inverse_transform</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#scikits.learn.decomposition.RandomizedPCA.inverse_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an reconstructed input whose transform would be X</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.decomposition.RandomizedPCA.transform">
+<tt class="descname">transform</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#scikits.learn.decomposition.RandomizedPCA.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the dimension reduction learned on the training data.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/scikits.learn.decomposition.RandomizedPCA.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

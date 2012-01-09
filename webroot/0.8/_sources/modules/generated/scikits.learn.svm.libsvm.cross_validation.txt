@@ -1,0 +1,7 @@
+scikits.learn.svm.libsvm.cross_validation
+=========================================
+
+.. currentmodule:: scikits.learn.svm.libsvm
+
+.. autofunction:: cross_validation
+

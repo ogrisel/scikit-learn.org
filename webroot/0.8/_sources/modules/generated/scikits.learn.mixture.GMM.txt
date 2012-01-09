@@ -1,0 +1,11 @@
+scikits.learn.mixture.GMM
+=========================
+
+.. currentmodule:: scikits.learn.mixture
+
+.. autoclass:: GMM
+
+   
+   .. automethod:: __init__
+   
+

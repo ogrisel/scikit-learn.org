@@ -1,0 +1,11 @@
+scikits.learn.linear_model.BayesianRidge
+========================================
+
+.. currentmodule:: scikits.learn.linear_model
+
+.. autoclass:: BayesianRidge
+
+   
+   .. automethod:: __init__
+   
+

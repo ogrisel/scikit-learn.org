@@ -1,0 +1,11 @@
+scikits.learn.neighbors.NeighborsBarycenter
+===========================================
+
+.. currentmodule:: scikits.learn.neighbors
+
+.. autoclass:: NeighborsBarycenter
+
+   
+   .. automethod:: __init__
+   
+

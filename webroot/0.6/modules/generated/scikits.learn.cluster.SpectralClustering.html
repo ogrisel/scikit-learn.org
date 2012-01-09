@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6.8.3. scikits.learn.cluster.SpectralClustering &mdash; scikits.learn v0.6.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.6.0 documentation" href="../../index.html" />
+    <link rel="up" title="6. Class reference" href="../classes.html" />
+    <link rel="next" title="6.8.4. scikits.learn.cluster.AffinityPropagation" href="scikits.learn.cluster.AffinityPropagation.html" />
+    <link rel="prev" title="6.8.2. scikits.learn.cluster.MeanShift" href="scikits.learn.cluster.MeanShift.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="scikits.learn.cluster.MeanShift.html" title="6.8.2. scikits.learn.cluster.MeanShift"
+             accesskey="P">previous</a> |
+          <a href="scikits.learn.cluster.AffinityPropagation.html" title="6.8.4. scikits.learn.cluster.AffinityPropagation"
+             accesskey="N">next</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">6.8.3. scikits.learn.cluster.SpectralClustering</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-cluster-spectralclustering">
+<h1>6.8.3. scikits.learn.cluster.SpectralClustering<a class="headerlink" href="#scikits-learn-cluster-spectralclustering" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.cluster.SpectralClustering">
+<em class="property">class </em><tt class="descclassname">scikits.learn.cluster.</tt><tt class="descname">SpectralClustering</tt><big>(</big><em>k=8</em>, <em>mode=None</em><big>)</big><a class="headerlink" href="#scikits.learn.cluster.SpectralClustering" title="Permalink to this definition">¶</a></dt>
+<dd><p>Spectral clustering: apply k-means to a projection of the
+graph laplacian, finds normalized graph cuts.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>k: integer, optional</strong> :</p>
+<blockquote>
+<p>The dimension of the projection subspace.</p>
+</blockquote>
+<p><strong>mode: {None, &#8216;arpack&#8217; or &#8216;amg&#8217;}</strong> :</p>
+<blockquote class="last">
+<p>The eigenvalue decomposition strategy to use. AMG (Algebraic
+MultiGrid) is much faster, but requires pyamg to be
+installed.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a href="#id1"><span class="problematic" id="id2">labels_</span></a>:</td>
+<td>Labels of each point</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>fit(X):</td>
+<td>Compute spectral clustering</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="scikits.learn.cluster.SpectralClustering.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>k=8</em>, <em>mode=None</em><big>)</big><a class="headerlink" href="#scikits.learn.cluster.SpectralClustering.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.cluster.SpectralClustering.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>**params</em><big>)</big><a class="headerlink" href="#scikits.learn.cluster.SpectralClustering.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the spectral clustering from the adjacency matrix of
+the graph.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like or sparse matrix, shape: (p, p)</strong> :</p>
+<blockquote class="last">
+<p>The adjacency matrix of the graph to embed.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>If the pyamg package is installed, it is used. This
+greatly speeds up computation.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.6.0<p>
+        &copy; 2010, scikits.learn developers (BSD Lincense).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

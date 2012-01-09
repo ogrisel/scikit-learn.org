@@ -1,0 +1,11 @@
+scikits.learn.covariance.LedoitWolf
+===================================
+
+.. currentmodule:: scikits.learn.covariance
+
+.. autoclass:: LedoitWolf
+
+   
+   .. automethod:: __init__
+   
+
