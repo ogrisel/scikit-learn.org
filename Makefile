@@ -35,5 +35,7 @@ github:
 
 clean:
 	(cd ${SKLEARN_FOLDER}/doc && make clean)
+
+clean-target:
 	rm -rf ${WEB_FOLDER}/${TARGET_FOLDER}
 
