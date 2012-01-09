@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6.5.2. scikits.learn.neighbors.NeighborsRegressor &mdash; scikits.learn 0.7.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.7.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn 0.7.1 documentation" href="../../index.html" />
+    <link rel="up" title="6. Class reference" href="../classes.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">6.5.2. scikits.learn.neighbors.NeighborsRegressor</a><ul>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-neighbors-neighborsregressor">
+<h1>6.5.2. scikits.learn.neighbors.NeighborsRegressor<a class="headerlink" href="#scikits-learn-neighbors-neighborsregressor" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.neighbors.NeighborsRegressor">
+<em class="property">class </em><tt class="descclassname">scikits.learn.neighbors.</tt><tt class="descname">NeighborsRegressor</tt><big>(</big><em>n_neighbors=5</em>, <em>mode='mean'</em>, <em>algorithm='auto'</em>, <em>window_size=1</em><big>)</big><a class="headerlink" href="#scikits.learn.neighbors.NeighborsRegressor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regression based on k-Nearest Neighbor Algorithm.</p>
+<p>The target is predicted by local interpolation of the targets
+associated of the k-Nearest Neighbors in the training set.</p>
+<p>Different modes for estimating the result can be set via parameter
+mode. &#8216;barycenter&#8217; will apply the weights that best reconstruct
+the point from its neighbors while &#8216;mean&#8217; will apply constant
+weights to each point.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n_neighbors</strong> : int, optional</p>
+<blockquote>
+<div><p>Default number of neighbors. Defaults to 5.</p>
+</div></blockquote>
+<p><strong>window_size</strong> : int, optional</p>
+<blockquote>
+<div><p>Window size passed to BallTree</p>
+</div></blockquote>
+<p><strong>mode</strong> : {&#8216;mean&#8217;, &#8216;barycenter&#8217;}, optional</p>
+<blockquote>
+<div><p>Weights to apply to labels.</p>
+</div></blockquote>
+<p><strong>algorithm</strong> : {&#8216;auto&#8217;, &#8216;ball_tree&#8217;, &#8216;brute&#8217;, &#8216;brute_inplace&#8217;}, optional</p>
+<blockquote class="last">
+<div><p>Algorithm used to compute the nearest neighbors. &#8216;ball_tree&#8217;
+will construct a BallTree, &#8216;brute&#8217; and &#8216;brute_inplace&#8217; will
+perform brute-force search.&#8217;auto&#8217; will guess the most
+appropriate based on current dataset.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/K-nearest_neighbor_algorithm">http://en.wikipedia.org/wiki/K-nearest_neighbor_algorithm</a></p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.neighbors</span> <span class="kn">import</span> <span class="n">NeighborsRegressor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">neigh</span> <span class="o">=</span> <span class="n">NeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="go">NeighborsRegressor(n_neighbors=2, window_size=1, mode=&#39;mean&#39;,</span>
+<span class="go">          algorithm=&#39;auto&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">neigh</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mf">1.5</span><span class="p">]])</span>
+<span class="go">[ 0.5]</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#scikits.learn.neighbors.NeighborsRegressor.fit" title="scikits.learn.neighbors.NeighborsRegressor.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;Y,&nbsp;**params)</td>
+<td>Fit the model using X, y as training data.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#scikits.learn.neighbors.NeighborsRegressor.kneighbors" title="scikits.learn.neighbors.NeighborsRegressor.kneighbors"><tt class="xref py py-obj docutils literal"><span class="pre">kneighbors</span></tt></a>(data[,&nbsp;return_distance])</td>
+<td>Finds the K-neighbors of a point.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#scikits.learn.neighbors.NeighborsRegressor.predict" title="scikits.learn.neighbors.NeighborsRegressor.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X,&nbsp;**params)</td>
+<td>Predict the target for the provided data.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#scikits.learn.neighbors.NeighborsRegressor.score" title="scikits.learn.neighbors.NeighborsRegressor.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
+<td>Returns the mean error rate on the given test data and labels.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="scikits.learn.neighbors.NeighborsRegressor.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>n_neighbors=5</em>, <em>mode='mean'</em>, <em>algorithm='auto'</em>, <em>window_size=1</em><big>)</big><a class="headerlink" href="#scikits.learn.neighbors.NeighborsRegressor.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.neighbors.NeighborsRegressor.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>Y</em>, <em>**params</em><big>)</big><a class="headerlink" href="#scikits.learn.neighbors.NeighborsRegressor.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the model using X, y as training data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Training data.</p>
+</div></blockquote>
+<p><strong>y</strong> : array-like, shape = [n_samples]</p>
+<blockquote>
+<div><p>Target values, array of integer values.</p>
+</div></blockquote>
+<p><strong>params</strong> : list of keyword, optional</p>
+<blockquote class="last">
+<div><p>Overwrite keywords from __init__</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.neighbors.NeighborsRegressor.kneighbors">
+<tt class="descname">kneighbors</tt><big>(</big><em>data</em>, <em>return_distance=True</em>, <em>**params</em><big>)</big><a class="headerlink" href="#scikits.learn.neighbors.NeighborsRegressor.kneighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the K-neighbors of a point.</p>
+<p>Returns distance</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>point</strong> : array-like</p>
+<blockquote>
+<div><p>The new point.</p>
+</div></blockquote>
+<p><strong>n_neighbors</strong> : int</p>
+<blockquote>
+<div><p>Number of neighbors to get (default is the value
+passed to the constructor).</p>
+</div></blockquote>
+<p><strong>return_distance</strong> : boolean, optional. Defaults to True.</p>
+<blockquote>
+<div><p>If False, distances will not be returned</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>dist</strong> : array</p>
+<blockquote>
+<div><p>Array representing the lengths to point, only present if
+return_distance=True</p>
+</div></blockquote>
+<p><strong>ind</strong> : array</p>
+<blockquote class="last">
+<div><p>Indices of the nearest points in the population matrix.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>In the following example, we construnct a NeighborsClassifier
+class from an array representing our data set and ask who&#8217;s
+the closest point to [1,1,1]</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.neighbors</span> <span class="kn">import</span> <span class="n">NeighborsClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">neigh</span> <span class="o">=</span> <span class="n">NeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="go">NeighborsClassifier(n_neighbors=1, window_size=1, algorithm=&#39;auto&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">neigh</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>
+<span class="go">(array([ 0.5]), array([2]))</span>
+</pre></div>
+</div>
+<p>As you can see, it returns [0.5], and [2], which means that the
+element is at distance 0.5 and is the third element of samples
+(indexes start at 0). You can also query for multiple points:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">neigh</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">return_distance</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="go">array([[1],</span>
+<span class="go">       [2]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.neighbors.NeighborsRegressor.predict">
+<tt class="descname">predict</tt><big>(</big><em>X</em>, <em>**params</em><big>)</big><a class="headerlink" href="#scikits.learn.neighbors.NeighborsRegressor.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict the target for the provided data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array</p>
+<blockquote>
+<div><p>A 2-D array representing the test data.</p>
+</div></blockquote>
+<p><strong>n_neighbors</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of neighbors to get (default is the value
+passed to the constructor).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>y: array</strong> :</p>
+<blockquote class="last">
+<div><p>List of target values (one for each data sample).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.neighbors.NeighborsRegressor.score">
+<tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#scikits.learn.neighbors.NeighborsRegressor.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the mean error rate on the given test data and labels.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Training set.</p>
+</div></blockquote>
+<p><strong>y</strong> : array-like, shape = [n_samples]</p>
+<blockquote>
+<div><p>Labels for X.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>z</strong> : float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.7.1<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

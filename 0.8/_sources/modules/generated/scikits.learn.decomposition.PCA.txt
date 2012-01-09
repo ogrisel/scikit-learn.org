@@ -1,0 +1,11 @@
+scikits.learn.decomposition.PCA
+===============================
+
+.. currentmodule:: scikits.learn.decomposition
+
+.. autoclass:: PCA
+
+   
+   .. automethod:: __init__
+   
+

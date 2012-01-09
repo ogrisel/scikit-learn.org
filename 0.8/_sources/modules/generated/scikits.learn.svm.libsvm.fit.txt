@@ -1,0 +1,7 @@
+scikits.learn.svm.libsvm.fit
+============================
+
+.. currentmodule:: scikits.learn.svm.libsvm
+
+.. autofunction:: fit
+

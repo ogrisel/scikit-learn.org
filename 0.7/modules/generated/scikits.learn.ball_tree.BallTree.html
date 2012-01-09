@@ -1,0 +1,279 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6.5.3. scikits.learn.ball_tree.BallTree &mdash; scikits.learn 0.7.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.7.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn 0.7.1 documentation" href="../../index.html" />
+    <link rel="up" title="6. Class reference" href="../classes.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">6.5.3. scikits.learn.ball_tree.BallTree</a><ul>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-ball-tree-balltree">
+<h1>6.5.3. scikits.learn.ball_tree.BallTree<a class="headerlink" href="#scikits-learn-ball-tree-balltree" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.ball_tree.BallTree">
+<em class="property">class </em><tt class="descclassname">scikits.learn.ball_tree.</tt><tt class="descname">BallTree</tt><a class="headerlink" href="#scikits.learn.ball_tree.BallTree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ball Tree for fast nearest-neighbor searches :</p>
+<p>BallTree(M, leafsize=20)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>M</strong> : array-like, shape = [N,D]</p>
+<blockquote class="last">
+<div><blockquote>
+<div><blockquote>
+<div><p>N is the number of points in the data set, and   
+D is the dimension of the parameter space.</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>Note: if M is an aligned array of doubles (not    </dt>
+<dd><p class="first last">necessarily contiguous) then data will not be    
+copied. Otherwise, an internal copy will be made.</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>leafsize <span class="classifier-delimiter">:</span> <span class="classifier">positive integer (default = 20)           </span></dt>
+<dd><p class="first last">number of points at which to switch       
+to brute-force</p>
+</dd>
+</dl>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#scikits.learn.ball_tree.BallTree.query" title="scikits.learn.ball_tree.BallTree.query"><tt class="xref py py-obj docutils literal"><span class="pre">query</span></tt></a>(x[,&nbsp;k,&nbsp;return_distance])</td>
+<td>query the Ball Tree for the k nearest neighbors</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#scikits.learn.ball_tree.BallTree.query_ball" title="scikits.learn.ball_tree.BallTree.query_ball"><tt class="xref py py-obj docutils literal"><span class="pre">query_ball</span></tt></a>(x,r,count_only&nbsp;=&nbsp;False)</td>
+<td>query the Ball Tree for the k nearest neighbors</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="scikits.learn.ball_tree.BallTree.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#scikits.learn.ball_tree.BallTree.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>x.__init__(...) initializes x; see x.__class__.__doc__ for signature</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="scikits.learn.ball_tree.BallTree.data">
+<tt class="descname">data</tt><a class="headerlink" href="#scikits.learn.ball_tree.BallTree.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>View of data making up the Ball Tree</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="scikits.learn.ball_tree.BallTree.dim">
+<tt class="descname">dim</tt><a class="headerlink" href="#scikits.learn.ball_tree.BallTree.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dimension of the Ball Tree</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.ball_tree.BallTree.query">
+<tt class="descname">query</tt><big>(</big><em>x</em>, <em>k=1</em>, <em>return_distance=True</em><big>)</big><a class="headerlink" href="#scikits.learn.ball_tree.BallTree.query" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>query the Ball Tree for the k nearest neighbors</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>x</strong> : array-like, last dimension self.dim</p>
+<blockquote>
+<div><p>An array of points to query</p>
+</div></blockquote>
+<p><strong>k</strong> : integer  (default = 1)</p>
+<blockquote>
+<div><p>The number of nearest neighbors to return</p>
+</div></blockquote>
+<p><strong>return_distance</strong> : boolean (default = True)</p>
+<blockquote>
+<div><p>if True, return a tuple (d,i)                  
+if False, return array i</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>i</strong> : if return_distance == False</p>
+<p><strong>(d,i)</strong> : if return_distance == True</p>
+<p><strong>d</strong> : array of doubles - shape: x.shape[:-1] + (k,)</p>
+<blockquote>
+<div><p>each entry gives the list of distances to the    
+neighbors of the corresponding point             
+(note that distances are not sorted)</p>
+</div></blockquote>
+<p><strong>i</strong> : array of integers - shape: x.shape[:-1] + (k,)</p>
+<blockquote class="last">
+<div><p>each entry gives the list of indices of          
+neighbors of the corresponding point             
+(note that neighbors are not sorted)</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.ball_tree.BallTree.query_ball">
+<tt class="descname">query_ball</tt><big>(</big><em>x</em>, <em>r</em>, <em>count_only = False</em><big>)</big><a class="headerlink" href="#scikits.learn.ball_tree.BallTree.query_ball" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>query the Ball Tree for the k nearest neighbors</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>x</strong> : array-like, last dimension self.dim</p>
+<blockquote>
+<div><p>An array of points to query</p>
+</div></blockquote>
+<p><strong>r</strong> : floating-point value</p>
+<blockquote>
+<div><p>Radius around each point within which all     
+neighbors are returned</p>
+</div></blockquote>
+<p><strong>count_only</strong> : boolean (default = False)</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if True,  return count of neighbors  </dt>
+<dd><p class="first last">for each point</p>
+</dd>
+<dt>if False, return full list of        </dt>
+<dd><p class="first last">neighbors for each point</p>
+</dd>
+</dl>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>i</strong> : array of integers, shape: x.shape[:-1]</p>
+<blockquote class="last">
+<div><p>if count_only is False each entry gives the     
+list of neighbors of the corresponding point    
+(note that neighbors are not sorted). Otherwise 
+return only the number of neighbors.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="scikits.learn.ball_tree.BallTree.size">
+<tt class="descname">size</tt><a class="headerlink" href="#scikits.learn.ball_tree.BallTree.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of points in the Ball Tree</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.7.1<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

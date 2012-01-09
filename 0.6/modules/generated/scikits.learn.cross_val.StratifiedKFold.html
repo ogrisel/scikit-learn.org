@@ -1,0 +1,169 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6.11.4. scikits.learn.cross_val.StratifiedKFold &mdash; scikits.learn v0.6.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.6.0 documentation" href="../../index.html" />
+    <link rel="up" title="6. Class reference" href="../classes.html" />
+    <link rel="next" title="6.11.5. scikits.learn.cross_val.LeaveOneLabelOut" href="scikits.learn.cross_val.LeaveOneLabelOut.html" />
+    <link rel="prev" title="6.11.3. scikits.learn.cross_val.KFold" href="scikits.learn.cross_val.KFold.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="scikits.learn.cross_val.KFold.html" title="6.11.3. scikits.learn.cross_val.KFold"
+             accesskey="P">previous</a> |
+          <a href="scikits.learn.cross_val.LeaveOneLabelOut.html" title="6.11.5. scikits.learn.cross_val.LeaveOneLabelOut"
+             accesskey="N">next</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">6.11.4. scikits.learn.cross_val.StratifiedKFold</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-cross-val-stratifiedkfold">
+<h1>6.11.4. scikits.learn.cross_val.StratifiedKFold<a class="headerlink" href="#scikits-learn-cross-val-stratifiedkfold" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.cross_val.StratifiedKFold">
+<em class="property">class </em><tt class="descclassname">scikits.learn.cross_val.</tt><tt class="descname">StratifiedKFold</tt><big>(</big><em>y</em>, <em>k</em><big>)</big><a class="headerlink" href="#scikits.learn.cross_val.StratifiedKFold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stratified K-Folds cross validation iterator</p>
+<p>Provides train/test indexes to split data in train test sets</p>
+<p>This cross-validation object is a variation of KFold, which
+returns stratified folds. The folds are made by preserving
+the percentage of samples for each class.</p>
+<dl class="method">
+<dt id="scikits.learn.cross_val.StratifiedKFold.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>y</em>, <em>k</em><big>)</big><a class="headerlink" href="#scikits.learn.cross_val.StratifiedKFold.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>K-Folds cross validation iterator</p>
+<p>Provides train/test indexes to split data in train test sets</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y: array, [n_samples]</strong> :</p>
+<blockquote>
+<p>Samples to split in K folds</p>
+</blockquote>
+<p><strong>k: int</strong> :</p>
+<blockquote class="last">
+<p>number of folds</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>All the folds have size trunc(n/k), the last one has the complementary</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn</span> <span class="kn">import</span> <span class="n">cross_val</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">skf</span> <span class="o">=</span> <span class="n">cross_val</span><span class="o">.</span><span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">skf</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">skf</span>
+<span class="go">scikits.learn.cross_val.StratifiedKFold(labels=[0 0 1 1], k=2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">skf</span><span class="p">:</span>
+<span class="gp">... </span>   <span class="k">print</span> <span class="s">&quot;TRAIN:&quot;</span><span class="p">,</span> <span class="n">train_index</span><span class="p">,</span> <span class="s">&quot;TEST:&quot;</span><span class="p">,</span> <span class="n">test_index</span>
+<span class="gp">... </span>   <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+<span class="gp">... </span>   <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+<span class="go">TRAIN: [False  True False  True] TEST: [ True False  True False]</span>
+<span class="go">TRAIN: [ True False  True False] TEST: [False  True False  True]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.6.0<p>
+        &copy; 2010, scikits.learn developers (BSD Lincense).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

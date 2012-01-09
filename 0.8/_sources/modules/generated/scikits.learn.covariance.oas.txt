@@ -1,0 +1,7 @@
+scikits.learn.covariance.oas
+============================
+
+.. currentmodule:: scikits.learn.covariance
+
+.. autofunction:: oas
+

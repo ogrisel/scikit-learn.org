@@ -1,0 +1,268 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6.2.6. scikits.learn.linear_model.ElasticNet &mdash; scikits.learn 0.7.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.7.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn 0.7.1 documentation" href="../../index.html" />
+    <link rel="up" title="6. Class reference" href="../classes.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">6.2.6. scikits.learn.linear_model.ElasticNet</a><ul>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-linear-model-elasticnet">
+<h1>6.2.6. scikits.learn.linear_model.ElasticNet<a class="headerlink" href="#scikits-learn-linear-model-elasticnet" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.linear_model.ElasticNet">
+<em class="property">class </em><tt class="descclassname">scikits.learn.linear_model.</tt><tt class="descname">ElasticNet</tt><big>(</big><em>alpha=1.0</em>, <em>rho=0.5</em>, <em>fit_intercept=True</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.ElasticNet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Linear Model trained with L1 and L2 prior as regularizer</p>
+<p>rho=1 is the lasso penalty. Currently, rho &lt;= 0.01 is not
+reliable, unless you supply your own sequence of alpha.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>alpha</strong> : float</p>
+<blockquote>
+<div><p>Constant that multiplies the L1 term. Defaults to 1.0</p>
+</div></blockquote>
+<p><strong>rho</strong> : float</p>
+<blockquote>
+<div><p>The ElasticNet mixing parameter, with 0 &lt; rho &lt;= 1.</p>
+</div></blockquote>
+<p><strong>coef_: ndarray of shape n_features</strong> :</p>
+<blockquote>
+<div><p>The initial coeffients to warm-start the optimization</p>
+</div></blockquote>
+<p><strong>fit_intercept: bool</strong> :</p>
+<blockquote class="last">
+<div><p>Whether the intercept should be estimated or not. If False, the
+data is assumed to be already centered.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>To avoid unnecessary memory duplication the X argument of the fit method
+should be directly passed as a fortran contiguous numpy array.</p>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#scikits.learn.linear_model.ElasticNet.fit" title="scikits.learn.linear_model.ElasticNet.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;precompute,&nbsp;Xy,&nbsp;max_iter,&nbsp;tol,&nbsp;...])</td>
+<td>Fit Elastic Net model with coordinate descent</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#scikits.learn.linear_model.ElasticNet.predict" title="scikits.learn.linear_model.ElasticNet.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
+<td>Predict using the linear model</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#scikits.learn.linear_model.ElasticNet.score" title="scikits.learn.linear_model.ElasticNet.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
+<td>Returns the coefficient of determination of the prediction</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="scikits.learn.linear_model.ElasticNet.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>alpha=1.0</em>, <em>rho=0.5</em>, <em>fit_intercept=True</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.ElasticNet.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.linear_model.ElasticNet.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>precompute='auto'</em>, <em>Xy=None</em>, <em>max_iter=1000</em>, <em>tol=0.0001</em>, <em>coef_init=None</em>, <em>**params</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.ElasticNet.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit Elastic Net model with coordinate descent</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: ndarray, (n_samples, n_features)</strong> :</p>
+<blockquote>
+<div><p>Data</p>
+</div></blockquote>
+<p><strong>y: ndarray, (n_samples)</strong> :</p>
+<blockquote>
+<div><p>Target</p>
+</div></blockquote>
+<p><strong>precompute</strong> : True | False | &#8216;auto&#8217; | array-like</p>
+<blockquote>
+<div><p>Whether to use a precomputed Gram matrix to speed up
+calculations. If set to &#8216;auto&#8217; let us decide. The Gram
+matrix can also be passed as argument.</p>
+</div></blockquote>
+<p><strong>Xy</strong> : array-like, optional</p>
+<blockquote>
+<div><p>Xy = np.dot(X.T, y) that can be precomputed. It is useful
+only when the Gram matrix is precomuted.</p>
+</div></blockquote>
+<p><strong>max_iter: int, optional</strong> :</p>
+<blockquote>
+<div><p>The maximum number of iterations</p>
+</div></blockquote>
+<p><strong>tol: float, optional</strong> :</p>
+<blockquote class="last">
+<div><p>The tolerance for the optimization: if the updates are
+smaller than &#8216;tol&#8217;, the optimization code checks the
+dual gap for optimality and continues until it is smaller
+than tol.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Coordinate descent is an algorithm that considers each column of
+data at a time hence it will automatically convert the X input
+as a fortran contiguous numpy array if necessary.</p>
+<p>To avoid memory re-allocation it is advised to allocate the
+initial data in memory directly using that format.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.linear_model.ElasticNet.predict">
+<tt class="descname">predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.ElasticNet.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict using the linear model</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : numpy array of shape [n_samples, n_features]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>C</strong> : array, shape = [n_samples]</p>
+<blockquote class="last">
+<div><p>Returns predicted values.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.linear_model.ElasticNet.score">
+<tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.ElasticNet.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the coefficient of determination of the prediction</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Training set.</p>
+</div></blockquote>
+<p><strong>y</strong> : array-like, shape = [n_samples]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>z</strong> : float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.7.1<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

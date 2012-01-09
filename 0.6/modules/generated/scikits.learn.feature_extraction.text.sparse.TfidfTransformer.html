@@ -1,0 +1,163 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6.14.8.1. scikits.learn.feature_extraction.text.sparse.TfidfTransformer &mdash; scikits.learn v0.6.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.6.0 documentation" href="../../index.html" />
+    <link rel="up" title="6. Class reference" href="../classes.html" />
+    <link rel="next" title="6.14.8.2. scikits.learn.feature_extraction.text.sparse.CountVectorizer" href="scikits.learn.feature_extraction.text.sparse.CountVectorizer.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="scikits.learn.feature_extraction.text.sparse.CountVectorizer.html" title="6.14.8.2. scikits.learn.feature_extraction.text.sparse.CountVectorizer"
+             accesskey="N">next</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">6.14.8.1. scikits.learn.feature_extraction.text.sparse.TfidfTransformer</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-feature-extraction-text-sparse-tfidftransformer">
+<h1>6.14.8.1. scikits.learn.feature_extraction.text.sparse.TfidfTransformer<a class="headerlink" href="#scikits-learn-feature-extraction-text-sparse-tfidftransformer" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.feature_extraction.text.sparse.TfidfTransformer">
+<em class="property">class </em><tt class="descclassname">scikits.learn.feature_extraction.text.sparse.</tt><tt class="descname">TfidfTransformer</tt><big>(</big><em>use_tf=True</em>, <em>use_idf=True</em><big>)</big><a class="headerlink" href="#scikits.learn.feature_extraction.text.sparse.TfidfTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="scikits.learn.feature_extraction.text.sparse.TfidfTransformer.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>use_tf=True</em>, <em>use_idf=True</em><big>)</big><a class="headerlink" href="#scikits.learn.feature_extraction.text.sparse.TfidfTransformer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.feature_extraction.text.sparse.TfidfTransformer.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#scikits.learn.feature_extraction.text.sparse.TfidfTransformer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Learn the IDF vector (global term weights)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: sparse matrix, [n_samples, n_features]</strong> :</p>
+<blockquote class="last">
+<p>a matrix of term/token counts</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.feature_extraction.text.sparse.TfidfTransformer.transform">
+<tt class="descname">transform</tt><big>(</big><em>X</em>, <em>copy=True</em><big>)</big><a class="headerlink" href="#scikits.learn.feature_extraction.text.sparse.TfidfTransformer.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform a count matrix to a TF or TF-IDF representation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: sparse matrix, [n_samples, n_features]</strong> :</p>
+<blockquote>
+<p>a matrix of term/token counts</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>vectors: sparse matrix, [n_samples, n_features]</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.6.0<p>
+        &copy; 2010, scikits.learn developers (BSD Lincense).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

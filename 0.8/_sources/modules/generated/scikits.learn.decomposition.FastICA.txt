@@ -1,0 +1,11 @@
+scikits.learn.decomposition.FastICA
+===================================
+
+.. currentmodule:: scikits.learn.decomposition
+
+.. autoclass:: FastICA
+
+   
+   .. automethod:: __init__
+   
+

@@ -1,0 +1,167 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Ledoit-Wolf vs Covariance simple estimation &mdash; scikits.learn 0.7.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.7.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="top" title="scikits.learn 0.7.1 documentation" href="../index.html" />
+    <link rel="up" title="Examples" href="index.html" />
+    <link rel="next" title="Recognizing hand-written digits" href="plot_digits_classification.html" />
+    <link rel="prev" title="Confusion matrix" href="plot_confusion_matrix.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../install.html">Download</a></li>
+            <li><a href="../support.html">Support</a></li>
+            <li><a href="../user_guide.html">User Guide</a></li>
+            <li><a href="index.html">Examples</a></li>
+            <li><a href="../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="plot_confusion_matrix.html" title="Confusion matrix"
+             accesskey="P">previous</a> |
+          <a href="plot_digits_classification.html" title="Recognizing hand-written digits"
+             accesskey="N">next</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">Ledoit-Wolf vs Covariance simple estimation</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="ledoit-wolf-vs-covariance-simple-estimation">
+<span id="example-plot-covariance-estimation-py"></span><h1>Ledoit-Wolf vs Covariance simple estimation<a class="headerlink" href="#ledoit-wolf-vs-covariance-simple-estimation" title="Permalink to this headline">¶</a></h1>
+<p>Covariance estimation can be regularized using a shrinkage parameter.
+Ledoit-Wolf estimates automatically this parameter. In this example,
+we compute the likelihood of unseen data for different values of
+the shrinkage parameter. The Ledoit-Wolf estimate reaches an
+almost optimal value.</p>
+<img alt="../_images/plot_covariance_estimation.png" class="align-center" src="../_images/plot_covariance_estimation.png" />
+<p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_covariance_estimation.py"><tt class="xref download docutils literal"><span class="pre">plot_covariance_estimation.py</span></tt></a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
+
+<span class="c">###############################################################################</span>
+<span class="c"># Generate sample data</span>
+<span class="n">n_features</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">20</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">))</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">))</span>
+
+<span class="c"># Color samples</span>
+<span class="n">coloring_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_features</span><span class="p">,</span> <span class="n">n_features</span><span class="p">))</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">coloring_matrix</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">coloring_matrix</span><span class="p">)</span>
+
+<span class="c">###############################################################################</span>
+<span class="c"># Compute Ledoit-Wolf and Covariances on a grid of shrinkages</span>
+
+<span class="kn">from</span> <span class="nn">scikits.learn.covariance</span> <span class="kn">import</span> <span class="n">LedoitWolf</span><span class="p">,</span> <span class="n">ShrunkCovariance</span>
+
+<span class="n">lw</span> <span class="o">=</span> <span class="n">LedoitWolf</span><span class="p">()</span>
+<span class="n">loglik_lw</span> <span class="o">=</span> <span class="n">lw</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">cov</span> <span class="o">=</span> <span class="n">ShrunkCovariance</span><span class="p">()</span>
+<span class="n">shrinkages</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">negative_logliks</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">cov</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">shrinkage</span><span class="o">=</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span> \
+                                                        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">shrinkages</span><span class="p">]</span>
+
+<span class="c">###############################################################################</span>
+<span class="c"># Plot results</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">shrinkages</span><span class="p">,</span> <span class="n">negative_logliks</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Shrinkage&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Negative log-likelihood&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">lw</span><span class="o">.</span><span class="n">shrinkage_</span><span class="p">,</span> <span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="n">loglik_lw</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">,</span>
+                        <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Ledoit-Wolf estimate&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.7.1<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

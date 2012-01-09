@@ -1,0 +1,11 @@
+scikits.learn.pca.PCA
+=====================
+
+.. currentmodule:: scikits.learn.pca
+
+.. autoclass:: PCA
+
+   
+   .. automethod:: __init__
+   
+

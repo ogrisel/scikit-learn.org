@@ -1,0 +1,11 @@
+scikits.learn.linear_model.ElasticNet
+=====================================
+
+.. currentmodule:: scikits.learn.linear_model
+
+.. autoclass:: ElasticNet
+
+   
+   .. automethod:: __init__
+   
+

@@ -1,0 +1,25 @@
+
+
+.. _example_cluster_plot_mean_shift.py:
+
+
+=============================================
+A demo of the mean-shift clustering algorithm
+=============================================
+
+Reference:
+K. Funkunaga and L.D. Hosteler, "The Estimation of the Gradient of a
+Density Function, with Applications in Pattern Recognition"
+
+
+
+
+.. image:: images/plot_mean_shift_1.png
+    :align: center
+
+
+**Python source code:** :download:`plot_mean_shift.py <plot_mean_shift.py>`
+
+.. literalinclude:: plot_mean_shift.py
+    :lines: 11-
+    

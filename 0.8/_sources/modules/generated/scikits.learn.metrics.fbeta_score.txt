@@ -1,0 +1,7 @@
+scikits.learn.metrics.fbeta_score
+=================================
+
+.. currentmodule:: scikits.learn.metrics
+
+.. autofunction:: fbeta_score
+

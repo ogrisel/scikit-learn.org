@@ -1,0 +1,23 @@
+
+
+.. _example_svm_plot_oneclass.py:
+
+
+==========================================
+One-class SVM with non-linear kernel (RBF)
+==========================================
+
+One-class SVM is an unsupervised algorithm that
+estimates outliers in a dataset.
+
+
+
+.. image:: images/plot_oneclass_1.png
+    :align: center
+
+
+**Python source code:** :download:`plot_oneclass.py <plot_oneclass.py>`
+
+.. literalinclude:: plot_oneclass.py
+    :lines: 9-
+    

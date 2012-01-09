@@ -1,0 +1,11 @@
+scikits.learn.linear_model.Ridge
+================================
+
+.. currentmodule:: scikits.learn.linear_model
+
+.. autoclass:: Ridge
+
+   
+   .. automethod:: __init__
+   
+

@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>scikits.learn.datasets.load_iris &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../../index.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">scikits.learn.datasets.load_iris</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-datasets-load-iris">
+<h1>scikits.learn.datasets.load_iris<a class="headerlink" href="#scikits-learn-datasets-load-iris" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="scikits.learn.datasets.load_iris">
+<tt class="descclassname">scikits.learn.datasets.</tt><tt class="descname">load_iris</tt><big>(</big><big>)</big><a class="headerlink" href="#scikits.learn.datasets.load_iris" title="Permalink to this definition">¶</a></dt>
+<dd><p>load the iris dataset and returns it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>data</strong> : Bunch</p>
+<blockquote class="last">
+<p>Dictionnary-like object, the interesting attributes are:
+&#8216;data&#8217;, the data to learn, &#8216;target&#8217;, the classification labels,
+&#8216;target_names&#8217;, the meaning of the labels, and &#8216;DESCR&#8217;, the
+full description of the dataset.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Data Set Characteristics:</p>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name" colspan="2">Number of Instances:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"><p class="first">150 (50 in each of three classes)</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Number of Attributes:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"><p class="first">4 numeric, predictive attributes and the class</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Attribute Information:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"><ul class="first">
+<li><p class="first">sepal length in cm</p>
+</li>
+<li><p class="first">sepal width in cm</p>
+</li>
+<li><p class="first">petal length in cm</p>
+</li>
+<li><p class="first">petal width in cm</p>
+</li>
+<li><dl class="first docutils">
+<dt>class: </dt>
+<dd><ul class="first last simple">
+<li>Iris-Setosa</li>
+<li>Iris-Versicolour</li>
+<li>Iris-Virginica</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Summary Statistics:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="7%" />
+<col width="7%" />
+<col width="13%" />
+<col width="9%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">&nbsp;</th>
+<th class="head">&nbsp;</th>
+<th class="head">&nbsp;</th>
+<th class="head">&nbsp;</th>
+<th class="head">&nbsp;</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>sepal length:</td>
+<td>4.3</td>
+<td>7.9</td>
+<td>5.84</td>
+<td>0.83</td>
+<td>0.7826</td>
+</tr>
+<tr><td>sepal width:</td>
+<td>2.0</td>
+<td>4.4</td>
+<td>3.05</td>
+<td>0.43</td>
+<td>-0.4194</td>
+</tr>
+<tr><td>petal length:</td>
+<td>1.0</td>
+<td>6.9</td>
+<td>3.76</td>
+<td>1.76</td>
+<td>0.9490  (high!)</td>
+</tr>
+<tr><td>petal width:</td>
+<td>0.1</td>
+<td>2.5</td>
+<td>1.20</td>
+<td>0.76</td>
+<td>0.9565  (high!)</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name" colspan="2">Missing Attribute Values:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body">None</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Class Distribution:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body">33.3% for each of 3 classes.</td>
+</tr>
+<tr class="field"><th class="field-name">Creator:</th><td class="field-body">R.A. Fisher</td>
+</tr>
+<tr class="field"><th class="field-name">Donor:</th><td class="field-body">Michael Marshall (<a class="reference external" href="mailto:MARSHALL%PLU&#37;&#52;&#48;io&#46;arc&#46;nasa&#46;gov">MARSHALL%PLU<span>&#64;</span>io<span>&#46;</span>arc<span>&#46;</span>nasa<span>&#46;</span>gov</a>)</td>
+</tr>
+<tr class="field"><th class="field-name">Date:</th><td class="field-body">July, 1988</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>This is a copy of UCI ML iris datasets.
+<a class="reference external" href="http://archive.ics.uci.edu/ml/datasets/Iris">http://archive.ics.uci.edu/ml/datasets/Iris</a></p>
+<p>The famous Iris database, first used by Sir R.A Fisher</p>
+<p>This is perhaps the best known database to be found in the
+pattern recognition literature.  Fisher&#8217;s paper is a classic in the field and
+is referenced frequently to this day.  (See Duda &amp; Hart, for example.)  The
+data set contains 3 classes of 50 instances each, where each class refers to a
+type of iris plant.  One class is linearly separable from the other 2; the
+latter are NOT linearly separable from each other.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/scikits.learn.datasets.load_iris.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

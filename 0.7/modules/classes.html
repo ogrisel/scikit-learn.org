@@ -1,0 +1,701 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6. Class reference &mdash; scikits.learn 0.7.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.7.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="top" title="scikits.learn 0.7.1 documentation" href="../index.html" />
+    <link rel="up" title="&lt;no title&gt;" href="../contents.html" />
+    <link rel="next" title="6.1.1. scikits.learn.svm.SVC" href="generated/scikits.learn.svm.SVC.html" />
+    <link rel="prev" title="5.2. Grid Search" href="grid_search.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../install.html">Download</a></li>
+            <li><a href="../support.html">Support</a></li>
+            <li><a href="../user_guide.html">User Guide</a></li>
+            <li><a href="../auto_examples/index.html">Examples</a></li>
+            <li><a href="../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="grid_search.html" title="5.2. Grid Search"
+             accesskey="P">previous</a> |
+          <a href="generated/scikits.learn.svm.SVC.html" title="6.1.1. scikits.learn.svm.SVC"
+             accesskey="N">next</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">6. Class reference</a><ul>
+<li><a class="reference internal" href="#support-vector-machines">6.1. Support Vector Machines</a><ul>
+<li><a class="reference internal" href="#for-sparse-data">6.1.7. For sparse data</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generalized-linear-models">6.2. Generalized Linear Models</a><ul>
+<li><a class="reference internal" href="#id1">6.2.15. For sparse data</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bayesian-regression">6.3. Bayesian Regression</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#naive-bayes">6.4. Naive Bayes</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#nearest-neighbors">6.5. Nearest Neighbors</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#gaussian-mixture-models">6.6. Gaussian Mixture Models</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#hidden-markov-models">6.7. Hidden Markov Models</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#clustering">6.8. Clustering</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#metrics">6.9. Metrics</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#covariance-estimators">6.10. Covariance Estimators</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#signal-decomposition">6.11. Signal Decomposition</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#cross-validation">6.12. Cross Validation</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#grid-search">6.13. Grid Search</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#feature-selection">6.14. Feature Selection</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#feature-extraction">6.15. Feature Extraction</a><ul>
+<li><a class="reference internal" href="#id2">6.15.8. For sparse data</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pipeline">6.16. Pipeline</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="class-reference">
+<h1>6. Class reference<a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="support-vector-machines">
+<h2>6.1. Support Vector Machines<a class="headerlink" href="#support-vector-machines" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.svm.SVC.html#scikits.learn.svm.SVC" title="scikits.learn.svm.SVC"><tt class="xref py py-obj docutils literal"><span class="pre">svm.SVC</span></tt></a>([C,&nbsp;kernel,&nbsp;degree,&nbsp;gamma,&nbsp;coef0,&nbsp;...])</td>
+<td>C-Support Vector Classification.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.svm.LinearSVC.html#scikits.learn.svm.LinearSVC" title="scikits.learn.svm.LinearSVC"><tt class="xref py py-obj docutils literal"><span class="pre">svm.LinearSVC</span></tt></a>([penalty,&nbsp;loss,&nbsp;dual,&nbsp;eps,&nbsp;C,&nbsp;...])</td>
+<td>Linear Support Vector Classification.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.svm.NuSVC.html#scikits.learn.svm.NuSVC" title="scikits.learn.svm.NuSVC"><tt class="xref py py-obj docutils literal"><span class="pre">svm.NuSVC</span></tt></a>([nu,&nbsp;kernel,&nbsp;degree,&nbsp;gamma,&nbsp;...])</td>
+<td>Nu-Support Vector Classification.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.svm.SVR.html#scikits.learn.svm.SVR" title="scikits.learn.svm.SVR"><tt class="xref py py-obj docutils literal"><span class="pre">svm.SVR</span></tt></a>([kernel,&nbsp;degree,&nbsp;gamma,&nbsp;coef0,&nbsp;...])</td>
+<td>Support Vector Regression.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.svm.NuSVR.html#scikits.learn.svm.NuSVR" title="scikits.learn.svm.NuSVR"><tt class="xref py py-obj docutils literal"><span class="pre">svm.NuSVR</span></tt></a>([nu,&nbsp;C,&nbsp;kernel,&nbsp;degree,&nbsp;gamma,&nbsp;...])</td>
+<td>Nu Support Vector Regression.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.svm.OneClassSVM.html#scikits.learn.svm.OneClassSVM" title="scikits.learn.svm.OneClassSVM"><tt class="xref py py-obj docutils literal"><span class="pre">svm.OneClassSVM</span></tt></a>([kernel,&nbsp;degree,&nbsp;gamma,&nbsp;...])</td>
+<td>Unsupervised Outliers Detection.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="for-sparse-data">
+<h3>6.1.7. For sparse data<a class="headerlink" href="#for-sparse-data" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.svm.sparse.SVC.html#scikits.learn.svm.sparse.SVC" title="scikits.learn.svm.sparse.SVC"><tt class="xref py py-obj docutils literal"><span class="pre">svm.sparse.SVC</span></tt></a>([kernel,&nbsp;degree,&nbsp;gamma,&nbsp;...])</td>
+<td>SVC for sparse matrices (csr).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.svm.sparse.NuSVC.html#scikits.learn.svm.sparse.NuSVC" title="scikits.learn.svm.sparse.NuSVC"><tt class="xref py py-obj docutils literal"><span class="pre">svm.sparse.NuSVC</span></tt></a>([nu,&nbsp;kernel,&nbsp;degree,&nbsp;...])</td>
+<td>NuSVC for sparse matrices (csr).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.svm.sparse.SVR.html#scikits.learn.svm.sparse.SVR" title="scikits.learn.svm.sparse.SVR"><tt class="xref py py-obj docutils literal"><span class="pre">svm.sparse.SVR</span></tt></a>([kernel,&nbsp;degree,&nbsp;gamma,&nbsp;...])</td>
+<td>SVR for sparse matrices (csr)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.svm.sparse.NuSVR.html#scikits.learn.svm.sparse.NuSVR" title="scikits.learn.svm.sparse.NuSVR"><tt class="xref py py-obj docutils literal"><span class="pre">svm.sparse.NuSVR</span></tt></a>([nu,&nbsp;C,&nbsp;kernel,&nbsp;degree,&nbsp;...])</td>
+<td>NuSVR for sparse matrices (csr)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.svm.sparse.OneClassSVM.html#scikits.learn.svm.sparse.OneClassSVM" title="scikits.learn.svm.sparse.OneClassSVM"><tt class="xref py py-obj docutils literal"><span class="pre">svm.sparse.OneClassSVM</span></tt></a>([kernel,&nbsp;degree,&nbsp;...])</td>
+<td>NuSVR for sparse matrices (csr)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.svm.sparse.LinearSVC.html#scikits.learn.svm.sparse.LinearSVC" title="scikits.learn.svm.sparse.LinearSVC"><tt class="xref py py-obj docutils literal"><span class="pre">svm.sparse.LinearSVC</span></tt></a>([penalty,&nbsp;loss,&nbsp;dual,&nbsp;...])</td>
+<td>Linear Support Vector Classification, Sparse Version</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="generalized-linear-models">
+<h2>6.2. Generalized Linear Models<a class="headerlink" href="#generalized-linear-models" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.linear_model.LinearRegression.html#scikits.learn.linear_model.LinearRegression" title="scikits.learn.linear_model.LinearRegression"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LinearRegression</span></tt></a>([fit_intercept])</td>
+<td>Ordinary least squares Linear Regression.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.linear_model.Ridge.html#scikits.learn.linear_model.Ridge" title="scikits.learn.linear_model.Ridge"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.Ridge</span></tt></a>([alpha,&nbsp;fit_intercept])</td>
+<td>Ridge regression.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.linear_model.RidgeCV.html#scikits.learn.linear_model.RidgeCV" title="scikits.learn.linear_model.RidgeCV"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.RidgeCV</span></tt></a>([alphas,&nbsp;...])</td>
+<td>Ridge regression with built-in cross-validation.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.linear_model.Lasso.html#scikits.learn.linear_model.Lasso" title="scikits.learn.linear_model.Lasso"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.Lasso</span></tt></a>([alpha,&nbsp;fit_intercept])</td>
+<td>Linear Model trained with L1 prior as regularizer (aka the Lasso)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.linear_model.LassoCV.html#scikits.learn.linear_model.LassoCV" title="scikits.learn.linear_model.LassoCV"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LassoCV</span></tt></a>([eps,&nbsp;n_alphas,&nbsp;...])</td>
+<td>Lasso linear model with iterative fitting along a regularization path</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.linear_model.ElasticNet.html#scikits.learn.linear_model.ElasticNet" title="scikits.learn.linear_model.ElasticNet"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.ElasticNet</span></tt></a>([alpha,&nbsp;rho,&nbsp;...])</td>
+<td>Linear Model trained with L1 and L2 prior as regularizer</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.linear_model.ElasticNetCV.html#scikits.learn.linear_model.ElasticNetCV" title="scikits.learn.linear_model.ElasticNetCV"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.ElasticNetCV</span></tt></a>([rho,&nbsp;eps,&nbsp;...])</td>
+<td>Elastic Net model with iterative fitting along a regularization path</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.linear_model.LARS.html#scikits.learn.linear_model.LARS" title="scikits.learn.linear_model.LARS"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LARS</span></tt></a>([fit_intercept,&nbsp;verbose])</td>
+<td>Least Angle Regression model a.k.a. LAR</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.linear_model.LassoLARS.html#scikits.learn.linear_model.LassoLARS" title="scikits.learn.linear_model.LassoLARS"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LassoLARS</span></tt></a>([alpha,&nbsp;...])</td>
+<td>Lasso model fit with Least Angle Regression a.k.a. LARS</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.linear_model.LogisticRegression.html#scikits.learn.linear_model.LogisticRegression" title="scikits.learn.linear_model.LogisticRegression"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.LogisticRegression</span></tt></a>([penalty,&nbsp;...])</td>
+<td>Logistic Regression.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.linear_model.SGDClassifier.html#scikits.learn.linear_model.SGDClassifier" title="scikits.learn.linear_model.SGDClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.SGDClassifier</span></tt></a>([loss,&nbsp;penalty,&nbsp;...])</td>
+<td>Linear model fitted by minimizing a regularized empirical loss with SGD.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.linear_model.SGDRegressor.html#scikits.learn.linear_model.SGDRegressor" title="scikits.learn.linear_model.SGDRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.SGDRegressor</span></tt></a>([loss,&nbsp;penalty,&nbsp;...])</td>
+<td>Linear model fitted by minimizing a regularized empirical loss with SGD</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.linear_model.lasso_path.html#scikits.learn.linear_model.lasso_path" title="scikits.learn.linear_model.lasso_path"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.lasso_path</span></tt></a>(X,&nbsp;y[,&nbsp;eps,&nbsp;...])</td>
+<td>Compute Lasso path with coordinate descent</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.linear_model.lars_path.html#scikits.learn.linear_model.lars_path" title="scikits.learn.linear_model.lars_path"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.lars_path</span></tt></a>(X,&nbsp;y[,&nbsp;Xy,&nbsp;Gram,&nbsp;...])</td>
+<td>Compute Least Angle Regression and LASSO path</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id1">
+<h3>6.2.15. For sparse data<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.linear_model.sparse.Lasso.html#scikits.learn.linear_model.sparse.Lasso" title="scikits.learn.linear_model.sparse.Lasso"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.sparse.Lasso</span></tt></a>([alpha,&nbsp;fit_intercept])</td>
+<td>Linear Model trained with L1 prior as regularizer</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.linear_model.sparse.ElasticNet.html#scikits.learn.linear_model.sparse.ElasticNet" title="scikits.learn.linear_model.sparse.ElasticNet"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.sparse.ElasticNet</span></tt></a>([alpha,&nbsp;rho,&nbsp;...])</td>
+<td>Linear Model trained with L1 and L2 prior as regularizer</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.linear_model.sparse.SGDClassifier.html#scikits.learn.linear_model.sparse.SGDClassifier" title="scikits.learn.linear_model.sparse.SGDClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.sparse.SGDClassifier</span></tt></a>([loss,&nbsp;...])</td>
+<td>Linear model fitted by minimizing a regularized empirical loss with SGD</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.linear_model.sparse.SGDRegressor.html#scikits.learn.linear_model.sparse.SGDRegressor" title="scikits.learn.linear_model.sparse.SGDRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.sparse.SGDRegressor</span></tt></a>([loss,&nbsp;...])</td>
+<td>Linear model fitted by minimizing a regularized empirical loss with SGD</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="bayesian-regression">
+<h2>6.3. Bayesian Regression<a class="headerlink" href="#bayesian-regression" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.linear_model.BayesianRidge.html#scikits.learn.linear_model.BayesianRidge" title="scikits.learn.linear_model.BayesianRidge"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.BayesianRidge</span></tt></a>([n_iter,&nbsp;eps,&nbsp;...])</td>
+<td>Bayesian ridge regression</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.linear_model.ARDRegression.html#scikits.learn.linear_model.ARDRegression" title="scikits.learn.linear_model.ARDRegression"><tt class="xref py py-obj docutils literal"><span class="pre">linear_model.ARDRegression</span></tt></a>([n_iter,&nbsp;eps,&nbsp;...])</td>
+<td>Bayesian ARD regression.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="naive-bayes">
+<h2>6.4. Naive Bayes<a class="headerlink" href="#naive-bayes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.naive_bayes.GNB.html#scikits.learn.naive_bayes.GNB" title="scikits.learn.naive_bayes.GNB"><tt class="xref py py-obj docutils literal"><span class="pre">naive_bayes.GNB</span></tt></a>()</td>
+<td>Gaussian Naive Bayes (GNB)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="nearest-neighbors">
+<h2>6.5. Nearest Neighbors<a class="headerlink" href="#nearest-neighbors" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.neighbors.NeighborsClassifier.html#scikits.learn.neighbors.NeighborsClassifier" title="scikits.learn.neighbors.NeighborsClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.NeighborsClassifier</span></tt></a>([n_neighbors,&nbsp;...])</td>
+<td>Classifier implementing k-Nearest Neighbor Algorithm.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.neighbors.NeighborsRegressor.html#scikits.learn.neighbors.NeighborsRegressor" title="scikits.learn.neighbors.NeighborsRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.NeighborsRegressor</span></tt></a>([n_neighbors,&nbsp;...])</td>
+<td>Regression based on k-Nearest Neighbor Algorithm.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.ball_tree.BallTree.html#scikits.learn.ball_tree.BallTree" title="scikits.learn.ball_tree.BallTree"><tt class="xref py py-obj docutils literal"><span class="pre">ball_tree.BallTree</span></tt></a></td>
+<td>Ball Tree for fast nearest-neighbor searches :</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.neighbors.kneighbors_graph.html#scikits.learn.neighbors.kneighbors_graph" title="scikits.learn.neighbors.kneighbors_graph"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.kneighbors_graph</span></tt></a>(X,&nbsp;n_neighbors[,&nbsp;...])</td>
+<td>Computes the (weighted) graph of k-Neighbors for points in X</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.ball_tree.knn_brute.html#scikits.learn.ball_tree.knn_brute" title="scikits.learn.ball_tree.knn_brute"><tt class="xref py py-obj docutils literal"><span class="pre">ball_tree.knn_brute</span></tt></a>(x,&nbsp;pt[,&nbsp;k])</td>
+<td>Brute-Force k-nearest neighbor search.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gaussian-mixture-models">
+<h2>6.6. Gaussian Mixture Models<a class="headerlink" href="#gaussian-mixture-models" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.mixture.GMM.html#scikits.learn.mixture.GMM" title="scikits.learn.mixture.GMM"><tt class="xref py py-obj docutils literal"><span class="pre">mixture.GMM</span></tt></a>([n_states,&nbsp;cvtype])</td>
+<td>Gaussian Mixture Model</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="hidden-markov-models">
+<h2>6.7. Hidden Markov Models<a class="headerlink" href="#hidden-markov-models" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.hmm.GaussianHMM.html#scikits.learn.hmm.GaussianHMM" title="scikits.learn.hmm.GaussianHMM"><tt class="xref py py-obj docutils literal"><span class="pre">hmm.GaussianHMM</span></tt></a>([n_states,&nbsp;cvtype,&nbsp;...])</td>
+<td>Hidden Markov Model with Gaussian emissions</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.hmm.MultinomialHMM.html#scikits.learn.hmm.MultinomialHMM" title="scikits.learn.hmm.MultinomialHMM"><tt class="xref py py-obj docutils literal"><span class="pre">hmm.MultinomialHMM</span></tt></a>([n_states,&nbsp;startprob,&nbsp;...])</td>
+<td>Hidden Markov Model with multinomial (discrete) emissions</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.hmm.GMMHMM.html#scikits.learn.hmm.GMMHMM" title="scikits.learn.hmm.GMMHMM"><tt class="xref py py-obj docutils literal"><span class="pre">hmm.GMMHMM</span></tt></a>([n_states,&nbsp;n_mix,&nbsp;startprob,&nbsp;...])</td>
+<td>Hidden Markov Model with Gaussin mixture emissions</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="clustering">
+<h2>6.8. Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.cluster.KMeans.html#scikits.learn.cluster.KMeans" title="scikits.learn.cluster.KMeans"><tt class="xref py py-obj docutils literal"><span class="pre">cluster.KMeans</span></tt></a>([k,&nbsp;init,&nbsp;n_init,&nbsp;max_iter,&nbsp;...])</td>
+<td>K-Means clustering</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.cluster.MeanShift.html#scikits.learn.cluster.MeanShift" title="scikits.learn.cluster.MeanShift"><tt class="xref py py-obj docutils literal"><span class="pre">cluster.MeanShift</span></tt></a>([bandwidth])</td>
+<td>MeanShift clustering</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.cluster.SpectralClustering.html#scikits.learn.cluster.SpectralClustering" title="scikits.learn.cluster.SpectralClustering"><tt class="xref py py-obj docutils literal"><span class="pre">cluster.SpectralClustering</span></tt></a>([k,&nbsp;mode])</td>
+<td>Spectral clustering: apply k-means to a projection of the graph laplacian, finds normalized graph cuts.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.cluster.AffinityPropagation.html#scikits.learn.cluster.AffinityPropagation" title="scikits.learn.cluster.AffinityPropagation"><tt class="xref py py-obj docutils literal"><span class="pre">cluster.AffinityPropagation</span></tt></a>([damping,&nbsp;...])</td>
+<td>Perform Affinity Propagation Clustering of data</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="metrics">
+<h2>6.9. Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.metrics.euclidean_distances.html#scikits.learn.metrics.euclidean_distances" title="scikits.learn.metrics.euclidean_distances"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.euclidean_distances</span></tt></a>(X,&nbsp;Y[,&nbsp;...])</td>
+<td>Considering the rows of X (and Y=X) as vectors, compute the</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">metrics.unique_labels</span></tt></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.metrics.confusion_matrix.html#scikits.learn.metrics.confusion_matrix" title="scikits.learn.metrics.confusion_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.confusion_matrix</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
+<td>Compute confusion matrix to evaluate the accuracy of a classification</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.metrics.roc_curve.html#scikits.learn.metrics.roc_curve" title="scikits.learn.metrics.roc_curve"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.roc_curve</span></tt></a>(y,&nbsp;<a href="#id3"><span class="problematic" id="id4">probas_</span></a>)</td>
+<td>compute Receiver operating characteristic (ROC)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.metrics.auc.html#scikits.learn.metrics.auc" title="scikits.learn.metrics.auc"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.auc</span></tt></a>(x,&nbsp;y)</td>
+<td>Compute Area Under the Curve (AUC) using the trapezoidal rule</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.metrics.precision_score.html#scikits.learn.metrics.precision_score" title="scikits.learn.metrics.precision_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;...])</td>
+<td>Compute the precision</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.metrics.recall_score.html#scikits.learn.metrics.recall_score" title="scikits.learn.metrics.recall_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.recall_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;pos_label])</td>
+<td>Compute the recall</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.metrics.fbeta_score.html#scikits.learn.metrics.fbeta_score" title="scikits.learn.metrics.fbeta_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.fbeta_score</span></tt></a>(y_true,&nbsp;y_pred,&nbsp;beta[,&nbsp;...])</td>
+<td>Compute fbeta score</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.metrics.f1_score.html#scikits.learn.metrics.f1_score" title="scikits.learn.metrics.f1_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.f1_score</span></tt></a>(y_true,&nbsp;y_pred[,&nbsp;pos_label])</td>
+<td>Compute f1 score</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.metrics.precision_recall_fscore_support.html#scikits.learn.metrics.precision_recall_fscore_support" title="scikits.learn.metrics.precision_recall_fscore_support"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_recall_fscore_support</span></tt></a>(...)</td>
+<td>Compute precisions, recalls, f-measures and support for each class</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.metrics.classification_report.html#scikits.learn.metrics.classification_report" title="scikits.learn.metrics.classification_report"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.classification_report</span></tt></a>(y_true,&nbsp;y_pred)</td>
+<td>Build a text report showing the main classification metrics</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.metrics.precision_recall_curve.html#scikits.learn.metrics.precision_recall_curve" title="scikits.learn.metrics.precision_recall_curve"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.precision_recall_curve</span></tt></a>(y_true,&nbsp;...)</td>
+<td>Compute precision-recall pairs for different probability thresholds</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.metrics.r2_score.html#scikits.learn.metrics.r2_score" title="scikits.learn.metrics.r2_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.r2_score</span></tt></a>(y_true,&nbsp;y_pred)</td>
+<td>R^2 (coefficient of determination) regression score function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.metrics.zero_one_score.html#scikits.learn.metrics.zero_one_score" title="scikits.learn.metrics.zero_one_score"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.zero_one_score</span></tt></a>(y_true,&nbsp;y_pred)</td>
+<td>Zero-One classification score</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.metrics.zero_one.html#scikits.learn.metrics.zero_one" title="scikits.learn.metrics.zero_one"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.zero_one</span></tt></a>(y_true,&nbsp;y_pred)</td>
+<td>Zero-One classification loss</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.metrics.mean_square_error.html#scikits.learn.metrics.mean_square_error" title="scikits.learn.metrics.mean_square_error"><tt class="xref py py-obj docutils literal"><span class="pre">metrics.mean_square_error</span></tt></a>(y_true,&nbsp;y_pred)</td>
+<td>Mean square error regression loss</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="covariance-estimators">
+<h2>6.10. Covariance Estimators<a class="headerlink" href="#covariance-estimators" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.covariance.Covariance.html#scikits.learn.covariance.Covariance" title="scikits.learn.covariance.Covariance"><tt class="xref py py-obj docutils literal"><span class="pre">covariance.Covariance</span></tt></a>([store_covariance])</td>
+<td>Basic covariance estimator</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.covariance.ShrunkCovariance.html#scikits.learn.covariance.ShrunkCovariance" title="scikits.learn.covariance.ShrunkCovariance"><tt class="xref py py-obj docutils literal"><span class="pre">covariance.ShrunkCovariance</span></tt></a>([...])</td>
+<td>Covariance estimator with shrinkage</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.covariance.LedoitWolf.html#scikits.learn.covariance.LedoitWolf" title="scikits.learn.covariance.LedoitWolf"><tt class="xref py py-obj docutils literal"><span class="pre">covariance.LedoitWolf</span></tt></a>([store_covariance])</td>
+<td>LedoitWolf Estimator</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.covariance.ledoit_wolf.html#scikits.learn.covariance.ledoit_wolf" title="scikits.learn.covariance.ledoit_wolf"><tt class="xref py py-obj docutils literal"><span class="pre">covariance.ledoit_wolf</span></tt></a>(X[,&nbsp;return_shrinkage])</td>
+<td>Estimates the shrunk Ledoit-Wolf covariance matrix.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="signal-decomposition">
+<h2>6.11. Signal Decomposition<a class="headerlink" href="#signal-decomposition" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.pca.PCA.html#scikits.learn.pca.PCA" title="scikits.learn.pca.PCA"><tt class="xref py py-obj docutils literal"><span class="pre">pca.PCA</span></tt></a>([n_components,&nbsp;copy,&nbsp;whiten])</td>
+<td>Principal component analysis (PCA)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.pca.ProbabilisticPCA.html#scikits.learn.pca.ProbabilisticPCA" title="scikits.learn.pca.ProbabilisticPCA"><tt class="xref py py-obj docutils literal"><span class="pre">pca.ProbabilisticPCA</span></tt></a>([n_components,&nbsp;copy,&nbsp;...])</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.pca.RandomizedPCA.html#scikits.learn.pca.RandomizedPCA" title="scikits.learn.pca.RandomizedPCA"><tt class="xref py py-obj docutils literal"><span class="pre">pca.RandomizedPCA</span></tt></a>(n_components[,&nbsp;copy,&nbsp;...])</td>
+<td>Principal component analysis (PCA) using randomized SVD</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.fastica.FastICA.html#scikits.learn.fastica.FastICA" title="scikits.learn.fastica.FastICA"><tt class="xref py py-obj docutils literal"><span class="pre">fastica.FastICA</span></tt></a>([n_components,&nbsp;algorithm,&nbsp;...])</td>
+<td>FastICA; a fast algorithm for Independent Component Analysis</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.fastica.fastica.html#scikits.learn.fastica.fastica" title="scikits.learn.fastica.fastica"><tt class="xref py py-obj docutils literal"><span class="pre">fastica.fastica</span></tt></a>(X[,&nbsp;n_components,&nbsp;...])</td>
+<td>Perform Fast Independent Component Analysis.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="cross-validation">
+<h2>6.12. Cross Validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.cross_val.LeaveOneOut.html#scikits.learn.cross_val.LeaveOneOut" title="scikits.learn.cross_val.LeaveOneOut"><tt class="xref py py-obj docutils literal"><span class="pre">cross_val.LeaveOneOut</span></tt></a>(n[,&nbsp;indices])</td>
+<td>Leave-One-Out cross validation iterator</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.cross_val.LeavePOut.html#scikits.learn.cross_val.LeavePOut" title="scikits.learn.cross_val.LeavePOut"><tt class="xref py py-obj docutils literal"><span class="pre">cross_val.LeavePOut</span></tt></a>(n,&nbsp;p[,&nbsp;indices])</td>
+<td>Leave-P-Out cross validation iterator</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.cross_val.KFold.html#scikits.learn.cross_val.KFold" title="scikits.learn.cross_val.KFold"><tt class="xref py py-obj docutils literal"><span class="pre">cross_val.KFold</span></tt></a>(n,&nbsp;k[,&nbsp;indices])</td>
+<td>K-Folds cross validation iterator</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.cross_val.StratifiedKFold.html#scikits.learn.cross_val.StratifiedKFold" title="scikits.learn.cross_val.StratifiedKFold"><tt class="xref py py-obj docutils literal"><span class="pre">cross_val.StratifiedKFold</span></tt></a>(y,&nbsp;k[,&nbsp;indices])</td>
+<td>Stratified K-Folds cross validation iterator</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.cross_val.LeaveOneLabelOut.html#scikits.learn.cross_val.LeaveOneLabelOut" title="scikits.learn.cross_val.LeaveOneLabelOut"><tt class="xref py py-obj docutils literal"><span class="pre">cross_val.LeaveOneLabelOut</span></tt></a>(labels[,&nbsp;indices])</td>
+<td>Leave-One-Label_Out cross-validation iterator</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.cross_val.LeavePLabelOut.html#scikits.learn.cross_val.LeavePLabelOut" title="scikits.learn.cross_val.LeavePLabelOut"><tt class="xref py py-obj docutils literal"><span class="pre">cross_val.LeavePLabelOut</span></tt></a>(labels,&nbsp;p[,&nbsp;indices])</td>
+<td>Leave-P-Label_Out cross-validation iterator</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="grid-search">
+<h2>6.13. Grid Search<a class="headerlink" href="#grid-search" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.grid_search.GridSearchCV.html#scikits.learn.grid_search.GridSearchCV" title="scikits.learn.grid_search.GridSearchCV"><tt class="xref py py-obj docutils literal"><span class="pre">grid_search.GridSearchCV</span></tt></a>(estimator,&nbsp;param_grid)</td>
+<td>Grid search on the parameters of a classifier</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="feature-selection">
+<span id="feature-selection-ref"></span><h2>6.14. Feature Selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.feature_selection.rfe.RFE.html#scikits.learn.feature_selection.rfe.RFE" title="scikits.learn.feature_selection.rfe.RFE"><tt class="xref py py-obj docutils literal"><span class="pre">feature_selection.rfe.RFE</span></tt></a>([estimator,&nbsp;...])</td>
+<td>Feature ranking with Recursive feature elimination</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.feature_selection.rfe.RFECV.html#scikits.learn.feature_selection.rfe.RFECV" title="scikits.learn.feature_selection.rfe.RFECV"><tt class="xref py py-obj docutils literal"><span class="pre">feature_selection.rfe.RFECV</span></tt></a>([estimator,&nbsp;...])</td>
+<td>Feature ranking with Recursive feature elimination and cross validation</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="feature-extraction">
+<span id="feature-extraction-ref"></span><h2>6.15. Feature Extraction<a class="headerlink" href="#feature-extraction" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.feature_extraction.image.img_to_graph.html#scikits.learn.feature_extraction.image.img_to_graph" title="scikits.learn.feature_extraction.image.img_to_graph"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.image.img_to_graph</span></tt></a>(img[,&nbsp;...])</td>
+<td>Graph of the pixel-to-pixel gradient connections</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.feature_extraction.text.RomanPreprocessor.html#scikits.learn.feature_extraction.text.RomanPreprocessor" title="scikits.learn.feature_extraction.text.RomanPreprocessor"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.RomanPreprocessor</span></tt></a></td>
+<td>Fast preprocessor suitable for roman languages   ..</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/scikits.learn.feature_extraction.text.WordNGramAnalyzer.html#scikits.learn.feature_extraction.text.WordNGramAnalyzer" title="scikits.learn.feature_extraction.text.WordNGramAnalyzer"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.WordNGramAnalyzer</span></tt></a>([...])</td>
+<td>Simple analyzer: transform a text document into a sequence of word tokens</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.feature_extraction.text.CharNGramAnalyzer.html#scikits.learn.feature_extraction.text.CharNGramAnalyzer" title="scikits.learn.feature_extraction.text.CharNGramAnalyzer"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.CharNGramAnalyzer</span></tt></a>([...])</td>
+<td>Compute character n-grams features of a text document</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.CountVectorizer</span></tt>(...)</td>
+<td>Convert a collection of raw documents to a matrix of token counts</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.feature_extraction.text.TfidfTransformer.html#scikits.learn.feature_extraction.text.TfidfTransformer" title="scikits.learn.feature_extraction.text.TfidfTransformer"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.TfidfTransformer</span></tt></a>([...])</td>
+<td>Transform a count matrix to a TF or TF-IDF representation</td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.Vectorizer</span></tt>(...)</td>
+<td>Convert a collection of raw documents to a matrix</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id2">
+<h3>6.15.8. For sparse data<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.feature_extraction.text.sparse.TfidfTransformer.html#scikits.learn.feature_extraction.text.sparse.TfidfTransformer" title="scikits.learn.feature_extraction.text.sparse.TfidfTransformer"><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.sparse.TfidfTransformer</span></tt></a>([...])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.sparse.CountVectorizer</span></tt>(...)</td>
+<td>Convert a collection of raw documents to a matrix of token counts</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">feature_extraction.text.sparse.Vectorizer</span></tt>(...)</td>
+<td>Convert a collection of raw documents to a sparse matrix</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="pipeline">
+<h2>6.16. Pipeline<a class="headerlink" href="#pipeline" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/scikits.learn.pipeline.Pipeline.html#scikits.learn.pipeline.Pipeline" title="scikits.learn.pipeline.Pipeline"><tt class="xref py py-obj docutils literal"><span class="pre">pipeline.Pipeline</span></tt></a>(steps)</td>
+<td>Pipeline of transforms with a final estimator</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.7.1<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

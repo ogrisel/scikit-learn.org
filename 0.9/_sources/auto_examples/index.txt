@@ -1,0 +1,646 @@
+
+.. raw:: html
+
+    <style type="text/css">
+    .figure {
+        float: left;
+        margin: 10px;
+        width: auto;
+        height: 200px;
+        width: 180px;
+    }
+
+    .figure img {
+        display: inline;
+        }
+
+    .figure .caption {
+        width: 170px;
+        text-align: center !important;
+    }
+    </style>
+
+Examples
+========
+
+.. _examples-index:
+
+
+
+
+General examples
+-------------------
+
+General-purpose and introductory examples for the scikit.
+
+
+
+
+.. figure:: ./images/thumb/plot_classification_probability.png
+   :target: ./plot_classification_probability.html
+
+   :ref:`example_plot_classification_probability.py`
+
+.. figure:: ./images/thumb/plot_confusion_matrix.png
+   :target: ./plot_confusion_matrix.html
+
+   :ref:`example_plot_confusion_matrix.py`
+
+.. figure:: ./images/thumb/plot_digits_classification.png
+   :target: ./plot_digits_classification.html
+
+   :ref:`example_plot_digits_classification.py`
+
+.. figure:: ./images/thumb/plot_feature_selection.png
+   :target: ./plot_feature_selection.html
+
+   :ref:`example_plot_feature_selection.py`
+
+.. figure:: ./images/thumb/plot_lda_qda.png
+   :target: ./plot_lda_qda.html
+
+   :ref:`example_plot_lda_qda.py`
+
+.. figure:: ./images/thumb/plot_lda_vs_qda.png
+   :target: ./plot_lda_vs_qda.html
+
+   :ref:`example_plot_lda_vs_qda.py`
+
+.. figure:: ./images/thumb/plot_permutation_test_for_classification.png
+   :target: ./plot_permutation_test_for_classification.html
+
+   :ref:`example_plot_permutation_test_for_classification.py`
+
+.. figure:: ./images/thumb/plot_pls.png
+   :target: ./plot_pls.html
+
+   :ref:`example_plot_pls.py`
+
+.. figure:: ./images/thumb/plot_precision_recall.png
+   :target: ./plot_precision_recall.html
+
+   :ref:`example_plot_precision_recall.py`
+
+.. figure:: ./images/thumb/plot_rfe_digits.png
+   :target: ./plot_rfe_digits.html
+
+   :ref:`example_plot_rfe_digits.py`
+
+.. figure:: ./images/thumb/plot_rfe_with_cross_validation.png
+   :target: ./plot_rfe_with_cross_validation.html
+
+   :ref:`example_plot_rfe_with_cross_validation.py`
+
+.. figure:: ./images/thumb/plot_roc.png
+   :target: ./plot_roc.html
+
+   :ref:`example_plot_roc.py`
+
+.. figure:: ./images/thumb/plot_roc_crossval.png
+   :target: ./plot_roc_crossval.html
+
+   :ref:`example_plot_roc_crossval.py`
+
+.. figure:: ./images/thumb/plot_train_error_vs_test_error.png
+   :target: ./plot_train_error_vs_test_error.html
+
+   :ref:`example_plot_train_error_vs_test_error.py`
+
+.. figure:: ./images/thumb/document_classification_20newsgroups.png
+   :target: ./document_classification_20newsgroups.html
+
+   :ref:`example_document_classification_20newsgroups.py`
+
+.. figure:: ./images/thumb/document_clustering.png
+   :target: ./document_clustering.html
+
+   :ref:`example_document_clustering.py`
+
+.. figure:: ./images/thumb/feature_selection_pipeline.png
+   :target: ./feature_selection_pipeline.html
+
+   :ref:`example_feature_selection_pipeline.py`
+
+.. figure:: ./images/thumb/gaussian_naive_bayes.png
+   :target: ./gaussian_naive_bayes.html
+
+   :ref:`example_gaussian_naive_bayes.py`
+
+.. figure:: ./images/thumb/grid_search_digits.png
+   :target: ./grid_search_digits.html
+
+   :ref:`example_grid_search_digits.py`
+
+.. figure:: ./images/thumb/grid_search_text_feature_extraction.png
+   :target: ./grid_search_text_feature_extraction.html
+
+   :ref:`example_grid_search_text_feature_extraction.py`
+
+.. figure:: ./images/thumb/mlcomp_sparse_document_classification.png
+   :target: ./mlcomp_sparse_document_classification.html
+
+   :ref:`example_mlcomp_sparse_document_classification.py`
+
+
+.. raw:: html
+
+    <div style="clear: both"></div>
+    
+
+
+
+Examples based on real world datasets
+-------------------------------------
+
+Applications to real world problems with some medium sized datasets or
+interactive user interface.
+
+
+
+
+.. figure:: applications/images/thumb/plot_species_distribution_modeling.png
+   :target: ./applications/plot_species_distribution_modeling.html
+
+   :ref:`example_applications_plot_species_distribution_modeling.py`
+
+.. figure:: applications/images/thumb/face_recognition.png
+   :target: ./applications/face_recognition.html
+
+   :ref:`example_applications_face_recognition.py`
+
+.. figure:: applications/images/thumb/stock_market.png
+   :target: ./applications/stock_market.html
+
+   :ref:`example_applications_stock_market.py`
+
+.. figure:: applications/images/thumb/svm_gui.png
+   :target: ./applications/svm_gui.html
+
+   :ref:`example_applications_svm_gui.py`
+
+.. figure:: applications/images/thumb/topics_extraction_with_nmf.png
+   :target: ./applications/topics_extraction_with_nmf.html
+
+   :ref:`example_applications_topics_extraction_with_nmf.py`
+
+.. figure:: applications/images/thumb/wikipedia_principal_eigenvector.png
+   :target: ./applications/wikipedia_principal_eigenvector.html
+
+   :ref:`example_applications_wikipedia_principal_eigenvector.py`
+
+
+.. raw:: html
+
+    <div style="clear: both"></div>
+    
+
+
+.. _cluster_examples:
+
+Clustering
+----------
+
+Examples concerning the `sklearn.cluster` package.
+
+
+
+
+.. figure:: cluster/images/thumb/plot_adjusted_for_chance_measures.png
+   :target: ./cluster/plot_adjusted_for_chance_measures.html
+
+   :ref:`example_cluster_plot_adjusted_for_chance_measures.py`
+
+.. figure:: cluster/images/thumb/plot_affinity_propagation.png
+   :target: ./cluster/plot_affinity_propagation.html
+
+   :ref:`example_cluster_plot_affinity_propagation.py`
+
+.. figure:: cluster/images/thumb/plot_color_quantization.png
+   :target: ./cluster/plot_color_quantization.html
+
+   :ref:`example_cluster_plot_color_quantization.py`
+
+.. figure:: cluster/images/thumb/plot_dbscan.png
+   :target: ./cluster/plot_dbscan.html
+
+   :ref:`example_cluster_plot_dbscan.py`
+
+.. figure:: cluster/images/thumb/plot_feature_agglomeration_vs_univariate_selection.png
+   :target: ./cluster/plot_feature_agglomeration_vs_univariate_selection.html
+
+   :ref:`example_cluster_plot_feature_agglomeration_vs_univariate_selection.py`
+
+.. figure:: cluster/images/thumb/plot_kmeans_digits.png
+   :target: ./cluster/plot_kmeans_digits.html
+
+   :ref:`example_cluster_plot_kmeans_digits.py`
+
+.. figure:: cluster/images/thumb/plot_lena_segmentation.png
+   :target: ./cluster/plot_lena_segmentation.html
+
+   :ref:`example_cluster_plot_lena_segmentation.py`
+
+.. figure:: cluster/images/thumb/plot_lena_ward_segmentation.png
+   :target: ./cluster/plot_lena_ward_segmentation.html
+
+   :ref:`example_cluster_plot_lena_ward_segmentation.py`
+
+.. figure:: cluster/images/thumb/plot_mean_shift.png
+   :target: ./cluster/plot_mean_shift.html
+
+   :ref:`example_cluster_plot_mean_shift.py`
+
+.. figure:: cluster/images/thumb/plot_mini_batch_kmeans.png
+   :target: ./cluster/plot_mini_batch_kmeans.html
+
+   :ref:`example_cluster_plot_mini_batch_kmeans.py`
+
+.. figure:: cluster/images/thumb/plot_segmentation_toy.png
+   :target: ./cluster/plot_segmentation_toy.html
+
+   :ref:`example_cluster_plot_segmentation_toy.py`
+
+.. figure:: cluster/images/thumb/plot_ward_structured_vs_unstructured.png
+   :target: ./cluster/plot_ward_structured_vs_unstructured.html
+
+   :ref:`example_cluster_plot_ward_structured_vs_unstructured.py`
+
+
+.. raw:: html
+
+    <div style="clear: both"></div>
+    
+
+
+Covariance estimation
+---------------------
+
+Examples concerning the `sklearn.covariance` package.
+
+
+
+.. figure:: covariance/images/thumb/plot_covariance_estimation.png
+   :target: ./covariance/plot_covariance_estimation.html
+
+   :ref:`example_covariance_plot_covariance_estimation.py`
+
+.. figure:: covariance/images/thumb/plot_lw_vs_oas.png
+   :target: ./covariance/plot_lw_vs_oas.html
+
+   :ref:`example_covariance_plot_lw_vs_oas.py`
+
+
+.. raw:: html
+
+    <div style="clear: both"></div>
+    
+
+
+.. _decomposition_examples:
+
+Decomposition 
+-------------
+
+Examples concerning the `sklearn.decomposition` package.
+
+
+
+
+.. figure:: decomposition/images/thumb/plot_faces_decomposition.png
+   :target: ./decomposition/plot_faces_decomposition.html
+
+   :ref:`example_decomposition_plot_faces_decomposition.py`
+
+.. figure:: decomposition/images/thumb/plot_ica_blind_source_separation.png
+   :target: ./decomposition/plot_ica_blind_source_separation.html
+
+   :ref:`example_decomposition_plot_ica_blind_source_separation.py`
+
+.. figure:: decomposition/images/thumb/plot_ica_vs_pca.png
+   :target: ./decomposition/plot_ica_vs_pca.html
+
+   :ref:`example_decomposition_plot_ica_vs_pca.py`
+
+.. figure:: decomposition/images/thumb/plot_image_denoising.png
+   :target: ./decomposition/plot_image_denoising.html
+
+   :ref:`example_decomposition_plot_image_denoising.py`
+
+.. figure:: decomposition/images/thumb/plot_kernel_pca.png
+   :target: ./decomposition/plot_kernel_pca.html
+
+   :ref:`example_decomposition_plot_kernel_pca.py`
+
+.. figure:: decomposition/images/thumb/plot_pca_vs_lda.png
+   :target: ./decomposition/plot_pca_vs_lda.html
+
+   :ref:`example_decomposition_plot_pca_vs_lda.py`
+
+
+.. raw:: html
+
+    <div style="clear: both"></div>
+    
+
+
+.. _gaussian_process_examples:
+
+Gaussian Process for Machine Learning
+-------------------------------------
+
+Examples concerning the `sklearn.gaussian_process` package.
+
+
+
+
+.. figure:: gaussian_process/images/thumb/plot_gp_probabilistic_classification_after_regression.png
+   :target: ./gaussian_process/plot_gp_probabilistic_classification_after_regression.html
+
+   :ref:`example_gaussian_process_plot_gp_probabilistic_classification_after_regression.py`
+
+.. figure:: gaussian_process/images/thumb/plot_gp_regression.png
+   :target: ./gaussian_process/plot_gp_regression.html
+
+   :ref:`example_gaussian_process_plot_gp_regression.py`
+
+.. figure:: gaussian_process/images/thumb/gp_diabetes_dataset.png
+   :target: ./gaussian_process/gp_diabetes_dataset.html
+
+   :ref:`example_gaussian_process_gp_diabetes_dataset.py`
+
+
+.. raw:: html
+
+    <div style="clear: both"></div>
+    
+
+
+
+Generalized Linear Models
+-------------------------
+
+Examples concerning the `sklearn.linear_model` package.
+
+
+
+.. figure:: linear_model/images/thumb/plot_ard.png
+   :target: ./linear_model/plot_ard.html
+
+   :ref:`example_linear_model_plot_ard.py`
+
+.. figure:: linear_model/images/thumb/plot_bayesian_ridge.png
+   :target: ./linear_model/plot_bayesian_ridge.html
+
+   :ref:`example_linear_model_plot_bayesian_ridge.py`
+
+.. figure:: linear_model/images/thumb/plot_lasso_coordinate_descent_path.png
+   :target: ./linear_model/plot_lasso_coordinate_descent_path.html
+
+   :ref:`example_linear_model_plot_lasso_coordinate_descent_path.py`
+
+.. figure:: linear_model/images/thumb/plot_lasso_lars.png
+   :target: ./linear_model/plot_lasso_lars.html
+
+   :ref:`example_linear_model_plot_lasso_lars.py`
+
+.. figure:: linear_model/images/thumb/plot_lasso_model_selection.png
+   :target: ./linear_model/plot_lasso_model_selection.html
+
+   :ref:`example_linear_model_plot_lasso_model_selection.py`
+
+.. figure:: linear_model/images/thumb/plot_logistic_path.png
+   :target: ./linear_model/plot_logistic_path.html
+
+   :ref:`example_linear_model_plot_logistic_path.py`
+
+.. figure:: linear_model/images/thumb/plot_ols.png
+   :target: ./linear_model/plot_ols.html
+
+   :ref:`example_linear_model_plot_ols.py`
+
+.. figure:: linear_model/images/thumb/plot_omp.png
+   :target: ./linear_model/plot_omp.html
+
+   :ref:`example_linear_model_plot_omp.py`
+
+.. figure:: linear_model/images/thumb/plot_polynomial_interpolation.png
+   :target: ./linear_model/plot_polynomial_interpolation.html
+
+   :ref:`example_linear_model_plot_polynomial_interpolation.py`
+
+.. figure:: linear_model/images/thumb/plot_ridge_path.png
+   :target: ./linear_model/plot_ridge_path.html
+
+   :ref:`example_linear_model_plot_ridge_path.py`
+
+.. figure:: linear_model/images/thumb/plot_sgd_iris.png
+   :target: ./linear_model/plot_sgd_iris.html
+
+   :ref:`example_linear_model_plot_sgd_iris.py`
+
+.. figure:: linear_model/images/thumb/plot_sgd_loss_functions.png
+   :target: ./linear_model/plot_sgd_loss_functions.html
+
+   :ref:`example_linear_model_plot_sgd_loss_functions.py`
+
+.. figure:: linear_model/images/thumb/plot_sgd_ols.png
+   :target: ./linear_model/plot_sgd_ols.html
+
+   :ref:`example_linear_model_plot_sgd_ols.py`
+
+.. figure:: linear_model/images/thumb/plot_sgd_penalties.png
+   :target: ./linear_model/plot_sgd_penalties.html
+
+   :ref:`example_linear_model_plot_sgd_penalties.py`
+
+.. figure:: linear_model/images/thumb/plot_sgd_separating_hyperplane.png
+   :target: ./linear_model/plot_sgd_separating_hyperplane.html
+
+   :ref:`example_linear_model_plot_sgd_separating_hyperplane.py`
+
+.. figure:: linear_model/images/thumb/plot_sgd_weighted_classes.png
+   :target: ./linear_model/plot_sgd_weighted_classes.html
+
+   :ref:`example_linear_model_plot_sgd_weighted_classes.py`
+
+.. figure:: linear_model/images/thumb/plot_sgd_weighted_samples.png
+   :target: ./linear_model/plot_sgd_weighted_samples.html
+
+   :ref:`example_linear_model_plot_sgd_weighted_samples.py`
+
+.. figure:: linear_model/images/thumb/lasso_and_elasticnet.png
+   :target: ./linear_model/lasso_and_elasticnet.html
+
+   :ref:`example_linear_model_lasso_and_elasticnet.py`
+
+.. figure:: linear_model/images/thumb/lasso_dense_vs_sparse_data.png
+   :target: ./linear_model/lasso_dense_vs_sparse_data.html
+
+   :ref:`example_linear_model_lasso_dense_vs_sparse_data.py`
+
+.. figure:: linear_model/images/thumb/logistic_l1_l2_sparsity.png
+   :target: ./linear_model/logistic_l1_l2_sparsity.html
+
+   :ref:`example_linear_model_logistic_l1_l2_sparsity.py`
+
+
+.. raw:: html
+
+    <div style="clear: both"></div>
+    
+
+
+.. _manifold_examples:
+
+Manifold learning
+-----------------------
+
+Examples concerning the `sklearn.manifold` package.
+
+
+
+
+.. figure:: manifold/images/thumb/plot_compare_methods.png
+   :target: ./manifold/plot_compare_methods.html
+
+   :ref:`example_manifold_plot_compare_methods.py`
+
+.. figure:: manifold/images/thumb/plot_lle_digits.png
+   :target: ./manifold/plot_lle_digits.html
+
+   :ref:`example_manifold_plot_lle_digits.py`
+
+.. figure:: manifold/images/thumb/plot_swissroll.png
+   :target: ./manifold/plot_swissroll.html
+
+   :ref:`example_manifold_plot_swissroll.py`
+
+
+.. raw:: html
+
+    <div style="clear: both"></div>
+    
+
+
+
+Gaussian Mixture Models
+-----------------------
+
+Examples concerning the `sklearn.mixture` package.
+
+
+
+.. figure:: mixture/images/thumb/plot_gmm.png
+   :target: ./mixture/plot_gmm.html
+
+   :ref:`example_mixture_plot_gmm.py`
+
+.. figure:: mixture/images/thumb/plot_gmm_classifier.png
+   :target: ./mixture/plot_gmm_classifier.html
+
+   :ref:`example_mixture_plot_gmm_classifier.py`
+
+.. figure:: mixture/images/thumb/plot_gmm_pdf.png
+   :target: ./mixture/plot_gmm_pdf.html
+
+   :ref:`example_mixture_plot_gmm_pdf.py`
+
+.. figure:: mixture/images/thumb/plot_gmm_sin.png
+   :target: ./mixture/plot_gmm_sin.html
+
+   :ref:`example_mixture_plot_gmm_sin.py`
+
+
+.. raw:: html
+
+    <div style="clear: both"></div>
+    
+
+
+.. _neighbors_examples:
+
+Nearest Neighbors
+-----------------------
+
+Examples concerning the `sklearn.neighbors` package.
+
+
+
+
+.. figure:: neighbors/images/thumb/plot_classification.png
+   :target: ./neighbors/plot_classification.html
+
+   :ref:`example_neighbors_plot_classification.py`
+
+.. figure:: neighbors/images/thumb/plot_regression.png
+   :target: ./neighbors/plot_regression.html
+
+   :ref:`example_neighbors_plot_regression.py`
+
+
+.. raw:: html
+
+    <div style="clear: both"></div>
+    
+
+
+.. _svm_examples:
+
+Support Vector Machines
+-----------------------
+
+Examples concerning the `sklearn.svm` package.
+
+
+
+
+.. figure:: svm/images/thumb/plot_custom_kernel.png
+   :target: ./svm/plot_custom_kernel.html
+
+   :ref:`example_svm_plot_custom_kernel.py`
+
+.. figure:: svm/images/thumb/plot_iris.png
+   :target: ./svm/plot_iris.html
+
+   :ref:`example_svm_plot_iris.py`
+
+.. figure:: svm/images/thumb/plot_oneclass.png
+   :target: ./svm/plot_oneclass.html
+
+   :ref:`example_svm_plot_oneclass.py`
+
+.. figure:: svm/images/thumb/plot_separating_hyperplane.png
+   :target: ./svm/plot_separating_hyperplane.html
+
+   :ref:`example_svm_plot_separating_hyperplane.py`
+
+.. figure:: svm/images/thumb/plot_separating_hyperplane_unbalanced.png
+   :target: ./svm/plot_separating_hyperplane_unbalanced.html
+
+   :ref:`example_svm_plot_separating_hyperplane_unbalanced.py`
+
+.. figure:: svm/images/thumb/plot_svm_anova.png
+   :target: ./svm/plot_svm_anova.html
+
+   :ref:`example_svm_plot_svm_anova.py`
+
+.. figure:: svm/images/thumb/plot_svm_nonlinear.png
+   :target: ./svm/plot_svm_nonlinear.html
+
+   :ref:`example_svm_plot_svm_nonlinear.py`
+
+.. figure:: svm/images/thumb/plot_svm_regression.png
+   :target: ./svm/plot_svm_regression.html
+
+   :ref:`example_svm_plot_svm_regression.py`
+
+.. figure:: svm/images/thumb/plot_weighted_samples.png
+   :target: ./svm/plot_weighted_samples.html
+
+   :ref:`example_svm_plot_weighted_samples.py`
+
+
+.. raw:: html
+
+    <div style="clear: both"></div>
+    

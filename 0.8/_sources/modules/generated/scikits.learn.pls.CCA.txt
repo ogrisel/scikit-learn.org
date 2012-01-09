@@ -1,0 +1,11 @@
+scikits.learn.pls.CCA
+=====================
+
+.. currentmodule:: scikits.learn.pls
+
+.. autoclass:: CCA
+
+   
+   .. automethod:: __init__
+   
+

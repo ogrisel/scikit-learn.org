@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>scikits.learn.linear_model.Lasso &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../../index.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">scikits.learn.linear_model.Lasso</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-linear-model-lasso">
+<h1>scikits.learn.linear_model.Lasso<a class="headerlink" href="#scikits-learn-linear-model-lasso" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.linear_model.Lasso">
+<em class="property">class </em><tt class="descclassname">scikits.learn.linear_model.</tt><tt class="descname">Lasso</tt><big>(</big><em>alpha=1.0</em>, <em>fit_intercept=True</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.Lasso" title="Permalink to this definition">¶</a></dt>
+<dd><p>Linear Model trained with L1 prior as regularizer (aka the Lasso)</p>
+<p>Technically the Lasso model is optimizing the same objective function as
+the Elastic Net with rho=1.0 (no L2 penalty).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>alpha</strong> : float, optional</p>
+<blockquote>
+<p>Constant that multiplies the L1 term. Defaults to 1.0</p>
+</blockquote>
+<p><strong>fit_intercept</strong> : boolean</p>
+<blockquote class="last">
+<p>whether to calculate the intercept for this model. If set
+to false, no intercept will be used in calculations
+(e.g. data is expected to be already centered).</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="scikits.learn.linear_model.LassoLARS.html#scikits.learn.linear_model.LassoLARS" title="scikits.learn.linear_model.LassoLARS"><tt class="xref py py-obj docutils literal"><span class="pre">LassoLARS</span></tt></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>The algorithm used to fit the model is coordinate descent.</p>
+<p>To avoid unnecessary memory duplication the X argument of the fit method
+should be directly passed as a fortran contiguous numpy array.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="go">Lasso(alpha=0.1, fit_intercept=True)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span>
+<span class="go">[ 0.85  0.  ]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">clf</span><span class="o">.</span><span class="n">intercept_</span>
+<span class="go">0.15</span>
+</pre></div>
+</div>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="32%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><cite>coef_</cite></td>
+<td>array, shape = [n_features]</td>
+<td>parameter vector (w in the fomulation formula)</td>
+</tr>
+<tr><td><cite>intercept_</cite></td>
+<td>float</td>
+<td>independent term in decision function.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="scikits.learn.linear_model.Lasso.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>alpha=1.0</em>, <em>fit_intercept=True</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.Lasso.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.linear_model.Lasso.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>precompute='auto'</em>, <em>Xy=None</em>, <em>max_iter=1000</em>, <em>tol=0.0001</em>, <em>coef_init=None</em>, <em>**params</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.Lasso.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit Elastic Net model with coordinate descent</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: ndarray, (n_samples, n_features)</strong> :</p>
+<blockquote>
+<p>Data</p>
+</blockquote>
+<p><strong>y: ndarray, (n_samples)</strong> :</p>
+<blockquote>
+<p>Target</p>
+</blockquote>
+<p><strong>precompute</strong> : True | False | &#8216;auto&#8217; | array-like</p>
+<blockquote>
+<p>Whether to use a precomputed Gram matrix to speed up
+calculations. If set to &#8216;auto&#8217; let us decide. The Gram
+matrix can also be passed as argument.</p>
+</blockquote>
+<p><strong>Xy</strong> : array-like, optional</p>
+<blockquote>
+<p>Xy = np.dot(X.T, y) that can be precomputed. It is useful
+only when the Gram matrix is precomuted.</p>
+</blockquote>
+<p><strong>max_iter: int, optional</strong> :</p>
+<blockquote>
+<p>The maximum number of iterations</p>
+</blockquote>
+<p><strong>tol: float, optional</strong> :</p>
+<blockquote class="last">
+<p>The tolerance for the optimization: if the updates are
+smaller than &#8216;tol&#8217;, the optimization code checks the
+dual gap for optimality and continues until it is smaller
+than tol.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Coordinate descent is an algorithm that considers each column of
+data at a time hence it will automatically convert the X input
+as a fortran contiguous numpy array if necessary.</p>
+<p>To avoid memory re-allocation it is advised to allocate the
+initial data in memory directly using that format.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.linear_model.Lasso.predict">
+<tt class="descname">predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.Lasso.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict using the linear model</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : numpy array of shape [n_samples, n_features]</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>C</strong> : array, shape = [n_samples]</p>
+<blockquote class="last">
+<p>Returns predicted values.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.linear_model.Lasso.score">
+<tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.Lasso.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the coefficient of determination of the prediction</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<p>Training set.</p>
+</blockquote>
+<p><strong>y</strong> : array-like, shape = [n_samples]</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>z</strong> : float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/scikits.learn.linear_model.Lasso.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

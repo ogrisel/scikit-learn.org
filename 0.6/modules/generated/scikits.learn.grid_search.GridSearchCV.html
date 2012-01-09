@@ -1,0 +1,238 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6.12.1. scikits.learn.grid_search.GridSearchCV &mdash; scikits.learn v0.6.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.6.0 documentation" href="../../index.html" />
+    <link rel="up" title="6. Class reference" href="../classes.html" />
+    <link rel="next" title="6.13.1. scikits.learn.feature_selection.rfe.RFE" href="scikits.learn.feature_selection.rfe.RFE.html" />
+    <link rel="prev" title="6.11.6. scikits.learn.cross_val.LeavePLabelOut" href="scikits.learn.cross_val.LeavePLabelOut.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="scikits.learn.cross_val.LeavePLabelOut.html" title="6.11.6. scikits.learn.cross_val.LeavePLabelOut"
+             accesskey="P">previous</a> |
+          <a href="scikits.learn.feature_selection.rfe.RFE.html" title="6.13.1. scikits.learn.feature_selection.rfe.RFE"
+             accesskey="N">next</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">6.12.1. scikits.learn.grid_search.GridSearchCV</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-grid-search-gridsearchcv">
+<h1>6.12.1. scikits.learn.grid_search.GridSearchCV<a class="headerlink" href="#scikits-learn-grid-search-gridsearchcv" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.grid_search.GridSearchCV">
+<em class="property">class </em><tt class="descclassname">scikits.learn.grid_search.</tt><tt class="descname">GridSearchCV</tt><big>(</big><em>estimator</em>, <em>param_grid</em>, <em>loss_func=None</em>, <em>score_func=None</em>, <em>fit_params={}</em>, <em>n_jobs=1</em>, <em>iid=True</em><big>)</big><a class="headerlink" href="#scikits.learn.grid_search.GridSearchCV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Grid search on the parameters of a classifier</p>
+<p>Important members are fit, predict.</p>
+<p>GridSearchCV implements a &#8220;fit&#8221; method and a &#8220;predict&#8221; method like
+any classifier except that the parameters of the classifier
+used to predict is optimized by cross-validation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>estimator: object type that implements the &#8220;fit&#8221; and &#8220;predict&#8221; methods</strong> :</p>
+<blockquote>
+<p>A object of that type is instanciated for each grid point</p>
+</blockquote>
+<p><strong>param_grid: dict</strong> :</p>
+<blockquote>
+<p>a dictionary of parameters that are used the generate the grid</p>
+</blockquote>
+<p><strong>loss_func: callable, optional</strong> :</p>
+<blockquote>
+<p>function that takes 2 arguments and compares them in
+order to evaluate the performance of prediciton (small is good)
+if None is passed, the score of the estimator is maximized</p>
+</blockquote>
+<p><strong>score_func: callable, optional</strong> :</p>
+<blockquote>
+<p>function that takes 2 arguments and compares them in
+order to evaluate the performance of prediciton (big is good)
+if None is passed, the score of the estimator is maximized</p>
+</blockquote>
+<p><strong>fit_params</strong> : dict, optional</p>
+<blockquote>
+<p>parameters to pass to the fit method</p>
+</blockquote>
+<p><strong>n_jobs: int, optional</strong> :</p>
+<blockquote>
+<p>number of jobs to run in parallel (default 1)</p>
+</blockquote>
+<p><strong>iid: boolean, optional</strong> :</p>
+<blockquote class="last">
+<p>If True, the data is assumed to be identically distributed across
+the folds, and the loss minimized is the total loss per sample,
+and not the mean loss across the folds.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.cross_val</span> <span class="kn">import</span> <span class="n">LeaveOneOut</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.svm</span> <span class="kn">import</span> <span class="n">SVR</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.grid_search</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;kernel&#39;</span><span class="p">:(</span><span class="s">&#39;linear&#39;</span><span class="p">,</span> <span class="s">&#39;rbf&#39;</span><span class="p">),</span> <span class="s">&#39;C&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">svr</span> <span class="o">=</span> <span class="n">SVR</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">svr</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="go">array([ 1.13101459])</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="13%" />
+<col width="62%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>fit(X, Y)</td>
+<td>self</td>
+<td>Fit the model</td>
+</tr>
+<tr><td>predict(X)</td>
+<td>array</td>
+<td>Predict using the model.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="scikits.learn.grid_search.GridSearchCV.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>estimator</em>, <em>param_grid</em>, <em>loss_func=None</em>, <em>score_func=None</em>, <em>fit_params={}</em>, <em>n_jobs=1</em>, <em>iid=True</em><big>)</big><a class="headerlink" href="#scikits.learn.grid_search.GridSearchCV.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.grid_search.GridSearchCV.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y=None</em>, <em>refit=True</em>, <em>cv=None</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#scikits.learn.grid_search.GridSearchCV.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run fit with all sets of parameters</p>
+<p>Returns the best classifier</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array, [n_samples, n_features]</strong> :</p>
+<blockquote>
+<p>Training vector, where n_samples in the number of samples and
+n_features is the number of features.</p>
+</blockquote>
+<p><strong>y: array, [n_samples] or None</strong> :</p>
+<blockquote>
+<p>Target vector relative to X, None for unsupervised problems</p>
+</blockquote>
+<p><strong>cv</strong> : crossvalidation generator</p>
+<blockquote>
+<p>see scikits.learn.cross_val module</p>
+</blockquote>
+<p><strong>refit: boolean</strong> :</p>
+<blockquote class="last">
+<p>refit the best estimator with the entire dataset</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.6.0<p>
+        &copy; 2010, scikits.learn developers (BSD Lincense).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

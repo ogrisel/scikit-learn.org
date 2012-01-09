@@ -1,0 +1,7 @@
+scikits.learn.metrics.recall_score
+==================================
+
+.. currentmodule:: scikits.learn.metrics
+
+.. autofunction:: recall_score
+

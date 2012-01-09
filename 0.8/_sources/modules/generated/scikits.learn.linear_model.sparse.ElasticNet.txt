@@ -1,0 +1,11 @@
+scikits.learn.linear_model.sparse.ElasticNet
+============================================
+
+.. currentmodule:: scikits.learn.linear_model.sparse
+
+.. autoclass:: ElasticNet
+
+   
+   .. automethod:: __init__
+   
+

@@ -1,0 +1,27 @@
+
+
+.. _example_gaussian_process_plot_gp_regression.py:
+
+
+=========================================================
+Gaussian Processes regression: basic introductory example
+=========================================================
+
+A simple one-dimensional regression exercise with a cubic correlation
+model whose parameters are estimated using the maximum likelihood principle.
+
+The figure illustrates the interpolating property of the Gaussian Process
+model as well as its probabilistic nature in the form of a pointwise 95%
+confidence interval.
+
+
+
+.. image:: images/plot_gp_regression_1.png
+    :align: center
+
+
+**Python source code:** :download:`plot_gp_regression.py <plot_gp_regression.py>`
+
+.. literalinclude:: plot_gp_regression.py
+    :lines: 16-
+    

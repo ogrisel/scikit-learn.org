@@ -1,0 +1,11 @@
+scikits.learn.hmm.GaussianHMM
+=============================
+
+.. currentmodule:: scikits.learn.hmm
+
+.. autoclass:: GaussianHMM
+
+   
+   .. automethod:: __init__
+   
+

@@ -1,0 +1,11 @@
+scikits.learn.feature_extraction.text.Vectorizer
+================================================
+
+.. currentmodule:: scikits.learn.feature_extraction.text
+
+.. autoclass:: Vectorizer
+
+   
+   .. automethod:: __init__
+   
+

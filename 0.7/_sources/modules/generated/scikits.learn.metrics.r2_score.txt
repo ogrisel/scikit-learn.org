@@ -1,0 +1,7 @@
+scikits.learn.metrics.r2_score
+==============================
+
+.. currentmodule:: scikits.learn.metrics
+
+.. autofunction:: r2_score
+

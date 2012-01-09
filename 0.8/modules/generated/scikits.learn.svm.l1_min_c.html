@@ -1,0 +1,184 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>scikits.learn.svm.l1_min_c &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../../index.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">scikits.learn.svm.l1_min_c</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-svm-l1-min-c">
+<h1>scikits.learn.svm.l1_min_c<a class="headerlink" href="#scikits-learn-svm-l1-min-c" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="scikits.learn.svm.l1_min_c">
+<tt class="descclassname">scikits.learn.svm.</tt><tt class="descname">l1_min_c</tt><big>(</big><em>X</em>, <em>y</em>, <em>loss='l2'</em>, <em>fit_intercept=True</em>, <em>intercept_scaling=1.0</em><big>)</big><a class="headerlink" href="#scikits.learn.svm.l1_min_c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the maximum value for C that yields a model with coefficients
+and intercept set to zero for l1 penalized classifiers,
+such as LinearSVC with penalty=&#8217;l1&#8217; and linear_model.LogisticRegression
+with penalty=&#8217;l1&#8217;.</p>
+<p>This value is valid if class_weight parameter in fit() is not set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like or sparse matrix, shape = [n_samples, n_features]</p>
+<blockquote>
+<p>Training vector, where n_samples in the number of samples and
+n_features is the number of features.</p>
+</blockquote>
+<p><strong>y</strong> : array, shape = [n_samples]</p>
+<blockquote>
+<p>Target vector relative to X</p>
+</blockquote>
+<p><strong>loss</strong> : {&#8216;l2&#8217;, &#8216;log&#8217;}, default to &#8216;l2&#8217;</p>
+<blockquote>
+<p>Specifies the loss function.
+With &#8216;l2&#8217; it is the l2 loss (a.k.a. squared hinge loss).
+With &#8216;log&#8217; it is the loss of logistic regression models.</p>
+</blockquote>
+<p><strong>fit_intercept</strong> : bool, default: True</p>
+<blockquote>
+<p>Specifies if the intercept should be fitted by the model.
+It must match the fit() method paramenter.</p>
+</blockquote>
+<p><strong>intercept_scaling</strong> : float, default: 1</p>
+<blockquote>
+<p>when fit_intercept is True, instance vector x becomes
+[x, intercept_scaling],
+i.e. a &#8220;synthetic&#8221; feature with constant value equals to
+intercept_scaling is appended to the instance vector.
+It must match the fit() method parameter.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>l1_min_c: float</strong> :</p>
+<blockquote class="last">
+<p>minimum value for C</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/scikits.learn.svm.l1_min_c.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

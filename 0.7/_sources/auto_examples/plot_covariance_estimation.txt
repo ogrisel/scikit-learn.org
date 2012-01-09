@@ -1,0 +1,24 @@
+
+
+.. _example_plot_covariance_estimation.py:
+
+
+===========================================
+Ledoit-Wolf vs Covariance simple estimation
+===========================================
+
+Covariance estimation can be regularized using a shrinkage parameter.
+Ledoit-Wolf estimates automatically this parameter. In this example,
+we compute the likelihood of unseen data for different values of
+the shrinkage parameter. The Ledoit-Wolf estimate reaches an
+almost optimal value.
+
+
+.. image:: images/plot_covariance_estimation.png
+    :align: center
+
+**Python source code:** :download:`plot_covariance_estimation.py <plot_covariance_estimation.py>`
+
+.. literalinclude:: plot_covariance_estimation.py
+    :lines: 12-
+    

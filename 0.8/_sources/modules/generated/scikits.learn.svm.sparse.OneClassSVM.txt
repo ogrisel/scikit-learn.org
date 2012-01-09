@@ -1,0 +1,11 @@
+scikits.learn.svm.sparse.OneClassSVM
+====================================
+
+.. currentmodule:: scikits.learn.svm.sparse
+
+.. autoclass:: OneClassSVM
+
+   
+   .. automethod:: __init__
+   
+

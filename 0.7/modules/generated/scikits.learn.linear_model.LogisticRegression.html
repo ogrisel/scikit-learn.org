@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6.2.10. scikits.learn.linear_model.LogisticRegression &mdash; scikits.learn 0.7.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.7.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn 0.7.1 documentation" href="../../index.html" />
+    <link rel="up" title="6. Class reference" href="../classes.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">6.2.10. scikits.learn.linear_model.LogisticRegression</a><ul>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-linear-model-logisticregression">
+<h1>6.2.10. scikits.learn.linear_model.LogisticRegression<a class="headerlink" href="#scikits-learn-linear-model-logisticregression" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.linear_model.LogisticRegression">
+<em class="property">class </em><tt class="descclassname">scikits.learn.linear_model.</tt><tt class="descname">LogisticRegression</tt><big>(</big><em>penalty='l2'</em>, <em>dual=False</em>, <em>eps=0.0001</em>, <em>C=1.0</em>, <em>fit_intercept=True</em>, <em>intercept_scaling=1</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.LogisticRegression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logistic Regression.</p>
+<p>Implements L1 and L2 regularized logistic regression.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>penalty</strong> : string, &#8216;l1&#8217; or &#8216;l2&#8217;</p>
+<blockquote>
+<div><p>Used to specify the norm used in the penalization</p>
+</div></blockquote>
+<p><strong>dual</strong> : boolean</p>
+<blockquote>
+<div><p>Dual or primal formulation. Dual formulation is only
+implemented for l2 penalty.</p>
+</div></blockquote>
+<p><strong>C</strong> : float</p>
+<blockquote>
+<div><p>Specifies the strength of the regularization. The smaller it is
+the bigger in the regularization.</p>
+</div></blockquote>
+<p><strong>fit_intercept</strong> : bool, default: True</p>
+<blockquote>
+<div><p>Specifies if a constant (a.k.a. bias or intercept) should be
+added the decision function</p>
+</div></blockquote>
+<p><strong>intercept_scaling</strong> : float, default: 1</p>
+<blockquote class="last">
+<div><p>when self.fit_intercept is True, instance vector x becomes
+[x, self.intercept_scaling],
+i.e. a &#8220;synthetic&#8221; feature with constant value equals to
+intercept_scaling is appended to the instance vector.
+The intercept becomes intercept_scaling * synthetic feature weight
+Note! the synthetic feature weight is subject to l1/l2 regularization
+as all other features.
+To lessen the effect of regularization on synthetic feature weight
+(and therefore on the intercept) intercept_scaling has to be increased</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">LinearSVC</span></tt></p>
+</div>
+<p class="rubric">Notes</p>
+<p>The underlying C implementation uses a random number generator to
+select features when fitting the model. It is thus not uncommon,
+to have slightly different results for the same input data. If
+that happens, try with a smaller eps parameter.</p>
+<p class="rubric">References</p>
+<p>LIBLINEAR &#8211; A Library for Large Linear Classification
+<a class="reference external" href="http://www.csie.ntu.edu.tw/~cjlin/liblinear/">http://www.csie.ntu.edu.tw/~cjlin/liblinear/</a></p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="36%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><cite>coef_</cite></td>
+<td>array, shape = [n_classes-1, n_features]</td>
+<td>Coefficient of the features in the decision function.</td>
+</tr>
+<tr class="row-even"><td><cite>intercept_</cite></td>
+<td>array, shape = [n_classes-1]</td>
+<td>intercept (a.k.a. bias) added to the decision function.
+It is available only when parameter intercept is set to True</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#scikits.learn.linear_model.LogisticRegression.decision_function" title="scikits.learn.linear_model.LogisticRegression.decision_function"><tt class="xref py py-obj docutils literal"><span class="pre">decision_function</span></tt></a>(X)</td>
+<td>Return the decision function of X according to the trained</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#scikits.learn.linear_model.LogisticRegression.fit" title="scikits.learn.linear_model.LogisticRegression.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;class_weight])</td>
+<td>Fit the model according to the given training data and parameters.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#scikits.learn.linear_model.LogisticRegression.predict" title="scikits.learn.linear_model.LogisticRegression.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
+<td>Predict target values of X according to the fitted model.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#scikits.learn.linear_model.LogisticRegression.predict_log_proba" title="scikits.learn.linear_model.LogisticRegression.predict_log_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_log_proba</span></tt></a>(X)</td>
+<td>Log of Probability estimates.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#scikits.learn.linear_model.LogisticRegression.predict_proba" title="scikits.learn.linear_model.LogisticRegression.predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt></a>(X)</td>
+<td>Probability estimates.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#scikits.learn.linear_model.LogisticRegression.score" title="scikits.learn.linear_model.LogisticRegression.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
+<td>Returns the mean error rate on the given test data and labels.</td>
+</tr>
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt>(X[,&nbsp;threshold])</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="scikits.learn.linear_model.LogisticRegression.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>penalty='l2'</em>, <em>dual=False</em>, <em>eps=0.0001</em>, <em>C=1.0</em>, <em>fit_intercept=True</em>, <em>intercept_scaling=1</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.LogisticRegression.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.linear_model.LogisticRegression.decision_function">
+<tt class="descname">decision_function</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.LogisticRegression.decision_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the decision function of X according to the trained
+model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>T</strong> : array-like, shape = [n_samples, n_class]</p>
+<blockquote class="last">
+<div><p>Returns the decision function of the sample for each class
+in the model.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.linear_model.LogisticRegression.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>class_weight={}</em>, <em>**params</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.LogisticRegression.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the model according to the given training data and
+parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Training vector, where n_samples in the number of samples and
+n_features is the number of features.</p>
+</div></blockquote>
+<p><strong>y</strong> : array-like, shape = [n_samples]</p>
+<blockquote>
+<div><p>Target vector relative to X</p>
+</div></blockquote>
+<p><strong>class_weight</strong> : dict , {class_label</p>
+<blockquote>
+<div><p>Weights associated with classes. If not given, all classes
+are supposed to have weight one.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>self</strong> : object</p>
+<blockquote class="last">
+<div><p>Returns self.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.linear_model.LogisticRegression.predict">
+<tt class="descname">predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.LogisticRegression.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict target values of X according to the fitted model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><strong>X</strong> : array-like, shape = [n_samples, n_features]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><strong>C</strong> : array, shape = [n_samples]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.linear_model.LogisticRegression.predict_log_proba">
+<tt class="descname">predict_log_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.LogisticRegression.predict_log_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log of Probability estimates.</p>
+<p>The returned estimates for all classes are ordered by the
+label of classes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_classes]</p>
+<blockquote class="last">
+<div><p>Returns the log-probabilities of the sample for each class in
+the model, where classes are ordered by arithmetical
+order.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.linear_model.LogisticRegression.predict_proba">
+<tt class="descname">predict_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.LogisticRegression.predict_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Probability estimates.</p>
+<p>The returned estimates for all classes are ordered by the
+label of classes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>T</strong> : array-like, shape = [n_samples, n_classes]</p>
+<blockquote class="last">
+<div><p>Returns the probability of the sample for each class in
+the model, where classes are ordered by arithmetical
+order.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.linear_model.LogisticRegression.score">
+<tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.LogisticRegression.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the mean error rate on the given test data and labels.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Training set.</p>
+</div></blockquote>
+<p><strong>y</strong> : array-like, shape = [n_samples]</p>
+<blockquote>
+<div><p>Labels for X.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>z</strong> : float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.7.1<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

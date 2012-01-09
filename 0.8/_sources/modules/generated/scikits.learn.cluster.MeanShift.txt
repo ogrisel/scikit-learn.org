@@ -1,0 +1,11 @@
+scikits.learn.cluster.MeanShift
+===============================
+
+.. currentmodule:: scikits.learn.cluster
+
+.. autoclass:: MeanShift
+
+   
+   .. automethod:: __init__
+   
+

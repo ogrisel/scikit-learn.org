@@ -1,0 +1,16 @@
+
+
+.. _example_linear_model_lasso_and_elasticnet.py:
+
+
+========================
+Lasso regression example
+========================
+
+
+
+**Python source code:** :download:`lasso_and_elasticnet.py <lasso_and_elasticnet.py>`
+
+.. literalinclude:: lasso_and_elasticnet.py
+    :lines: 7-
+    

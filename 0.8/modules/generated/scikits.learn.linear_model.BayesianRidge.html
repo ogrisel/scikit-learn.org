@@ -1,0 +1,328 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>scikits.learn.linear_model.BayesianRidge &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../../index.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">scikits.learn.linear_model.BayesianRidge</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-linear-model-bayesianridge">
+<h1>scikits.learn.linear_model.BayesianRidge<a class="headerlink" href="#scikits-learn-linear-model-bayesianridge" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.linear_model.BayesianRidge">
+<em class="property">class </em><tt class="descclassname">scikits.learn.linear_model.</tt><tt class="descname">BayesianRidge</tt><big>(</big><em>n_iter=300</em>, <em>eps=0.001</em>, <em>alpha_1=9.9999999999999995e-07</em>, <em>alpha_2=9.9999999999999995e-07</em>, <em>lambda_1=9.9999999999999995e-07</em>, <em>lambda_2=9.9999999999999995e-07</em>, <em>compute_score=False</em>, <em>fit_intercept=True</em>, <em>verbose=False</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.BayesianRidge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bayesian ridge regression</p>
+<p>Fit a Bayesian ridge model and optimize the regularization parameters
+lambda (precision of the weights) and alpha (precision of the noise).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array, shape = (n_samples, n_features)</p>
+<blockquote>
+<p>Training vectors.</p>
+</blockquote>
+<p><strong>y</strong> : array, shape = (length)</p>
+<blockquote>
+<p>Target values for training vectors</p>
+</blockquote>
+<p><strong>n_iter</strong> : int, optional</p>
+<blockquote>
+<p>Maximum number of interations.  Default is 300.</p>
+</blockquote>
+<p><strong>eps</strong> : float, optional</p>
+<blockquote>
+<p>Stop the algorithm if w has converged. Default is 1.e-3.</p>
+</blockquote>
+<p><strong>alpha_1</strong> : float, optional</p>
+<blockquote>
+<p>Hyper-parameter : shape parameter for the Gamma distribution prior
+over the alpha parameter. Default is 1.e-6</p>
+</blockquote>
+<p><strong>alpha_2</strong> : float, optional</p>
+<blockquote>
+<p>Hyper-parameter : inverse scale parameter (rate parameter) for the
+Gamma distribution prior over the alpha parameter.
+Default is 1.e-6.</p>
+</blockquote>
+<p><strong>lambda_1</strong> : float, optional</p>
+<blockquote>
+<p>Hyper-parameter : shape parameter for the Gamma distribution prior
+over the lambda parameter. Default is 1.e-6.</p>
+</blockquote>
+<p><strong>lambda_2</strong> : float, optional</p>
+<blockquote>
+<p>Hyper-parameter : inverse scale parameter (rate parameter) for the
+Gamma distribution prior over the lambda parameter.
+Default is 1.e-6</p>
+</blockquote>
+<p><strong>compute_score</strong> : boolean, optional</p>
+<blockquote>
+<p>If True, compute the objective function at each step of the model.
+Default is False</p>
+</blockquote>
+<p><strong>fit_intercept</strong> : boolean, optional</p>
+<blockquote class="last">
+<p>wether to calculate the intercept for this model. If set
+to false, no intercept will be used in calculations
+(e.g. data is expected to be already centered).
+Default is True.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>See examples/linear_model/plot_bayesian_ridge.py for an example.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">BayesianRidge</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="go">BayesianRidge(n_iter=300, verbose=False, lambda_1=1e-06, lambda_2=1e-06,</span>
+<span class="go">       fit_intercept=True, eps=0.001, alpha_2=1e-06, alpha_1=1e-06,</span>
+<span class="go">       compute_score=False)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="go">array([ 1.])</span>
+</pre></div>
+</div>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="28%" />
+<col width="63%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><cite>coef_</cite></td>
+<td>array, shape = (n_features)</td>
+<td>Coefficients of the regression model (mean of distribution)</td>
+</tr>
+<tr><td><cite>alpha_</cite></td>
+<td>float</td>
+<td>estimated precision of the noise.</td>
+</tr>
+<tr><td><cite>lambda_</cite></td>
+<td>array, shape = (n_features)</td>
+<td>estimated precisions of the weights.</td>
+</tr>
+<tr><td><cite>scores_</cite></td>
+<td>float</td>
+<td>if computed, value of the objective function (to be maximized)</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="13%" />
+<col width="62%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>fit(X, y)</td>
+<td>self</td>
+<td>Fit the model</td>
+</tr>
+<tr><td>predict(X)</td>
+<td>array</td>
+<td>Predict using the model.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="scikits.learn.linear_model.BayesianRidge.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>n_iter=300</em>, <em>eps=0.001</em>, <em>alpha_1=9.9999999999999995e-07</em>, <em>alpha_2=9.9999999999999995e-07</em>, <em>lambda_1=9.9999999999999995e-07</em>, <em>lambda_2=9.9999999999999995e-07</em>, <em>compute_score=False</em>, <em>fit_intercept=True</em>, <em>verbose=False</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.BayesianRidge.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.linear_model.BayesianRidge.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>**params</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.BayesianRidge.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the model</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : numpy array of shape [n_samples,n_features]</p>
+<blockquote>
+<p>Training data</p>
+</blockquote>
+<p><strong>y</strong> : numpy array of shape [n_samples]</p>
+<blockquote>
+<p>Target values</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>self</strong> : returns an instance of self.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.linear_model.BayesianRidge.predict">
+<tt class="descname">predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.BayesianRidge.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict using the linear model</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : numpy array of shape [n_samples, n_features]</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>C</strong> : array, shape = [n_samples]</p>
+<blockquote class="last">
+<p>Returns predicted values.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.linear_model.BayesianRidge.score">
+<tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#scikits.learn.linear_model.BayesianRidge.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the coefficient of determination of the prediction</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<p>Training set.</p>
+</blockquote>
+<p><strong>y</strong> : array-like, shape = [n_samples]</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>z</strong> : float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/scikits.learn.linear_model.BayesianRidge.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

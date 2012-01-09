@@ -1,0 +1,11 @@
+scikits.learn.decomposition.NMF
+===============================
+
+.. currentmodule:: scikits.learn.decomposition
+
+.. autoclass:: NMF
+
+   
+   .. automethod:: __init__
+   
+

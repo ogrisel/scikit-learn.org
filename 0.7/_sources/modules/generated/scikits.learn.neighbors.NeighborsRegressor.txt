@@ -1,0 +1,11 @@
+scikits.learn.neighbors.NeighborsRegressor
+==========================================
+
+.. currentmodule:: scikits.learn.neighbors
+
+.. autoclass:: NeighborsRegressor
+
+   
+   .. automethod:: __init__
+   
+

@@ -1,0 +1,11 @@
+scikits.learn.hmm.MultinomialHMM
+================================
+
+.. currentmodule:: scikits.learn.hmm
+
+.. autoclass:: MultinomialHMM
+
+   
+   .. automethod:: __init__
+   
+

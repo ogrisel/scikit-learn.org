@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>scikits.learn.datasets.load_digits &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../../index.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">scikits.learn.datasets.load_digits</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-datasets-load-digits">
+<h1>scikits.learn.datasets.load_digits<a class="headerlink" href="#scikits-learn-datasets-load-digits" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="scikits.learn.datasets.load_digits">
+<tt class="descclassname">scikits.learn.datasets.</tt><tt class="descname">load_digits</tt><big>(</big><em>n_class=10</em><big>)</big><a class="headerlink" href="#scikits.learn.datasets.load_digits" title="Permalink to this definition">¶</a></dt>
+<dd><p>load the digits dataset and returns it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n_class</strong> : integer, between 0 and 10</p>
+<blockquote>
+<p>Number of classes to return, defaults to 10</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>data</strong> : Bunch</p>
+<blockquote class="last">
+<p>Dictionnary-like object, the interesting attributes are:
+&#8216;data&#8217;, the data to learn, <cite>images</cite>, the images corresponding
+to each sample, &#8216;target&#8217;, the classification labels for each
+sample, &#8216;target_names&#8217;, the meaning of the labels, and &#8216;DESCR&#8217;,
+the full description of the dataset.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Data Set Characteristics:</p>
+<blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name" colspan="2">Number of Instances:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"><p class="first">5620</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Number of Attributes:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"><p class="first">64</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Attribute Information:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"><p class="first">8x8 image of integer pixels in the range 0..16.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Missing Attribute Values:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Creator:</th><td class="field-body"><ol class="first upperalpha simple" start="5">
+<li>Alpaydin (alpaydin &#8216;&#64;&#8217; boun.edu.tr)</li>
+</ol>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Date:</th><td class="field-body"><p class="first last">July; 1998</p>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>This is a copy of the test set of the UCI ML hand-written digits datasets 
+<a class="reference external" href="http://archive.ics.uci.edu/ml/datasets/Optical+Recognition+of+Handwritten+Digits">http://archive.ics.uci.edu/ml/datasets/Optical+Recognition+of+Handwritten+Digits</a></p>
+<p>The data set contains images of hand-written digits: 10 classes where
+each class refers to a digit.</p>
+<p>Preprocessing programs made available by NIST were used to extract
+normalized bitmaps of handwritten digits from a preprinted form. From a
+total of 43 people, 30 contributed to the training set and different 13
+to the test set. 32x32 bitmaps are divided into nonoverlapping blocks of
+4x4 and the number of on pixels are counted in each block. This generates
+an input matrix of 8x8 where each element is an integer in the range
+0..16. This reduces dimensionality and gives invariance to small
+distortions.</p>
+<p>For info on NIST preprocessing routines, see M. D. Garris, J. L. Blue, G.
+T. Candela, D. L. Dimmick, J. Geist, P. J. Grother, S. A. Janet, and C.
+L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
+1994.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/scikits.learn.datasets.load_digits.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+scikits.learn.svm.libsvm.predict_proba
+======================================
+
+.. currentmodule:: scikits.learn.svm.libsvm
+
+.. autofunction:: predict_proba
+

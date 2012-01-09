@@ -1,0 +1,11 @@
+scikits.learn.linear_model.sparse.SGDClassifier
+===============================================
+
+.. currentmodule:: scikits.learn.linear_model.sparse
+
+.. autoclass:: SGDClassifier
+
+   
+   .. automethod:: __init__
+   
+

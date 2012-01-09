@@ -1,0 +1,11 @@
+scikits.learn.decomposition.RandomizedPCA
+=========================================
+
+.. currentmodule:: scikits.learn.decomposition
+
+.. autoclass:: RandomizedPCA
+
+   
+   .. automethod:: __init__
+   
+

@@ -1,0 +1,7 @@
+scikits.learn.linear_model.lasso_path
+=====================================
+
+.. currentmodule:: scikits.learn.linear_model
+
+.. autofunction:: lasso_path
+

@@ -1,0 +1,11 @@
+scikits.learn.hmm.GMMHMM
+========================
+
+.. currentmodule:: scikits.learn.hmm
+
+.. autoclass:: GMMHMM
+
+   
+   .. automethod:: __init__
+   
+

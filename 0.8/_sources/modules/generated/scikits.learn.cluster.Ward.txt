@@ -1,0 +1,11 @@
+scikits.learn.cluster.Ward
+==========================
+
+.. currentmodule:: scikits.learn.cluster
+
+.. autoclass:: Ward
+
+   
+   .. automethod:: __init__
+   
+

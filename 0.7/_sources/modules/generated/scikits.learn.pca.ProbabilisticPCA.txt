@@ -1,0 +1,11 @@
+scikits.learn.pca.ProbabilisticPCA
+==================================
+
+.. currentmodule:: scikits.learn.pca
+
+.. autoclass:: ProbabilisticPCA
+
+   
+   .. automethod:: __init__
+   
+

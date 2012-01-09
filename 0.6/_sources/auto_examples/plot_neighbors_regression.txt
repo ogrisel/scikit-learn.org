@@ -1,0 +1,23 @@
+
+
+.. _example_plot_neighbors_regression.py:
+
+
+==============================
+k-Nearest Neighbors regression
+==============================
+
+Demonstrate the resolution of a regression problem
+using a k-Nearest Neighbor and the interpolation of the
+target using barycenter computation.
+
+
+
+.. image:: images/plot_neighbors_regression.png
+    :align: center
+
+**Python source code:** :download:`plot_neighbors_regression.py <plot_neighbors_regression.py>`
+
+.. literalinclude:: plot_neighbors_regression.py
+    :lines: 11-
+    

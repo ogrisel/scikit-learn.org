@@ -1,0 +1,23 @@
+
+
+.. _example_plot_neighbors.py:
+
+
+=================
+Nearest Neighbors
+=================
+
+Sample usage of Nearest Neighbors classification.
+It will plot the decision boundaries for each class.
+
+
+
+.. image:: images/plot_neighbors_1.png
+    :align: center
+
+
+**Python source code:** :download:`plot_neighbors.py <plot_neighbors.py>`
+
+.. literalinclude:: plot_neighbors.py
+    :lines: 9-
+    

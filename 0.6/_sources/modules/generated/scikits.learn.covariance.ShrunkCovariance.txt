@@ -1,0 +1,11 @@
+scikits.learn.covariance.ShrunkCovariance
+=========================================
+
+.. currentmodule:: scikits.learn.covariance
+
+.. autoclass:: ShrunkCovariance
+
+   
+   .. automethod:: __init__
+   
+

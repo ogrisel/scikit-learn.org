@@ -1,0 +1,11 @@
+scikits.learn.svm.NuSVC
+=======================
+
+.. currentmodule:: scikits.learn.svm
+
+.. autoclass:: NuSVC
+
+   
+   .. automethod:: __init__
+   
+

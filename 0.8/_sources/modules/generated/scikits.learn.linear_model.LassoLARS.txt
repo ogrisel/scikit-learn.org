@@ -1,0 +1,11 @@
+scikits.learn.linear_model.LassoLARS
+====================================
+
+.. currentmodule:: scikits.learn.linear_model
+
+.. autoclass:: LassoLARS
+
+   
+   .. automethod:: __init__
+   
+
