@@ -1,0 +1,11 @@
+sklearn.linear_model.sparse.LogisticRegression
+==============================================
+
+.. currentmodule:: sklearn.linear_model.sparse
+
+.. autoclass:: LogisticRegression
+
+   
+   .. automethod:: __init__
+   
+

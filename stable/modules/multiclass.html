@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.8. Multiclass algorithms &mdash; scikit-learn 0.9 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="up" title="3. Supervised learning" href="../supervised_learning.html" />
+    <link rel="next" title="3.9. Feature selection" href="feature_selection.html" />
+    <link rel="prev" title="3.7. Naive Bayes" href="naive_bayes.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../install.html">Download</a></li>
+            <li><a href="../support.html">Support</a></li>
+            <li><a href="../user_guide.html">User Guide</a></li>
+            <li><a href="../auto_examples/index.html">Examples</a></li>
+            <li><a href="../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="naive_bayes.html" title="3.7. Naive Bayes"
+             accesskey="P">previous</a> |
+          <a href="feature_selection.html" title="3.9. Feature selection"
+             accesskey="N">next</a> |
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">3.8. Multiclass algorithms</a><ul>
+<li><a class="reference internal" href="#one-vs-the-rest">3.8.1. One-Vs-The-Rest</a></li>
+<li><a class="reference internal" href="#one-vs-one">3.8.2. One-Vs-One</a></li>
+<li><a class="reference internal" href="#error-correcting-output-codes">3.8.3. Error-Correcting Output-Codes</a></li>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        <h3>Citing</h3>
+        <p>Please consider
+	<a href="about.html#citing-the-scikit-learn">citing the
+	scikit-learn</a>.
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="multiclass-algorithms">
+<span id="multiclass"></span><h1>3.8. Multiclass algorithms<a class="headerlink" href="#multiclass-algorithms" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>This module implements multiclass learning algorithms:</dt>
+<dd><ul class="first last simple">
+<li>one-vs-the-rest / one-vs-all</li>
+<li>one-vs-one</li>
+<li>error correcting output codes</li>
+</ul>
+</dd>
+</dl>
+<p>The estimators provided in this module are meta-estimators: they require a base
+estimator to be provided in their constructor. For example, it is possible to
+use these estimators to turn a binary classifier or a regressor into a
+multiclass classifier. It is also possible to use these estimators with
+multiclass estimators in the hope that their accuracy or runtime performance
+improves.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>You don&#8217;t need to use these estimators unless you want to experiment with
+different multiclass strategies: all classifiers in scikit-learn support
+multiclass classification out-of-the-box. Below is a summary of the
+classifiers supported in scikit-learn grouped by the strategy used.</p>
+<ul class="last simple">
+<li>Inherently multiclass: Naive Bayes, LDA.</li>
+<li>One-Vs-One: SVC.</li>
+<li>One-Vs-All: LinearSVC, LogisticRegression, SGDClassifier, RidgeClassifier.</li>
+</ul>
+</div>
+<div class="section" id="one-vs-the-rest">
+<h2>3.8.1. One-Vs-The-Rest<a class="headerlink" href="#one-vs-the-rest" title="Permalink to this headline">¶</a></h2>
+<p>Also known as <strong>one-vs-all</strong>, this strategy consists in fitting one classifier
+per class. For each classifier, the class is fitted against all the other
+classes. In addition to its computational efficiency (only <cite>n_classes</cite>
+classifiers are needed), one advantage of this approach is its
+interpretability. Since each class is represented by one and one classifier
+only, it is possible to gain knowledge about the class by inspecting its
+corresponding classifier. This is the most commonly used strategy and is a
+fair default choice. Below is an example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.multiclass</span> <span class="kn">import</span> <span class="n">OneVsRestClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">OneVsRestClassifier</span><span class="p">(</span><span class="n">LinearSVC</span><span class="p">())</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,</span>
+<span class="go">       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,</span>
+<span class="go">       0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,</span>
+<span class="go">       1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1,</span>
+<span class="go">       1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,</span>
+<span class="go">       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2,</span>
+<span class="go">       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="one-vs-one">
+<h2>3.8.2. One-Vs-One<a class="headerlink" href="#one-vs-one" title="Permalink to this headline">¶</a></h2>
+<p>This strategy consists in fitting one classifier per class pair.
+At prediction time, the class which received the most votes is selected.
+Since it requires to fit <cite>n_classes * (n_classes - 1) / 2</cite> classifiers,
+this method is usually slower than one-vs-the-rest, due to its
+O(n_classes^2) complexity. However, this method may be advantageous for
+algorithms such as kernel algorithms which don&#8217;t scale well with
+<cite>n_samples</cite>. This is because each individual learning problem only involves
+a small subset of the data whereas, with one-vs-the-rest, the complete
+dataset is used <cite>n_classes</cite> times. Below is an example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.multiclass</span> <span class="kn">import</span> <span class="n">OneVsOneClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">OneVsOneClassifier</span><span class="p">(</span><span class="n">LinearSVC</span><span class="p">())</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,</span>
+<span class="go">       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,</span>
+<span class="go">       0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,</span>
+<span class="go">       1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1,</span>
+<span class="go">       1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,</span>
+<span class="go">       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,</span>
+<span class="go">       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="error-correcting-output-codes">
+<h2>3.8.3. Error-Correcting Output-Codes<a class="headerlink" href="#error-correcting-output-codes" title="Permalink to this headline">¶</a></h2>
+<p>Output-code based strategies are fairly different from one-vs-the-rest and
+one-vs-one. With these strategies, each class is represented in a euclidean
+space, where each dimension can only be 0 or 1. Another way to put it is
+that each class is represented by a binary code (an array of 0 and 1). The
+matrix which keeps track of the location/code of each class is called the
+code book. The code size is the dimensionality of the aforementioned space.
+Intuitively, each class should be represented by a code as unique as
+possible and a good code book should be designed to optimize classification
+accuracy. In this implementation, we simply use a randomly-generated code
+book as advocated in [2] although more elaborate methods may be added in the
+future.</p>
+<p>At fitting time, one binary classifier per bit in the code book is fitted.
+At prediction time, the classifiers are used to project new points in the
+class space and the class closest to the points is chosen.</p>
+<p>In this implementation, the <cite>code_size</cite> attribute allows the user to control
+the number of classifiers which will be used. It is a percentage of the
+total number of classes.</p>
+<p>A number between 0 and 1 will require fewer classifiers than
+one-vs-the-rest. In theory, log2(n_classes) / n_classes is sufficient to
+represent each class unambiguously. However, in practice, it may not lead to
+good accuracy since log2(n_classes) is much smaller than n_classes.</p>
+<p>A number greater than than 1 will require more classifiers than
+one-vs-the-rest. In this case, some classifiers will in theory correct for
+the mistakes made by other classifiers, hence the name &#8220;error-correcting&#8221;.
+In practice, however, this may not happen as classifier mistakes will
+typically be correlated. The error-correcting output codes have a similar
+effect to bagging.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.multiclass</span> <span class="kn">import</span> <span class="n">OutputCodeClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">OutputCodeClassifier</span><span class="p">(</span><span class="n">LinearSVC</span><span class="p">(),</span> <span class="n">code_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,</span>
+<span class="go">       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,</span>
+<span class="go">       0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1,</span>
+<span class="go">       1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1,</span>
+<span class="go">       1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,</span>
+<span class="go">       2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 1, 2, 2, 2,</span>
+<span class="go">       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])</span>
+</pre></div>
+</div>
+<div class="topic">
+<p class="topic-title first">References:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>[1] &#8220;Solving multiclass learning problems via error-correcting ouput codes&#8221;,</dt>
+<dd><p class="first last">Dietterich T., Bakiri G.,
+Journal of Artificial Intelligence Research 2,
+1995.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[2] &#8220;The error coding method and PICTs&#8221;,</dt>
+<dd><p class="first last">James G., Hastie T.,
+Journal of Computational and Graphical statistics 7,
+1998.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[3] &#8220;The Elements of Statistical Learning&#8221;,</dt>
+<dd><p class="first last">Hastie T., Tibshirani R., Friedman J., page 606 (second-edition)
+2008.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikit-learn version 0.9<p>
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../_sources/modules/multiclass.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

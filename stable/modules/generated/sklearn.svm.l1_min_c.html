@@ -1,0 +1,198 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>9.1.7. sklearn.svm.l1_min_c &mdash; scikit-learn 0.9 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="up" title="9. Class reference" href="../classes.html" />
+    <link rel="next" title="9.1.8.1. sklearn.svm.sparse.SVC" href="sklearn.svm.sparse.SVC.html" />
+    <link rel="prev" title="9.1.6. sklearn.svm.OneClassSVM" href="sklearn.svm.OneClassSVM.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="sklearn.svm.OneClassSVM.html" title="9.1.6. sklearn.svm.OneClassSVM"
+             accesskey="P">previous</a> |
+          <a href="sklearn.svm.sparse.SVC.html" title="9.1.8.1. sklearn.svm.sparse.SVC"
+             accesskey="N">next</a> |
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">9.1.7. sklearn.svm.l1_min_c</a></li>
+</ul>
+
+
+        
+
+        <h3>Citing</h3>
+        <p>Please consider
+	<a href="about.html#citing-the-scikit-learn">citing the
+	scikit-learn</a>.
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sklearn-svm-l1-min-c">
+<h1>9.1.7. sklearn.svm.l1_min_c<a class="headerlink" href="#sklearn-svm-l1-min-c" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="sklearn.svm.l1_min_c">
+<tt class="descclassname">sklearn.svm.</tt><tt class="descname">l1_min_c</tt><big>(</big><em>X</em>, <em>y</em>, <em>loss='l2'</em>, <em>fit_intercept=True</em>, <em>intercept_scaling=1.0</em><big>)</big><a class="headerlink" href="#sklearn.svm.l1_min_c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the maximum value for C that yields a model with coefficients
+and intercept set to zero for l1 penalized classifiers,
+such as LinearSVC with penalty=&#8217;l1&#8217; and linear_model.LogisticRegression
+with penalty=&#8217;l1&#8217;.</p>
+<p>This value is valid if class_weight parameter in fit() is not set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like or sparse matrix, shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Training vector, where n_samples in the number of samples and
+n_features is the number of features.</p>
+</div></blockquote>
+<p><strong>y</strong> : array, shape = [n_samples]</p>
+<blockquote>
+<div><p>Target vector relative to X</p>
+</div></blockquote>
+<p><strong>loss</strong> : {&#8216;l2&#8217;, &#8216;log&#8217;}, default to &#8216;l2&#8217;</p>
+<blockquote>
+<div><p>Specifies the loss function.
+With &#8216;l2&#8217; it is the l2 loss (a.k.a. squared hinge loss).
+With &#8216;log&#8217; it is the loss of logistic regression models.</p>
+</div></blockquote>
+<p><strong>fit_intercept</strong> : bool, default: True</p>
+<blockquote>
+<div><p>Specifies if the intercept should be fitted by the model.
+It must match the fit() method paramenter.</p>
+</div></blockquote>
+<p><strong>intercept_scaling</strong> : float, default: 1</p>
+<blockquote>
+<div><p>when fit_intercept is True, instance vector x becomes
+[x, intercept_scaling],
+i.e. a &#8220;synthetic&#8221; feature with constant value equals to
+intercept_scaling is appended to the instance vector.
+It must match the fit() method parameter.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>l1_min_c: float</strong> :</p>
+<blockquote class="last">
+<div><p>minimum value for C</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikit-learn version 0.9<p>
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/sklearn.svm.l1_min_c.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

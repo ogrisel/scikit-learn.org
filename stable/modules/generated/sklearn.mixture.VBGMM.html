@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>9.5.3. sklearn.mixture.VBGMM &mdash; scikit-learn 0.9 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="up" title="9. Class reference" href="../classes.html" />
+    <link rel="next" title="9.6.1. sklearn.hmm.GaussianHMM" href="sklearn.hmm.GaussianHMM.html" />
+    <link rel="prev" title="9.5.2. sklearn.mixture.DPGMM" href="sklearn.mixture.DPGMM.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="sklearn.mixture.DPGMM.html" title="9.5.2. sklearn.mixture.DPGMM"
+             accesskey="P">previous</a> |
+          <a href="sklearn.hmm.GaussianHMM.html" title="9.6.1. sklearn.hmm.GaussianHMM"
+             accesskey="N">next</a> |
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">9.5.3. sklearn.mixture.VBGMM</a></li>
+</ul>
+
+
+        
+
+        <h3>Citing</h3>
+        <p>Please consider
+	<a href="about.html#citing-the-scikit-learn">citing the
+	scikit-learn</a>.
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sklearn-mixture-vbgmm">
+<h1>9.5.3. sklearn.mixture.VBGMM<a class="headerlink" href="#sklearn-mixture-vbgmm" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sklearn.mixture.VBGMM">
+<em class="property">class </em><tt class="descclassname">sklearn.mixture.</tt><tt class="descname">VBGMM</tt><big>(</big><em>n_components=1</em>, <em>cvtype='diag'</em>, <em>alpha=1.0</em>, <em>random_state=None</em>, <em>thresh=0.01</em>, <em>verbose=False</em>, <em>min_covar=None</em><big>)</big><a class="headerlink" href="#sklearn.mixture.VBGMM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Variational Inference for the Gaussian Mixture Model</p>
+<p>Variational inference for a Gaussian mixture model probability
+distribution. This class allows for easy and efficient inference
+of an approximate posterior distribution over the parameters of a
+gaussian mixture model with a fixed number of components.</p>
+<p>Initialization is with normally-distributed means and identity
+covariance, for proper convergence.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n_components: int, optional</strong> :</p>
+<blockquote>
+<div><p>Number of mixture components. Defaults to 1.</p>
+</div></blockquote>
+<p><strong>cvtype: string (read-only), optional</strong> :</p>
+<blockquote>
+<div><p>String describing the type of covariance parameters to
+use.  Must be one of &#8216;spherical&#8217;, &#8216;tied&#8217;, &#8216;diag&#8217;, &#8216;full&#8217;.
+Defaults to &#8216;diag&#8217;.</p>
+</div></blockquote>
+<p><strong>alpha: float, optional</strong> :</p>
+<blockquote class="last">
+<div><p>Real number representing the concentration parameter of
+the dirichlet distribution. Intuitively, the higher the
+value of alpha the more likely the variational mixture of
+gaussians model will use all components it can. Defaults
+to 1.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="docutils">
+<dt><a class="reference internal" href="sklearn.mixture.GMM.html#sklearn.mixture.GMM" title="sklearn.mixture.GMM"><tt class="xref py py-obj docutils literal"><span class="pre">GMM</span></tt></a></dt>
+<dd>Finite gaussian mixture model fit with EM</dd>
+<dt><a class="reference internal" href="sklearn.mixture.DPGMM.html#sklearn.mixture.DPGMM" title="sklearn.mixture.DPGMM"><tt class="xref py py-obj docutils literal"><span class="pre">DPGMM</span></tt></a></dt>
+<dd>Ininite gaussian mixture model, using the dirichlet</dd>
+</dl>
+<p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">process</span></tt>, <a class="reference internal" href="#sklearn.mixture.VBGMM.fit" title="sklearn.mixture.VBGMM.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a></p>
+</div>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.mixture.VBGMM.cvtype" title="sklearn.mixture.VBGMM.cvtype"><tt class="xref py py-obj docutils literal"><span class="pre">cvtype</span></tt></a></td>
+<td>Covariance type of the model.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.mixture.VBGMM.weights" title="sklearn.mixture.VBGMM.weights"><tt class="xref py py-obj docutils literal"><span class="pre">weights</span></tt></a></td>
+<td>Mixing weights for each mixture component.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.mixture.VBGMM.means" title="sklearn.mixture.VBGMM.means"><tt class="xref py py-obj docutils literal"><span class="pre">means</span></tt></a></td>
+<td>Mean parameters for each mixture component.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.mixture.VBGMM.precisions" title="sklearn.mixture.VBGMM.precisions"><tt class="xref py py-obj docutils literal"><span class="pre">precisions</span></tt></a></td>
+<td>Return precisions as a full matrix.</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="20%" />
+<col width="64%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>n_features</td>
+<td>int</td>
+<td>Dimensionality of the Gaussians.</td>
+</tr>
+<tr class="row-even"><td>n_components</td>
+<td>int (read-only)</td>
+<td>Number of mixture components.</td>
+</tr>
+<tr class="row-odd"><td><a href="#id1"><span class="problematic" id="id2">converged_</span></a></td>
+<td>bool</td>
+<td>True when convergence was reached in fit(), False
+otherwise.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>decode(X)</td>
+<td>Find most likely mixture components for each point in <cite>X</cite>.</td>
+</tr>
+<tr class="row-even"><td>eval(X)</td>
+<td>Compute a lower-bound of the log likelihood of <cite>X</cite> under the model
+and an approximate posterior distribution over mixture components.</td>
+</tr>
+<tr class="row-odd"><td>fit(X)</td>
+<td>Estimate the posterior of themodel parameters from <cite>X</cite> using the
+variational mean-field algorithm.</td>
+</tr>
+<tr class="row-even"><td>predict(X)</td>
+<td>Like decode, find most likely mixtures components for each
+observation in <cite>X</cite>.</td>
+</tr>
+<tr class="row-odd"><td>rvs(n=1)</td>
+<td>Generate <cite>n</cite> samples from the posterior for the model.</td>
+</tr>
+<tr class="row-even"><td>score(X)</td>
+<td>Compute the log likelihood of <cite>X</cite> under the model.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="sklearn.mixture.VBGMM.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>n_components=1</em>, <em>cvtype='diag'</em>, <em>alpha=1.0</em>, <em>random_state=None</em>, <em>thresh=0.01</em>, <em>verbose=False</em>, <em>min_covar=None</em><big>)</big><a class="headerlink" href="#sklearn.mixture.VBGMM.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="sklearn.mixture.VBGMM.cvtype">
+<tt class="descname">cvtype</tt><a class="headerlink" href="#sklearn.mixture.VBGMM.cvtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Covariance type of the model.</p>
+<p>Must be one of &#8216;spherical&#8217;, &#8216;tied&#8217;, &#8216;diag&#8217;, &#8216;full&#8217;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.mixture.VBGMM.decode">
+<tt class="descname">decode</tt><big>(</big><em>obs</em><big>)</big><a class="headerlink" href="#sklearn.mixture.VBGMM.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find most likely mixture components for each point in <cite>obs</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n, n_features)</p>
+<blockquote>
+<div><p>List of n_features-dimensional data points.  Each row
+corresponds to a single data point.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>logprobs</strong> : array_like, shape (n_samples,)</p>
+<blockquote>
+<div><p>Log probability of each point in <cite>obs</cite> under the model.</p>
+</div></blockquote>
+<p><strong>components</strong> : array_like, shape (n_samples,)</p>
+<blockquote class="last">
+<div><p>Index of the most likelihod mixture components for each observation</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.mixture.VBGMM.eval">
+<tt class="descname">eval</tt><big>(</big><em>obs=None</em><big>)</big><a class="headerlink" href="#sklearn.mixture.VBGMM.eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the model on data</p>
+<p>Compute the bound on log probability of <cite>obs</cite> under the model
+and return the posterior distribution (responsibilities) of
+each mixture component for each element of <cite>obs</cite>.</p>
+<p>This is done by computing the parameters for the mean-field of
+z for each observation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n_samples, n_features)</p>
+<blockquote>
+<div><p>List of n_features-dimensional data points.  Each row
+corresponds to a single data point.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>logprob</strong> : array_like, shape (n_samples,)</p>
+<blockquote>
+<div><p>Log probabilities of each data point in <cite>obs</cite></p>
+</div></blockquote>
+<p><strong>posteriors: array_like, shape (n_samples, n_components)</strong> :</p>
+<blockquote class="last">
+<div><p>Posterior probabilities of each mixture component for each
+observation</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.mixture.VBGMM.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>n_iter=10</em>, <em>params='wmc'</em>, <em>init_params='wmc'</em><big>)</big><a class="headerlink" href="#sklearn.mixture.VBGMM.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimate model parameters with the variational
+algorithm.</p>
+<blockquote>
+<div><p>For a full derivation and description of the algorithm see
+doc/dp-derivation/dp-derivation.tex</p>
+<p>A initialization step is performed before entering the em
+algorithm. If you want to avoid this step, set the keyword
+argument init_params to the empty string &#8216;&#8217;. Likewise, if you
+would like just to do an initialization, call this method with
+n_iter=0.</p>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array_like, shape (n, n_features)</p>
+<blockquote>
+<div><blockquote>
+<div><p>List of n_features-dimensional data points.  Each row
+corresponds to a single data point.</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>n_iter <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd><p class="first last">Maximum number of iterations to perform before convergence.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p><strong>params</strong> : string, optional</p>
+<blockquote>
+<div><p>Controls which parameters are updated in the training
+process.  Can contain any combination of &#8216;w&#8217; for weights,
+&#8216;m&#8217; for means, and &#8216;c&#8217; for covars.  Defaults to &#8216;wmc&#8217;.</p>
+</div></blockquote>
+<p><strong>init_params</strong> : string, optional</p>
+<blockquote class="last">
+<div><p>Controls which parameters are updated in the initialization
+process.  Can contain any combination of &#8216;w&#8217; for weights,
+&#8216;m&#8217; for means, and &#8216;c&#8217; for covars.  Defaults to &#8216;wmc&#8217;.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sklearn.mixture.VBGMM.means">
+<tt class="descname">means</tt><a class="headerlink" href="#sklearn.mixture.VBGMM.means" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mean parameters for each mixture component.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sklearn.mixture.VBGMM.precisions">
+<tt class="descname">precisions</tt><a class="headerlink" href="#sklearn.mixture.VBGMM.precisions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return precisions as a full matrix.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.mixture.VBGMM.predict">
+<tt class="descname">predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.mixture.VBGMM.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict label for data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><strong>X</strong> : array-like, shape = [n_samples, n_features]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><strong>C</strong> : array, shape = (n_samples,)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.mixture.VBGMM.predict_proba">
+<tt class="descname">predict_proba</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.mixture.VBGMM.predict_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict posterior probability of data under each Gaussian
+in the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>T</strong> : array-like, shape = (n_samples, n_components)</p>
+<blockquote class="last">
+<div><p>Returns the probability of the sample for each Gaussian
+(state) in the model.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.mixture.VBGMM.rvs">
+<tt class="descname">rvs</tt><big>(</big><em>n_samples=1</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.mixture.VBGMM.rvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate random samples from the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n_samples</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of samples to generate. Defaults to 1.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n_samples, n_features)</p>
+<blockquote class="last">
+<div><p>List of samples</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.mixture.VBGMM.score">
+<tt class="descname">score</tt><big>(</big><em>obs</em><big>)</big><a class="headerlink" href="#sklearn.mixture.VBGMM.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the log probability under the model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>obs</strong> : array_like, shape (n_samples, n_features)</p>
+<blockquote>
+<div><p>List of n_features-dimensional data points.  Each row
+corresponds to a single data point.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>logprob</strong> : array_like, shape (n_samples,)</p>
+<blockquote class="last">
+<div><p>Log probabilities of each data point in <cite>obs</cite></p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.mixture.VBGMM.set_params">
+<tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.mixture.VBGMM.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of the estimator.</p>
+<p>The method works on simple estimators as well as on nested
+objects (such as pipelines). The former have parameters of the
+form &lt;component&gt;__&lt;parameter&gt; so that it&#8217;s possible to update
+each component of a nested object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><strong>self</strong> :</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sklearn.mixture.VBGMM.weights">
+<tt class="descname">weights</tt><a class="headerlink" href="#sklearn.mixture.VBGMM.weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mixing weights for each mixture component.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikit-learn version 0.9<p>
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/sklearn.mixture.VBGMM.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

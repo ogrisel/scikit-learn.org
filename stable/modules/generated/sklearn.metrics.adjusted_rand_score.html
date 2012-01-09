@@ -1,0 +1,203 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>9.8.3.1. sklearn.metrics.adjusted_rand_score &mdash; scikit-learn 0.9 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="up" title="9. Class reference" href="../classes.html" />
+    <link rel="next" title="9.8.3.2. sklearn.metrics.homogeneity_completeness_v_measure" href="sklearn.metrics.homogeneity_completeness_v_measure.html" />
+    <link rel="prev" title="9.8.2.2. sklearn.metrics.mean_square_error" href="sklearn.metrics.mean_square_error.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="sklearn.metrics.mean_square_error.html" title="9.8.2.2. sklearn.metrics.mean_square_error"
+             accesskey="P">previous</a> |
+          <a href="sklearn.metrics.homogeneity_completeness_v_measure.html" title="9.8.3.2. sklearn.metrics.homogeneity_completeness_v_measure"
+             accesskey="N">next</a> |
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">9.8.3.1. sklearn.metrics.adjusted_rand_score</a></li>
+</ul>
+
+
+        
+
+        <h3>Citing</h3>
+        <p>Please consider
+	<a href="about.html#citing-the-scikit-learn">citing the
+	scikit-learn</a>.
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sklearn-metrics-adjusted-rand-score">
+<h1>9.8.3.1. sklearn.metrics.adjusted_rand_score<a class="headerlink" href="#sklearn-metrics-adjusted-rand-score" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="sklearn.metrics.adjusted_rand_score">
+<tt class="descclassname">sklearn.metrics.</tt><tt class="descname">adjusted_rand_score</tt><big>(</big><em>labels_true</em>, <em>labels_pred</em><big>)</big><a class="headerlink" href="#sklearn.metrics.adjusted_rand_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rand index adjusted for chance</p>
+<p>The Rand Index computes a similarity measure between two clusterings
+by considering all pairs of samples and counting pairs that are
+assigned in the same or different clusters in the predicted and
+true clusterings.</p>
+<p>The raw RI score is then &#8220;adjusted for chance&#8221; into the ARI score
+using the following scheme:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ARI</span> <span class="o">=</span> <span class="p">(</span><span class="n">RI</span> <span class="o">-</span> <span class="n">Expected_RI</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">RI</span><span class="p">)</span> <span class="o">-</span> <span class="n">Expected_RI</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The adjusted Rand index is thus ensured to have a value close to
+0.0 for random labeling independently of the number of clusters and
+samples and exactly 1.0 when the clusterings are identical (up to
+a permutation).</p>
+<p>ARI is a symmetric measure:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">adjusted_rand_score</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="n">adjusted_rand_score</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>labels_true</strong> : int array, shape = [n_samples]</p>
+<blockquote>
+<div><p>Ground truth class labels to be used as a reference</p>
+</div></blockquote>
+<p><strong>labels_pred</strong> : array, shape = [n_samples]</p>
+<blockquote>
+<div><p>Cluster labels to evaluate</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>ari: float</strong> :</p>
+<blockquote class="last">
+<div><p>Similarity score between -1.0 and 1.0. Random labelings have an ARI
+close to 0.0. 1.0 stands for perfect match.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">-</span></tt></p>
+</div>
+<p class="rubric">References</p>
+<ul class="simple">
+<li>L. Hubert and P. Arabie, Comparing Partitions,
+Journal of Classification 1985
+<a class="reference external" href="http://www.springerlink.com/content/x64124718341j1j0/">http://www.springerlink.com/content/x64124718341j1j0/</a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Rand_index#Adjusted_Rand_index">http://en.wikipedia.org/wiki/Rand_index#Adjusted_Rand_index</a></li>
+</ul>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikit-learn version 0.9<p>
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/sklearn.metrics.adjusted_rand_score.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

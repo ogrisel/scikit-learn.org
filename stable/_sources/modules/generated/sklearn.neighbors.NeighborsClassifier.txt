@@ -1,0 +1,11 @@
+sklearn.neighbors.NeighborsClassifier
+=====================================
+
+.. currentmodule:: sklearn.neighbors
+
+.. autoclass:: NeighborsClassifier
+
+   
+   .. automethod:: __init__
+   
+

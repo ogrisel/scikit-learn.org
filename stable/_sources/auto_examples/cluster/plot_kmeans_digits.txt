@@ -1,0 +1,27 @@
+
+
+.. _example_cluster_plot_kmeans_digits.py:
+
+
+===========================================================
+A demo of K-Means clustering on the handwritten digits data
+===========================================================
+
+Comparing various initialization strategies in terms of runtime and quality of
+the results.
+
+TODO: explode the ouput of the cluster labeling and digits.target groundtruth
+as categorical boolean arrays of shape (n_sample, n_unique_labels) and measure
+the Pearson correlation as an additional measure of the clustering quality.
+
+
+
+.. image:: images/plot_kmeans_digits_1.png
+    :align: center
+
+
+**Python source code:** :download:`plot_kmeans_digits.py <plot_kmeans_digits.py>`
+
+.. literalinclude:: plot_kmeans_digits.py
+    :lines: 13-
+    

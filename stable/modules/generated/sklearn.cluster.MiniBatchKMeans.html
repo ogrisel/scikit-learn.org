@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>9.7.2. sklearn.cluster.MiniBatchKMeans &mdash; scikit-learn 0.9 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="up" title="9. Class reference" href="../classes.html" />
+    <link rel="next" title="9.7.3. sklearn.cluster.MeanShift" href="sklearn.cluster.MeanShift.html" />
+    <link rel="prev" title="9.7.1. sklearn.cluster.KMeans" href="sklearn.cluster.KMeans.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="sklearn.cluster.KMeans.html" title="9.7.1. sklearn.cluster.KMeans"
+             accesskey="P">previous</a> |
+          <a href="sklearn.cluster.MeanShift.html" title="9.7.3. sklearn.cluster.MeanShift"
+             accesskey="N">next</a> |
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">9.7.2. sklearn.cluster.MiniBatchKMeans</a></li>
+</ul>
+
+
+        
+
+        <h3>Citing</h3>
+        <p>Please consider
+	<a href="about.html#citing-the-scikit-learn">citing the
+	scikit-learn</a>.
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sklearn-cluster-minibatchkmeans">
+<h1>9.7.2. sklearn.cluster.MiniBatchKMeans<a class="headerlink" href="#sklearn-cluster-minibatchkmeans" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sklearn.cluster.MiniBatchKMeans">
+<em class="property">class </em><tt class="descclassname">sklearn.cluster.</tt><tt class="descname">MiniBatchKMeans</tt><big>(</big><em>k=8</em>, <em>init='random'</em>, <em>max_iter=100</em>, <em>chunk_size=1000</em>, <em>tol=0.0001</em>, <em>verbose=0</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MiniBatchKMeans" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mini-Batch K-Means clustering</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>k</strong> : int, optional, default: 8</p>
+<blockquote>
+<div><p>The number of clusters to form as well as the number of
+centroids to generate.</p>
+</div></blockquote>
+<p><strong>max_iter</strong> : int</p>
+<blockquote>
+<div><p>Maximum number of iterations of the k-means algorithm for a
+single run.</p>
+</div></blockquote>
+<p><strong>chunk_size: int, optional, default: 1000</strong> :</p>
+<blockquote>
+<div><p>Size of the mini batches</p>
+</div></blockquote>
+<p><strong>init</strong> : {&#8216;k-means++&#8217;, &#8216;random&#8217; or an ndarray}</p>
+<blockquote>
+<div><p>Method for initialization, defaults to &#8216;random&#8217;:</p>
+<p>&#8216;k-means++&#8217; : selects initial cluster centers for k-mean
+clustering in a smart way to speed up convergence. See section
+Notes in k_init for more details. Only for dense <cite>X</cite>.</p>
+<p>&#8216;random&#8217;: choose k observations (rows) at random from data for
+the initial centroids.</p>
+<p>if init is an 2d array, it is used as a seed for the centroids</p>
+</div></blockquote>
+<p><strong>tol: float, optional default: 1e-4</strong> :</p>
+<blockquote class="last">
+<div><p>Relative tolerance w.r.t. inertia to declare convergence</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<p><a class="reference external" href="http://www.eecs.tufts.edu/~dsculley/papers/fastkmeans.pdf">http://www.eecs.tufts.edu/~dsculley/papers/fastkmeans.pdf</a></p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="45%" />
+<col width="55%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a href="#id1"><span class="problematic" id="id2">cluster_centers_</span></a>: array, [n_clusters, n_features]</td>
+<td>Coordinates of cluster centers</td>
+</tr>
+<tr class="row-even"><td><a href="#id3"><span class="problematic" id="id4">labels_</span></a>:</td>
+<td>Labels of each point</td>
+</tr>
+<tr class="row-odd"><td><a href="#id5"><span class="problematic" id="id6">inertia_</span></a>: float</td>
+<td>The value of the inertia criterion associated with the chosen
+partition.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>fit(X):</td>
+<td>Compute K-Means clustering</td>
+</tr>
+<tr class="row-even"><td>partial_fit(X):</td>
+<td>Compute a partial K-Means clustering</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="sklearn.cluster.MiniBatchKMeans.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>k=8</em>, <em>init='random'</em>, <em>max_iter=100</em>, <em>chunk_size=1000</em>, <em>tol=0.0001</em>, <em>verbose=0</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MiniBatchKMeans.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="sklearn.cluster.MiniBatchKMeans.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MiniBatchKMeans.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the centroids on X by chunking it into mini-batches.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like, shape = [n_samples, n_features]</strong> :</p>
+<blockquote class="last">
+<div><p>Coordinates of the data points to cluster</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.cluster.MiniBatchKMeans.partial_fit">
+<tt class="descname">partial_fit</tt><big>(</big><em>X</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MiniBatchKMeans.partial_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update k means estimate on a single mini-batch X.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like, shape = [n_samples, n_features]</strong> :</p>
+<blockquote class="last">
+<div><p>Coordinates of the data points to cluster.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.cluster.MiniBatchKMeans.predict">
+<tt class="descname">predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MiniBatchKMeans.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict the closest cluster each sample in X belongs to.</p>
+<p>In the vector quantization literature, <cite>cluster_centers_</cite> is called
+the code book and each value returned by <cite>predict</cite> is the index of
+the closest code in the code book.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: {array-like, sparse matrix}, shape = [n_samples, n_features]</strong> :</p>
+<blockquote>
+<div><p>New data to predict.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>Y</strong> : array, shape [n_samples,]</p>
+<blockquote class="last">
+<div><p>Index of the closest center each sample belongs to.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.cluster.MiniBatchKMeans.set_params">
+<tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MiniBatchKMeans.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of the estimator.</p>
+<p>The method works on simple estimators as well as on nested
+objects (such as pipelines). The former have parameters of the
+form &lt;component&gt;__&lt;parameter&gt; so that it&#8217;s possible to update
+each component of a nested object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><strong>self</strong> :</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.cluster.MiniBatchKMeans.transform">
+<tt class="descname">transform</tt><big>(</big><em>X</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.MiniBatchKMeans.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform the data to a cluster-distance space</p>
+<p>In the new space, each dimension is the distance to the cluster centers.
+Note that even if X is sparse, the array returned by <cite>transform</cite> will
+typically be dense.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: {array-like, sparse matrix}, shape = [n_samples, n_features]</strong> :</p>
+<blockquote>
+<div><p>New data to transform.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>X_new</strong> : array, shape [n_samples, k]</p>
+<blockquote class="last">
+<div><p>X transformed in the new space.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikit-learn version 0.9<p>
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/sklearn.cluster.MiniBatchKMeans.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>
