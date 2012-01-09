@@ -39,13 +39,19 @@ in ``inplace`` mode, build the html documentation with sphinx_ along
 with the examples, copy the result to the target folder of the website,
 update the ``gh-pages`` branch with ghp-import_ and upload to github::
 
-  $ make SOURCE_BRANCH=master TARGET_FOLDER=dev
+  $ make
 
 
 Building the doc for an official stable release
 -----------------------------------------------
 
-TODO: write me!
+Here is the command to build the 0.9 from its tag::
+
+  $ make SOURCE_BRANCH=origin/0.9 TARGET_FOLDER=0.9
+
+If the release is also the latest stable release, then::
+
+  $ make SOURCE_BRANCH=origin/0.9 TARGET_FOLDER=stable
 
 
 Reusing a local scikit-learn clone

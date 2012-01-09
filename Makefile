@@ -5,7 +5,7 @@ SKLEARN_FOLDER ?= scikit-learn
 WEB_REPO_ALIAS ?= origin  # alias of the remote repo where to upload the doc to
 WEB_FOLDER ?= webroot
 
-SOURCE_BRANCH ?= "${SKLEARN_REPO_ALIAS}/master"
+SOURCE_BRANCH ?= master
 TARGET_FOLDER ?= dev
 
 default: html github
