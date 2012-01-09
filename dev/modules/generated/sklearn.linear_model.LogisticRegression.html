@@ -228,6 +228,26 @@ that happens, try with a smaller tol parameter.</p>
 <p>LIBLINEAR &#8211; A Library for Large Linear Classification
 <a class="reference external" href="http://www.csie.ntu.edu.tw/~cjlin/liblinear/">http://www.csie.ntu.edu.tw/~cjlin/liblinear/</a></p>
 <p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="24%" />
+<col width="69%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><cite>coef_</cite></td>
+<td>array, shape = [n_classes-1, n_features]</td>
+<td><p class="first">Coefficient of the features in the decision function.</p>
+<p class="last"><cite>coef_</cite> is readonly property derived from <cite>raw_coef_</cite> that         follows the internal memory layout of liblinear.</p>
+</td>
+</tr>
+<tr class="row-even"><td><cite>intercept_</cite></td>
+<td>array, shape = [n_classes-1]</td>
+<td>intercept (a.k.a. bias) added to the decision function.
+It is available only when parameter intercept is set to True</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>

@@ -1,0 +1,18 @@
+
+
+.. _example_applications_stock_market.py:
+
+
+===========================================
+Finding structure in the stock market
+===========================================
+
+An example of playing with stock market data to try and find some
+structure in it.
+
+
+**Python source code:** :download:`stock_market.py <stock_market.py>`
+
+.. literalinclude:: stock_market.py
+    :lines: 9-
+    

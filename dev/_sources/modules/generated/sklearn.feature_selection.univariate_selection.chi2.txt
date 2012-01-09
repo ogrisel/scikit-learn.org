@@ -1,0 +1,7 @@
+sklearn.feature_selection.univariate_selection.chi2
+===================================================
+
+.. currentmodule:: sklearn.feature_selection.univariate_selection
+
+.. autofunction:: chi2
+

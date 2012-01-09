@@ -47,7 +47,7 @@ a BayesianRidge as supervised estimator.
          [-0.849835, ..., -1.085711]]), 
   <1600x1600 sparse matrix of type '<type 'numpy.int64'>'
   	with 7840 stored elements in COOrdinate format>, copy=True, n_components=1)
-  ________________________________________________________ward_tree - 0.2s, 0.0min
+  ________________________________________________________ward_tree - 0.3s, 0.0min
   ________________________________________________________________________________
   [Memory] Calling sklearn.feature_selection.univariate_selection.f_regression...
   f_regression(array([[-0.451933, ...,  0.275706],

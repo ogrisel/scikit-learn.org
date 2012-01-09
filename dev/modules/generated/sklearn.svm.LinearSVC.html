@@ -228,18 +228,36 @@ of the number of samples.</p>
 </table>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
-<p><a class="reference internal" href="sklearn.svm.SVC.html#sklearn.svm.SVC" title="sklearn.svm.SVC"><tt class="xref py py-obj docutils literal"><span class="pre">SVC</span></tt></a>, <tt class="xref py py-obj docutils literal"><span class="pre">LIBLINEAR</span></tt></p>
-<dl class="last docutils">
-<dt><tt class="xref py py-obj docutils literal"><span class="pre">http</span></tt></dt>
-<dd>//www.csie.ntu.edu.tw/~cjlin/liblinear/</dd>
-</dl>
+<p class="last"><a class="reference internal" href="sklearn.svm.SVC.html#sklearn.svm.SVC" title="sklearn.svm.SVC"><tt class="xref py py-obj docutils literal"><span class="pre">SVC</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>The underlying C implementation uses a random number generator to
 select features when fitting the model. It is thus not uncommon,
 to have slightly different results for the same input data. If
 that happens, try with a smaller tol parameter.</p>
+<p><strong>References:</strong>
+<a class="reference external" href="http://www.csie.ntu.edu.tw/~cjlin/liblinear/">LIBLINEAR: A Library for Large Linear Classification</a></p>
 <p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="40%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><cite>coef_</cite></td>
+<td>array, shape = [n_features] if n_classes == 2             else [n_classes, n_features]</td>
+<td><p class="first">Weights asigned to the features (coefficients in the primal
+problem). This is only available in the case of linear kernel.</p>
+<p class="last"><cite>coef_</cite> is readonly property derived from <cite>raw_coef_</cite> that         follows the internal memory layout of liblinear.</p>
+</td>
+</tr>
+<tr class="row-even"><td><cite>intercept_</cite></td>
+<td>array, shape = [1] if n_classes == 2 else [n_classes]</td>
+<td>Constants in decision function.</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
