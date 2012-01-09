@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>9.2.9. sklearn.linear_model.LassoLars &mdash; scikit-learn 0.9 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="up" title="9. Class reference" href="../classes.html" />
+    <link rel="next" title="9.2.10. sklearn.linear_model.LarsCV" href="sklearn.linear_model.LarsCV.html" />
+    <link rel="prev" title="9.2.8. sklearn.linear_model.Lars" href="sklearn.linear_model.Lars.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="sklearn.linear_model.Lars.html" title="9.2.8. sklearn.linear_model.Lars"
+             accesskey="P">previous</a> |
+          <a href="sklearn.linear_model.LarsCV.html" title="9.2.10. sklearn.linear_model.LarsCV"
+             accesskey="N">next</a> |
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">9.2.9. sklearn.linear_model.LassoLars</a></li>
+</ul>
+
+
+        
+
+        <h3>Citing</h3>
+        <p>Please consider
+	<a href="about.html#citing-the-scikit-learn">citing the
+	scikit-learn</a>.
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sklearn-linear-model-lassolars">
+<h1>9.2.9. sklearn.linear_model.LassoLars<a class="headerlink" href="#sklearn-linear-model-lassolars" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sklearn.linear_model.LassoLars">
+<em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">LassoLars</tt><big>(</big><em>alpha=1.0</em>, <em>fit_intercept=True</em>, <em>verbose=False</em>, <em>normalize=True</em>, <em>precompute='auto'</em>, <em>max_iter=500</em>, <em>eps=2.2204460492503131e-16</em>, <em>overwrite_X=False</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.LassoLars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lasso model fit with Least Angle Regression a.k.a. Lars</p>
+<p>It is a Linear Model trained with an L1 prior as regularizer.
+lasso).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>fit_intercept</strong> : boolean</p>
+<blockquote>
+<div><p>whether to calculate the intercept for this model. If set
+to false, no intercept will be used in calculations
+(e.g. data is expected to be already centered).</p>
+</div></blockquote>
+<p><strong>verbose</strong> : boolean or integer, optional</p>
+<blockquote>
+<div><p>Sets the verbosity amount</p>
+</div></blockquote>
+<p><strong>normalize</strong> : boolean, optional</p>
+<blockquote>
+<div><p>If True, the regressors X are normalized</p>
+</div></blockquote>
+<p><strong>overwrite_X</strong> : boolean, optional</p>
+<blockquote>
+<div><p>If True, X will not be copied
+Default is False</p>
+</div></blockquote>
+<p><strong>precompute</strong> : True | False | &#8216;auto&#8217; | array-like</p>
+<blockquote>
+<div><p>Whether to use a precomputed Gram matrix to speed up
+calculations. If set to &#8216;auto&#8217; let us decide. The Gram
+matrix can also be passed as argument.</p>
+</div></blockquote>
+<p><strong>max_iter: integer, optional</strong> :</p>
+<blockquote>
+<div><p>Maximum number of iterations to perform.</p>
+</div></blockquote>
+<p><strong>eps: float, optional</strong> :</p>
+<blockquote class="last">
+<div><p>The machine-precision regularization in the computation of the
+Cholesky diagonal factors. Increase this for very ill-conditioned
+systems. Unlike the &#8216;tol&#8217; parameter in some iterative
+optimization-based algorithms, this parameter does not control
+the tolerance of the optimization.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="sklearn.linear_model.lars_path.html#sklearn.linear_model.lars_path" title="sklearn.linear_model.lars_path"><tt class="xref py py-obj docutils literal"><span class="pre">lars_path</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="sklearn.linear_model.Lasso"><tt class="xref py py-obj docutils literal"><span class="pre">Lasso</span></tt></a></p>
+</div>
+<p class="rubric">References</p>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Least_angle_regression">http://en.wikipedia.org/wiki/Least_angle_regression</a></p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LassoLars</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span> 
+<span class="go">LassoLars(alpha=0.01, eps=..., fit_intercept=True,</span>
+<span class="go">     max_iter=500, normalize=True, overwrite_X=False, precompute=&#39;auto&#39;,</span>
+<span class="go">     verbose=False)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span> 
+<span class="go">[ 0.         -0.963257...]</span>
+</pre></div>
+</div>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="32%" />
+<col width="54%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><cite>coef_</cite></td>
+<td>array, shape = [n_features]</td>
+<td>parameter vector (w in the fomulation formula)</td>
+</tr>
+<tr class="row-even"><td><cite>intercept_</cite></td>
+<td>float</td>
+<td>independent term in decision function.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.LassoLars.fit" title="sklearn.linear_model.LassoLars.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;overwrite_X])</td>
+<td>Fit the model using X, y as training data.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.LassoLars.predict" title="sklearn.linear_model.LassoLars.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
+<td>Predict using the linear model</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.LassoLars.score" title="sklearn.linear_model.LassoLars.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
+<td>Returns the coefficient of determination of the prediction</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.LassoLars.set_params" title="sklearn.linear_model.LassoLars.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
+<td>Set the parameters of the estimator.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="sklearn.linear_model.LassoLars.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>alpha=1.0</em>, <em>fit_intercept=True</em>, <em>verbose=False</em>, <em>normalize=True</em>, <em>precompute='auto'</em>, <em>max_iter=500</em>, <em>eps=2.2204460492503131e-16</em>, <em>overwrite_X=False</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.LassoLars.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="sklearn.linear_model.LassoLars.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>overwrite_X=False</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.LassoLars.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the model using X, y as training data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>x</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>training data.</p>
+</div></blockquote>
+<p><strong>y</strong> : array-like, shape = [n_samples]</p>
+<blockquote>
+<div><p>target values.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>self</strong> : object</p>
+<blockquote class="last">
+<div><p>returns an instance of self.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.linear_model.LassoLars.predict">
+<tt class="descname">predict</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.LassoLars.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict using the linear model</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : numpy array of shape [n_samples, n_features]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>C</strong> : array, shape = [n_samples]</p>
+<blockquote class="last">
+<div><p>Returns predicted values.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.linear_model.LassoLars.score">
+<tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.LassoLars.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the coefficient of determination of the prediction</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Training set.</p>
+</div></blockquote>
+<p><strong>y</strong> : array-like, shape = [n_samples]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>z</strong> : float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sklearn.linear_model.LassoLars.set_params">
+<tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.LassoLars.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of the estimator.</p>
+<p>The method works on simple estimators as well as on nested
+objects (such as pipelines). The former have parameters of the
+form &lt;component&gt;__&lt;parameter&gt; so that it&#8217;s possible to update
+each component of a nested object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns :</th><td class="field-body"><strong>self</strong> :</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikit-learn version 0.9<p>
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/sklearn.linear_model.LassoLars.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>
