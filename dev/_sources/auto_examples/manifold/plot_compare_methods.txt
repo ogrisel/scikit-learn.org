@@ -21,8 +21,8 @@ For a discussion and comparison of these algorithms, see the
 
 **Script output**::
 
-  standard: 0.16 sec
-  ltsa: 0.33 sec
+  standard: 0.17 sec
+  ltsa: 0.32 sec
   hessian: 0.42 sec
   modified: 0.39 sec
   Isomap: 0.68 sec

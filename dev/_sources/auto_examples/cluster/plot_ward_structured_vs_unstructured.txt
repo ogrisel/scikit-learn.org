@@ -27,22 +27,22 @@ the clusters form a nice parcellation of the swiss roll.
 
     *
 
-      .. image:: images/plot_ward_structured_vs_unstructured_2.png
+      .. image:: images/plot_ward_structured_vs_unstructured_1.png
             :scale: 50
 
     *
 
-      .. image:: images/plot_ward_structured_vs_unstructured_1.png
+      .. image:: images/plot_ward_structured_vs_unstructured_2.png
             :scale: 50
 
 
 **Script output**::
 
   Compute unstructured hierarchical clustering...
-  Elapsed time:  1.20824193954
+  Elapsed time:  1.78635692596
   Number of points:  1000
   Compute structured hierarchical clustering...
-  Elapsed time:  0.184454917908
+  Elapsed time:  0.192049026489
   Number of points:  1000
 
 

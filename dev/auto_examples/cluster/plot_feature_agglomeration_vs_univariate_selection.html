@@ -166,53 +166,6 @@
 <p>Both methods are compared in a regression problem using
 a BayesianRidge as supervised estimator.</p>
 <img alt="../../_images/plot_feature_agglomeration_vs_univariate_selection_1.png" class="align-center" src="../../_images/plot_feature_agglomeration_vs_univariate_selection_1.png" />
-<p><strong>Script output</strong>:</p>
-<div class="highlight-python"><pre>________________________________________________________________________________
-[Memory] Calling sklearn.cluster.hierarchical.ward_tree...
-ward_tree(array([[-0.451933, ..., -0.675318],
-       ...,
-       [ 0.275706, ..., -1.085711]]),
-&lt;1600x1600 sparse matrix of type '&lt;type 'numpy.int64'&gt;'
-      with 7840 stored elements in COOrdinate format&gt;, copy=True, n_components=1)
-________________________________________________________ward_tree - 0.2s, 0.0min
-________________________________________________________________________________
-[Memory] Calling sklearn.cluster.hierarchical.ward_tree...
-ward_tree(array([[ 0.905206, ...,  0.161245],
-       ...,
-       [-0.849835, ..., -1.091621]]),
-&lt;1600x1600 sparse matrix of type '&lt;type 'numpy.int64'&gt;'
-      with 7840 stored elements in COOrdinate format&gt;, copy=True, n_components=1)
-________________________________________________________ward_tree - 0.2s, 0.0min
-________________________________________________________________________________
-[Memory] Calling sklearn.cluster.hierarchical.ward_tree...
-ward_tree(array([[ 0.905206, ..., -0.675318],
-       ...,
-       [-0.849835, ..., -1.085711]]),
-&lt;1600x1600 sparse matrix of type '&lt;type 'numpy.int64'&gt;'
-      with 7840 stored elements in COOrdinate format&gt;, copy=True, n_components=1)
-________________________________________________________ward_tree - 0.3s, 0.0min
-________________________________________________________________________________
-[Memory] Calling sklearn.feature_selection.univariate_selection.f_regression...
-f_regression(array([[-0.451933, ...,  0.275706],
-       ...,
-       [-0.675318, ..., -1.085711]]),
-array([ 25.267703, ..., -25.026711]))
-_____________________________________________________f_regression - 0.0s, 0.0min
-________________________________________________________________________________
-[Memory] Calling sklearn.feature_selection.univariate_selection.f_regression...
-f_regression(array([[ 0.905206, ..., -0.849835],
-       ...,
-       [ 0.161245, ..., -1.091621]]),
-array([ -27.447268, ..., -112.638768]))
-_____________________________________________________f_regression - 0.0s, 0.0min
-________________________________________________________________________________
-[Memory] Calling sklearn.feature_selection.univariate_selection.f_regression...
-f_regression(array([[ 0.905206, ..., -0.849835],
-       ...,
-       [-0.675318, ..., -1.085711]]),
-array([-27.447268, ..., -25.026711]))
-_____________________________________________________f_regression - 0.0s, 0.0min</pre>
-</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_feature_agglomeration_vs_univariate_selection.py"><tt class="xref download docutils literal"><span class="pre">plot_feature_agglomeration_vs_univariate_selection.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Author: Alexandre Gramfort &lt;alexandre.gramfort@inria.fr&gt;</span>
 <span class="c"># License: BSD Style.</span>

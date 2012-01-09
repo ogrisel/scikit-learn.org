@@ -45,11 +45,11 @@ randomly) is also shown.
 **Script output**::
 
   Fitting estimator on a small sub-sample of the data
-  done in 0.888s.
+  done in 0.934s.
   Predicting color indices on the full image (k-means)
-  done in 0.932s.
+  done in 0.851s.
   Predicting color indices on the full image (random)
-  done in 1.155s.
+  done in 0.995s.
 
 
 
