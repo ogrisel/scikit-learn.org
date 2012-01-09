@@ -1,0 +1,7 @@
+scikits.learn.datasets.load_linnerud
+====================================
+
+.. currentmodule:: scikits.learn.datasets
+
+.. autofunction:: load_linnerud
+

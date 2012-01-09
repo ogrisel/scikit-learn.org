@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6.5.1. scikits.learn.neighbors.Neighbors &mdash; scikits.learn v0.6.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.6.0 documentation" href="../../index.html" />
+    <link rel="up" title="6. Class reference" href="../classes.html" />
+    <link rel="prev" title="6.4.1. scikits.learn.naive_bayes.GNB" href="scikits.learn.naive_bayes.GNB.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="scikits.learn.naive_bayes.GNB.html" title="6.4.1. scikits.learn.naive_bayes.GNB"
+             accesskey="P">previous</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">6.5.1. scikits.learn.neighbors.Neighbors</a><ul>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-neighbors-neighbors">
+<h1>6.5.1. scikits.learn.neighbors.Neighbors<a class="headerlink" href="#scikits-learn-neighbors-neighbors" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.neighbors.Neighbors">
+<em class="property">class </em><tt class="descclassname">scikits.learn.neighbors.</tt><tt class="descname">Neighbors</tt><big>(</big><em>n_neighbors=5</em>, <em>window_size=1</em><big>)</big><a class="headerlink" href="#scikits.learn.neighbors.Neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classifier implementing k-Nearest Neighbor Algorithm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>data</strong> : array-like, shape (n, k)</p>
+<blockquote>
+<p>The data points to be indexed. This array is not copied, and so
+modifying this data will result in bogus results.</p>
+</blockquote>
+<p><strong>labels</strong> : array</p>
+<blockquote>
+<p>An array representing labels for the data (only arrays of
+integers are supported).</p>
+</blockquote>
+<p><strong>n_neighbors</strong> : int</p>
+<blockquote>
+<p>default number of neighbors.</p>
+</blockquote>
+<p><strong>window_size</strong> : int</p>
+<blockquote class="last">
+<p>Window size passed to BallTree</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/K-nearest_neighbor_algorithm">http://en.wikipedia.org/wiki/K-nearest_neighbor_algorithm</a></p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mf">2.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span><span class="mf">5.</span><span class="p">,</span><span class="mf">4.</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.neighbors</span> <span class="kn">import</span> <span class="n">Neighbors</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">neigh</span> <span class="o">=</span> <span class="n">Neighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="go">Neighbors(n_neighbors=3, window_size=1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">neigh</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="go">[ 0.]</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></td>
+<td></td>
+</tr>
+<tr><td><a class="reference internal" href="#scikits.learn.neighbors.Neighbors.kneighbors" title="scikits.learn.neighbors.Neighbors.kneighbors"><tt class="xref py py-obj docutils literal"><span class="pre">kneighbors</span></tt></a></td>
+<td></td>
+</tr>
+<tr><td><a class="reference internal" href="#scikits.learn.neighbors.Neighbors.predict" title="scikits.learn.neighbors.Neighbors.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a></td>
+<td></td>
+</tr>
+<tr><td><a class="reference internal" href="#scikits.learn.neighbors.Neighbors.score" title="scikits.learn.neighbors.Neighbors.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="scikits.learn.neighbors.Neighbors.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>n_neighbors=5</em>, <em>window_size=1</em><big>)</big><a class="headerlink" href="#scikits.learn.neighbors.Neighbors.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Internally uses the ball tree datastructure and algorithm for fast
+neighbors lookups on high dimensional datasets.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.neighbors.Neighbors.kneighbors">
+<tt class="descname">kneighbors</tt><big>(</big><em>data</em>, <em>n_neighbors=None</em><big>)</big><a class="headerlink" href="#scikits.learn.neighbors.Neighbors.kneighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the K-neighbors of a point.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>point</strong> : array-like</p>
+<blockquote>
+<p>The new point.</p>
+</blockquote>
+<p><strong>n_neighbors</strong> : int</p>
+<blockquote>
+<p>Number of neighbors to get (default is the value
+passed to the constructor).</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>dist</strong> : array</p>
+<blockquote>
+<p>Array representing the lengths to point.</p>
+</blockquote>
+<p><strong>ind</strong> : array</p>
+<blockquote class="last">
+<p>Array representing the indices of the nearest points in the
+population matrix.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>In the following example, we construnct a Neighbors class from an
+array representing our data set and ask who&#8217;s the closest point to
+[1,1,1]</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.neighbors</span> <span class="kn">import</span> <span class="n">Neighbors</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">neigh</span> <span class="o">=</span> <span class="n">Neighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="go">Neighbors(n_neighbors=1, window_size=1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">neigh</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>
+<span class="go">(array(0.5), array(2))</span>
+</pre></div>
+</div>
+<p>As you can see, it returns [0.5], and [2], which means that the
+element is at distance 0.5 and is the third element of samples
+(indexes start at 0). You can also query for multiple points:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">neigh</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]])</span>
+<span class="go">(array([ 0.5       ,  1.11803399]), array([1, 2]))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.neighbors.Neighbors.predict">
+<tt class="descname">predict</tt><big>(</big><em>T</em>, <em>n_neighbors=None</em><big>)</big><a class="headerlink" href="#scikits.learn.neighbors.Neighbors.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict the class labels for the provided data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>test: array</strong> :</p>
+<blockquote>
+<p>A 2-D array representing the test point.</p>
+</blockquote>
+<p><strong>n_neighbors</strong> : int</p>
+<blockquote>
+<p>Number of neighbors to get (default is the value
+passed to the constructor).</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>labels: array</strong> :</p>
+<blockquote class="last">
+<p>List of class labels (one for each data sample).</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">samples</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.neighbors</span> <span class="kn">import</span> <span class="n">Neighbors</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">neigh</span> <span class="o">=</span> <span class="n">Neighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="go">Neighbors(n_neighbors=1, window_size=1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">neigh</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">])</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">neigh</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]])</span>
+<span class="go">[0 1]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.neighbors.Neighbors.score">
+<tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#scikits.learn.neighbors.Neighbors.score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the mean error rate on the given test data and labels.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+<blockquote>
+<p>Training set.</p>
+</blockquote>
+<p><strong>y</strong> : array-like, shape = [n_samples]</p>
+<blockquote>
+<p>Labels for X.</p>
+</blockquote>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>z</strong> : float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.6.0<p>
+        &copy; 2010, scikits.learn developers (BSD Lincense).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

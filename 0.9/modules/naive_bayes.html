@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.7. Naive Bayes &mdash; scikit-learn 0.9 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="up" title="3. Supervised learning" href="../supervised_learning.html" />
+    <link rel="next" title="3.8. Multiclass algorithms" href="multiclass.html" />
+    <link rel="prev" title="3.6. Partial Least Squares" href="pls.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../install.html">Download</a></li>
+            <li><a href="../support.html">Support</a></li>
+            <li><a href="../user_guide.html">User Guide</a></li>
+            <li><a href="../auto_examples/index.html">Examples</a></li>
+            <li><a href="../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="pls.html" title="3.6. Partial Least Squares"
+             accesskey="P">previous</a> |
+          <a href="multiclass.html" title="3.8. Multiclass algorithms"
+             accesskey="N">next</a> |
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">3.7. Naive Bayes</a><ul>
+<li><a class="reference internal" href="#gaussian-naive-bayes">3.7.1. Gaussian Naive Bayes</a></li>
+<li><a class="reference internal" href="#multinomial-naive-bayes">3.7.2. Multinomial Naive Bayes</a></li>
+<li><a class="reference internal" href="#bernoulli-naive-bayes">3.7.3. Bernoulli Naive Bayes</a></li>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        <h3>Citing</h3>
+        <p>Please consider
+	<a href="about.html#citing-the-scikit-learn">citing the
+	scikit-learn</a>.
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="naive-bayes">
+<h1>3.7. Naive Bayes<a class="headerlink" href="#naive-bayes" title="Permalink to this headline">¶</a></h1>
+<p><strong>Naive Bayes</strong> algorithms are a set of supervised learning methods
+based on applying Bayes&#8217; theorem with the &#8220;naive&#8221; assumption of independence
+between every pair of features. Given a class variable <img class="math" src="../_images/math/3372c1cb6d68cf97c2d231acc0b47b95a9ed04cc.png" alt="c"/> and a
+dependent set of feature variables <img class="math" src="../_images/math/37a9e7fca70e2dce829d902af2088735306bc1a3.png" alt="f_1"/> through <img class="math" src="../_images/math/fc19ca9685e2dcc4316b6dda7d448dad7254d724.png" alt="f_n"/>, Bayes&#8217;
+theorem states the following relationship:</p>
+<div class="math">
+<p><img src="../_images/math/6d213667e840b948aea883b76876c67077f4681d.png" alt="p(c \mid f_1,\dots,f_n) \propto p(c) p(f_1,\dots,f_n \mid c)"/></p>
+</div><p>Using the naive independence assumption this relationship is simplified to:</p>
+<div class="math">
+<p><img src="../_images/math/9e1285f5378507aa3ba528726e3547c46f1fb2df.png" alt="p(c \mid f_1,\dots,f_n) \propto p(c) \prod_{i=1}^{n} p(f_i \mid c)
+
+\Downarrow
+
+\hat{c} = \arg\max_c p(c) \prod_{i=1}^{n} p(f_i \mid c),"/></p>
+</div><p>so we can use Maximum A Posteriori (MAP) estimation to estimate
+<img class="math" src="../_images/math/5c398e052f38a8d1c2b898989d7ac9b2cae7434b.png" alt="p(c)"/> and <img class="math" src="../_images/math/eb9c80c4d955dfc160af4aca1167541574566786.png" alt="p(f_i \mid c)"/>.</p>
+<p>The different naive Bayes classifiers differ by the assumption on the
+distribution of <img class="math" src="../_images/math/eb9c80c4d955dfc160af4aca1167541574566786.png" alt="p(f_i \mid c)"/>.</p>
+<p>In spite of their apparently over-simplified assumptions, naive Bayes
+classifiers have worked quite well in many real-world situations, famously
+document classification and spam filtering. They requires a small amount
+of training data to estimate the necessary parameters. (For theoretical
+reasons why naive Bayes works well, and on which types of data it does, see
+the references below.)</p>
+<p>Naive Bayes learners and classifiers can be extremely fast compared to more
+sophisticated methods.
+The decoupling of the class conditional feature distributions means that each
+distribution can be independently estimated as a one dimensional distribution.
+This in turn helps to alleviate problems stemming from the curse of
+dimensionality.</p>
+<div class="topic">
+<p class="topic-title first">References:</p>
+<ul class="simple">
+<li>H. Zhang (2004). <a class="reference external" href="http://www.cs.unb.ca/profs/hzhang/publications/FLAIRS04ZhangH.pdf">The optimality of naive Bayes.</a>
+Proc. FLAIRS.</li>
+</ul>
+</div>
+<div class="section" id="gaussian-naive-bayes">
+<h2>3.7.1. Gaussian Naive Bayes<a class="headerlink" href="#gaussian-naive-bayes" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="generated/sklearn.naive_bayes.GaussianNB.html#sklearn.naive_bayes.GaussianNB" title="sklearn.naive_bayes.GaussianNB"><tt class="xref py py-class docutils literal"><span class="pre">GaussianNB</span></tt></a> implements the Gaussian Naive Bayes algorithm for
+classification. The likelihood of the features is assumed to be gaussian:</p>
+<div class="math">
+<p><img src="../_images/math/6545ec89d2235f4f70f1682086027e13e1bf504d.png" alt="p(f_i \mid c) &amp;= \frac{1}{\sqrt{2\pi\sigma^2_c}} \exp^{-\frac{ (f_i - \mu_c)^2}{2\pi\sigma^2_c}}"/></p>
+</div><p>The parameters of the distribution, <img class="math" src="../_images/math/a96b25b6ddab9332c0b16dccbfaf7dfe126801bb.png" alt="\sigma_c"/> and <img class="math" src="../_images/math/c6bbc0ea8fdc2250f4c597905d5f7c19c248d2bb.png" alt="\mu_c"/> are
+estimated using maximum likelihood.</p>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><em class="xref std std-ref">example_naive_bayes.py</em></li>
+</ul>
+</div>
+</div>
+<div class="section" id="multinomial-naive-bayes">
+<span id="id1"></span><h2>3.7.2. Multinomial Naive Bayes<a class="headerlink" href="#multinomial-naive-bayes" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="generated/sklearn.naive_bayes.MultinomialNB.html#sklearn.naive_bayes.MultinomialNB" title="sklearn.naive_bayes.MultinomialNB"><tt class="xref py py-class docutils literal"><span class="pre">MultinomialNB</span></tt></a> implements the Multinomial Naive Bayes algorithm for classification.
+Multinomial Naive Bayes models the distribution of words in a document as a
+multinomial. The distribution is parametrized by the vector
+<img class="math" src="../_images/math/ab41ea6a6e1c3a61f5706d84e5291f22577fe523.png" alt="\overline{\theta_c} = (\theta_{c1},\ldots,\theta_{cn})"/> where <img class="math" src="../_images/math/3372c1cb6d68cf97c2d231acc0b47b95a9ed04cc.png" alt="c"/>
+is the class of document, <img class="math" src="../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n"/> is the size of the vocabulary and <img class="math" src="../_images/math/176e26150c11eaa95e8d14f9a5e0c8ba0b92a9f4.png" alt="\theta_{ci}"/>
+is the probability of word <img class="math" src="../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i"/> appearing in a document of class <img class="math" src="../_images/math/3372c1cb6d68cf97c2d231acc0b47b95a9ed04cc.png" alt="c"/>.
+The likelihood of document <img class="math" src="../_images/math/96ab646de7704969b91c76a214126b45f2b07b25.png" alt="d"/> is,</p>
+<div class="math">
+<p><img src="../_images/math/e06a20dd3654190fadc6f48550466a55e16dff77.png" alt="p(d \mid \overline{\theta_c}) &amp;= \frac{ (\sum_i f_i)! }{\prod_i f_i !} \prod_i(\theta_{ci})^{f_i}"/></p>
+</div><p>where <img class="math" src="../_images/math/215e0fe3bff2036f523e4c94a2d1cb99f6e39e90.png" alt="f_{i}"/> is the frequency count of word <img class="math" src="../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i"/>. It can be shown
+that the maximum posterior probability is,</p>
+<div class="math">
+<p><img src="../_images/math/fa5b9c08b0b36122fd12a8f554e2f6951dbaffd3.png" alt="\hat{c} = \arg\max_c [ \log p(\overline{\theta_c}) + \sum_i f_i \log \theta_{ci} ]"/></p>
+</div><p>The vector of parameters <img class="math" src="../_images/math/6a89cc987e56ec4c6187cf74e10a90343e513a36.png" alt="\overline{\theta_c}"/> is estimated by a smoothed
+version of maximum likelihood,</p>
+<div class="math">
+<p><img src="../_images/math/5627c2a65d9be73d7a323cb78d2cae6de7611f5a.png" alt="\hat{\theta}_{ci} = \frac{ N_{ci} + \alpha_i }{N_c + \alpha }"/></p>
+</div><p>where <img class="math" src="../_images/math/08666a2b9a816f5d2aa9b3a1c382093b4e1cc94e.png" alt="N_{ci}"/> is the number of times word <img class="math" src="../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i"/> appears in a document
+of class <img class="math" src="../_images/math/3372c1cb6d68cf97c2d231acc0b47b95a9ed04cc.png" alt="c"/> and <img class="math" src="../_images/math/36b53a8d300af34c3638448f36a704e3a13f2523.png" alt="N_{c}"/> is the total count of words in a document
+of class <img class="math" src="../_images/math/3372c1cb6d68cf97c2d231acc0b47b95a9ed04cc.png" alt="c"/>. The smoothness priors <img class="math" src="../_images/math/7e46fc708bb0d019ec0b54d24b166024d6c146ff.png" alt="\alpha_i"/> and their sum
+<img class="math" src="../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha"/> account for words not seen in the learning samples.</p>
+</div>
+<div class="section" id="bernoulli-naive-bayes">
+<span id="id2"></span><h2>3.7.3. Bernoulli Naive Bayes<a class="headerlink" href="#bernoulli-naive-bayes" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="generated/sklearn.naive_bayes.BernoulliNB.html#sklearn.naive_bayes.BernoulliNB" title="sklearn.naive_bayes.BernoulliNB"><tt class="xref py py-class docutils literal"><span class="pre">BernoulliNB</span></tt></a> implements the naive Bayes training and classification
+algorithms for data that is distributed according to multivariate Bernoulli
+distributions. It requires samples to be represented as binary-valued/boolean
+feature vectors; if handed any other kind of data, it binarizes it (depending
+on the <tt class="docutils literal"><span class="pre">binarize</span></tt> parameter).</p>
+<p>In the case of text classification, word occurrence vectors (rather than word
+count vectors) may be used to train and use this classifier. <tt class="docutils literal"><span class="pre">BernoulliNB</span></tt>
+might perform better on some datasets, especially those with shorter documents,
+because it explicitly penalizes the non-occurrence of words/features in a
+dataset where <tt class="docutils literal"><span class="pre">MultinomialNB</span></tt> would only notice a zero count, but for text
+classification <tt class="docutils literal"><span class="pre">MultinomialNB</span></tt> will generally be better. It is advisable to
+evaluate both models, if time permits.</p>
+<div class="topic">
+<p class="topic-title first">References:</p>
+<ul class="simple">
+<li>C.D. Manning, P. Raghavan and H. Schütze (2008). Introduction to
+Information Retrieval. Cambridge University Press, pp. 234-265.</li>
+<li>A. McCallum and K. Nigam (1998).
+<a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.46.1529">A comparison of event models for naive Bayes text classification.</a>
+Proc. AAAI/ICML-98 Workshop on Learning for Text Categorization, pp. 41-48.</li>
+<li>V. Metsis, I. Androutsopoulos and G. Paliouras (2006).
+<a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.61.5542">Spam filtering with naive Bayes &#8211; Which naive Bayes?</a>
+3rd Conf. on Email and Anti-Spam (CEAS).</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikit-learn version 0.9<p>
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../_sources/modules/naive_bayes.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

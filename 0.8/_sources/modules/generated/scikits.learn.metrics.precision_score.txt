@@ -1,0 +1,7 @@
+scikits.learn.metrics.precision_score
+=====================================
+
+.. currentmodule:: scikits.learn.metrics
+
+.. autofunction:: precision_score
+

@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Classification of text documents using sparse features &mdash; scikits.learn v0.6.0 documentation</title>
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="top" title="scikits.learn v0.6.0 documentation" href="../index.html" />
+    <link rel="up" title="Examples" href="index.html" />
+    <link rel="next" title="Pipeline Anova SVM" href="feature_selection_pipeline.html" />
+    <link rel="prev" title="Examples" href="index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../install.html">Download</a></li>
+            <li><a href="../support.html">Support</a></li>
+            <li><a href="../user_guide.html">User Guide</a></li>
+            <li><a href="index.html">Examples</a></li>
+            <li><a href="../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="index.html" title="Examples"
+             accesskey="P">previous</a> |
+          <a href="feature_selection_pipeline.html" title="Pipeline Anova SVM"
+             accesskey="N">next</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">Classification of text documents using sparse features</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="classification-of-text-documents-using-sparse-features">
+<span id="example-document-classification-20newsgroups-py"></span><h1>Classification of text documents using sparse features<a class="headerlink" href="#classification-of-text-documents-using-sparse-features" title="Permalink to this headline">¶</a></h1>
+<p>This is an example showing how the scikit-learn can be used to classify
+documents by topics using a bag-of-words approach. This example uses
+a scipy.sparse matrix to store the features instead of standard numpy arrays.</p>
+<p>The dataset used in this example is the 20 newsgroups dataset which will be
+automatically downloaded and then cached.</p>
+<p>You can adjust the number of categories by giving there name to the dataset
+loader or setting them to None to get the 20 of them.</p>
+<p>This example demos various linear classifiers with different training
+strategies.</p>
+<p>To run this example use:</p>
+<div class="highlight-python"><pre>% python examples/document_classification_20newsgroups.py [options]</pre>
+</div>
+<p>Options are:</p>
+<blockquote>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">--report</span></kbd></td>
+<td>Print a detailed classification report.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">--confusion-matrix</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Print the confusion matrix.</td></tr>
+</tbody>
+</table>
+</blockquote>
+<p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/document_classification_20newsgroups.py"><tt class="xref download docutils literal"><span class="pre">document_classification_20newsgroups.py</span></tt></a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+
+<span class="c"># Author: Peter Prettenhofer &lt;peter.prettenhofer@gmail.com&gt;</span>
+<span class="c">#         Olivier Grisel &lt;olivier.grisel@ensta.org&gt;</span>
+<span class="c">#         Mathieu Blondel &lt;mathieu@mblondel.org&gt;</span>
+<span class="c"># License: Simplified BSD</span>
+
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">scikits.learn.datasets</span> <span class="kn">import</span> <span class="n">load_files</span>
+<span class="kn">from</span> <span class="nn">scikits.learn.feature_extraction.text.sparse</span> <span class="kn">import</span> <span class="n">Vectorizer</span>
+<span class="kn">from</span> <span class="nn">scikits.learn.svm.sparse</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
+<span class="kn">from</span> <span class="nn">scikits.learn.linear_model.sparse</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
+<span class="kn">from</span> <span class="nn">scikits.learn</span> <span class="kn">import</span> <span class="n">metrics</span>
+
+<span class="c"># parse commandline arguments</span>
+<span class="n">argv</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="k">if</span> <span class="s">&quot;--report&quot;</span> <span class="ow">in</span> <span class="n">argv</span><span class="p">:</span>
+    <span class="n">print_report</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">print_report</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">if</span> <span class="s">&quot;--confusion-matrix&quot;</span> <span class="ow">in</span> <span class="n">argv</span><span class="p">:</span>
+    <span class="n">print_cm</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">print_cm</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="c">################################################################################</span>
+<span class="c"># Download the data, if not already on disk</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">&quot;http://people.csail.mit.edu/jrennie/20Newsgroups/20news-18828.tar.gz&quot;</span>
+<span class="n">archive_name</span> <span class="o">=</span> <span class="s">&quot;20news-18828.tar.gz&quot;</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">archive_name</span><span class="p">[:</span><span class="o">-</span><span class="mi">7</span><span class="p">]):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">archive_name</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">urllib</span>
+        <span class="k">print</span> <span class="s">&quot;Downloading data, please Wait (14MB)...&quot;</span>
+        <span class="k">print</span> <span class="n">url</span>
+        <span class="n">opener</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="nb">open</span><span class="p">(</span><span class="n">archive_name</span><span class="p">,</span> <span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">opener</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+        <span class="k">print</span>
+
+    <span class="kn">import</span> <span class="nn">tarfile</span>
+    <span class="k">print</span> <span class="s">&quot;Decompressiong the archive: &quot;</span> <span class="o">+</span> <span class="n">archive_name</span>
+    <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">archive_name</span><span class="p">,</span> <span class="s">&quot;r:gz&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">extractall</span><span class="p">()</span>
+    <span class="k">print</span>
+
+
+<span class="c">################################################################################</span>
+<span class="c"># Load some categories from the training set</span>
+<span class="n">categories</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&#39;alt.atheism&#39;</span><span class="p">,</span>
+    <span class="s">&#39;talk.religion.misc&#39;</span><span class="p">,</span>
+    <span class="s">&#39;comp.graphics&#39;</span><span class="p">,</span>
+    <span class="s">&#39;sci.space&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="c"># Uncomment the following to do the analysis on all the categories</span>
+<span class="c">#categories = None</span>
+
+<span class="k">print</span> <span class="s">&quot;Loading 20 newsgroups dataset for categories:&quot;</span>
+<span class="k">print</span> <span class="n">categories</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">load_files</span><span class="p">(</span><span class="s">&#39;20news-18828&#39;</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;</span><span class="si">%d</span><span class="s"> documents&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">filenames</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;</span><span class="si">%d</span><span class="s"> categories&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
+<span class="k">print</span>
+
+<span class="c"># split a training set and a test set</span>
+<span class="n">filenames</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">filenames</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="n">filenames</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">filenames_train</span><span class="p">,</span> <span class="n">filenames_test</span> <span class="o">=</span> <span class="n">filenames</span><span class="p">[:</span><span class="o">-</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">],</span> <span class="n">filenames</span><span class="p">[</span><span class="o">-</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">:]</span>
+<span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">:]</span>
+
+<span class="k">print</span> <span class="s">&quot;Extracting features from the training dataset using a sparse vectorizer&quot;</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">Vectorizer</span><span class="p">()</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">((</span><span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filenames_train</span><span class="p">))</span>
+<span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;n_samples: </span><span class="si">%d</span><span class="s">, n_features: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span>
+<span class="k">print</span>
+
+<span class="k">print</span> <span class="s">&quot;Extracting features from the test dataset using the same vectorizer&quot;</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">((</span><span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filenames_test</span><span class="p">))</span>
+<span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;n_samples: </span><span class="si">%d</span><span class="s">, n_features: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span>
+<span class="k">print</span>
+
+
+<span class="c">################################################################################</span>
+<span class="c"># Benchmark classifiers</span>
+<span class="k">def</span> <span class="nf">benchmark</span><span class="p">(</span><span class="n">clf</span><span class="p">):</span>
+    <span class="k">print</span> <span class="mi">80</span> <span class="o">*</span> <span class="s">&#39;_&#39;</span>
+    <span class="k">print</span> <span class="s">&quot;Training: &quot;</span>
+    <span class="k">print</span> <span class="n">clf</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">train_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+    <span class="k">print</span> <span class="s">&quot;train time: </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="n">train_time</span>
+
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">test_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+    <span class="k">print</span> <span class="s">&quot;test time:  </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="n">test_time</span>
+
+    <span class="n">score</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;f1-score:   </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">score</span>
+
+    <span class="n">nnz</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">print</span> <span class="s">&quot;non-zero coef: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">nnz</span>
+    <span class="k">print</span>
+
+    <span class="k">if</span> <span class="n">print_report</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&quot;classification report:&quot;</span>
+        <span class="k">print</span> <span class="n">metrics</span><span class="o">.</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span>
+                                            <span class="n">class_names</span><span class="o">=</span><span class="n">categories</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">print_cm</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s">&quot;confusion matrix:&quot;</span>
+        <span class="k">print</span> <span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
+
+    <span class="k">print</span>
+    <span class="k">return</span> <span class="n">score</span><span class="p">,</span> <span class="n">train_time</span><span class="p">,</span> <span class="n">test_time</span>
+
+<span class="k">for</span> <span class="n">penalty</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&quot;l2&quot;</span><span class="p">,</span> <span class="s">&quot;l1&quot;</span><span class="p">]:</span>
+    <span class="k">print</span> <span class="mi">80</span><span class="o">*</span><span class="s">&#39;=&#39;</span>
+    <span class="k">print</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s"> penalty&quot;</span> <span class="o">%</span> <span class="n">penalty</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="c"># Train Liblinear model</span>
+    <span class="n">liblinear_results</span> <span class="o">=</span> <span class="n">benchmark</span><span class="p">(</span><span class="n">LinearSVC</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">&#39;l2&#39;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="n">penalty</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+                                        <span class="n">dual</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">))</span>
+
+    <span class="c"># Train SGD model</span>
+    <span class="n">sgd_results</span> <span class="o">=</span> <span class="n">benchmark</span><span class="p">(</span><span class="n">SGDClassifier</span><span class="p">(</span><span class="n">alpha</span><span class="o">=.</span><span class="mo">0001</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                                          <span class="n">penalty</span><span class="o">=</span><span class="n">penalty</span><span class="p">))</span>
+
+<span class="c"># Train SGD with Elastic Net penalty</span>
+<span class="k">print</span> <span class="mi">80</span><span class="o">*</span><span class="s">&#39;=&#39;</span>
+<span class="k">print</span> <span class="s">&quot;Elastic-Net penalty&quot;</span>
+<span class="n">sgd_results</span> <span class="o">=</span> <span class="n">benchmark</span><span class="p">(</span><span class="n">SGDClassifier</span><span class="p">(</span><span class="n">alpha</span><span class="o">=.</span><span class="mo">0001</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                                      <span class="n">penalty</span><span class="o">=</span><span class="s">&quot;elasticnet&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.6.0<p>
+        &copy; 2010, scikits.learn developers (BSD Lincense).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+scikits.learn.linear_model.LassoCV
+==================================
+
+.. currentmodule:: scikits.learn.linear_model
+
+.. autoclass:: LassoCV
+
+   
+   .. automethod:: __init__
+   
+

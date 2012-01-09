@@ -1,0 +1,7 @@
+scikits.learn.metrics.mean_square_error
+=======================================
+
+.. currentmodule:: scikits.learn.metrics
+
+.. autofunction:: mean_square_error
+

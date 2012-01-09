@@ -1,0 +1,17 @@
+
+
+.. _example_logistic_l1_l2_coef.py:
+
+
+===================
+Logistic Regression
+===================
+
+with l1 and l2 penalty
+
+
+**Python source code:** :download:`logistic_l1_l2_coef.py <logistic_l1_l2_coef.py>`
+
+.. literalinclude:: logistic_l1_l2_coef.py
+    :lines: 8-
+    

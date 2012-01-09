@@ -1,0 +1,185 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>scikits.learn.svm.libsvm.fit &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../../index.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">scikits.learn.svm.libsvm.fit</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-svm-libsvm-fit">
+<h1>scikits.learn.svm.libsvm.fit<a class="headerlink" href="#scikits-learn-svm-libsvm-fit" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="scikits.learn.svm.libsvm.fit">
+<tt class="descclassname">scikits.learn.svm.libsvm.</tt><tt class="descname">fit</tt><big>(</big><big>)</big><a class="headerlink" href="#scikits.learn.svm.libsvm.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train the model using libsvm (low-level method)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like, dtype=float64, size=[n_samples, n_features]</strong> :</p>
+<p><strong>Y: array, dtype=float64, size=[n_samples]</strong> :</p>
+<blockquote>
+<p>target vector</p>
+</blockquote>
+<p><strong>svm_type</strong> : {0, 1, 2, 3, 4}</p>
+<blockquote>
+<p>Type of SVM: C_SVC, NuSVC, OneClassSVM, EpsilonSVR or NuSVR
+respectevely.</p>
+</blockquote>
+<p><strong>kernel</strong> : {&#8216;linear&#8217;, &#8216;rbf&#8217;, &#8216;poly&#8217;, &#8216;sigmoid&#8217;, &#8216;precomputed&#8217;}</p>
+<blockquote>
+<p>Kernel to use in the model: linear, polynomial, RBF, sigmoid
+or precomputed.</p>
+</blockquote>
+<p><strong>degree</strong> : int32</p>
+<blockquote>
+<p>Degree of the polynomial kernel (only relevant if kernel is
+set to polynomial)</p>
+</blockquote>
+<p><strong>gamma</strong> : float64</p>
+<blockquote>
+<p>Gamma parameter in RBF kernel (only relevant if kernel is set
+to RBF)</p>
+</blockquote>
+<p><strong>coef0</strong> : float64</p>
+<blockquote>
+<p>Independent parameter in poly/sigmoid kernel.</p>
+</blockquote>
+<p><strong>tol</strong> : float64</p>
+<blockquote>
+<p>Stopping criteria.</p>
+</blockquote>
+<p><strong>C</strong> : float64</p>
+<blockquote>
+<p>C parameter in C-Support Vector Classification</p>
+</blockquote>
+<p><strong>nu</strong> : float64</p>
+<p class="last"><strong>cache_size</strong> : float64</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/scikits.learn.svm.libsvm.fit.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

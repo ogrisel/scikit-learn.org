@@ -1,0 +1,7 @@
+scikits.learn.metrics.pairwise.rbf_kernel
+=========================================
+
+.. currentmodule:: scikits.learn.metrics.pairwise
+
+.. autofunction:: rbf_kernel
+

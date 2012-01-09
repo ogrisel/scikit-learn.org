@@ -1,0 +1,7 @@
+scikits.learn.metrics.zero_one_score
+====================================
+
+.. currentmodule:: scikits.learn.metrics
+
+.. autofunction:: zero_one_score
+

@@ -1,0 +1,227 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>4.3. Decomposing signals in components (matrix factorization problems) &mdash; scikits.learn 0.7.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.7.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="top" title="scikits.learn 0.7.1 documentation" href="../index.html" />
+    <link rel="up" title="4. Unsupervised learning" href="../unsupervised_learning.html" />
+    <link rel="next" title="5. Model Selection" href="../model_selection.html" />
+    <link rel="prev" title="4.2. Clustering" href="clustering.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../install.html">Download</a></li>
+            <li><a href="../support.html">Support</a></li>
+            <li><a href="../user_guide.html">User Guide</a></li>
+            <li><a href="../auto_examples/index.html">Examples</a></li>
+            <li><a href="../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="clustering.html" title="4.2. Clustering"
+             accesskey="P">previous</a> |
+          <a href="../model_selection.html" title="5. Model Selection"
+             accesskey="N">next</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">4.3. Decomposing signals in components (matrix factorization problems)</a><ul>
+<li><a class="reference internal" href="#principal-component-analysis-pca">4.3.1. Principal component analysis (PCA)</a><ul>
+<li><a class="reference internal" href="#exact-pca-and-probabilistic-interpretation">4.3.1.1. Exact PCA and probabilistic interpretation</a></li>
+<li><a class="reference internal" href="#approximate-pca">4.3.1.2. Approximate PCA</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#independent-component-analysis-ica">4.3.2. Independent component analysis (ICA)</a></li>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="decomposing-signals-in-components-matrix-factorization-problems">
+<h1>4.3. Decomposing signals in components (matrix factorization problems)<a class="headerlink" href="#decomposing-signals-in-components-matrix-factorization-problems" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="principal-component-analysis-pca">
+<span id="pca"></span><h2>4.3.1. Principal component analysis (PCA)<a class="headerlink" href="#principal-component-analysis-pca" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exact-pca-and-probabilistic-interpretation">
+<h3>4.3.1.1. Exact PCA and probabilistic interpretation<a class="headerlink" href="#exact-pca-and-probabilistic-interpretation" title="Permalink to this headline">¶</a></h3>
+<p>PCA is used to decompose a multivariate dataset in a set of successive
+orthogonal components that explain a maximum amount of the variance. In
+the scikit-learn, <a class="reference internal" href="generated/scikits.learn.pca.PCA.html#scikits.learn.pca.PCA" title="scikits.learn.pca.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a> is implemented as a <cite>transformer</cite> object
+that learns n components in its <cite>fit</cite> method, and can be used on new data
+to project it on these components.</p>
+<p>The optional parameter <cite>whiten=True</cite> parameter make it possible to
+project the data onto the singular space while scaling each component
+to unit variance. This is often useful if the models down-stream make
+strong assumptions on the isotropy of the signal: this is for example
+the case for Support Vector Machines with the RBF kernel and the K-Means
+clustering algorithm. However in that case the inverse transform is no
+longer exact since some information is lost while forward transforming.</p>
+<p>In addition, the <a class="reference internal" href="generated/scikits.learn.pca.ProbabilisticPCA.html#scikits.learn.pca.ProbabilisticPCA" title="scikits.learn.pca.ProbabilisticPCA"><tt class="xref py py-class docutils literal"><span class="pre">ProbabilisticPCA</span></tt></a> object provides a
+probabilistic interpretation of the PCA that can give a likelihood of
+data based on the amount of variance it explains. As such it implements a
+<cite>score</cite> method that can be used in cross-validation.</p>
+<p>Below is an example of the iris dataset, which is comprised of 4
+features, projected on the 2 dimensions that explain most variance:</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/plot_pca.html"><img alt="../_images/plot_pca1.png" src="../_images/plot_pca1.png" style="width: 600.0px; height: 450.0px;" /></a>
+</div>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/plot_pca.html#example-plot-pca-py"><em>PCA 2D projection of Iris dataset</em></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="approximate-pca">
+<h3>4.3.1.2. Approximate PCA<a class="headerlink" href="#approximate-pca" title="Permalink to this headline">¶</a></h3>
+<p>Often we are interested in projecting the data onto a lower dimensional
+space that preseves most of the variance by droping the singular vector
+of components associated with lower singular values.</p>
+<p>For instance for face recognition, if we work with 64x64 gray level pixel
+pictures the dimensionality of the data is 4096 and it is slow to train a
+RBF Support Vector Machine on such wide data. Furthermore we know that
+intrinsic dimensionality of the data is much lower than 4096 since all
+faces pictures look alike. The samples lie on a manifold of much lower
+dimension (say around 200 for instance). The PCA algorithm can be used
+to linearly transform the data while both reducing the dimensionality
+and preserve most of the explained variance at the same time.</p>
+<p>The class <a class="reference internal" href="generated/scikits.learn.pca.RandomizedPCA.html#scikits.learn.pca.RandomizedPCA" title="scikits.learn.pca.RandomizedPCA"><tt class="xref py py-class docutils literal"><span class="pre">RandomizedPCA</span></tt></a> is very useful in that case: since we
+are going to drop most of the singular vectors it is much more efficient
+to limit the computation to an approximated estimate of the singular
+vectors we will keep to actually perform the transform.</p>
+<p><a class="reference internal" href="generated/scikits.learn.pca.RandomizedPCA.html#scikits.learn.pca.RandomizedPCA" title="scikits.learn.pca.RandomizedPCA"><tt class="xref py py-class docutils literal"><span class="pre">RandomizedPCA</span></tt></a> can hence be used as a drop in replacement for
+<a class="reference internal" href="generated/scikits.learn.pca.PCA.html#scikits.learn.pca.PCA" title="scikits.learn.pca.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a> minor the exception that we need to give it the size of
+the lower dimensional space <cite>n_components</cite> as mandatory input parameter.</p>
+<p>If we note <img class="math" src="../_images/math/734f96d3acf939f0eeae3f96aa315adf7f8b7a8d.png" alt="n_{max} = max(n_{samples}, n_{features})"/> and
+<img class="math" src="../_images/math/9aa7a8fefc9cee485018ce133f5b9e4bc27655c6.png" alt="n_{min} = min(n_{samples}, n_{features})"/>, the time complexity
+of <a class="reference internal" href="generated/scikits.learn.pca.RandomizedPCA.html#scikits.learn.pca.RandomizedPCA" title="scikits.learn.pca.RandomizedPCA"><tt class="xref py py-class docutils literal"><span class="pre">RandomizedPCA</span></tt></a> is <img class="math" src="../_images/math/693c7c37f3deedd54826d9d1e71886f1fdd48283.png" alt="O(n_{max}^2 \cdot n_{components})"/>
+instead of <img class="math" src="../_images/math/448320d4b9fcc6d05c54f11386c5f7e3a4b70c3e.png" alt="O(n_{max}^2 \cdot n_{min})"/> for the exact method
+implemented in <a class="reference internal" href="generated/scikits.learn.pca.PCA.html#scikits.learn.pca.PCA" title="scikits.learn.pca.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a>.</p>
+<p>The memory footprint of <a class="reference internal" href="generated/scikits.learn.pca.RandomizedPCA.html#scikits.learn.pca.RandomizedPCA" title="scikits.learn.pca.RandomizedPCA"><tt class="xref py py-class docutils literal"><span class="pre">RandomizedPCA</span></tt></a> is also proportional to
+<img class="math" src="../_images/math/ec098e733acd37617fc9b3c4a969721f612c7dba.png" alt="2 \cdot n_{max} \cdot n_{components}"/> instead of <img class="math" src="../_images/math/cbca799f62ecd37acaf7062bf9a37f42300dbb45.png" alt="n_{max}
+\cdot n_{min}"/> for the exact method.</p>
+<p>Furthermore <a class="reference internal" href="generated/scikits.learn.pca.RandomizedPCA.html#scikits.learn.pca.RandomizedPCA" title="scikits.learn.pca.RandomizedPCA"><tt class="xref py py-class docutils literal"><span class="pre">RandomizedPCA</span></tt></a> is able to work with
+<cite>scipy.sparse</cite> matrices as input which make it suitable for reducing
+the dimensionality of features extracted from text documents for
+instance.</p>
+<p>Note: the implementation of <cite>inverse_transform</cite> in <a class="reference internal" href="generated/scikits.learn.pca.RandomizedPCA.html#scikits.learn.pca.RandomizedPCA" title="scikits.learn.pca.RandomizedPCA"><tt class="xref py py-class docutils literal"><span class="pre">RandomizedPCA</span></tt></a>
+is not the exact inverse transform of <cite>transform</cite> even when
+<cite>whiten=False</cite> (default).</p>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/applications/plot_face_recognition.html#example-applications-plot-face-recognition-py"><em>Faces recognition example using eigenfaces and SVMs</em></a></li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">References:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://arxiv.org/abs/0909.4061">&#8220;Finding structure with randomness: Stochastic algorithms for
+constructing approximate matrix decompositions&#8221;</a>
+Halko, et al., 2009</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="independent-component-analysis-ica">
+<span id="ica"></span><h2>4.3.2. Independent component analysis (ICA)<a class="headerlink" href="#independent-component-analysis-ica" title="Permalink to this headline">¶</a></h2>
+<p>ICA finds components that are maximally independent. It is classically
+used to separate mixed signals (a problem know as <em>blind source
+separation</em>), as in the example below:</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/plot_ica_blind_source_separation.html"><img alt="../_images/plot_ica_blind_source_separation1.png" src="../_images/plot_ica_blind_source_separation1.png" style="width: 400.0px; height: 300.0px;" /></a>
+</div>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/plot_ica_blind_source_separation.html#example-plot-ica-blind-source-separation-py"><em>Blind source separation using FastICA</em></a></li>
+<li><a class="reference internal" href="../auto_examples/plot_ica_vs_pca.html#example-plot-ica-vs-pca-py"><em>FastICA on 2D point clouds</em></a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.7.1<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

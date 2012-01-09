@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>0.6 &mdash; scikits.learn v0.6.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="top" title="scikits.learn v0.6.0 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="index.html">
+            <img src="_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="install.html">Download</a></li>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="user_guide.html">User Guide</a></li>
+            <li><a href="auto_examples/index.html">Examples</a></li>
+            <li><a href="developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">0.6</a><ul>
+<li><a class="reference internal" href="#changelog">Changelog</a></li>
+<li><a class="reference internal" href="#people">People</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#changes-0-5">0.5</a><ul>
+<li><a class="reference internal" href="#id3">Changelog</a><ul>
+<li><a class="reference internal" href="#new-classes">New classes</a></li>
+<li><a class="reference internal" href="#documentation">Documentation</a></li>
+<li><a class="reference internal" href="#fixes">Fixes</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#external-dependencies">External dependencies</a></li>
+<li><a class="reference internal" href="#removed-modules">Removed modules</a></li>
+<li><a class="reference internal" href="#misc">Misc</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#authors">Authors</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">0.4</a><ul>
+<li><a class="reference internal" href="#id5">Changelog</a></li>
+<li><a class="reference internal" href="#id6">Authors</a></li>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="changes-0-6">
+<span id="id1"></span><h1>0.6<a class="headerlink" href="#changes-0-6" title="Permalink to this headline">¶</a></h1>
+<p>scikits.learn 0.6 was released on december 2010. It is marked by the
+inclusion of several new modules and a general renaming of old
+ones. It is also marked by the inclusion of new example, including
+applications to real-world datasets.</p>
+<p><div style="text-align: center; margin: 0px 0 -5px 0;"> <a class="reference external" href="auto_examples/applications/plot_face_recognition.html"><img alt="banner1" src="_images/plot_face_recognition.png" style="height: 150px;" /></a> <a class="reference external" href="auto_examples/applications/plot_species_distribution_modeling.html"><img alt="banner2" src="_images/plot_species_distribution_modeling.png" style="height: 150px;" /></a> <a class="reference external" href="auto_examples/gaussian_process/plot_gp_regression.html"><img alt="banner3" src="_images/plot_gp_regression.png" style="height: 150px;" /></a> <a class="reference external" href="auto_examples/linear_model/plot_sgd_iris.html"><img alt="banner4" src="_images/plot_sgd_iris.png" style="height: 150px;" /></a> </div></p>
+<div class="section" id="changelog">
+<h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<ul class="simple">
+<li>New <a class="reference external" href="http://scikit-learn.sourceforge.net/modules/sgd.html">stochastic gradient</a> descent
+module by Peter Prettenhofer. The module comes with complete
+documentation and examples.</li>
+<li>Improved svm module: memory consumption has been reduced by 50%,
+heuristic to automatically set class weights, possibility to
+assign weights to samples (see
+<a class="reference internal" href="auto_examples/svm/plot_weighted_samples.html#example-svm-plot-weighted-samples-py"><em>SVM: Weighted samples</em></a> for an example).</li>
+<li>New <a class="reference internal" href="modules/gaussian_process.html#gaussian-process"><em>Gaussian Processes</em></a> module by Vincent Dubourg. This module
+also has great documentation and some very neat examples. See
+<a class="reference internal" href="auto_examples/gaussian_process/plot_gp_regression.html#example-gaussian-process-plot-gp-regression-py"><em>Gaussian Processes regression: basic introductory example</em></a> or
+<a class="reference internal" href="auto_examples/gaussian_process/plot_gp_probabilistic_classification_after_regression.html#example-gaussian-process-plot-gp-probabilistic-classification-after-regression-py"><em>Gaussian Processes classification example: exploiting the probabilistic output</em></a>
+for a taste of what can be done.</li>
+<li>It is now possible to use liblinear’s Multi-class SVC (option
+multi_class in <a class="reference internal" href="modules/generated/scikits.learn.svm.LinearSVC.html#scikits.learn.svm.LinearSVC" title="scikits.learn.svm.LinearSVC"><tt class="xref py py-class docutils literal"><span class="pre">svm.LinearSVC</span></tt></a>)</li>
+<li>New features and performance improvements of text feature
+extraction.</li>
+<li>Improved sparse matrix support, both in main classes
+(<a class="reference internal" href="modules/generated/scikits.learn.grid_search.GridSearchCV.html#scikits.learn.grid_search.GridSearchCV" title="scikits.learn.grid_search.GridSearchCV"><tt class="xref py py-class docutils literal"><span class="pre">grid_search.GridSearchCV</span></tt></a>) as in modules
+scikits.learn.svm.sparse and scikits.learn.linear_model.sparse.</li>
+<li>Lots of cool new examples and a new section that uses real-world
+datasets was created. These include:
+<a class="reference internal" href="auto_examples/applications/plot_face_recognition.html#example-applications-plot-face-recognition-py"><em>Faces recognition example using eigenfaces and SVMs</em></a>,
+<a class="reference internal" href="auto_examples/applications/plot_species_distribution_modeling.html#example-applications-plot-species-distribution-modeling-py"><em>Species distribution modeling</em></a>,
+<a class="reference internal" href="auto_examples/applications/svm_gui.html#example-applications-svm-gui-py"><em>Libsvm GUI</em></a>,
+<a class="reference internal" href="auto_examples/applications/wikipedia_principal_eigenvector.html#example-applications-wikipedia-principal-eigenvector-py"><em>Wikipedia princial eigenvector</em></a> and
+others.</li>
+<li>Faster <a class="reference internal" href="modules/linear_model.html#least-angle-regression"><em>Least Angle Regression</em></a> algorithm. It is now 2x
+faster than the R version on worst case and up to 10x times faster
+on some cases.</li>
+<li>Faster coordinate descent algorithm. In particular, the full path
+version of lasso (<a class="reference internal" href="modules/generated/scikits.learn.linear_model.lasso_path.html#scikits.learn.linear_model.lasso_path" title="scikits.learn.linear_model.lasso_path"><tt class="xref py py-func docutils literal"><span class="pre">linear_model.lasso_path()</span></tt></a>) is more than
+200x times faster than before.</li>
+<li>It is now possible to get probability estimates from a
+<a class="reference internal" href="modules/generated/scikits.learn.linear_model.LogisticRegression.html#scikits.learn.linear_model.LogisticRegression" title="scikits.learn.linear_model.LogisticRegression"><tt class="xref py py-class docutils literal"><span class="pre">linear_model.LogisticRegression</span></tt></a> model.</li>
+<li>module renaming: the glm module has been renamed to linear_model,
+the gmm module has been included into the more general mixture
+model and the sgd module has been included in linear_model.</li>
+<li>Lots of bug fixes and documentation improvements.</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="people">
+<h2>People<a class="headerlink" href="#people" title="Permalink to this headline">¶</a></h2>
+<p>People that made this release possible preceeded by number of commits:</p>
+<blockquote>
+<ul class="simple">
+<li>207  <a class="reference external" href="http://twitter.com/ogrisel">Olivier Grisel</a></li>
+<li>167 <a class="reference external" href="http://fseoane.net/blog/">Fabian Pedregosa</a></li>
+<li>97 <a class="reference external" href="http://sites.google.com/site/peterprettenhofer/">Peter Prettenhofer</a></li>
+<li>68 <a class="reference external" href="http://www-sop.inria.fr/members/Alexandre.Gramfort/index.fr.html">Alexandre Gramfort</a></li>
+<li>59  <a class="reference external" href="http://www.mblondel.org/journal/">Mathieu Blondel</a></li>
+<li>55  <a class="reference external" href="http://gael-varoquaux.info/blog/">Gael Varoquaux</a></li>
+<li>33  Vincent Dubourg</li>
+<li>21  <a class="reference external" href="http://www.ee.columbia.edu/~ronw/">Ron Weiss</a></li>
+<li>9  Bertrand Thirion</li>
+<li>3  <a class="reference external" href="http://atpassos.posterous.com">Alexandre Passos</a></li>
+<li>3  Anne-Laure Fouque</li>
+<li>2  Ronan Amicel</li>
+<li>1 <a class="reference external" href="http://osdf.github.com/">Christian Osendorfer</a></li>
+</ul>
+</blockquote>
+</div>
+</div>
+<div class="section" id="changes-0-5">
+<span id="id2"></span><h1>0.5<a class="headerlink" href="#changes-0-5" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id3">
+<h2>Changelog<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="new-classes">
+<h3>New classes<a class="headerlink" href="#new-classes" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<ul class="simple">
+<li>Support for sparse matrices in some classifiers of modules
+<tt class="docutils literal"><span class="pre">svm</span></tt> and <tt class="docutils literal"><span class="pre">linear_model</span></tt> (see <a class="reference internal" href="modules/generated/scikits.learn.svm.sparse.SVC.html#scikits.learn.svm.sparse.SVC" title="scikits.learn.svm.sparse.SVC"><tt class="xref py py-class docutils literal"><span class="pre">svm.sparse.SVC</span></tt></a>,
+<a class="reference internal" href="modules/generated/scikits.learn.svm.sparse.SVR.html#scikits.learn.svm.sparse.SVR" title="scikits.learn.svm.sparse.SVR"><tt class="xref py py-class docutils literal"><span class="pre">svm.sparse.SVR</span></tt></a>, <a class="reference internal" href="modules/generated/scikits.learn.svm.sparse.LinearSVC.html#scikits.learn.svm.sparse.LinearSVC" title="scikits.learn.svm.sparse.LinearSVC"><tt class="xref py py-class docutils literal"><span class="pre">svm.sparse.LinearSVC</span></tt></a>,
+<a class="reference internal" href="modules/generated/scikits.learn.linear_model.sparse.Lasso.html#scikits.learn.linear_model.sparse.Lasso" title="scikits.learn.linear_model.sparse.Lasso"><tt class="xref py py-class docutils literal"><span class="pre">linear_model.sparse.Lasso</span></tt></a>, <a class="reference internal" href="modules/generated/scikits.learn.linear_model.sparse.ElasticNet.html#scikits.learn.linear_model.sparse.ElasticNet" title="scikits.learn.linear_model.sparse.ElasticNet"><tt class="xref py py-class docutils literal"><span class="pre">linear_model.sparse.ElasticNet</span></tt></a>)</li>
+<li>New <a class="reference internal" href="modules/generated/scikits.learn.pipeline.Pipeline.html#scikits.learn.pipeline.Pipeline" title="scikits.learn.pipeline.Pipeline"><tt class="xref py py-class docutils literal"><span class="pre">pipeline.Pipeline</span></tt></a> object to compose different estimators.</li>
+<li>Recursive Feature Elimination routines in module
+<a class="reference internal" href="modules/feature_selection.html#feature-selection-doc"><em>Feature selection</em></a>.</li>
+<li>Addition of various classes capable of cross validation in the
+linear_model module (<a class="reference internal" href="modules/generated/scikits.learn.linear_model.LassoCV.html#scikits.learn.linear_model.LassoCV" title="scikits.learn.linear_model.LassoCV"><tt class="xref py py-class docutils literal"><span class="pre">linear_model.LassoCV</span></tt></a>, <a class="reference internal" href="modules/generated/scikits.learn.linear_model.ElasticNetCV.html#scikits.learn.linear_model.ElasticNetCV" title="scikits.learn.linear_model.ElasticNetCV"><tt class="xref py py-class docutils literal"><span class="pre">linear_model.ElasticNetCV</span></tt></a>,
+etc.).</li>
+<li>New, more efficient LARS algorithm implementation. The Lasso
+variant of the algorithm is also implemented. See
+<a class="reference internal" href="modules/generated/scikits.learn.linear_model.lars_path.html#scikits.learn.linear_model.lars_path" title="scikits.learn.linear_model.lars_path"><tt class="xref py py-class docutils literal"><span class="pre">linear_model.lars_path</span></tt></a>, <a class="reference internal" href="modules/generated/scikits.learn.linear_model.LARS.html#scikits.learn.linear_model.LARS" title="scikits.learn.linear_model.LARS"><tt class="xref py py-class docutils literal"><span class="pre">linear_model.LARS</span></tt></a> and
+<a class="reference internal" href="modules/generated/scikits.learn.linear_model.LassoLARS.html#scikits.learn.linear_model.LassoLARS" title="scikits.learn.linear_model.LassoLARS"><tt class="xref py py-class docutils literal"><span class="pre">linear_model.LassoLARS</span></tt></a>.</li>
+<li>New Hidden Markov Models module (see classes
+<a class="reference internal" href="modules/generated/scikits.learn.hmm.GaussianHMM.html#scikits.learn.hmm.GaussianHMM" title="scikits.learn.hmm.GaussianHMM"><tt class="xref py py-class docutils literal"><span class="pre">hmm.GaussianHMM</span></tt></a>, <a class="reference internal" href="modules/generated/scikits.learn.hmm.MultinomialHMM.html#scikits.learn.hmm.MultinomialHMM" title="scikits.learn.hmm.MultinomialHMM"><tt class="xref py py-class docutils literal"><span class="pre">hmm.MultinomialHMM</span></tt></a>,
+<a class="reference internal" href="modules/generated/scikits.learn.hmm.GMMHMM.html#scikits.learn.hmm.GMMHMM" title="scikits.learn.hmm.GMMHMM"><tt class="xref py py-class docutils literal"><span class="pre">hmm.GMMHMM</span></tt></a>)</li>
+<li>New module feature_extraction (see <a class="reference internal" href="modules/classes.html#feature-extraction-ref"><em>class reference</em></a>)</li>
+<li>New FastICA algorithm in module scikits.learn.fastica</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<ul class="simple">
+<li>Improved documentation for many modules, now separating
+narrative documentation from the class reference. As an example,
+see <a class="reference external" href="http://scikit-learn.sourceforge.net/modules/svm.html">documentation for the SVM module</a> and the
+complete <a class="reference external" href="http://scikit-learn.sourceforge.net/modules/classes.html">class reference</a>.</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="fixes">
+<h3>Fixes<a class="headerlink" href="#fixes" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<ul class="simple">
+<li>API changes: adhere variable names to PEP-8, give more
+meaningful names.</li>
+<li>Fixes for svm module to run on a shared memory context
+(multiprocessing).</li>
+<li>It is again possible to generate latex (and thus PDF) from the
+sphinx docs.</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<ul class="simple">
+<li>new examples using some of the mlcomp datasets:
+<a class="reference internal" href="auto_examples/mlcomp_sparse_document_classification.html#example-mlcomp-sparse-document-classification-py"><em>Classification of text documents: using a MLComp dataset</em></a>,
+<em class="xref std std-ref">example_mlcomp_document_classification.py</em></li>
+<li>Many more examaples. <a class="reference external" href="http://scikit-learn.sourceforge.net/auto_examples/index.html">See here</a>
+the full list of examples.</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="external-dependencies">
+<h3>External dependencies<a class="headerlink" href="#external-dependencies" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<ul class="simple">
+<li>Joblib is now a dependencie of this package, although it is
+shipped with (scikits.learn.externals.joblib).</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="removed-modules">
+<h3>Removed modules<a class="headerlink" href="#removed-modules" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<ul class="simple">
+<li>Module ann (Artificial Neural Networks) has been removed from
+the distribution. Users wanting this sort of algorithms should
+take a look into pybrain.</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="misc">
+<h3>Misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<ul class="simple">
+<li>New sphinx theme for the web page.</li>
+</ul>
+</blockquote>
+</div>
+</div>
+<div class="section" id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline">¶</a></h2>
+<p>The following is a list of authors for this release, preceeded by
+number of commits:</p>
+<blockquote>
+<ul class="simple">
+<li>262  Fabian Pedregosa</li>
+<li>240  Gael Varoquaux</li>
+<li>149  Alexandre Gramfort</li>
+<li>116  Olivier Grisel</li>
+<li>40  Vincent Michel</li>
+<li>38  Ron Weiss</li>
+<li>23  Matthieu Perrot</li>
+<li>10  Bertrand Thirion</li>
+<li>7  Yaroslav Halchenko</li>
+<li>9  VirgileFritsch</li>
+<li>6  Edouard Duchesnay</li>
+<li>4  Mathieu Blondel</li>
+<li>1  Ariel Rokem</li>
+<li>1  Matthieu Brucher</li>
+</ul>
+</blockquote>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>0.4<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id5">
+<h2>Changelog<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Major changes in this release include:</p>
+<blockquote>
+<blockquote>
+<ul class="simple">
+<li>Coordinate Descent algorithm (Lasso, ElasticNet) refactoring &amp;
+speed improvements (roughly 100x times faster).</li>
+<li>Coordinate Descent Refactoring (and bug fixing) for consistency
+with R&#8217;s package GLMNET.</li>
+<li>New metrics module.</li>
+<li>New GMM module contributed by Ron Weiss.</li>
+<li>Implementation of the LARS algorithm (without Lasso variant for now).</li>
+<li>feature_selection module redesign.</li>
+<li>Migration to GIT as content management system.</li>
+<li>Removal of obsolete attrselect module.</li>
+<li>Rename of private compiled extensions (aded underscore).</li>
+<li>Removal of legacy unmaintained code.</li>
+<li>Documentation improvements (both docstring and rst).</li>
+<li>Improvement of the build system to (optionally) link with MKL.</li>
+</ul>
+</blockquote>
+<p>Also, provide a lite BLAS implementation in case no system-wide BLAS is
+found.</p>
+<blockquote>
+<ul class="simple">
+<li>Lots of new examples.</li>
+<li>Many, many bug fixes ...</li>
+</ul>
+</blockquote>
+</blockquote>
+</div>
+<div class="section" id="id6">
+<h2>Authors<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>The committer list for this release is the following (preceded by number
+of commits):</p>
+<blockquote>
+<ul class="simple">
+<li>143  Fabian Pedregosa</li>
+<li>35  Alexandre Gramfort</li>
+<li>34  Olivier Grisel</li>
+<li>11  Gael Varoquaux</li>
+<li>5  Yaroslav Halchenko</li>
+<li>2  Vincent Michel</li>
+<li>1  Chris Filo Gorgolewski</li>
+</ul>
+</blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.6.0<p>
+        &copy; 2010, scikits.learn developers (BSD Lincense).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

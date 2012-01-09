@@ -1,0 +1,11 @@
+scikits.learn.svm.sparse.NuSVC
+==============================
+
+.. currentmodule:: scikits.learn.svm.sparse
+
+.. autoclass:: NuSVC
+
+   
+   .. automethod:: __init__
+   
+

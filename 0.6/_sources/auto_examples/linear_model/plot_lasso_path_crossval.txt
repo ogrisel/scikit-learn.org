@@ -1,0 +1,21 @@
+
+
+.. _example_linear_model_plot_lasso_path_crossval.py:
+
+
+==================================================
+Cross validated Lasso path with coordinate descent
+==================================================
+
+Compute a 5-fold cross-validated Lasso path with coordinate descent to find the
+optimal value of alpha.
+
+
+.. image:: images/plot_lasso_path_crossval.png
+    :align: center
+
+**Python source code:** :download:`plot_lasso_path_crossval.py <plot_lasso_path_crossval.py>`
+
+.. literalinclude:: plot_lasso_path_crossval.py
+    :lines: 9-
+    

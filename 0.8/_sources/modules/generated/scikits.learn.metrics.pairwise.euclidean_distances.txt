@@ -1,0 +1,7 @@
+scikits.learn.metrics.pairwise.euclidean_distances
+==================================================
+
+.. currentmodule:: scikits.learn.metrics.pairwise
+
+.. autofunction:: euclidean_distances
+

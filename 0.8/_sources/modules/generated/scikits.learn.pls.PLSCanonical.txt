@@ -1,0 +1,11 @@
+scikits.learn.pls.PLSCanonical
+==============================
+
+.. currentmodule:: scikits.learn.pls
+
+.. autoclass:: PLSCanonical
+
+   
+   .. automethod:: __init__
+   
+

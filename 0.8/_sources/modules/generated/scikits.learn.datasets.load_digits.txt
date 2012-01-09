@@ -1,0 +1,7 @@
+scikits.learn.datasets.load_digits
+==================================
+
+.. currentmodule:: scikits.learn.datasets
+
+.. autofunction:: load_digits
+

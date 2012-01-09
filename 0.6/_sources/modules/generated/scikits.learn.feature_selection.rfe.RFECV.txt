@@ -1,0 +1,11 @@
+scikits.learn.feature_selection.rfe.RFECV
+=========================================
+
+.. currentmodule:: scikits.learn.feature_selection.rfe
+
+.. autoclass:: RFECV
+
+   
+   .. automethod:: __init__
+   
+

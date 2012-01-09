@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>scikits.learn.feature_extraction.text.WordNGramAnalyzer &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../../index.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">scikits.learn.feature_extraction.text.WordNGramAnalyzer</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-feature-extraction-text-wordngramanalyzer">
+<h1>scikits.learn.feature_extraction.text.WordNGramAnalyzer<a class="headerlink" href="#scikits-learn-feature-extraction-text-wordngramanalyzer" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.feature_extraction.text.WordNGramAnalyzer">
+<em class="property">class </em><tt class="descclassname">scikits.learn.feature_extraction.text.</tt><tt class="descname">WordNGramAnalyzer</tt><big>(</big><em>charset='utf-8'</em>, <em>min_n=1</em>, <em>max_n=1</em>, <em>preprocessor=RomanPreprocessor()</em>, <em>stop_words=set(</em><span class="optional">[</span>, <em>'all'</em>, <em>'six'</em>, <em>'less'</em>, <em>'being'</em>, <em>'indeed'</em>, <em>'over'</em>, <em>'move'</em>, <em>'anyway'</em>, <em>'four'</em>, <em>'not'</em>, <em>'own'</em>, <em>'through'</em>, <em>'yourselves'</em>, <em>'fify'</em>, <em>'where'</em>, <em>'mill'</em>, <em>'only'</em>, <em>'find'</em>, <em>'before'</em>, <em>'one'</em>, <em>'whose'</em>, <em>'system'</em>, <em>'how'</em>, <em>'somewhere'</em>, <em>'with'</em>, <em>'thick'</em>, <em>'show'</em>, <em>'had'</em>, <em>'enough'</em>, <em>'should'</em>, <em>'to'</em>, <em>'must'</em>, <em>'whom'</em>, <em>'seeming'</em>, <em>'under'</em>, <em>'ours'</em>, <em>'two'</em>, <em>'has'</em>, <em>'might'</em>, <em>'thereafter'</em>, <em>'latterly'</em>, <em>'do'</em>, <em>'them'</em>, <em>'his'</em>, <em>'around'</em>, <em>'than'</em>, <em>'get'</em>, <em>'very'</em>, <em>'de'</em>, <em>'none'</em>, <em>'cannot'</em>, <em>'every'</em>, <em>'whether'</em>, <em>'they'</em>, <em>'front'</em>, <em>'during'</em>, <em>'thus'</em>, <em>'now'</em>, <em>'him'</em>, <em>'nor'</em>, <em>'name'</em>, <em>'several'</em>, <em>'hereafter'</em>, <em>'always'</em>, <em>'who'</em>, <em>'cry'</em>, <em>'whither'</em>, <em>'this'</em>, <em>'someone'</em>, <em>'either'</em>, <em>'each'</em>, <em>'become'</em>, <em>'thereupon'</em>, <em>'sometime'</em>, <em>'side'</em>, <em>'towards'</em>, <em>'therein'</em>, <em>'twelve'</em>, <em>'because'</em>, <em>'often'</em>, <em>'ten'</em>, <em>'our'</em>, <em>'eg'</em>, <em>'some'</em>, <em>'back'</em>, <em>'up'</em>, <em>'go'</em>, <em>'namely'</em>, <em>'computer'</em>, <em>'are'</em>, <em>'further'</em>, <em>'beyond'</em>, <em>'ourselves'</em>, <em>'yet'</em>, <em>'out'</em>, <em>'even'</em>, <em>'will'</em>, <em>'what'</em>, <em>'still'</em>, <em>'for'</em>, <em>'bottom'</em>, <em>'mine'</em>, <em>'since'</em>, <em>'please'</em>, <em>'forty'</em>, <em>'per'</em>, <em>'its'</em>, <em>'everything'</em>, <em>'behind'</em>, <em>'un'</em>, <em>'above'</em>, <em>'between'</em>, <em>'it'</em>, <em>'neither'</em>, <em>'seemed'</em>, <em>'ever'</em>, <em>'across'</em>, <em>'she'</em>, <em>'somehow'</em>, <em>'be'</em>, <em>'we'</em>, <em>'full'</em>, <em>'never'</em>, <em>'sixty'</em>, <em>'however'</em>, <em>'here'</em>, <em>'otherwise'</em>, <em>'were'</em>, <em>'whereupon'</em>, <em>'nowhere'</em>, <em>'although'</em>, <em>'found'</em>, <em>'alone'</em>, <em>'re'</em>, <em>'along'</em>, <em>'fifteen'</em>, <em>'by'</em>, <em>'both'</em>, <em>'about'</em>, <em>'last'</em>, <em>'would'</em>, <em>'anything'</em>, <em>'via'</em>, <em>'many'</em>, <em>'could'</em>, <em>'thence'</em>, <em>'put'</em>, <em>'against'</em>, <em>'keep'</em>, <em>'etc'</em>, <em>'amount'</em>, <em>'became'</em>, <em>'ltd'</em>, <em>'hence'</em>, <em>'onto'</em>, <em>'or'</em>, <em>'con'</em>, <em>'among'</em>, <em>'already'</em>, <em>'co'</em>, <em>'afterwards'</em>, <em>'formerly'</em>, <em>'within'</em>, <em>'seems'</em>, <em>'into'</em>, <em>'others'</em>, <em>'while'</em>, <em>'whatever'</em>, <em>'except'</em>, <em>'down'</em>, <em>'hers'</em>, <em>'everyone'</em>, <em>'done'</em>, <em>'least'</em>, <em>'another'</em>, <em>'whoever'</em>, <em>'moreover'</em>, <em>'couldnt'</em>, <em>'throughout'</em>, <em>'anyhow'</em>, <em>'yourself'</em>, <em>'three'</em>, <em>'from'</em>, <em>'her'</em>, <em>'few'</em>, <em>'together'</em>, <em>'top'</em>, <em>'there'</em>, <em>'due'</em>, <em>'been'</em>, <em>'next'</em>, <em>'anyone'</em>, <em>'eleven'</em>, <em>'much'</em>, <em>'call'</em>, <em>'therefore'</em>, <em>'interest'</em>, <em>'then'</em>, <em>'thru'</em>, <em>'themselves'</em>, <em>'hundred'</em>, <em>'was'</em>, <em>'sincere'</em>, <em>'empty'</em>, <em>'more'</em>, <em>'himself'</em>, <em>'elsewhere'</em>, <em>'mostly'</em>, <em>'on'</em>, <em>'fire'</em>, <em>'am'</em>, <em>'becoming'</em>, <em>'hereby'</em>, <em>'amongst'</em>, <em>'else'</em>, <em>'part'</em>, <em>'everywhere'</em>, <em>'too'</em>, <em>'herself'</em>, <em>'former'</em>, <em>'those'</em>, <em>'he'</em>, <em>'me'</em>, <em>'myself'</em>, <em>'made'</em>, <em>'twenty'</em>, <em>'these'</em>, <em>'bill'</em>, <em>'cant'</em>, <em>'us'</em>, <em>'until'</em>, <em>'besides'</em>, <em>'nevertheless'</em>, <em>'below'</em>, <em>'anywhere'</em>, <em>'nine'</em>, <em>'can'</em>, <em>'of'</em>, <em>'your'</em>, <em>'toward'</em>, <em>'my'</em>, <em>'something'</em>, <em>'and'</em>, <em>'whereafter'</em>, <em>'whenever'</em>, <em>'give'</em>, <em>'almost'</em>, <em>'wherever'</em>, <em>'is'</em>, <em>'describe'</em>, <em>'beforehand'</em>, <em>'herein'</em>, <em>'an'</em>, <em>'as'</em>, <em>'itself'</em>, <em>'at'</em>, <em>'have'</em>, <em>'in'</em>, <em>'seem'</em>, <em>'whence'</em>, <em>'ie'</em>, <em>'any'</em>, <em>'fill'</em>, <em>'again'</em>, <em>'hasnt'</em>, <em>'inc'</em>, <em>'thereby'</em>, <em>'thin'</em>, <em>'no'</em>, <em>'perhaps'</em>, <em>'latter'</em>, <em>'meanwhile'</em>, <em>'when'</em>, <em>'detail'</em>, <em>'same'</em>, <em>'wherein'</em>, <em>'beside'</em>, <em>'also'</em>, <em>'that'</em>, <em>'other'</em>, <em>'take'</em>, <em>'which'</em>, <em>'becomes'</em>, <em>'you'</em>, <em>'if'</em>, <em>'nobody'</em>, <em>'see'</em>, <em>'though'</em>, <em>'may'</em>, <em>'after'</em>, <em>'upon'</em>, <em>'most'</em>, <em>'hereupon'</em>, <em>'eight'</em>, <em>'but'</em>, <em>'serious'</em>, <em>'nothing'</em>, <em>'such'</em>, <em>'why'</em>, <em>'a'</em>, <em>'off'</em>, <em>'whereby'</em>, <em>'third'</em>, <em>'i'</em>, <em>'whole'</em>, <em>'noone'</em>, <em>'sometimes'</em>, <em>'well'</em>, <em>'amoungst'</em>, <em>'yours'</em>, <em>'their'</em>, <em>'rather'</em>, <em>'without'</em>, <em>'so'</em>, <em>'five'</em>, <em>'the'</em>, <em>'first'</em>, <em>'whereas'</em>, <em>'once'</em><span class="optional">]</span>, <em>)</em>, <em>token_pattern='\b\w\w+\b'</em><big>)</big><a class="headerlink" href="#scikits.learn.feature_extraction.text.WordNGramAnalyzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simple analyzer: transform a text document into a sequence of word tokens</p>
+<dl class="docutils">
+<dt>This simple implementation does:</dt>
+<dd><ul class="first last simple">
+<li>lower case conversion</li>
+<li>unicode accents removal</li>
+<li>token extraction using unicode regexp word bounderies for token of
+minimum size of 2 symbols (by default)</li>
+<li>output token n-grams (unigram only by default)</li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="scikits.learn.feature_extraction.text.WordNGramAnalyzer.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>charset='utf-8'</em>, <em>min_n=1</em>, <em>max_n=1</em>, <em>preprocessor=RomanPreprocessor()</em>, <em>stop_words=set(</em><span class="optional">[</span>, <em>'all'</em>, <em>'six'</em>, <em>'less'</em>, <em>'being'</em>, <em>'indeed'</em>, <em>'over'</em>, <em>'move'</em>, <em>'anyway'</em>, <em>'four'</em>, <em>'not'</em>, <em>'own'</em>, <em>'through'</em>, <em>'yourselves'</em>, <em>'fify'</em>, <em>'where'</em>, <em>'mill'</em>, <em>'only'</em>, <em>'find'</em>, <em>'before'</em>, <em>'one'</em>, <em>'whose'</em>, <em>'system'</em>, <em>'how'</em>, <em>'somewhere'</em>, <em>'with'</em>, <em>'thick'</em>, <em>'show'</em>, <em>'had'</em>, <em>'enough'</em>, <em>'should'</em>, <em>'to'</em>, <em>'must'</em>, <em>'whom'</em>, <em>'seeming'</em>, <em>'under'</em>, <em>'ours'</em>, <em>'two'</em>, <em>'has'</em>, <em>'might'</em>, <em>'thereafter'</em>, <em>'latterly'</em>, <em>'do'</em>, <em>'them'</em>, <em>'his'</em>, <em>'around'</em>, <em>'than'</em>, <em>'get'</em>, <em>'very'</em>, <em>'de'</em>, <em>'none'</em>, <em>'cannot'</em>, <em>'every'</em>, <em>'whether'</em>, <em>'they'</em>, <em>'front'</em>, <em>'during'</em>, <em>'thus'</em>, <em>'now'</em>, <em>'him'</em>, <em>'nor'</em>, <em>'name'</em>, <em>'several'</em>, <em>'hereafter'</em>, <em>'always'</em>, <em>'who'</em>, <em>'cry'</em>, <em>'whither'</em>, <em>'this'</em>, <em>'someone'</em>, <em>'either'</em>, <em>'each'</em>, <em>'become'</em>, <em>'thereupon'</em>, <em>'sometime'</em>, <em>'side'</em>, <em>'towards'</em>, <em>'therein'</em>, <em>'twelve'</em>, <em>'because'</em>, <em>'often'</em>, <em>'ten'</em>, <em>'our'</em>, <em>'eg'</em>, <em>'some'</em>, <em>'back'</em>, <em>'up'</em>, <em>'go'</em>, <em>'namely'</em>, <em>'computer'</em>, <em>'are'</em>, <em>'further'</em>, <em>'beyond'</em>, <em>'ourselves'</em>, <em>'yet'</em>, <em>'out'</em>, <em>'even'</em>, <em>'will'</em>, <em>'what'</em>, <em>'still'</em>, <em>'for'</em>, <em>'bottom'</em>, <em>'mine'</em>, <em>'since'</em>, <em>'please'</em>, <em>'forty'</em>, <em>'per'</em>, <em>'its'</em>, <em>'everything'</em>, <em>'behind'</em>, <em>'un'</em>, <em>'above'</em>, <em>'between'</em>, <em>'it'</em>, <em>'neither'</em>, <em>'seemed'</em>, <em>'ever'</em>, <em>'across'</em>, <em>'she'</em>, <em>'somehow'</em>, <em>'be'</em>, <em>'we'</em>, <em>'full'</em>, <em>'never'</em>, <em>'sixty'</em>, <em>'however'</em>, <em>'here'</em>, <em>'otherwise'</em>, <em>'were'</em>, <em>'whereupon'</em>, <em>'nowhere'</em>, <em>'although'</em>, <em>'found'</em>, <em>'alone'</em>, <em>'re'</em>, <em>'along'</em>, <em>'fifteen'</em>, <em>'by'</em>, <em>'both'</em>, <em>'about'</em>, <em>'last'</em>, <em>'would'</em>, <em>'anything'</em>, <em>'via'</em>, <em>'many'</em>, <em>'could'</em>, <em>'thence'</em>, <em>'put'</em>, <em>'against'</em>, <em>'keep'</em>, <em>'etc'</em>, <em>'amount'</em>, <em>'became'</em>, <em>'ltd'</em>, <em>'hence'</em>, <em>'onto'</em>, <em>'or'</em>, <em>'con'</em>, <em>'among'</em>, <em>'already'</em>, <em>'co'</em>, <em>'afterwards'</em>, <em>'formerly'</em>, <em>'within'</em>, <em>'seems'</em>, <em>'into'</em>, <em>'others'</em>, <em>'while'</em>, <em>'whatever'</em>, <em>'except'</em>, <em>'down'</em>, <em>'hers'</em>, <em>'everyone'</em>, <em>'done'</em>, <em>'least'</em>, <em>'another'</em>, <em>'whoever'</em>, <em>'moreover'</em>, <em>'couldnt'</em>, <em>'throughout'</em>, <em>'anyhow'</em>, <em>'yourself'</em>, <em>'three'</em>, <em>'from'</em>, <em>'her'</em>, <em>'few'</em>, <em>'together'</em>, <em>'top'</em>, <em>'there'</em>, <em>'due'</em>, <em>'been'</em>, <em>'next'</em>, <em>'anyone'</em>, <em>'eleven'</em>, <em>'much'</em>, <em>'call'</em>, <em>'therefore'</em>, <em>'interest'</em>, <em>'then'</em>, <em>'thru'</em>, <em>'themselves'</em>, <em>'hundred'</em>, <em>'was'</em>, <em>'sincere'</em>, <em>'empty'</em>, <em>'more'</em>, <em>'himself'</em>, <em>'elsewhere'</em>, <em>'mostly'</em>, <em>'on'</em>, <em>'fire'</em>, <em>'am'</em>, <em>'becoming'</em>, <em>'hereby'</em>, <em>'amongst'</em>, <em>'else'</em>, <em>'part'</em>, <em>'everywhere'</em>, <em>'too'</em>, <em>'herself'</em>, <em>'former'</em>, <em>'those'</em>, <em>'he'</em>, <em>'me'</em>, <em>'myself'</em>, <em>'made'</em>, <em>'twenty'</em>, <em>'these'</em>, <em>'bill'</em>, <em>'cant'</em>, <em>'us'</em>, <em>'until'</em>, <em>'besides'</em>, <em>'nevertheless'</em>, <em>'below'</em>, <em>'anywhere'</em>, <em>'nine'</em>, <em>'can'</em>, <em>'of'</em>, <em>'your'</em>, <em>'toward'</em>, <em>'my'</em>, <em>'something'</em>, <em>'and'</em>, <em>'whereafter'</em>, <em>'whenever'</em>, <em>'give'</em>, <em>'almost'</em>, <em>'wherever'</em>, <em>'is'</em>, <em>'describe'</em>, <em>'beforehand'</em>, <em>'herein'</em>, <em>'an'</em>, <em>'as'</em>, <em>'itself'</em>, <em>'at'</em>, <em>'have'</em>, <em>'in'</em>, <em>'seem'</em>, <em>'whence'</em>, <em>'ie'</em>, <em>'any'</em>, <em>'fill'</em>, <em>'again'</em>, <em>'hasnt'</em>, <em>'inc'</em>, <em>'thereby'</em>, <em>'thin'</em>, <em>'no'</em>, <em>'perhaps'</em>, <em>'latter'</em>, <em>'meanwhile'</em>, <em>'when'</em>, <em>'detail'</em>, <em>'same'</em>, <em>'wherein'</em>, <em>'beside'</em>, <em>'also'</em>, <em>'that'</em>, <em>'other'</em>, <em>'take'</em>, <em>'which'</em>, <em>'becomes'</em>, <em>'you'</em>, <em>'if'</em>, <em>'nobody'</em>, <em>'see'</em>, <em>'though'</em>, <em>'may'</em>, <em>'after'</em>, <em>'upon'</em>, <em>'most'</em>, <em>'hereupon'</em>, <em>'eight'</em>, <em>'but'</em>, <em>'serious'</em>, <em>'nothing'</em>, <em>'such'</em>, <em>'why'</em>, <em>'a'</em>, <em>'off'</em>, <em>'whereby'</em>, <em>'third'</em>, <em>'i'</em>, <em>'whole'</em>, <em>'noone'</em>, <em>'sometimes'</em>, <em>'well'</em>, <em>'amoungst'</em>, <em>'yours'</em>, <em>'their'</em>, <em>'rather'</em>, <em>'without'</em>, <em>'so'</em>, <em>'five'</em>, <em>'the'</em>, <em>'first'</em>, <em>'whereas'</em>, <em>'once'</em><span class="optional">]</span>, <em>)</em>, <em>token_pattern='\b\w\w+\b'</em><big>)</big><a class="headerlink" href="#scikits.learn.feature_extraction.text.WordNGramAnalyzer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.feature_extraction.text.WordNGramAnalyzer.analyze">
+<tt class="descname">analyze</tt><big>(</big><em>text_document</em><big>)</big><a class="headerlink" href="#scikits.learn.feature_extraction.text.WordNGramAnalyzer.analyze" title="Permalink to this definition">¶</a></dt>
+<dd><p>From documents to token</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/scikits.learn.feature_extraction.text.WordNGramAnalyzer.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

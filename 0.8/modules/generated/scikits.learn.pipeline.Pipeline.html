@@ -1,0 +1,201 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>scikits.learn.pipeline.Pipeline &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../../index.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">scikits.learn.pipeline.Pipeline</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-pipeline-pipeline">
+<h1>scikits.learn.pipeline.Pipeline<a class="headerlink" href="#scikits-learn-pipeline-pipeline" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.pipeline.Pipeline">
+<em class="property">class </em><tt class="descclassname">scikits.learn.pipeline.</tt><tt class="descname">Pipeline</tt><big>(</big><em>steps</em><big>)</big><a class="headerlink" href="#scikits.learn.pipeline.Pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pipeline of transforms with a final estimator</p>
+<p>Sequentialy apply a list of transforms and a final estimator
+Intermediate steps of the pipeline must be &#8216;transforms&#8217;, that
+is that they must implements fit &amp; transform methods
+The final estimator need only implements fit.</p>
+<p>The purpose of the pipeline is to assemble several steps that can
+be cross-validated together while setting different parameters.
+For this, it enables to setting parameters of the various steps
+using their names and the parameter name separated by a &#8216;__&#8217;,
+as in the example below.</p>
+<p class="rubric">Attributes</p>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>fit:</td>
+<td>Fit all the transforms one after the other and transform the
+data, then fit the transformed data using the final estimator</td>
+</tr>
+<tr><td>fit_transform:</td>
+<td>Fit all the transforms one after the other and transform the
+data, then use fit_transform on transformed data using the final
+estimator. Valid only if the final estimator implements
+fit_transform.</td>
+</tr>
+<tr><td>predict:</td>
+<td>Applies transforms to the data, and the predict method of the
+final estimator. Valid only if the final estimator implements
+predict.</td>
+</tr>
+<tr><td>transform:</td>
+<td>Applies transforms to the data, and the transform method of the
+final estimator. Valid only if the final estimator implements
+transform.</td>
+</tr>
+<tr><td>score:</td>
+<td>Applies transforms to the data, and the score method of the
+final estimator. Valid only if the final estimator implements
+score.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="scikits.learn.pipeline.Pipeline.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>steps</em><big>)</big><a class="headerlink" href="#scikits.learn.pipeline.Pipeline.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>steps: list</strong> :</p>
+<blockquote class="last">
+<p>List of (name, transform) object (implementing
+fit/transform) that are chained, in the order in which
+they are chained, with the last object an estimator.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/scikits.learn.pipeline.Pipeline.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

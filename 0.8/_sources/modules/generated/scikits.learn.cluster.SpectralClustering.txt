@@ -1,0 +1,11 @@
+scikits.learn.cluster.SpectralClustering
+========================================
+
+.. currentmodule:: scikits.learn.cluster
+
+.. autoclass:: SpectralClustering
+
+   
+   .. automethod:: __init__
+   
+

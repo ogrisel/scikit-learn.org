@@ -1,0 +1,11 @@
+scikits.learn.feature_extraction.text.WordNGramAnalyzer
+=======================================================
+
+.. currentmodule:: scikits.learn.feature_extraction.text
+
+.. autoclass:: WordNGramAnalyzer
+
+   
+   .. automethod:: __init__
+   
+

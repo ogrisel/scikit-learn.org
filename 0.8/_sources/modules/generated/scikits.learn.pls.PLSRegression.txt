@@ -1,0 +1,11 @@
+scikits.learn.pls.PLSRegression
+===============================
+
+.. currentmodule:: scikits.learn.pls
+
+.. autoclass:: PLSRegression
+
+   
+   .. automethod:: __init__
+   
+

@@ -1,0 +1,11 @@
+scikits.learn.neighbors.Neighbors
+=================================
+
+.. currentmodule:: scikits.learn.neighbors
+
+.. autoclass:: Neighbors
+
+   
+   .. automethod:: __init__
+   
+

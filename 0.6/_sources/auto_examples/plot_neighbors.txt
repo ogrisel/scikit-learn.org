@@ -1,0 +1,21 @@
+
+
+.. _example_plot_neighbors.py:
+
+
+=================
+Nearest Neighbors
+=================
+
+Sample usage of Support Vector Machines to classify a sample.
+It will plot the decision surface and the support vectors.
+
+
+.. image:: images/plot_neighbors.png
+    :align: center
+
+**Python source code:** :download:`plot_neighbors.py <plot_neighbors.py>`
+
+.. literalinclude:: plot_neighbors.py
+    :lines: 9-
+    

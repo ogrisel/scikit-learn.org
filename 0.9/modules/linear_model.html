@@ -1,0 +1,706 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.1. Generalized Linear Models &mdash; scikit-learn 0.9 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.9',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="up" title="3. Supervised learning" href="../supervised_learning.html" />
+    <link rel="next" title="3.2. Support Vector Machines" href="svm.html" />
+    <link rel="prev" title="3. Supervised learning" href="../supervised_learning.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../install.html">Download</a></li>
+            <li><a href="../support.html">Support</a></li>
+            <li><a href="../user_guide.html">User Guide</a></li>
+            <li><a href="../auto_examples/index.html">Examples</a></li>
+            <li><a href="../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../supervised_learning.html" title="3. Supervised learning"
+             accesskey="P">previous</a> |
+          <a href="svm.html" title="3.2. Support Vector Machines"
+             accesskey="N">next</a> |
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">3.1. Generalized Linear Models</a><ul>
+<li><a class="reference internal" href="#ordinary-least-squares">3.1.1. Ordinary Least Squares</a><ul>
+<li><a class="reference internal" href="#ordinary-least-squares-complexity">3.1.1.1. Ordinary Least Squares Complexity</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ridge-regression">3.1.2. Ridge Regression</a><ul>
+<li><a class="reference internal" href="#ridge-complexity">3.1.2.1. Ridge Complexity</a></li>
+<li><a class="reference internal" href="#setting-alpha-generalized-cross-validation">3.1.2.2. Setting alpha: generalized Cross-Validation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#lasso">3.1.3. Lasso</a><ul>
+<li><a class="reference internal" href="#setting-alpha">3.1.3.1. Setting <cite>alpha</cite></a><ul>
+<li><a class="reference internal" href="#using-cross-validation">3.1.3.1.1. Using cross-validation</a></li>
+<li><a class="reference internal" href="#information-criteria-based-model-selection">3.1.3.1.2. Information-criteria based model selection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#elastic-net">3.1.4. Elastic Net</a></li>
+<li><a class="reference internal" href="#least-angle-regression">3.1.5. Least Angle Regression</a></li>
+<li><a class="reference internal" href="#lars-lasso">3.1.6. LARS Lasso</a><ul>
+<li><a class="reference internal" href="#mathematical-formulation">3.1.6.1. Mathematical formulation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#orthogonal-matching-pursuit-omp">3.1.7. Orthogonal Matching Pursuit (OMP)</a></li>
+<li><a class="reference internal" href="#bayesian-regression">3.1.8. Bayesian Regression</a><ul>
+<li><a class="reference internal" href="#bayesian-ridge-regression">3.1.8.1. Bayesian Ridge Regression</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#automatic-relevance-determination-ard">3.1.9. Automatic Relevance Determination - ARD</a><ul>
+<li><a class="reference internal" href="#id5">3.1.9.1. Mathematical formulation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#logisitic-regression">3.1.10. Logisitic regression</a></li>
+<li><a class="reference internal" href="#stochastic-gradient-descent-sgd">3.1.11. Stochastic Gradient Descent - SGD</a></li>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        <h3>Citing</h3>
+        <p>Please consider
+	<a href="about.html#citing-the-scikit-learn">citing the
+	scikit-learn</a>.
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="generalized-linear-models">
+<span id="linear-model"></span><h1>3.1. Generalized Linear Models<a class="headerlink" href="#generalized-linear-models" title="Permalink to this headline">¶</a></h1>
+<p>The following are a set of methods intended for regression in which
+the target value is expected to be a linear combination of the input
+variables. In mathematical notion, if <img class="math" src="../_images/math/ab480a17c2d0cff51b14f3bd5eed54e1b7e142dd.png" alt="\hat{y}"/> is the predicted
+value.</p>
+<div class="math">
+<p><img src="../_images/math/4a05953e6f4e2775701b73fc0a6973161bdfaedd.png" alt="\hat{y}(w, x) = w_0 + w_1 x_1 + ... + w_n x_n"/></p>
+</div><p>Across the module, we designate the vector <img class="math" src="../_images/math/dfb3de478ba0233c22c43d76e41bb9cbd0354cee.png" alt="w = (w_1,
+..., w_n)"/> as <tt class="docutils literal"><span class="pre">coef_</span></tt> and <img class="math" src="../_images/math/eb37b8f84b267a3318413dcd963c9a5872051634.png" alt="w_0"/> as <tt class="docutils literal"><span class="pre">intercept_</span></tt>.</p>
+<p>To perform classification with generalized linear models, see
+<a class="reference internal" href="#logistic-regression"><em>Logisitic regression</em></a>.</p>
+<div class="section" id="ordinary-least-squares">
+<span id="id1"></span><h2>3.1.1. Ordinary Least Squares<a class="headerlink" href="#ordinary-least-squares" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="sklearn.linear_model.LinearRegression"><tt class="xref py py-class docutils literal"><span class="pre">LinearRegression</span></tt></a> fits a linear model with coefficients
+<img class="math" src="../_images/math/8f630417f5ab20306c8032a1679528ef5203b3f4.png" alt="\beta = (\beta_1, ..., \beta_D)"/> to minimize the residual sum
+of squares between the observed responses in the dataset, and the
+responses predicted by the linear approximation.</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_ols.html"><img alt="../_images/plot_ols_11.png" src="../_images/plot_ols_11.png" style="width: 400.0px; height: 300.0px;" /></a>
+</div>
+<p><a class="reference internal" href="generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression" title="sklearn.linear_model.LinearRegression"><tt class="xref py py-class docutils literal"><span class="pre">LinearRegression</span></tt></a> will take in its <cite>fit</cite> method arrays X, y
+and will store the coefficients <img class="math" src="../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w"/> of the linear model in its
+<cite>coef_</cite> member:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span> <span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="go">LinearRegression(fit_intercept=True, normalize=False, overwrite_X=False)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span>
+<span class="go">array([ 0.5,  0.5])</span>
+</pre></div>
+</div>
+<p>However, coefficient estimates for Ordinary Least Squares rely on the
+independence of the model terms. When terms are correlated and the
+columns of the design matrix <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/> have an approximate linear
+dependence, the matrix <img class="math" src="../_images/math/0124f17bee60f5d8cc2334753f74a55ead6d318e.png" alt="X(X^T X)^{-1}"/> becomes close to singular
+and as a result, the least-squares estimate becomes highly sensitive
+to random errors in the observed response, producing a large
+variance. This situation of <em>multicollinearity</em> can arise, for
+example, when data are collected without an experimental design.</p>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/linear_model/plot_ols.html#example-linear-model-plot-ols-py"><em>Ordinary Least Squares</em></a></li>
+</ul>
+</div>
+<div class="section" id="ordinary-least-squares-complexity">
+<h3>3.1.1.1. Ordinary Least Squares Complexity<a class="headerlink" href="#ordinary-least-squares-complexity" title="Permalink to this headline">¶</a></h3>
+<p>This method computes the least squares solution using a singular value
+decomposition of X. If X is a matrix of size (n, p ) this method has a
+cost of <img class="math" src="../_images/math/244c8defd899bc751d40ad50fb55a5cf3fbf3584.png" alt="O(n p^2)"/>, assuming that <img class="math" src="../_images/math/12117f0adbded916e70e6108a63de87283768bbc.png" alt="n \geq p"/>.</p>
+</div>
+</div>
+<div class="section" id="ridge-regression">
+<h2>3.1.2. Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge" title="sklearn.linear_model.Ridge"><tt class="xref py py-class docutils literal"><span class="pre">Ridge</span></tt></a> regression addresses some of the problems of
+<a class="reference internal" href="#ordinary-least-squares"><em>Ordinary Least Squares</em></a> by imposing a penalty on the size of
+coefficients. The ridge coefficients minimize a penalized residual sum
+of squares,</p>
+<div class="math">
+<p><img src="../_images/math/023b0602d3104b0ea47ee74d77a1ae3f54f689f4.png" alt="\underset{w}{min} {{|| X w - y||_2}^2 + \alpha {||w||_2}^2}"/></p>
+</div><p>Here, <img class="math" src="../_images/math/2912f58214ba0c2629b7966206eb3b5e22006859.png" alt="\alpha \geq 0"/> is a complexity parameter that controls the amount
+of shrinkage: the larger the value of <img class="math" src="../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha"/>, the greater the amount
+of shrinkage and thus the coefficients become more robust to collinearity.</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_ridge_path.html"><img alt="../_images/plot_ridge_path_11.png" src="../_images/plot_ridge_path_11.png" style="width: 400.0px; height: 300.0px;" /></a>
+</div>
+<p>As with other linear models, <a class="reference internal" href="generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge" title="sklearn.linear_model.Ridge"><tt class="xref py py-class docutils literal"><span class="pre">Ridge</span></tt></a> will take in its <cite>fit</cite> method
+arrays X, y and will store the coefficients <img class="math" src="../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w"/> of the linear model in
+its <cite>coef_</cite> member:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">Ridge</span> <span class="p">(</span><span class="n">alpha</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span> <span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="go">Ridge(alpha=0.5, fit_intercept=True, normalize=False, overwrite_X=False,</span>
+<span class="go">   tol=0.001)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span>
+<span class="go">array([ 0.34545455,  0.34545455])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">intercept_</span> 
+<span class="go">0.13636...</span>
+</pre></div>
+</div>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/linear_model/plot_ridge_path.html#example-linear-model-plot-ridge-path-py"><em>Plot Ridge coefficients as a function of the regularization</em></a></li>
+</ul>
+</div>
+<div class="section" id="ridge-complexity">
+<h3>3.1.2.1. Ridge Complexity<a class="headerlink" href="#ridge-complexity" title="Permalink to this headline">¶</a></h3>
+<p>This method has the same order of complexity than an
+<a class="reference internal" href="#ordinary-least-squares"><em>Ordinary Least Squares</em></a>.</p>
+</div>
+<div class="section" id="setting-alpha-generalized-cross-validation">
+<h3>3.1.2.2. Setting alpha: generalized Cross-Validation<a class="headerlink" href="#setting-alpha-generalized-cross-validation" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="generated/sklearn.linear_model.RidgeCV.html#sklearn.linear_model.RidgeCV" title="sklearn.linear_model.RidgeCV"><tt class="xref py py-class docutils literal"><span class="pre">RidgeCV</span></tt></a> implements ridge regression with built-in
+cross-validation of the alpha parameter.  The object works in the same way
+as GridSearchCV except that it defaults to Generalized Cross-Validation
+(GCV), an efficient form of leave-one-out cross-validation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">RidgeCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>       
+<span class="go">RidgeCV(alphas=[0.1, 1.0, 10.0], cv=None, fit_intercept=True, loss_func=None,</span>
+<span class="go">    normalize=False, score_func=None)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">best_alpha</span>                                      
+<span class="go">0.1</span>
+</pre></div>
+</div>
+<div class="topic">
+<p class="topic-title first">References</p>
+<ul class="simple">
+<li>&#8220;Notes on Regularized Least Squares&#8221;, Rifkin &amp; Lippert (<a class="reference external" href="http://cbcl.mit.edu/projects/cbcl/publications/ps/MIT-CSAIL-TR-2007-025.pdf">technical report</a>,
+<a class="reference external" href="http://www.mit.edu/~9.520/spring07/Classes/rlsslides.pdf">course slides</a>).</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="lasso">
+<span id="id2"></span><h2>3.1.3. Lasso<a class="headerlink" href="#lasso" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="sklearn.linear_model.Lasso"><tt class="xref py py-class docutils literal"><span class="pre">Lasso</span></tt></a> is a linear model that estimates sparse coefficients.
+It is useful in some contexts due to its tendency to prefer solutions
+with fewer parameter values, effectively reducing the number of variables
+upon which the given solution is dependent. For this reason, the Lasso
+and its variants are fundamental to the field of compressed sensing.</p>
+<p>Mathematically, it consists of a linear model trained with L1 prior as
+regularizer. The objective function to minimize is:</p>
+<div class="math">
+<p><img src="../_images/math/681a5354e82d170908d636177727eac2df687362.png" alt="0.5 * ||X w - y||_2 ^ 2 + \alpha * ||w||_1"/></p>
+</div><p>The lasso estimate thus solves the minimization of the
+least-squares penalty with <img class="math" src="../_images/math/19b07e9ef197255dd2e28fd985a3ac7787bf7a19.png" alt="\alpha * ||w||_1"/> added, where
+<img class="math" src="../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha"/> is a constant and <img class="math" src="../_images/math/a89415e30e45838e87ba976ed275a785a9e9b8a2.png" alt="||w||_1"/> is the L1-norm of the
+parameter vector.</p>
+<p>The implementation in the class <a class="reference internal" href="generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="sklearn.linear_model.Lasso"><tt class="xref py py-class docutils literal"><span class="pre">Lasso</span></tt></a> uses coordinate descent as
+the algorithm to fit the coefficients. See <a class="reference internal" href="#least-angle-regression"><em>Least Angle Regression</em></a>
+for another implementation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="go">Lasso(alpha=0.1, fit_intercept=True, max_iter=1000, normalize=False,</span>
+<span class="go">   overwrite_X=False, precompute=&#39;auto&#39;, tol=0.0001)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="go">array([ 0.8])</span>
+</pre></div>
+</div>
+<p>Also useful for lower-level tasks is the function <a class="reference internal" href="generated/sklearn.linear_model.lasso_path.html#sklearn.linear_model.lasso_path" title="sklearn.linear_model.lasso_path"><tt class="xref py py-func docutils literal"><span class="pre">lasso_path</span></tt></a> that
+computes the coefficients along the full path of possible values.</p>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/linear_model/lasso_and_elasticnet.html#example-linear-model-lasso-and-elasticnet-py"><em>Lasso regression example</em></a>,</li>
+</ul>
+</div>
+<div class="section" id="setting-alpha">
+<h3>3.1.3.1. Setting <cite>alpha</cite><a class="headerlink" href="#setting-alpha" title="Permalink to this headline">¶</a></h3>
+<p>The <cite>alpha</cite> parameter control the degree of sparsity of the coefficients
+estimated.</p>
+<div class="section" id="using-cross-validation">
+<h4>3.1.3.1.1. Using cross-validation<a class="headerlink" href="#using-cross-validation" title="Permalink to this headline">¶</a></h4>
+<p>The scikit exposes objects that set the Lasso <cite>alpha</cite> parameter by
+cross-validation: <a class="reference internal" href="generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV" title="sklearn.linear_model.LassoCV"><tt class="xref py py-class docutils literal"><span class="pre">LassoCV</span></tt></a> and <a class="reference internal" href="generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV" title="sklearn.linear_model.LassoLarsCV"><tt class="xref py py-class docutils literal"><span class="pre">LassoLarsCV</span></tt></a>.
+<a class="reference internal" href="generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV" title="sklearn.linear_model.LassoLarsCV"><tt class="xref py py-class docutils literal"><span class="pre">LassoLarsCV</span></tt></a> is based on the <a class="reference internal" href="#least-angle-regression"><em>Least Angle Regression</em></a> algorithm
+explained below.</p>
+<p>For high-dimensional datasets with many collinear regressors,
+<a class="reference internal" href="generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV" title="sklearn.linear_model.LassoCV"><tt class="xref py py-class docutils literal"><span class="pre">LassoCV</span></tt></a> is most often preferrable. How, <a class="reference internal" href="generated/sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV" title="sklearn.linear_model.LassoLarsCV"><tt class="xref py py-class docutils literal"><span class="pre">LassoLarsCV</span></tt></a> has
+the advantage of exploring more relevant values of <cite>alpha</cite> parameter, and
+if the number of samples is very small compared to the number of
+observations, it is often faster than <a class="reference internal" href="generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV" title="sklearn.linear_model.LassoCV"><tt class="xref py py-class docutils literal"><span class="pre">LassoCV</span></tt></a>.</p>
+<p><a class="reference external" href="../auto_examples/linear_model/plot_lasso_model_selection.html"><img alt="lasso_cv_1" src="../_images/plot_lasso_model_selection_21.png" style="width: 400.0px; height: 300.0px;" /></a> <a class="reference external" href="../auto_examples/linear_model/plot_lasso_model_selection.html"><img alt="lasso_cv_2" src="../_images/plot_lasso_model_selection_31.png" style="width: 400.0px; height: 300.0px;" /></a></p>
+</div>
+<div class="section" id="information-criteria-based-model-selection">
+<h4>3.1.3.1.2. Information-criteria based model selection<a class="headerlink" href="#information-criteria-based-model-selection" title="Permalink to this headline">¶</a></h4>
+<p>Alternatively, the estimator <a class="reference internal" href="generated/sklearn.linear_model.LassoLarsIC.html#sklearn.linear_model.LassoLarsIC" title="sklearn.linear_model.LassoLarsIC"><tt class="xref py py-class docutils literal"><span class="pre">LassoLarsIC</span></tt></a> proposes to use the
+Akaike information criterion (AIC) and the Bayes Information criterion (BIC).
+It is a computationally cheaper alternative to find the optimal value of alpha
+as the regularization path is computed only once instead of k+1 times
+when using k-fold cross-validation. However, such criteria needs a
+proper estimation of the degrees of freedom of the solution, are
+derived for large samples (asymptotic results) and assume the model
+is correct, i.e. that the data are actually generated by this model.
+They also tend to break when the problem is badly conditioned
+(more features than samples).</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_lasso_model_selection.html"><img alt="../_images/plot_lasso_model_selection_11.png" src="../_images/plot_lasso_model_selection_11.png" style="width: 400.0px; height: 300.0px;" /></a>
+</div>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/linear_model/plot_lasso_model_selection.html#example-linear-model-plot-lasso-model-selection-py"><em>Lasso model selection: Cross-Validation / AIC / BIC</em></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="elastic-net">
+<h2>3.1.4. Elastic Net<a class="headerlink" href="#elastic-net" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet" title="sklearn.linear_model.ElasticNet"><tt class="xref py py-class docutils literal"><span class="pre">ElasticNet</span></tt></a> is a linear model trained with L1 and L2 prior as
+regularizer.</p>
+<p>The objective function to minimize is in this case</p>
+<div class="math">
+<p><img src="../_images/math/04a6eb84e4a5daf0d6a16b49d54fe35c6032eaac.png" alt="0.5 * ||X w - y||_2 ^ 2 + \alpha * \rho * ||w||_1 + \alpha * (1-\rho) * 0.5 * ||w||_2 ^ 2"/></p>
+</div><div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_lasso_coordinate_descent_path.html"><img alt="../_images/plot_lasso_coordinate_descent_path_11.png" src="../_images/plot_lasso_coordinate_descent_path_11.png" style="width: 400.0px; height: 300.0px;" /></a>
+</div>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/linear_model/lasso_and_elasticnet.html#example-linear-model-lasso-and-elasticnet-py"><em>Lasso regression example</em></a></li>
+<li><a class="reference internal" href="../auto_examples/linear_model/plot_lasso_coordinate_descent_path.html#example-linear-model-plot-lasso-coordinate-descent-path-py"><em>Lasso and Elastic Net</em></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="least-angle-regression">
+<span id="id3"></span><h2>3.1.5. Least Angle Regression<a class="headerlink" href="#least-angle-regression" title="Permalink to this headline">¶</a></h2>
+<p>Least-angle regression (LARS) is a regression algorithm for
+high-dimensional data, developed by Bradley Efron, Trevor Hastie, Iain
+Johnstone and Robert Tibshirani.</p>
+<p>The advantages of LARS are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>It is numerically efficient in contexts where p &gt;&gt; n (i.e., when the
+number of dimensions is significantly greater than the number of
+points)</li>
+<li>It is computationally just as fast as forward selection and has
+the same order of complexity as an ordinary least squares.</li>
+<li>It produces a full piecewise linear solution path, which is
+useful in cross-validation or similar attempts to tune the model.</li>
+<li>If two variables are almost equally correlated with the response,
+then their coefficients should increase at approximately the same
+rate. The algorithm thus behaves as intuition would expect, and
+also is more stable.</li>
+<li>It is easily modified to produce solutions for other estimators,
+like the Lasso.</li>
+</ul>
+</div></blockquote>
+<p>The disadvantages of the LARS method include:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Because LARS is based upon an iterative refitting of the
+residuals, it would appear to be especially sensitive to the
+effects of noise. This problem is discussed in detail by Weisberg
+in the discussion section of the Efron et al. (2004) Annals of
+Statistics article.</li>
+</ul>
+</div></blockquote>
+<p>The LARS model can be used using estimator <a class="reference internal" href="generated/sklearn.linear_model.Lars.html#sklearn.linear_model.Lars" title="sklearn.linear_model.Lars"><tt class="xref py py-class docutils literal"><span class="pre">Lars</span></tt></a>, or its
+low-level implementation <a class="reference internal" href="generated/sklearn.linear_model.lars_path.html#sklearn.linear_model.lars_path" title="sklearn.linear_model.lars_path"><tt class="xref py py-func docutils literal"><span class="pre">lars_path</span></tt></a>.</p>
+</div>
+<div class="section" id="lars-lasso">
+<h2>3.1.6. LARS Lasso<a class="headerlink" href="#lars-lasso" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="generated/sklearn.linear_model.LassoLars.html#sklearn.linear_model.LassoLars" title="sklearn.linear_model.LassoLars"><tt class="xref py py-class docutils literal"><span class="pre">LassoLars</span></tt></a> is a lasso model implemented using the LARS
+algorithm, and unlike the implementation based on coordinate_descent,
+this yields the exact solution, which is piecewise linear as a
+function of the norm of its coefficients.</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_lasso_lars.html"><img alt="../_images/plot_lasso_lars_11.png" src="../_images/plot_lasso_lars_11.png" style="width: 400.0px; height: 300.0px;" /></a>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LassoLars</span><span class="p">(</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span> <span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>                 
+<span class="go">LassoLars(alpha=0.1, eps=..., fit_intercept=True,</span>
+<span class="go">     max_iter=500, normalize=True, overwrite_X=False, precompute=&#39;auto&#39;,</span>
+<span class="go">     verbose=False)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span>    
+<span class="go">array([ 0.717157...,  0.        ])</span>
+</pre></div>
+</div>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/linear_model/plot_lasso_lars.html#example-linear-model-plot-lasso-lars-py"><em>Lasso path using LARS</em></a></li>
+</ul>
+</div>
+<p>The Lars algorithm provides the full path of the coefficients along
+the regularization parameter almost for free, thus a common operation
+consist of retrieving the path with function <a class="reference internal" href="generated/sklearn.linear_model.lars_path.html#sklearn.linear_model.lars_path" title="sklearn.linear_model.lars_path"><tt class="xref py py-func docutils literal"><span class="pre">lars_path</span></tt></a></p>
+<div class="section" id="mathematical-formulation">
+<h3>3.1.6.1. Mathematical formulation<a class="headerlink" href="#mathematical-formulation" title="Permalink to this headline">¶</a></h3>
+<p>The algorithm is similar to forward stepwise regression, but instead
+of including variables at each step, the estimated parameters are
+increased in a direction equiangular to each one&#8217;s correlations with
+the residual.</p>
+<p>Instead of giving a vector result, the LARS solution consists of a
+curve denoting the solution for each value of the L1 norm of the
+parameter vector. The full coeffients path is stored in the array
+<tt class="docutils literal"><span class="pre">coef_path_</span></tt>, which has size (n_features, max_features+1). The first
+column is always zero.</p>
+<div class="topic">
+<p class="topic-title first">References:</p>
+<ul class="simple">
+<li>Original Algorithm is detailed in the paper <a class="reference external" href="http://www-stat.stanford.edu/~hastie/Papers/LARS/LeastAngle_2002.pdf">Least Angle Regression</a>
+by Hastie et al.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="orthogonal-matching-pursuit-omp">
+<span id="omp"></span><h2>3.1.7. Orthogonal Matching Pursuit (OMP)<a class="headerlink" href="#orthogonal-matching-pursuit-omp" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="generated/sklearn.linear_model.OrthogonalMatchingPursuit.html#sklearn.linear_model.OrthogonalMatchingPursuit" title="sklearn.linear_model.OrthogonalMatchingPursuit"><tt class="xref py py-class docutils literal"><span class="pre">OrthogonalMatchingPursuit</span></tt></a> and <a class="reference internal" href="generated/sklearn.linear_model.orthogonal_mp.html#sklearn.linear_model.orthogonal_mp" title="sklearn.linear_model.orthogonal_mp"><tt class="xref py py-func docutils literal"><span class="pre">orthogonal_mp</span></tt></a> implements the OMP
+algorithm for approximating the fit of a linear model with constraints imposed
+on the number of non-zero coefficients (ie. the L <sub>0</sub> pseudo-norm).</p>
+<p>Being a forward feature selection method like <a class="reference internal" href="#least-angle-regression"><em>Least Angle Regression</em></a>,
+orthogonal matching pursuit can approximate the optimum solution vector with a
+fixed number of non-zero elements:</p>
+<div class="math">
+<p><img src="../_images/math/f4660b017f68aeee2667fdc35a07a3b0f7dfd5cf.png" alt="\text{arg\,min} ||y - X\gamma||_2^2 \text{ subject to } ||\gamma||_0 \leq n_{nonzero_coefs}"/></p>
+</div><p>Alternatively, orthogonal matching pursuit can target a specific error instead
+of a specific number of non-zero coefficients. This can be expressed as:</p>
+<div class="math">
+<p><img src="../_images/math/e509518267db50806a1ebd1621c7dc5f88eb1b18.png" alt="\text{arg\,min} ||\gamma||_0 \text{ subject to } ||y-X\gamma||_2^2 \leq \text{tol}"/></p>
+</div><p>OMP is based on a greedy algorithm that includes at each step the atom most
+highly correlated with the current residual. It is similar to the simpler
+matching pursuit (MP) method, but better in that at each iteration, the
+residual is recomputed using an orthogonal projection on the space of the
+previously chosen dictionary elements.</p>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/linear_model/plot_omp.html#example-linear-model-plot-omp-py"><em>Orthogonal Matching Pursuit</em></a></li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">References:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.cs.technion.ac.il/~ronrubin/Publications/KSVX-OMP-v2.pdf">http://www.cs.technion.ac.il/~ronrubin/Publications/KSVX-OMP-v2.pdf</a></li>
+<li><a class="reference external" href="http://blanche.polytechnique.fr/~mallat/papiers/MallatPursuit93.pdf">Matching pursuits with time-frequency dictionaries</a>,
+S. G. Mallat, Z. Zhang,</li>
+</ul>
+</div>
+</div>
+<div class="section" id="bayesian-regression">
+<h2>3.1.8. Bayesian Regression<a class="headerlink" href="#bayesian-regression" title="Permalink to this headline">¶</a></h2>
+<p>Bayesian regression techniques can be used to include regularization
+parameters in the estimation procedure: the regularization parameter is
+not set in a hard sens but tuned to the data at hand.</p>
+<p>This can be done by introducing some prior knowledge over the parameters.
+For example, penalization by weighted <img class="math" src="../_images/math/97f6acacf8c430abebde04465e038516841bd638.png" alt="\ell_{2}"/> norm is equivalent
+to setting Gaussian priors on the weights.</p>
+<p>The advantages of <em>Bayesian Regression</em> are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>It adapts to the data at hand.</li>
+<li>It can be used to include regularization parameters in the
+estimation procedure.</li>
+</ul>
+</div></blockquote>
+<p>The disadvantages of <em>Bayesian Regression</em> include:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Inference of the model can be time consuming.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="bayesian-ridge-regression">
+<h3>3.1.8.1. Bayesian Ridge Regression<a class="headerlink" href="#bayesian-ridge-regression" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="generated/sklearn.linear_model.BayesianRidge.html#sklearn.linear_model.BayesianRidge" title="sklearn.linear_model.BayesianRidge"><tt class="xref py py-class docutils literal"><span class="pre">BayesianRidge</span></tt></a> tries to avoid the overfit issue of
+<a class="reference internal" href="#ordinary-least-squares"><em>Ordinary Least Squares</em></a>, by adding the following prior on
+<img class="math" src="../_images/math/fdb63b9e51abe6bbb16acfb5d7b773ddbb5bf4a8.png" alt="\beta"/>:</p>
+<div class="math">
+<p><img src="../_images/math/e07dbf10af358b80b07574981bcb06ddee0429dc.png" alt="p(\beta|\lambda) =
+\mathcal{N}(\beta|0,\lambda^{-1}\bold{I_{p}})"/></p>
+</div><p>The resulting model is called <em>Bayesian Ridge Regression</em>, it is
+similar to the classical <a class="reference internal" href="generated/sklearn.linear_model.Ridge.html#sklearn.linear_model.Ridge" title="sklearn.linear_model.Ridge"><tt class="xref py py-class docutils literal"><span class="pre">Ridge</span></tt></a>.  <img class="math" src="../_images/math/ce4588fd900d02afcbd260bc07f54cce49a7dc4a.png" alt="\lambda"/> is an
+<em>hyper-parameter</em> and the prior over <img class="math" src="../_images/math/fdb63b9e51abe6bbb16acfb5d7b773ddbb5bf4a8.png" alt="\beta"/> performs a
+shrinkage or regularization, by constraining the values of the weights
+to be small. Indeed, with a large value of <img class="math" src="../_images/math/ce4588fd900d02afcbd260bc07f54cce49a7dc4a.png" alt="\lambda"/>, the
+Gaussian is narrowed around 0 which does not allow large values of
+<img class="math" src="../_images/math/fdb63b9e51abe6bbb16acfb5d7b773ddbb5bf4a8.png" alt="\beta"/>, and with low value of <img class="math" src="../_images/math/ce4588fd900d02afcbd260bc07f54cce49a7dc4a.png" alt="\lambda"/>, the Gaussian is
+very flattened which allows values of <img class="math" src="../_images/math/fdb63b9e51abe6bbb16acfb5d7b773ddbb5bf4a8.png" alt="\beta"/>.  Here, we use a
+<em>non-informative</em> prior for <img class="math" src="../_images/math/ce4588fd900d02afcbd260bc07f54cce49a7dc4a.png" alt="\lambda"/>.
+The parameters are estimated by maximizing the <em>marginal log likelihood</em>.
+There is also a Gamma prior for <img class="math" src="../_images/math/ce4588fd900d02afcbd260bc07f54cce49a7dc4a.png" alt="\lambda"/> and <img class="math" src="../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha"/>:</p>
+<div class="math">
+<p><img src="../_images/math/2f315ba7bfde07b880cab40c3f0be42b49f1e705.png" alt="g(\alpha|\alpha_1,\alpha_2) = \frac{\alpha_2^{\alpha_1}}
+{\Gamma(\alpha_1)} \alpha^{\alpha_1-1} e^{-\alpha_2 {\alpha}}"/></p>
+</div><div class="math">
+<p><img src="../_images/math/f7b61631c5e4ed8a66c3ae99393dbd996c1a4695.png" alt="g(\lambda|\lambda_1,\lambda_2) = \frac{\lambda_2^{\lambda_1}}
+{\Gamma(\lambda_1)} \lambda^{\lambda_1-1} e^{-\lambda_2 {\lambda}}"/></p>
+</div><dl class="docutils">
+<dt>By default <img class="math" src="../_images/math/5075192a9282f5e48194806cfed14ed63e76ed39.png" alt="\alpha_1 = \alpha_2 =  \lambda_1 = \lambda_2 = 1.e^{-6}"/>, <em>i.e.</em></dt>
+<dd>very slightly informative priors.</dd>
+</dl>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_bayesian_ridge.html"><img alt="../_images/plot_bayesian_ridge_11.png" src="../_images/plot_bayesian_ridge_11.png" /></a>
+</div>
+<p><em>Bayesian Ridge Regression</em> is used for regression:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">BayesianRidge</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+<span class="go">BayesianRidge(alpha_1=1e-06, alpha_2=1e-06, compute_score=False,</span>
+<span class="go">       fit_intercept=True, lambda_1=1e-06, lambda_2=1e-06, n_iter=300,</span>
+<span class="go">       normalize=False, overwrite_X=False, tol=0.001, verbose=False)</span>
+</pre></div>
+</div>
+<p>After being fitted, the model can then be used to predict new values:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span> <span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]])</span>
+<span class="go">array([ 0.50000013])</span>
+</pre></div>
+</div>
+<p>The weights <img class="math" src="../_images/math/fdb63b9e51abe6bbb16acfb5d7b773ddbb5bf4a8.png" alt="\beta"/> of the model can be access:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span>
+<span class="go">array([ 0.49999993,  0.49999993])</span>
+</pre></div>
+</div>
+<p>Due to the Bayesian framework, the weights found are slightly different to the
+ones found by <a class="reference internal" href="#ordinary-least-squares"><em>Ordinary Least Squares</em></a>. However, <em>Bayesian Ridge
+Regression</em> is more robust to ill-posed problem.</p>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/linear_model/plot_bayesian_ridge.html#example-linear-model-plot-bayesian-ridge-py"><em>Bayesian Ridge Regression</em></a></li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">References</p>
+<ul class="simple">
+<li>More details can be found in the article <a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.27.9072&amp;rep=rep1&amp;type=pdf">Bayesian Interpolation</a>
+by MacKay, David J. C.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="automatic-relevance-determination-ard">
+<h2>3.1.9. Automatic Relevance Determination - ARD<a class="headerlink" href="#automatic-relevance-determination-ard" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="generated/sklearn.linear_model.ARDRegression.html#sklearn.linear_model.ARDRegression" title="sklearn.linear_model.ARDRegression"><tt class="xref py py-class docutils literal"><span class="pre">ARDRegression</span></tt></a> adds a more sophisticated prior <img class="math" src="../_images/math/fdb63b9e51abe6bbb16acfb5d7b773ddbb5bf4a8.png" alt="\beta"/>,
+where we assume that each weight <img class="math" src="../_images/math/ba4aaa665c10082e6b208f108e9cb1f9888f6569.png" alt="\beta_{i}"/> is drawn in a
+Gaussian distribution, centered on zero and with a precision
+<img class="math" src="../_images/math/40aaba40c8de27cbabb7bca7ab7fc3dc4b1c47b1.png" alt="\lambda_{i}"/>:</p>
+<div class="math">
+<p><img src="../_images/math/9ffdc4659f6d78dd9f0ae6792cc4c96b6d4440aa.png" alt="p(\beta|\lambda) = \mathcal{N}(\beta|0,A^{-1})"/></p>
+</div><p>with <img class="math" src="../_images/math/c163c3841f9914167253079de0b0e677a423936b.png" alt="diag \; (A) = \lambda = \{\lambda_{1},...,\lambda_{p}\}"/>.
+There is also a Gamma prior for <img class="math" src="../_images/math/ce4588fd900d02afcbd260bc07f54cce49a7dc4a.png" alt="\lambda"/> and <img class="math" src="../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha"/>:</p>
+<div class="math">
+<p><img src="../_images/math/2f315ba7bfde07b880cab40c3f0be42b49f1e705.png" alt="g(\alpha|\alpha_1,\alpha_2) = \frac{\alpha_2^{\alpha_1}}
+{\Gamma(\alpha_1)} \alpha^{\alpha_1-1} e^{-\alpha_2 {\alpha}}"/></p>
+</div><div class="math">
+<p><img src="../_images/math/f7b61631c5e4ed8a66c3ae99393dbd996c1a4695.png" alt="g(\lambda|\lambda_1,\lambda_2) = \frac{\lambda_2^{\lambda_1}}
+{\Gamma(\lambda_1)} \lambda^{\lambda_1-1} e^{-\lambda_2 {\lambda}}"/></p>
+</div><dl class="docutils">
+<dt>By default <img class="math" src="../_images/math/d014d0c15c67c00f55316b6cae648aca4ad479f0.png" alt="\alpha_1 = \alpha_2 =  \lambda_1 = \lambda_2 = 1.e-6"/>, <em>i.e.</em></dt>
+<dd>very slightly informative priors.</dd>
+</dl>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/linear_model/plot_ard.html"><img alt="../_images/plot_ard_11.png" src="../_images/plot_ard_11.png" /></a>
+</div>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/linear_model/plot_ard.html#example-linear-model-plot-ard-py"><em>Automatic Relevance Determination Regression (ARD)</em></a></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>3.1.9.1. Mathematical formulation<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>A prior is introduced as a distribution <img class="math" src="../_images/math/324193c5f781a9547f2f56aff9cbb782a882384f.png" alt="p(\theta)"/> over the parameters.
+This distribution is set before processing the data. The parameters of a prior
+distribution are called <em>hyper-parameters</em>. This description is based on the
+Bayes theorem :</p>
+<div class="math">
+<p><img src="../_images/math/dbf7c0a070a5067fd9962901275ce653c57f9139.png" alt="p(\theta|\{X,y\})
+= \frac{p(\{X,y\}|\theta)p(\theta)}{p(\{X,y\})}"/></p>
+</div><dl class="docutils">
+<dt>With :</dt>
+<dd><ul class="first last simple">
+<li><img class="math" src="../_images/math/8bd5f24048fefd8b83d8fb137b5778516faecaa2.png" alt="p({X, y}|\theta)"/> the likelihood : it expresses how probable it is
+to observe <img class="math" src="../_images/math/1782222c024579b6d7aebcdbb84ed8d1089df7fb.png" alt="{X,y}"/> given <img class="math" src="../_images/math/52e8ed7a3ba22130ad3984eb2cd413406475a689.png" alt="\theta"/>.</li>
+<li><img class="math" src="../_images/math/13f2aae975048eba20b4c0be32367933b632d0ca.png" alt="p({X, y})"/> the marginal probability of the data : it can be
+considered as a normalizing constant, and is computed by integrating
+<img class="math" src="../_images/math/8bd5f24048fefd8b83d8fb137b5778516faecaa2.png" alt="p({X, y}|\theta)"/> with respect to <img class="math" src="../_images/math/52e8ed7a3ba22130ad3984eb2cd413406475a689.png" alt="\theta"/>.</li>
+<li><img class="math" src="../_images/math/324193c5f781a9547f2f56aff9cbb782a882384f.png" alt="p(\theta)"/> the prior over the parameters : it expresses the
+knowledge that we can have about <img class="math" src="../_images/math/52e8ed7a3ba22130ad3984eb2cd413406475a689.png" alt="\theta"/> before processing the
+data.</li>
+<li><img class="math" src="../_images/math/afbcd02140725ccd8b7366243b2e941c0b77ae31.png" alt="p(\theta|{X, y})"/> the conditional probability (or posterior
+probability) : it expresses the uncertainty in <img class="math" src="../_images/math/52e8ed7a3ba22130ad3984eb2cd413406475a689.png" alt="\theta"/>  after
+observing the data.</li>
+</ul>
+</dd>
+</dl>
+<p>All the following regressions are based on the following Gaussian
+assumption:</p>
+<div class="math">
+<p><img src="../_images/math/77744709473988bcedb089c330bc43765af745c5.png" alt="p(y|X,w,\alpha) = \mathcal{N}(y|X w,\alpha)"/></p>
+</div><p>where <img class="math" src="../_images/math/10f32377ac67d94f764f12a15ea987e88c85d3e1.png" alt="\alpha"/> is the precision of the noise.</p>
+<div class="topic">
+<p class="topic-title first">References</p>
+<ul class="simple">
+<li>Original Algorithm is detailed in the  book <em>Bayesian learning for neural
+networks</em> by Radford M. Neal</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="logisitic-regression">
+<span id="logistic-regression"></span><h2>3.1.10. Logisitic regression<a class="headerlink" href="#logisitic-regression" title="Permalink to this headline">¶</a></h2>
+<p>If the task at hand is to do choose which class a sample belongs to given
+a finite (hopefuly small) set of choices, the learning problem is a
+classification, rather than regression. Linear models can be used for
+such a decision, but it is best to use what is called a
+<a class="reference external" href="http://en.wikipedia.org/wiki/Logistic_regression">logistic regression</a>,
+that doesn&#8217;t try to minimize the sum of square residuals, as in regression,
+but rather a &#8220;hit or miss&#8221; cost.</p>
+<p>The <a class="reference internal" href="generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression" title="sklearn.linear_model.LogisticRegression"><tt class="xref py py-class docutils literal"><span class="pre">LogisticRegression</span></tt></a> class can be used to do L1 or L2 penalized
+logistic regression. L1 penalization yields sparse predicting weights.
+For L1 penalization <a class="reference internal" href="generated/sklearn.svm.l1_min_c.html#sklearn.svm.l1_min_c" title="sklearn.svm.l1_min_c"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.svm.l1_min_c</span></tt></a> allows to calculate
+the lower bound for C in order to get a non &#8220;null&#8221; (all feature weights to
+zero) model.</p>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><em class="xref std std-ref">example_logistic_l1_l2_coef.py</em></li>
+<li><a class="reference internal" href="../auto_examples/linear_model/plot_logistic_path.html#example-linear-model-plot-logistic-path-py"><em>Path with L1- Logistic Regression</em></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="stochastic-gradient-descent-sgd">
+<h2>3.1.11. Stochastic Gradient Descent - SGD<a class="headerlink" href="#stochastic-gradient-descent-sgd" title="Permalink to this headline">¶</a></h2>
+<p>Stochastic gradient descent is a simple yet very efficient approach
+to fit linear models. It is particulary useful when the number of samples
+(and the number of features) is very large.</p>
+<p>The classes <a class="reference internal" href="generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier" title="sklearn.linear_model.SGDClassifier"><tt class="xref py py-class docutils literal"><span class="pre">SGDClassifier</span></tt></a> and <a class="reference internal" href="generated/sklearn.linear_model.SGDRegressor.html#sklearn.linear_model.SGDRegressor" title="sklearn.linear_model.SGDRegressor"><tt class="xref py py-class docutils literal"><span class="pre">SGDRegressor</span></tt></a> provide
+functionality to fit linear models for classification and regression
+using different (convex) loss functions and different penalties.</p>
+<div class="topic">
+<p class="topic-title first">References</p>
+<ul class="simple">
+<li><a class="reference internal" href="sgd.html#sgd"><em>Stochastic Gradient Descent</em></a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikit-learn version 0.9<p>
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../_sources/modules/linear_model.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

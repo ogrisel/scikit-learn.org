@@ -1,0 +1,11 @@
+scikits.learn.fastica.FastICA
+=============================
+
+.. currentmodule:: scikits.learn.fastica
+
+.. autoclass:: FastICA
+
+   
+   .. automethod:: __init__
+   
+

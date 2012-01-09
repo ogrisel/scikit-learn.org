@@ -1,0 +1,7 @@
+scikits.learn.decomposition.fastica
+===================================
+
+.. currentmodule:: scikits.learn.decomposition
+
+.. autofunction:: fastica
+

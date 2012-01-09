@@ -1,0 +1,11 @@
+scikits.learn.svm.sparse.LinearSVC
+==================================
+
+.. currentmodule:: scikits.learn.svm.sparse
+
+.. autoclass:: LinearSVC
+
+   
+   .. automethod:: __init__
+   
+

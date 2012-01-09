@@ -1,0 +1,11 @@
+scikits.learn.feature_extraction.text.CharNGramAnalyzer
+=======================================================
+
+.. currentmodule:: scikits.learn.feature_extraction.text
+
+.. autoclass:: CharNGramAnalyzer
+
+   
+   .. automethod:: __init__
+   
+

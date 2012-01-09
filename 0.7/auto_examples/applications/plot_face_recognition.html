@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Faces recognition example using eigenfaces and SVMs &mdash; scikits.learn 0.7.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.7.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn 0.7.1 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Species distribution modeling" href="plot_species_distribution_modeling.html" />
+    <link rel="prev" title="Train error vs Test error" href="../plot_train_error_vs_test_error.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../plot_train_error_vs_test_error.html" title="Train error vs Test error"
+             accesskey="P">previous</a> |
+          <a href="plot_species_distribution_modeling.html" title="Species distribution modeling"
+             accesskey="N">next</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">Faces recognition example using eigenfaces and SVMs</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="faces-recognition-example-using-eigenfaces-and-svms">
+<span id="example-applications-plot-face-recognition-py"></span><h1>Faces recognition example using eigenfaces and SVMs<a class="headerlink" href="#faces-recognition-example-using-eigenfaces-and-svms" title="Permalink to this headline">¶</a></h1>
+<p>The dataset used in this example is a preprocessed excerpt of the
+&#8220;Labeled Faces in the Wild&#8221;, aka <a class="reference external" href="http://vis-www.cs.umass.edu/lfw/">LFW</a>:</p>
+<blockquote>
+<div><a class="reference external" href="http://vis-www.cs.umass.edu/lfw/lfw-funneled.tgz">http://vis-www.cs.umass.edu/lfw/lfw-funneled.tgz</a> (233MB)</div></blockquote>
+<p>Expected results for the top 5 most represented people in the dataset:</p>
+<div class="highlight-python"><pre>                   precision    recall  f1-score   support
+
+Gerhard_Schroeder       0.91      0.75      0.82        28
+  Donald_Rumsfeld       0.84      0.82      0.83        33
+       Tony_Blair       0.65      0.82      0.73        34
+     Colin_Powell       0.78      0.88      0.83        58
+    George_W_Bush       0.93      0.86      0.90       129
+
+      avg / total       0.86      0.84      0.85       282</pre>
+</div>
+<img alt="../../_images/plot_face_recognition.png" class="align-center" src="../../_images/plot_face_recognition.png" />
+<p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_face_recognition.py"><tt class="xref download docutils literal"><span class="pre">plot_face_recognition.py</span></tt></a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">gzip</span> <span class="kn">import</span> <span class="n">GzipFile</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
+
+<span class="kn">from</span> <span class="nn">scikits.learn.grid_search</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">scikits.learn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+<span class="kn">from</span> <span class="nn">scikits.learn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">scikits.learn.pca</span> <span class="kn">import</span> <span class="n">RandomizedPCA</span>
+<span class="kn">from</span> <span class="nn">scikits.learn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+<span class="c">################################################################################</span>
+<span class="c"># Download the data, if not already on disk</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">&quot;https://downloads.sourceforge.net/project/scikit-learn/data/lfw_preprocessed.tar.gz&quot;</span>
+<span class="n">archive_name</span> <span class="o">=</span> <span class="s">&quot;lfw_preprocessed.tar.gz&quot;</span>
+<span class="n">folder_name</span> <span class="o">=</span> <span class="s">&quot;lfw_preprocessed&quot;</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">folder_name</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">archive_name</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">urllib</span>
+        <span class="k">print</span> <span class="s">&quot;Downloading data, please Wait (58.8MB)...&quot;</span>
+        <span class="k">print</span> <span class="n">url</span>
+        <span class="n">opener</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="nb">open</span><span class="p">(</span><span class="n">archive_name</span><span class="p">,</span> <span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">opener</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+        <span class="k">print</span>
+
+    <span class="kn">import</span> <span class="nn">tarfile</span>
+    <span class="k">print</span> <span class="s">&quot;Decompressiong the archive: &quot;</span> <span class="o">+</span> <span class="n">archive_name</span>
+    <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">archive_name</span><span class="p">,</span> <span class="s">&quot;r:gz&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">extractall</span><span class="p">()</span>
+    <span class="k">print</span>
+
+<span class="c">################################################################################</span>
+<span class="c"># Load dataset in memory</span>
+
+<span class="n">faces_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span> <span class="s">&quot;faces.npy.gz&quot;</span><span class="p">)</span>
+<span class="n">filenames_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span> <span class="s">&quot;face_filenames.txt&quot;</span><span class="p">)</span>
+
+<span class="n">faces</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">GzipFile</span><span class="p">(</span><span class="n">faces_filename</span><span class="p">))</span>
+<span class="n">face_filenames</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">file</span><span class="p">(</span><span class="n">filenames_filename</span><span class="p">)</span><span class="o">.</span><span class="n">readlines</span><span class="p">()]</span>
+
+<span class="c"># normalize each picture by centering brightness</span>
+<span class="n">faces</span> <span class="o">-=</span> <span class="n">faces</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+
+
+<span class="c">################################################################################</span>
+<span class="c"># Index category names into integers suitable for scikit-learn</span>
+
+<span class="c"># Here we do a little dance to convert file names in integer indices</span>
+<span class="c"># (class indices in machine learning talk) that are suitable to be used</span>
+<span class="c"># as a target for training a classifier. Note the use of an array with</span>
+<span class="c"># unique entries to store the relation between class index and name,</span>
+<span class="c"># often called a &#39;Look Up Table&#39; (LUT).</span>
+<span class="c"># Also, note the use of &#39;searchsorted&#39; to convert an array in a set of</span>
+<span class="c"># integers given a second array to use as a LUT.</span>
+<span class="n">categories</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">f</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s">&#39;_&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">face_filenames</span><span class="p">])</span>
+
+<span class="c"># A unique integer per category</span>
+<span class="n">category_names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">categories</span><span class="p">)</span>
+
+<span class="c"># Turn the categories in their corresponding integer label</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">category_names</span><span class="p">,</span> <span class="n">categories</span><span class="p">)</span>
+
+<span class="c"># Subsample the dataset to restrict to the most frequent categories</span>
+<span class="n">selected_target</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">target</span><span class="p">))[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span>
+
+<span class="c"># If you are using a numpy version &gt;= 1.4, this can be done with &#39;np.in1d&#39;</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">item</span> <span class="ow">in</span> <span class="n">selected_target</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">target</span><span class="p">])</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">faces</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">target</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="k">print</span> <span class="s">&quot;Dataset size:&quot;</span>
+<span class="k">print</span> <span class="s">&quot;n_samples: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">n_samples</span>
+<span class="k">print</span> <span class="s">&quot;n_features: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">n_features</span>
+
+<span class="n">split</span> <span class="o">=</span> <span class="n">n_samples</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">/</span> <span class="mi">4</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="n">split</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">split</span><span class="p">:]</span>
+<span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:</span><span class="n">split</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">split</span><span class="p">:]</span>
+
+<span class="c">################################################################################</span>
+<span class="c"># Compute a PCA (eigenfaces) on the face dataset (treated as unlabeled</span>
+<span class="c"># dataset): unsupervised feature extraction / dimensionality reduction</span>
+<span class="n">n_components</span> <span class="o">=</span> <span class="mi">150</span>
+
+<span class="k">print</span> <span class="s">&quot;Extracting the top </span><span class="si">%d</span><span class="s"> eigenfaces&quot;</span> <span class="o">%</span> <span class="n">n_components</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">RandomizedPCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">,</span> <span class="n">whiten</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+<span class="n">eigenfaces</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n_components</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">))</span>
+
+<span class="c"># project the input data on the eigenfaces orthonormal basis</span>
+<span class="n">X_train_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+
+<span class="c">################################################################################</span>
+<span class="c"># Train a SVM classification model</span>
+
+<span class="k">print</span> <span class="s">&quot;Fitting the classifier to the training set&quot;</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+ <span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+ <span class="s">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;rbf&#39;</span><span class="p">),</span> <span class="n">param_grid</span><span class="p">,</span>
+                   <span class="n">fit_params</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;class_weight&#39;</span><span class="p">:</span> <span class="s">&#39;auto&#39;</span><span class="p">})</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;Best estimator found by grid search:&quot;</span>
+<span class="k">print</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator</span>
+
+
+<span class="c">################################################################################</span>
+<span class="c"># Quantitative evaluation of the model quality on the test set</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_pca</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">selected_target</span><span class="p">,</span>
+                            <span class="n">class_names</span><span class="o">=</span><span class="n">category_names</span><span class="p">[</span><span class="n">selected_target</span><span class="p">])</span>
+
+<span class="k">print</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">selected_target</span><span class="p">)</span>
+
+
+<span class="c">################################################################################</span>
+<span class="c"># Qualitative evaluation of the predictions using matplotlib</span>
+
+<span class="n">n_row</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">n_col</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n_col</span><span class="p">,</span> <span class="mf">2.3</span> <span class="o">*</span> <span class="n">n_row</span><span class="p">))</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">left</span><span class="o">=.</span><span class="mo">01</span><span class="p">,</span> <span class="n">right</span><span class="o">=.</span><span class="mi">99</span><span class="p">,</span> <span class="n">top</span><span class="o">=.</span><span class="mi">95</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=.</span><span class="mi">15</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_row</span> <span class="o">*</span> <span class="n">n_col</span><span class="p">):</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">n_row</span><span class="p">,</span> <span class="n">n_col</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">)),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;pred: </span><span class="si">%s</span><span class="se">\n</span><span class="s">true: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">category_names</span><span class="p">[</span><span class="n">y_pred</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span>
+                                     <span class="n">category_names</span><span class="p">[</span><span class="n">y_test</span><span class="p">[</span><span class="n">i</span><span class="p">]]),</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">(())</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
+
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c"># TODO: plot the top eigenfaces and the singular values absolute values</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.7.1<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

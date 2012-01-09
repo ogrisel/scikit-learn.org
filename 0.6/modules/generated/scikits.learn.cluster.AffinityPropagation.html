@@ -1,0 +1,221 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6.8.4. scikits.learn.cluster.AffinityPropagation &mdash; scikits.learn v0.6.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.6.0 documentation" href="../../index.html" />
+    <link rel="up" title="6. Class reference" href="../classes.html" />
+    <link rel="next" title="6.9.1. scikits.learn.covariance.Covariance" href="scikits.learn.covariance.Covariance.html" />
+    <link rel="prev" title="6.8.3. scikits.learn.cluster.SpectralClustering" href="scikits.learn.cluster.SpectralClustering.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="scikits.learn.cluster.SpectralClustering.html" title="6.8.3. scikits.learn.cluster.SpectralClustering"
+             accesskey="P">previous</a> |
+          <a href="scikits.learn.covariance.Covariance.html" title="6.9.1. scikits.learn.covariance.Covariance"
+             accesskey="N">next</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">6.8.4. scikits.learn.cluster.AffinityPropagation</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-cluster-affinitypropagation">
+<h1>6.8.4. scikits.learn.cluster.AffinityPropagation<a class="headerlink" href="#scikits-learn-cluster-affinitypropagation" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.cluster.AffinityPropagation">
+<em class="property">class </em><tt class="descclassname">scikits.learn.cluster.</tt><tt class="descname">AffinityPropagation</tt><big>(</big><em>damping=0.5</em>, <em>max_iter=200</em>, <em>convit=30</em>, <em>copy=True</em><big>)</big><a class="headerlink" href="#scikits.learn.cluster.AffinityPropagation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform Affinity Propagation Clustering of data</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>damping</strong> : float, optional</p>
+<blockquote>
+<p>Damping factor</p>
+</blockquote>
+<p><strong>max_iter</strong> : int, optional</p>
+<blockquote>
+<p>Maximum number of iterations</p>
+</blockquote>
+<p><strong>convit</strong> : int, optional</p>
+<blockquote>
+<p>Number of iterations with no change in the number
+of estimated clusters that stops the convergence.</p>
+</blockquote>
+<p><strong>copy: boolean, optional</strong> :</p>
+<blockquote class="last">
+<p>Make a copy of input data. True by default.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>See examples/plot_affinity_propagation.py for an example.</p>
+<p>Reference:</p>
+<p>Brendan J. Frey and Delbert Dueck, &#8220;Clustering by Passing Messages
+Between Data Points&#8221;, Science Feb. 2007</p>
+<p>The algorithmic complexity of affinity propagation is quadratic
+in the number of points.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="28%" />
+<col width="38%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a href="#id1"><span class="problematic" id="id2">cluster_centers_indices_</span></a></td>
+<td>array, [n_clusters]</td>
+<td>Indices of cluster centers</td>
+</tr>
+<tr><td><a href="#id3"><span class="problematic" id="id4">labels_</span></a></td>
+<td>array, [n_samples]</td>
+<td>Labels of each point</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>fit:</td>
+<td>Compute the clustering</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="scikits.learn.cluster.AffinityPropagation.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>damping=0.5</em>, <em>max_iter=200</em>, <em>convit=30</em>, <em>copy=True</em><big>)</big><a class="headerlink" href="#scikits.learn.cluster.AffinityPropagation.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.cluster.AffinityPropagation.fit">
+<tt class="descname">fit</tt><big>(</big><em>S</em>, <em>p=None</em>, <em>**params</em><big>)</big><a class="headerlink" href="#scikits.learn.cluster.AffinityPropagation.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>compute MeanShift</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>S: array [n_points, n_points]</strong> :</p>
+<blockquote>
+<p>Matrix of similarities between points</p>
+</blockquote>
+<p><strong>p: array [n_points,] or float, optional</strong> :</p>
+<blockquote>
+<p>Preferences for each point</p>
+</blockquote>
+<p><strong>damping</strong> : float, optional</p>
+<blockquote>
+<p>Damping factor</p>
+</blockquote>
+<p><strong>copy: boolean, optional</strong> :</p>
+<blockquote class="last">
+<p>If copy is False, the affinity matrix is modified inplace by the
+algorithm, for memory efficiency</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.6.0<p>
+        &copy; 2010, scikits.learn developers (BSD Lincense).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

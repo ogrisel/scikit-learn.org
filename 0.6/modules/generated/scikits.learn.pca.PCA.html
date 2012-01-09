@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6.10.1. scikits.learn.pca.PCA &mdash; scikits.learn v0.6.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.6.0 documentation" href="../../index.html" />
+    <link rel="up" title="6. Class reference" href="../classes.html" />
+    <link rel="prev" title="6.9.4. scikits.learn.covariance.ledoit_wolf" href="scikits.learn.covariance.ledoit_wolf.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="scikits.learn.covariance.ledoit_wolf.html" title="6.9.4. scikits.learn.covariance.ledoit_wolf"
+             accesskey="P">previous</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">6.10.1. scikits.learn.pca.PCA</a><ul>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-pca-pca">
+<h1>6.10.1. scikits.learn.pca.PCA<a class="headerlink" href="#scikits-learn-pca-pca" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.pca.PCA">
+<em class="property">class </em><tt class="descclassname">scikits.learn.pca.</tt><tt class="descname">PCA</tt><big>(</big><em>n_components=None</em>, <em>copy=True</em>, <em>whiten=False</em><big>)</big><a class="headerlink" href="#scikits.learn.pca.PCA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Principal component analysis (PCA)</p>
+<p>Linear dimensionality reduction using Singular Value Decomposition of the
+data and keeping only the most significant singular vectors to project the
+data to a lower dimensional space.</p>
+<p>This implementation uses the scipy.linalg implementation of the singular
+value decomposition. It only works for dense arrays and is not scalable to
+large dimensional data.</p>
+<p>The time complexity of this implementation is O(n ** 3) assuming
+n ~ n_samples ~ n_features.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like, shape (n_samples, n_features)</strong> :</p>
+<blockquote>
+<p>Training vector, where n_samples in the number of samples and
+n_features is the number of features.</p>
+</blockquote>
+<p><strong>n_components: int, none or string</strong> :</p>
+<blockquote>
+<p>Number of components to keep.
+if n_components is not set all components are kept:</p>
+<blockquote>
+<p>n_components == min(n_samples, n_features)</p>
+</blockquote>
+<p>if n_components == &#8216;mle&#8217;, Minka&#8217;s MLE is used to guess the dimension</p>
+</blockquote>
+<p><strong>copy: bool</strong> :</p>
+<blockquote>
+<p>If False, data passed to fit are overwritten</p>
+</blockquote>
+<p><strong>whiten: bool, optional</strong> :</p>
+<blockquote class="last">
+<p>When True (False by default) the <a href="#id1"><span class="problematic" id="id2">components_</span></a> vectors are divided
+by n_samples times singular values to ensure uncorrelated outputs
+with unit component-wise variances.</p>
+<p>Whitening will remove some information from the transformed signal
+(the relative variance scales of the components) but can sometime
+improve the predictive accuracy of the downstream estimators by
+making there data respect some hard-wired assumptions.</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="scikits.learn.pca.ProbabilisticPCA.html#scikits.learn.pca.ProbabilisticPCA" title="scikits.learn.pca.ProbabilisticPCA"><tt class="xref py py-obj docutils literal"><span class="pre">ProbabilisticPCA</span></tt></a>, <tt class="xref py py-obj docutils literal"><span class="pre">RandomizedPCA</span></tt></p>
+</div>
+<p class="rubric">Notes</p>
+<p>For n_components=&#8217;mle&#8217;, this class uses the method of Thomas P. Minka:
+Automatic Choice of Dimensionality for PCA. NIPS 2000: 598-604</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scikits.learn.pca</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">PCA(copy=True, n_components=2, whiten=False)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+<span class="go">[ 0.99244289  0.00755711]</span>
+</pre></div>
+</div>
+<p class="rubric">Attributes</p>
+<p class="rubric">Methods</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a class="reference internal" href="#scikits.learn.pca.PCA.fit" title="scikits.learn.pca.PCA.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a></td>
+<td></td>
+</tr>
+<tr><td><a class="reference internal" href="#scikits.learn.pca.PCA.transform" title="scikits.learn.pca.PCA.transform"><tt class="xref py py-obj docutils literal"><span class="pre">transform</span></tt></a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="scikits.learn.pca.PCA.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>n_components=None</em>, <em>copy=True</em>, <em>whiten=False</em><big>)</big><a class="headerlink" href="#scikits.learn.pca.PCA.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.pca.PCA.fit">
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>**params</em><big>)</big><a class="headerlink" href="#scikits.learn.pca.PCA.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the model to the data X</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.pca.PCA.transform">
+<tt class="descname">transform</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#scikits.learn.pca.PCA.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the dimension reduction learned on the train data.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.6.0<p>
+        &copy; 2010, scikits.learn developers (BSD Lincense).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+scikits.learn.lda.LDA
+=====================
+
+.. currentmodule:: scikits.learn.lda
+
+.. autoclass:: LDA
+
+   
+   .. automethod:: __init__
+   
+

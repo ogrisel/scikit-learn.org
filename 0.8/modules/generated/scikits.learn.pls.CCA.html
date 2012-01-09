@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>scikits.learn.pls.CCA &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../../index.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">scikits.learn.pls.CCA</a></li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scikits-learn-pls-cca">
+<h1>scikits.learn.pls.CCA<a class="headerlink" href="#scikits-learn-pls-cca" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="scikits.learn.pls.CCA">
+<em class="property">class </em><tt class="descclassname">scikits.learn.pls.</tt><tt class="descname">CCA</tt><big>(</big><em>n_components=2</em>, <em>scale=True</em>, <em>algorithm='nipals'</em>, <em>max_iter=500</em>, <em>tol=9.9999999999999995e-07</em>, <em>copy=True</em><big>)</big><a class="headerlink" href="#scikits.learn.pls.CCA" title="Permalink to this definition">¶</a></dt>
+<dd><p>CCA Canonical Correlation Analysis. CCA inherits from PLS with
+mode=&#8221;B&#8221; and deflation_mode=&#8221;canonical&#8221;.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like of predictors, shape (n_samples, p)</strong> :</p>
+<blockquote>
+<p>Training vectors, where n_samples in the number of samples and
+p is the number of predictors.</p>
+</blockquote>
+<p><strong>Y: array-like of response, shape (n_samples, q)</strong> :</p>
+<blockquote>
+<p>Training vectors, where n_samples in the number of samples and
+q is the number of response variables.</p>
+</blockquote>
+<p><strong>n_components: int, number of components to keep. (default 2).</strong> :</p>
+<p><strong>scale: boolean, scale data? (default True)</strong> :</p>
+<p><strong>algorithm: str &#8220;nipals&#8221; or &#8220;svd&#8221; the algorithm used to estimate the</strong> :</p>
+<blockquote>
+<p>weights, it will be called &#8220;n_components&#8221; time ie.: for each iteration
+of the outer loop.</p>
+</blockquote>
+<p><strong>max_iter: an integer, the maximum number of iterations (default 500) of the</strong> :</p>
+<blockquote>
+<p>NIPALS inner loop (used only if algorithm=&#8221;nipals&#8221;)</p>
+</blockquote>
+<p><strong>tol: a not negative real, the tolerance used in the iterative algorithm</strong> :</p>
+<blockquote>
+<p>default 1e-06.</p>
+</blockquote>
+<p><strong>copy: boolean, should the deflation been made on a copy? Let the default</strong> :</p>
+<blockquote class="last">
+<p>value to True unless you don&#8217;t care about side effect</p>
+</blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="scikits.learn.pls.PLSCanonical.html#scikits.learn.pls.PLSCanonical" title="scikits.learn.pls.PLSCanonical"><tt class="xref py py-obj docutils literal"><span class="pre">PLSCanonical</span></tt></a>, <a class="reference internal" href="scikits.learn.pls.PLSSVD.html#scikits.learn.pls.PLSSVD" title="scikits.learn.pls.PLSSVD"><tt class="xref py py-obj docutils literal"><span class="pre">PLSSVD</span></tt></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>For each component k, find the weights u, v that maximizes
+max corr(Xk u, Yk v), such that <a href="#id1"><span class="problematic" id="id2">|u|</span></a> = <a href="#id3"><span class="problematic" id="id4">|v|</span></a> = 1</p>
+<p>Note that it maximizes only the correlations between the scores.</p>
+<p>The residual matrix of X (Xk+1) block is obtained by the deflation on the
+current X score: x_score.</p>
+<p>The residual matrix of Y (Yk+1) block is obtained by deflation on the
+current Y score.</p>
+<p class="rubric">References</p>
+<p>Jacob A. Wegelin. A survey of Partial Least Squares (PLS) methods, with
+emphasis on the two-block case. Technical Report 371, Department of
+Statistics, University of Washington, Seattle, 2000.</p>
+<p>In french but still a reference:
+Tenenhaus, M. (1998). La regression PLS: theorie et pratique. Paris:
+Editions Technic.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="60%" />
+<col width="40%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><a href="#id5"><span class="problematic" id="id6">x_weights_</span></a>: array, [p, n_components]</td>
+<td>X block weights vectors.</td>
+</tr>
+<tr><td><a href="#id7"><span class="problematic" id="id8">y_weights_</span></a>: array, [q, n_components]</td>
+<td>Y block weights vectors.</td>
+</tr>
+<tr><td><a href="#id9"><span class="problematic" id="id10">x_loadings_</span></a>: array, [p, n_components]</td>
+<td>X block loadings vectors.</td>
+</tr>
+<tr><td><a href="#id11"><span class="problematic" id="id12">y_loadings_</span></a>: array, [q, n_components]</td>
+<td>Y block loadings vectors.</td>
+</tr>
+<tr><td><a href="#id13"><span class="problematic" id="id14">x_scores_</span></a>: array, [n_samples, n_components]</td>
+<td>X scores.</td>
+</tr>
+<tr><td><a href="#id15"><span class="problematic" id="id16">y_scores_</span></a>: array, [n_samples, n_components]</td>
+<td>Y scores.</td>
+</tr>
+<tr><td><a href="#id17"><span class="problematic" id="id18">x_rotations_</span></a>: array, [p, n_components]</td>
+<td>X block to latents rotations.</td>
+</tr>
+<tr><td><a href="#id19"><span class="problematic" id="id20">y_rotations_</span></a>: array, [q, n_components]</td>
+<td>Y block to latents rotations.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="scikits.learn.pls.CCA.__init__">
+<tt class="descname">__init__</tt><big>(</big><em>n_components=2</em>, <em>scale=True</em>, <em>algorithm='nipals'</em>, <em>max_iter=500</em>, <em>tol=9.9999999999999995e-07</em>, <em>copy=True</em><big>)</big><a class="headerlink" href="#scikits.learn.pls.CCA.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.pls.CCA.predict">
+<tt class="descname">predict</tt><big>(</big><em>X</em>, <em>copy=True</em><big>)</big><a class="headerlink" href="#scikits.learn.pls.CCA.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the dimension reduction learned on the train data.
+Parameters
+&#8212;&#8212;&#8212;-
+X: array-like of predictors, shape (n_samples, p)</p>
+<blockquote>
+Training vectors, where n_samples in the number of samples and
+p is the number of predictors.</blockquote>
+<dl class="docutils">
+<dt>copy: X has to be normalize, do it on a copy or in place</dt>
+<dd>with side effect!</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This call require the estimation of a p x q matrix, which may
+be an issue in high dimensional space.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scikits.learn.pls.CCA.transform">
+<tt class="descname">transform</tt><big>(</big><em>X</em>, <em>Y=None</em>, <em>copy=True</em><big>)</big><a class="headerlink" href="#scikits.learn.pls.CCA.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the dimension reduction learned on the train data.
+Parameters
+&#8212;&#8212;&#8212;-
+X: array-like of predictors, shape (n_samples, p)</p>
+<blockquote>
+Training vectors, where n_samples in the number of samples and
+p is the number of predictors.</blockquote>
+<dl class="docutils">
+<dt>Y: array-like of response, shape (n_samples, q), optional</dt>
+<dd>Training vectors, where n_samples in the number of samples and
+q is the number of response variables.</dd>
+<dt>copy: X and Y have to be normalize, do it on a copy or in place</dt>
+<dd>with side effect!</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Returns :</th><td class="field-body"><strong>x_scores if Y is not given, (x_scores, y_scores) otherwise.</strong> :</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/modules/generated/scikits.learn.pls.CCA.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

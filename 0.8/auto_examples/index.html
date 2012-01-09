@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Examples &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../index.html" />
+    <link rel="next" title="Classification of text documents using sparse features" href="document_classification_20newsgroups.html" />
+    <link rel="prev" title="7. Class reference" href="../modules/classes.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../install.html">Download</a></li>
+            <li><a href="../support.html">Support</a></li>
+            <li><a href="../user_guide.html">User Guide</a></li>
+            <li><a href="#">Examples</a></li>
+            <li><a href="../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="../modules/classes.html" title="7. Class reference"
+             accesskey="P">previous</a> |
+          <a href="document_classification_20newsgroups.html" title="Classification of text documents using sparse features"
+             accesskey="N">next</a> |
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">Examples</a><ul>
+<li><a class="reference internal" href="#general-examples">General examples</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#examples-based-on-real-world-datasets">Examples based on real world datasets</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#clustering">Clustering</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#covariance-estimation">Covariance estimation</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#decomposition">Decomposition</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#gaussian-process-for-machine-learning">Gaussian Process for Machine Learning</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#generalized-linear-models">Generalized Linear Models</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#gaussian-mixture-models">Gaussian Mixture Models</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#support-vector-machines">Support Vector Machines</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="general-examples">
+<span id="examples-index"></span><h2>General examples<a class="headerlink" href="#general-examples" title="Permalink to this headline">¶</a></h2>
+<p>General-purpose and introductory examples for the scikit.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="document_classification_20newsgroups.html">Classification of text documents using sparse features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature_selection_pipeline.html">Pipeline Anova SVM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grid_search_digits.html">Parameter estimation using grid search with a nested cross-validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grid_search_text_feature_extraction.html">Sample pipeline for text feature extraction and evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logistic_l1_l2_coef.html">Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlcomp_sparse_document_classification.html">Classification of text documents: using a MLComp dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="naive_bayes.html">Gaussian Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_classification_probability.html">Plot classification probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_confusion_matrix.html">Confusion matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_digits_classification.html">Recognizing hand-written digits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_feature_selection.html">Univariate Feature Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_lda_qda.html">Linear Discriminant Analysis &amp; Quadratic Discriminant Analysis with confidence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_lda_vs_qda.html">Linear and Quadratic Discriminant Analysis with confidence ellipsoid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_neighbors.html">Nearest Neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_neighbors_regression.html">k-Nearest Neighbors regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_permutation_test_for_classification.html">Test with permutations the significance of a classification score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_pls.html">PLS Partial Least Squares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_precision_recall.html">Precision-Recall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_rfe_digits.html">Recursive feature elimination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_rfe_with_cross_validation.html">Recursive feature elimination with cross-validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_roc.html">Receiver operating characteristic (ROC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_roc_crossval.html">Receiver operating characteristic (ROC) with cross validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_train_error_vs_test_error.html">Train error vs Test error</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="examples-based-on-real-world-datasets">
+<h2>Examples based on real world datasets<a class="headerlink" href="#examples-based-on-real-world-datasets" title="Permalink to this headline">¶</a></h2>
+<p>Applications to real world problems with some medium sized datasets or
+interactive user interface.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="applications/face_recognition.html">Faces recognition example using eigenfaces and SVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/plot_species_distribution_modeling.html">Species distribution modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/stock_market.html">Finding structure in the stock market</a></li>
+<li class="toctree-l1"><a class="reference internal" href="applications/svm_gui.html">Libsvm GUI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="applications/svm_gui.html#requirements">Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="applications/wikipedia_principal_eigenvector.html">Wikipedia princial eigenvector</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="clustering">
+<span id="cluster-examples"></span><h2>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h2>
+<p>Examples concerning the <cite>scikits.learn.cluster</cite> package.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cluster/kmeans_digits.html">A demo of K-Means clustering on the handwritten digits data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cluster/plot_affinity_propagation.html">Demo of affinity propagation clustering algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cluster/plot_feature_agglomeration_vs_univariate_selection.html">Feature agglomeration vs. univariate selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cluster/plot_lena_segmentation.html">Segmenting the picture of Lena in regions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cluster/plot_lena_ward_segmentation.html">A demo of structured Ward hierarchical clustering on Lena image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cluster/plot_mean_shift.html">A demo of the mean-shift clustering algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cluster/plot_segmentation_toy.html">Spectral clustering for image segmentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cluster/plot_ward_structured_vs_unstructured.html">Hierarchical clustering: structured vs unstructured ward</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="covariance-estimation">
+<h2>Covariance estimation<a class="headerlink" href="#covariance-estimation" title="Permalink to this headline">¶</a></h2>
+<p>Examples concerning the <cite>scikits.learn.covariance</cite> package.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="covariance/plot_covariance_estimation.html">Ledoit-Wolf vs Covariance simple estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="covariance/plot_lw_vs_oas.html">Ledoit-Wolf vs OAS estimation</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="decomposition">
+<span id="decomposition-examples"></span><h2>Decomposition<a class="headerlink" href="#decomposition" title="Permalink to this headline">¶</a></h2>
+<p>Examples concerning the <cite>scikits.learn.decomposition</cite> package.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="decomposition/plot_ica_blind_source_separation.html">Blind source separation using FastICA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decomposition/plot_ica_vs_pca.html">FastICA on 2D point clouds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decomposition/plot_kernel_pca.html">Kernel PCA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decomposition/plot_nmf.html">NMF for digits feature extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decomposition/plot_pca_vs_lda.html">PCA 2D projection of Iris dataset</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="gaussian-process-for-machine-learning">
+<span id="gaussian-process-examples"></span><h2>Gaussian Process for Machine Learning<a class="headerlink" href="#gaussian-process-for-machine-learning" title="Permalink to this headline">¶</a></h2>
+<p>Examples concerning the <cite>scikits.learn.gaussian_process</cite> package.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gaussian_process/gp_diabetes_dataset.html">Gaussian Processes regression: goodness-of-fit on the &#8216;diabetes&#8217; dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gaussian_process/plot_gp_probabilistic_classification_after_regression.html">Gaussian Processes classification example: exploiting the probabilistic output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gaussian_process/plot_gp_regression.html">Gaussian Processes regression: basic introductory example</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="generalized-linear-models">
+<h2>Generalized Linear Models<a class="headerlink" href="#generalized-linear-models" title="Permalink to this headline">¶</a></h2>
+<p>Examples concerning the <cite>scikits.learn.linear_model</cite> package.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/lasso_and_elasticnet.html">Lasso regression example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/lasso_dense_vs_sparse_data.html">Lasso on dense and sparse data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/lasso_path_with_crossvalidation.html">Lasso parameter estimation with path and cross-validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/plot_ard.html">Automatic Relevance Determination Regression (ARD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/plot_bayesian_ridge.html">Bayesian Ridge Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/plot_lasso_coordinate_descent_path.html">Lasso and Elastic Net</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/plot_lasso_lars.html">Lasso path using LARS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/plot_lasso_path_crossval.html">Cross validated Lasso path with coordinate descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/plot_logistic_path.html">Path with L1- Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/plot_ols.html">Ordinary Least Squares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/plot_polynomial_interpolation.html">Polynomial interpolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/plot_sgd_iris.html">Plot multi-class SGD on the iris dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/plot_sgd_loss_functions.html">SGD: Convex Loss Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/plot_sgd_ols.html">Ordinary Least Squares with SGD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/plot_sgd_penalties.html">SGD: Penalties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/plot_sgd_separating_hyperplane.html">SGD: Maximum margin separating hyperplane</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/plot_sgd_weighted_classes.html">SGD: Separating hyperplane with weighted classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear_model/plot_sgd_weighted_samples.html">SGD: Weighted samples</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="gaussian-mixture-models">
+<h2>Gaussian Mixture Models<a class="headerlink" href="#gaussian-mixture-models" title="Permalink to this headline">¶</a></h2>
+<p>Examples concerning the <cite>scikits.learn.mixture</cite> package.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mixture/plot_gmm.html">Gaussian Mixture Model Ellipsoids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mixture/plot_gmm_classifier.html">GMM classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mixture/plot_gmm_pdf.html">Density Estimation for a mixture of Gaussians</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="support-vector-machines">
+<span id="svm-examples"></span><h2>Support Vector Machines<a class="headerlink" href="#support-vector-machines" title="Permalink to this headline">¶</a></h2>
+<p>Examples concerning the <cite>scikits.learn.svm</cite> package.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="svm/plot_custom_kernel.html">SVM with custom kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="svm/plot_iris.html">Plot different SVM classifiers in the iris dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="svm/plot_oneclass.html">One-class SVM with non-linear kernel (RBF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="svm/plot_separating_hyperplane.html">SVM: Maximum margin separating hyperplane</a></li>
+<li class="toctree-l1"><a class="reference internal" href="svm/plot_separating_hyperplane_unbalanced.html">SVM: Separating hyperplane for unbalanced classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="svm/plot_svm_anova.html">SVM-Anova: SVM with univariate feature selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="svm/plot_svm_nonlinear.html">Non-linear SVM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="svm/plot_svm_regression.html">Support Vector Regression (SVR) using linear and non-linear kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="svm/plot_weighted_samples.html">SVM: Weighted samples</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../_sources/auto_examples/index.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

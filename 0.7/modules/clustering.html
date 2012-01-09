@@ -1,0 +1,215 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>4.2. Clustering &mdash; scikits.learn 0.7.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.7.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="top" title="scikits.learn 0.7.1 documentation" href="../index.html" />
+    <link rel="up" title="4. Unsupervised learning" href="../unsupervised_learning.html" />
+    <link rel="next" title="4.3. Decomposing signals in components (matrix factorization problems)" href="decompositions.html" />
+    <link rel="prev" title="4.1. Gaussian mixture models" href="mixture.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../install.html">Download</a></li>
+            <li><a href="../support.html">Support</a></li>
+            <li><a href="../user_guide.html">User Guide</a></li>
+            <li><a href="../auto_examples/index.html">Examples</a></li>
+            <li><a href="../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="mixture.html" title="4.1. Gaussian mixture models"
+             accesskey="P">previous</a> |
+          <a href="decompositions.html" title="4.3. Decomposing signals in components (matrix factorization problems)"
+             accesskey="N">next</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>Contents</h3>
+         <ul>
+<li><a class="reference internal" href="#">4.2. Clustering</a><ul>
+<li><a class="reference internal" href="#affinity-propagation">4.2.1. Affinity propagation</a></li>
+<li><a class="reference internal" href="#mean-shift">4.2.2. Mean Shift</a></li>
+<li><a class="reference internal" href="#k-means">4.2.3. K-means</a></li>
+<li><a class="reference internal" href="#spectral-clustering">4.2.4. Spectral clustering</a></li>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="clustering">
+<span id="id1"></span><h1>4.2. Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Cluster_analysis">Clustering</a> of
+unlabeled data can be performed with the module <cite>scikits.learn.cluster</cite>.</p>
+<p>Each clustering algorithm comes in two variants: a class, that implements
+the <cite>fit</cite> method to learn the clusters on train data, and a function,
+that, given train data, returns an array of integer labels corresponding
+to the different clusters. For the class, the labels over the training
+data can be found in the <cite>labels_</cite> attribute.</p>
+<p>One important thing to note is that the algorithms implemented in this module
+take different kinds of matrix as input.  On one hand, <a class="reference internal" href="generated/scikits.learn.cluster.MeanShift.html#scikits.learn.cluster.MeanShift" title="scikits.learn.cluster.MeanShift"><tt class="xref py py-class docutils literal"><span class="pre">MeanShift</span></tt></a> and
+<a class="reference internal" href="generated/scikits.learn.cluster.KMeans.html#scikits.learn.cluster.KMeans" title="scikits.learn.cluster.KMeans"><tt class="xref py py-class docutils literal"><span class="pre">KMeans</span></tt></a> take data matrices of shape [n_samples, n_features]. These can
+be obtained from the classes in the <cite>scikits.learn.feature_extraction</cite> module.
+On the other hand, <a class="reference internal" href="generated/scikits.learn.cluster.AffinityPropagation.html#scikits.learn.cluster.AffinityPropagation" title="scikits.learn.cluster.AffinityPropagation"><tt class="xref py py-class docutils literal"><span class="pre">AffinityPropagation</span></tt></a> and <a class="reference internal" href="generated/scikits.learn.cluster.SpectralClustering.html#scikits.learn.cluster.SpectralClustering" title="scikits.learn.cluster.SpectralClustering"><tt class="xref py py-class docutils literal"><span class="pre">SpectralClustering</span></tt></a>
+take similarity matrices of shape [n_samples, n_samples].  These can be
+obtained from the functions in the <cite>scikits.learn.metrics.pairwise</cite> module.
+In other words, <a class="reference internal" href="generated/scikits.learn.cluster.MeanShift.html#scikits.learn.cluster.MeanShift" title="scikits.learn.cluster.MeanShift"><tt class="xref py py-class docutils literal"><span class="pre">MeanShift</span></tt></a> and <a class="reference internal" href="generated/scikits.learn.cluster.KMeans.html#scikits.learn.cluster.KMeans" title="scikits.learn.cluster.KMeans"><tt class="xref py py-class docutils literal"><span class="pre">KMeans</span></tt></a> work with points in a
+vector space, whereas <a class="reference internal" href="generated/scikits.learn.cluster.AffinityPropagation.html#scikits.learn.cluster.AffinityPropagation" title="scikits.learn.cluster.AffinityPropagation"><tt class="xref py py-class docutils literal"><span class="pre">AffinityPropagation</span></tt></a> and
+<a class="reference internal" href="generated/scikits.learn.cluster.SpectralClustering.html#scikits.learn.cluster.SpectralClustering" title="scikits.learn.cluster.SpectralClustering"><tt class="xref py py-class docutils literal"><span class="pre">SpectralClustering</span></tt></a> can work with arbitrary objects, as long as a
+similarity measure exists for such objects.</p>
+<div class="section" id="affinity-propagation">
+<h2>4.2.1. Affinity propagation<a class="headerlink" href="#affinity-propagation" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="generated/scikits.learn.cluster.AffinityPropagation.html#scikits.learn.cluster.AffinityPropagation" title="scikits.learn.cluster.AffinityPropagation"><tt class="xref py py-class docutils literal"><span class="pre">AffinityPropagation</span></tt></a> clusters data by diffusion in the similarity
+matrix. This algorithm automatically sets its numbers of cluster. It
+will have difficulties scaling to thousands of samples.</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_affinity_propagation.html"><img alt="../_images/plot_affinity_propagation1.png" src="../_images/plot_affinity_propagation1.png" style="width: 400.0px; height: 300.0px;" /></a>
+</div>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/cluster/plot_affinity_propagation.html#example-cluster-plot-affinity-propagation-py"><em>Demo of affinity propagation clustering algorithm</em></a>: Affinity
+Propagation on a synthetic 2D datasets with 3 classes.</li>
+<li><a class="reference internal" href="../auto_examples/applications/stock_market.html#example-applications-stock-market-py"><em>Finding structure in the stock market</em></a> Affinity Propagation on Financial
+time series to find groups of companies</li>
+</ul>
+</div>
+</div>
+<div class="section" id="mean-shift">
+<h2>4.2.2. Mean Shift<a class="headerlink" href="#mean-shift" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="generated/scikits.learn.cluster.MeanShift.html#scikits.learn.cluster.MeanShift" title="scikits.learn.cluster.MeanShift"><tt class="xref py py-class docutils literal"><span class="pre">MeanShift</span></tt></a> clusters data by estimating <em>blobs</em> in a smooth
+density of points matrix. This algorithm automatically sets its numbers
+of cluster. It will have difficulties scaling to thousands of samples.</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_mean_shift.html"><img alt="../_images/plot_mean_shift1.png" src="../_images/plot_mean_shift1.png" style="width: 400.0px; height: 300.0px;" /></a>
+</div>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/cluster/plot_mean_shift.html#example-cluster-plot-mean-shift-py"><em>A demo of the mean-shift clustering algorithm</em></a>: Mean Shift clustering
+on a synthetic 2D datasets with 3 classes.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="k-means">
+<h2>4.2.3. K-means<a class="headerlink" href="#k-means" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="generated/scikits.learn.cluster.KMeans.html#scikits.learn.cluster.KMeans" title="scikits.learn.cluster.KMeans"><tt class="xref py py-class docutils literal"><span class="pre">KMeans</span></tt></a> algorithm clusters data by trying to separate samples
+in n groups of equal variance, minimizing a criterion known as the
+&#8216;inertia&#8217; of the groups. This algorithm requires the number of cluster to
+be specified. It scales well to large number of samples, however its
+results may be dependent on an initialisation.</p>
+</div>
+<div class="section" id="spectral-clustering">
+<h2>4.2.4. Spectral clustering<a class="headerlink" href="#spectral-clustering" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="generated/scikits.learn.cluster.SpectralClustering.html#scikits.learn.cluster.SpectralClustering" title="scikits.learn.cluster.SpectralClustering"><tt class="xref py py-class docutils literal"><span class="pre">SpectralClustering</span></tt></a> does an low-dimension embedding of the
+affinity matrix between samples, followed by a KMeans in the low
+dimensional space. It is especially efficient if the affinity matrix is
+sparse and the <a class="reference external" href="http://code.google.com/p/pyamg/">pyamg</a> module is
+installed. SpectralClustering requires the number of clusters to be
+specified. It works well for a small number of clusters but is not
+advised when using many clusters.</p>
+<p>For two clusters, it solves a convex relaxation of the <a class="reference external" href="http://www.cs.berkeley.edu/~malik/papers/SM-ncut.pdf">normalised
+cuts</a> problem on
+the similarity graph: cutting the graph in two so that the weight of the
+edges cut is small compared to the weights in of edges inside each
+cluster. This criteria is especially interesting when working on images:
+graph vertices are pixels, and edges of the similarity graph are a
+function of the gradient of the image.</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_segmentation_toy.html"><img alt="../_images/plot_segmentation_toy1.png" src="../_images/plot_segmentation_toy1.png" style="width: 400.0px; height: 400.0px;" /></a>
+</div>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/cluster/plot_lena_segmentation.html#example-cluster-plot-lena-segmentation-py"><em>Segmenting the picture of Lena in regions</em></a>: Spectral clustering
+to split the image of lena in regions.</li>
+<li><a class="reference internal" href="../auto_examples/cluster/plot_segmentation_toy.html#example-cluster-plot-segmentation-toy-py"><em>Spectral clustering for image segmentation</em></a>: Segmenting objects
+from a noisy background using spectral clustering.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.7.1<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+scikits.learn.ball_tree.knn_brute
+=================================
+
+.. currentmodule:: scikits.learn.ball_tree
+
+.. autofunction:: knn_brute
+

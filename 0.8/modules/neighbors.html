@@ -1,0 +1,233 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3.4. Nearest Neighbors &mdash; scikits.learn v0.8 documentation</title>
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="top" title="scikits.learn v0.8 documentation" href="../index.html" />
+    <link rel="up" title="3. Supervised learning" href="../supervised_learning.html" />
+    <link rel="next" title="3.5. Feature selection" href="feature_selection.html" />
+    <link rel="prev" title="3.3. Stochastic Gradient Descent" href="sgd.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../install.html">Download</a></li>
+            <li><a href="../support.html">Support</a></li>
+            <li><a href="../user_guide.html">User Guide</a></li>
+            <li><a href="../auto_examples/index.html">Examples</a></li>
+            <li><a href="../developers/index.html">Development</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <!-- <div id="blue_tile"></div> -->
+
+        <div class="sphinxsidebar">
+        <div class="rel">
+          <a href="sgd.html" title="3.3. Stochastic Gradient Descent"
+             accesskey="P">previous</a> |
+          <a href="feature_selection.html" title="3.5. Feature selection"
+             accesskey="N">next</a> |
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+        
+
+        <h3>This page</h3>
+         <ul>
+<li><a class="reference internal" href="#">3.4. Nearest Neighbors</a><ul>
+<li><a class="reference internal" href="#classification">3.4.1. Classification</a></li>
+<li><a class="reference internal" href="#regression">3.4.2. Regression</a></li>
+<li><a class="reference internal" href="#efficient-implementation-the-ball-tree">3.4.3. Efficient implementation: the ball tree</a></li>
+</ul>
+</li>
+</ul>
+
+
+        
+
+        </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="nearest-neighbors">
+<h1>3.4. Nearest Neighbors<a class="headerlink" href="#nearest-neighbors" title="Permalink to this headline">¶</a></h1>
+<p>The principle behind nearest neighbor methods is to find the k
+training points closest in euclidean distance to x0, and then classify
+using a majority vote among the k neighbors.</p>
+<p>Despite its simplicity, nearest neighbors has been successful in a
+large number of classification problems, including handwritten digits
+or satellite image scenes. It is ofter successful in situation where
+the decision boundary is very irregular.</p>
+<div class="section" id="classification">
+<h2>3.4.1. Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="generated/scikits.learn.neighbors.NeighborsClassifier.html#scikits.learn.neighbors.NeighborsClassifier" title="scikits.learn.neighbors.NeighborsClassifier"><tt class="xref py py-class docutils literal"><span class="pre">NeighborsClassifier</span></tt></a> implements the nearest-neighbors
+classification method using a vote heuristic: the class most present
+in the k nearest neighbors of a point is assigned to this point.</p>
+<p>It is possible to use different nearest neighbor search algorithms by
+using the keyword <tt class="docutils literal"><span class="pre">algorithm</span></tt>. Possible values are <tt class="docutils literal"><span class="pre">'auto'</span></tt>,
+<tt class="docutils literal"><span class="pre">'ball_tree'</span></tt>, <tt class="docutils literal"><span class="pre">'brute'</span></tt> and <tt class="docutils literal"><span class="pre">'brute_inplace'</span></tt>. <tt class="docutils literal"><span class="pre">'ball_tree'</span></tt>
+will create an instance of <tt class="xref py py-class docutils literal"><span class="pre">BallTree</span></tt> to conduct the search,
+which is usually very efficient in low-dimensional spaces. In higher
+dimension, a brute-force approach is prefered thus parameters
+<tt class="docutils literal"><span class="pre">'brute'</span></tt> and <tt class="docutils literal"><span class="pre">'brute_inplace'</span></tt> can be used . Both conduct a
+brute-force search, the difference being that <tt class="docutils literal"><span class="pre">'brute_inplace'</span></tt> does
+not perform any precomputations, and thus is better suited for
+low-memory settings.  Finally, <tt class="docutils literal"><span class="pre">'auto'</span></tt> is a simple heuristic that
+will guess the best approach based on the current dataset.</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/plot_neighbors.html"><img alt="../_images/plot_neighbors_1.png" src="../_images/plot_neighbors_1.png" style="width: 600.0px; height: 450.0px;" /></a>
+</div>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/plot_neighbors.html#example-plot-neighbors-py"><em>Nearest Neighbors</em></a>: an example of classification
+using nearest neighbor.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="regression">
+<h2>3.4.2. Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="generated/scikits.learn.neighbors.NeighborsRegressor.html#scikits.learn.neighbors.NeighborsRegressor" title="scikits.learn.neighbors.NeighborsRegressor"><tt class="xref py py-class docutils literal"><span class="pre">NeighborsRegressor</span></tt></a> estimator implements a
+nearest-neighbors regression method by weighting the targets of the
+k-neighbors. Two different weighting strategies are implemented:
+<tt class="docutils literal"><span class="pre">barycenter</span></tt> and <tt class="docutils literal"><span class="pre">mean</span></tt>. <tt class="docutils literal"><span class="pre">barycenter</span></tt> will apply the weights
+that best reconstruct the point from its neighbors while <tt class="docutils literal"><span class="pre">mean</span></tt> will
+apply constant weights to each point. This plot shows the behavior of
+both classifier for a simple regression task.</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/plot_neighbors_regression.html"><img alt="../_images/plot_neighbors_regression_1.png" src="../_images/plot_neighbors_regression_1.png" style="width: 600.0px; height: 450.0px;" /></a>
+</div>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/plot_neighbors_regression.html#example-plot-neighbors-regression-py"><em>k-Nearest Neighbors regression</em></a>: an example of regression
+using nearest neighbor.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="efficient-implementation-the-ball-tree">
+<h2>3.4.3. Efficient implementation: the ball tree<a class="headerlink" href="#efficient-implementation-the-ball-tree" title="Permalink to this headline">¶</a></h2>
+<p>Behind the scenes, nearest neighbor search is done by the object
+<tt class="xref py py-class docutils literal"><span class="pre">BallTree</span></tt>. This algorithm makes it possible to rapidly look up
+the nearest neighbors in low-dimensional spaces.</p>
+<p>This class provides an interface to an optimized BallTree
+implementation to rapidly look up the nearest neighbors of any point.
+Ball Trees are particularly useful for low-dimensional data and scales
+better than traditional tree searches (e.g. KD-Trees) as the number of
+dimensions grow. However, on high-dimensional spaces (dim &gt; 50), brute
+force will eventually take on and become more efficient on such spaces.</p>
+<p>Compared to a KDTree, the cost is a slightly longer construction time,
+though for repeated queries, this added construction time quickly
+becomes insignificant. A Ball Tree reduces the number of candidate
+points for a neighbor search through use of the triangle inequality:</p>
+<div class="math">
+<p><img src="../_images/math/626c6fbde4ee6c47b6f84bbb673c94d3ad9774d4.png" alt="|x+y| \leq |x| + |y|" /></p>
+</div><p>Each node of the <tt class="xref py py-class docutils literal"><span class="pre">BallTree</span></tt> defines a centroid, C, and a radius r such
+that each point in the node lies within the hyper-sphere of radius r,
+centered at C.  With this setup, a single distance calculation between
+a test point and the centroid is sufficient to determine a lower bound
+on the distance to all points within the node.  Carefully taking
+advantage of this property leads to determining neighbors in O[log(N)]
+time, as opposed to O[N] time for a brute-force search.</p>
+<p>A pure C implementation of brute-force search is also provided in
+function <tt class="xref py py-func docutils literal"><span class="pre">knn_brute</span></tt>.</p>
+<div class="topic">
+<p class="topic-title first">References:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.91.8209&amp;rep=rep1&amp;type=pdf">&#8220;Five balltree construction algorithms&#8221;</a>,
+Omohundro, S.M., International Computer Science Institute
+Technical Report</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        <p style="text-align: center">This documentation is relative
+        to scikits.learn version 0.8<p>
+        &copy; 2010, scikits.learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../_sources/modules/neighbors.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

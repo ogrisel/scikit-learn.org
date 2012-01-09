@@ -1,0 +1,11 @@
+scikits.learn.linear_model.RidgeCV
+==================================
+
+.. currentmodule:: scikits.learn.linear_model
+
+.. autoclass:: RidgeCV
+
+   
+   .. automethod:: __init__
+   
+

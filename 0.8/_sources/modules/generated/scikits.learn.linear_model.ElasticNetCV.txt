@@ -1,0 +1,11 @@
+scikits.learn.linear_model.ElasticNetCV
+=======================================
+
+.. currentmodule:: scikits.learn.linear_model
+
+.. autoclass:: ElasticNetCV
+
+   
+   .. automethod:: __init__
+   
+

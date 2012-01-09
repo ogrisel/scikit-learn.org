@@ -1,0 +1,7 @@
+scikits.learn.linear_model.lars_path
+====================================
+
+.. currentmodule:: scikits.learn.linear_model
+
+.. autofunction:: lars_path
+

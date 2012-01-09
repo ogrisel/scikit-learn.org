@@ -1,0 +1,7 @@
+scikits.learn.fastica.fastica
+=============================
+
+.. currentmodule:: scikits.learn.fastica
+
+.. autofunction:: fastica
+

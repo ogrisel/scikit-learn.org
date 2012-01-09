@@ -1,0 +1,7 @@
+scikits.learn.svm.l1_min_c
+==========================
+
+.. currentmodule:: scikits.learn.svm
+
+.. autofunction:: l1_min_c
+

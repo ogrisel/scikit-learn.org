@@ -1,0 +1,7 @@
+scikits.learn.metrics.pairwise.polynomial_kernel
+================================================
+
+.. currentmodule:: scikits.learn.metrics.pairwise
+
+.. autofunction:: polynomial_kernel
+
