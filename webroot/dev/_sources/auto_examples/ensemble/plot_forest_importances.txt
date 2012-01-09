@@ -24,16 +24,16 @@ while the remaining are not.
 **Script output**::
 
   Feature ranking:
-  1. feature 1 (0.327259)
-  2. feature 2 (0.316657)
-  3. feature 0 (0.290257)
-  4. feature 8 (0.011815)
-  5. feature 3 (0.010058)
-  6. feature 5 (0.009649)
-  7. feature 4 (0.009600)
-  8. feature 7 (0.009017)
-  9. feature 9 (0.008549)
-  10. feature 6 (0.007140)
+  1. feature 1 (0.245865)
+  2. feature 0 (0.194416)
+  3. feature 2 (0.174455)
+  4. feature 7 (0.057138)
+  5. feature 8 (0.055967)
+  6. feature 4 (0.055516)
+  7. feature 5 (0.055179)
+  8. feature 9 (0.054639)
+  9. feature 3 (0.053921)
+  10. feature 6 (0.052904)
 
 
 

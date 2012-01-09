@@ -1,0 +1,11 @@
+sklearn.feature_selection.rfe.RFE
+=================================
+
+.. currentmodule:: sklearn.feature_selection.rfe
+
+.. autoclass:: RFE
+
+   
+   .. automethod:: __init__
+   
+

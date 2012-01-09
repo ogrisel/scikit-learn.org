@@ -25,7 +25,7 @@ marginal log-likelihood of the observations.
 
     *
 
-      .. image:: images/plot_ard_3.png
+      .. image:: images/plot_ard_1.png
             :scale: 50
 
     *
@@ -35,7 +35,7 @@ marginal log-likelihood of the observations.
 
     *
 
-      .. image:: images/plot_ard_1.png
+      .. image:: images/plot_ard_3.png
             :scale: 50
 
 
