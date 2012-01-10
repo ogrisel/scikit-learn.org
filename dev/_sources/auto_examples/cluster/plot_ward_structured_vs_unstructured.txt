@@ -39,10 +39,10 @@ the clusters form a nice parcellation of the swiss roll.
 **Script output**::
 
   Compute unstructured hierarchical clustering...
-  Elapsed time:  1.78635692596
+  Elapsed time:  1.67695522308
   Number of points:  1000
   Compute structured hierarchical clustering...
-  Elapsed time:  0.192049026489
+  Elapsed time:  0.172141075134
   Number of points:  1000
 
 

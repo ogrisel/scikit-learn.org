@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>sklearn.datasets.load_sample_images &mdash; scikit-learn 0.10-git documentation</title>
+    <title>sklearn.datasets.load_sample_images &mdash; scikit-learn 0.11-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.10-git',
+        VERSION:     '0.11-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.10-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.11-git documentation" href="../../index.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -87,7 +87,7 @@
 	<!-- Ad a link to the 'up' page -->
     </div>
     <p style="text-align: center">This documentation is
-    for scikit-learn <strong>version 0.10-git</strong>
+    for scikit-learn <strong>version 0.11-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3>Citing</h3>
@@ -131,21 +131,17 @@ the full description of the dataset.</p>
 </table>
 <p class="rubric">Examples</p>
 <p>To load the data and visualize the images:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># &gt;&gt;&gt; from sklearn.datasets import load_sample_images</span>
-<span class="c"># &gt;&gt;&gt; dataset = load_sample_images()</span>
-<span class="c"># &gt;&gt;&gt; len(dataset.images)</span>
-<span class="c"># 2</span>
-<span class="c"># &gt;&gt;&gt; first_img_data = dataset.images[0]</span>
-<span class="c"># &gt;&gt;&gt; first_img_data.shape</span>
-<span class="c"># (427, 640, 3)</span>
-<span class="c"># &gt;&gt;&gt; first_img_data.dtype</span>
-<span class="c"># dtype(&#39;uint8&#39;)</span>
-<span class="c"># &gt;&gt;&gt; import pylab as pl</span>
-<span class="c"># &gt;&gt;&gt; pl.gray()</span>
-<span class="c"># &gt;&gt;&gt; pl.matshow(dataset.images[0]) # Visualize the first image</span>
-<span class="c"># &gt;&gt;&gt; pl.show()</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_sample_images</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">load_sample_images</span><span class="p">()</span>     
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">images</span><span class="p">)</span>                
 </pre></div>
 </div>
+<p>2
+&gt;&gt;&gt; first_img_data = dataset.images[0] #doctest: +SKIP
+&gt;&gt;&gt; first_img_data.shape               #doctest: +SKIP
+(427, 640, 3)
+&gt;&gt;&gt; first_img_data.dtype               #doctest: +SKIP
+dtype(&#8216;uint8&#8217;)</p>
 </dd></dl>
 
 </div>

@@ -72,7 +72,7 @@ An illustration of various embeddings on the digits dataset.
   Computing modified LLE embedding
   Done. Reconstruction error: 0.359939
   Computing Hessian LLE embedding
-  Done. Reconstruction error: 0.212069
+  Done. Reconstruction error: 0.212038
   Computing LTSA embedding
   Done. Reconstruction error: 0.212076
 

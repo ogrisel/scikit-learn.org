@@ -58,17 +58,17 @@ chapter :ref:`decompositions`) .
 
   Dataset consists of 400 faces
   Extracting the top 6 Eigenfaces - RandomizedPCA...
-  done in 0.247s
+  done in 0.217s
   Extracting the top 6 Non-negative components - NMF...
-  done in 2.082s
+  done in 1.240s
   Extracting the top 6 Independent components - FastICA...
-  done in 1.849s
+  done in 1.573s
   Extracting the top 6 Sparse comp. - MiniBatchSparsePCA...
-  done in 1.192s
+  done in 1.163s
   Extracting the top 6 MiniBatchDictionaryLearning...
-  done in 1.490s
+  done in 1.409s
   Extracting the top 6 Cluster centers - MiniBatchKMeans...
-  done in 0.702s
+  done in 0.657s
 
 
 
