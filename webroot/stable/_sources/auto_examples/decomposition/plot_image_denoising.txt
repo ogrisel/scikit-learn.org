@@ -38,21 +38,6 @@ necessarily related to visualisation.
 
     *
 
-      .. image:: images/plot_image_denoising_1.png
-            :scale: 50
-
-    *
-
-      .. image:: images/plot_image_denoising_2.png
-            :scale: 50
-
-    *
-
-      .. image:: images/plot_image_denoising_3.png
-            :scale: 50
-
-    *
-
       .. image:: images/plot_image_denoising_4.png
             :scale: 50
 
@@ -63,8 +48,47 @@ necessarily related to visualisation.
 
     *
 
+      .. image:: images/plot_image_denoising_2.png
+            :scale: 50
+
+    *
+
+      .. image:: images/plot_image_denoising_1.png
+            :scale: 50
+
+    *
+
+      .. image:: images/plot_image_denoising_3.png
+            :scale: 50
+
+    *
+
       .. image:: images/plot_image_denoising_6.png
             :scale: 50
+
+
+**Script output**::
+
+  Distorting image...
+  Extracting clean patches...
+  done in 0.18s.
+  Learning the dictionary... 
+  done in 6.87s.
+  Extracting noisy patches... 
+  done in 0.40s.
+  Orthogonal Matching Pursuit
+  1 atom ... 
+  done in 4.22s.
+  Orthogonal Matching Pursuit
+  2 atoms ... 
+  done in 6.48s.
+  Least-angle regression
+  5 atoms ... 
+  done in 33.97s.
+  Thresholding
+   alpha=0.1 ... 
+  done in 0.67s.
+
 
 
 **Python source code:** :download:`plot_image_denoising.py <plot_image_denoising.py>`

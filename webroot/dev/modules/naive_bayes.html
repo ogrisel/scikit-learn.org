@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.7. Naive Bayes &mdash; scikit-learn 0.10-git documentation</title>
+    <title>3.7. Naive Bayes &mdash; scikit-learn 0.11-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.10-git',
+        VERSION:     '0.11-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.10-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.11-git documentation" href="../index.html" />
     <link rel="up" title="3. Supervised learning" href="../supervised_learning.html" />
     <link rel="next" title="3.8. Decision Trees" href="tree.html" />
     <link rel="prev" title="3.6. Partial Least Squares" href="pls.html" />
@@ -136,7 +136,7 @@
 	</div>
     </div>
     <p style="text-align: center">This documentation is
-    for scikit-learn <strong>version 0.10-git</strong>
+    for scikit-learn <strong>version 0.11-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3>Citing</h3>
@@ -242,7 +242,7 @@ The distribution is parametrized by vectors
 <img class="math" src="../_images/math/18eb4aa8e3ca2eb3793bb4994325e5036698442b.png" alt="\theta_y = (\theta_{y1},\ldots,\theta_{yn})"/>
 for each class <img class="math" src="../_images/math/092e364e1d9d19ad5fffb0b46ef4cc7f2da02c1c.png" alt="y"/>, where <img class="math" src="../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n"/> is the number of features
 (in text classification, the size of the vocabulary)
-and <img class="math" src="../_images/math/a2f9336abd34551c9004f991c27050dc4d38fff8.png" alt="\theta_{yi}"/> is the probability <img class="math" src="../_images/math/f0d06ea8348d4744bbd57d3634a41a76741f6f54.png" alt="P(y \mid x_i)"/>
+and <img class="math" src="../_images/math/a2f9336abd34551c9004f991c27050dc4d38fff8.png" alt="\theta_{yi}"/> is the probability <img class="math" src="../_images/math/7b7cca842cfb1104e71889ac45a07d598c5f5876.png" alt="P(x_i \mid y)"/>
 of feature <img class="math" src="../_images/math/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" alt="i"/> appearing in a sample belonging to class <img class="math" src="../_images/math/092e364e1d9d19ad5fffb0b46ef4cc7f2da02c1c.png" alt="y"/>.</p>
 <p>The parameters <img class="math" src="../_images/math/60a4352ed3f7789208a4a1eac202279f44d748bc.png" alt="\theta_y"/> is estimated by a smoothed
 version of maximum likelihood, i.e. relative frequency counting:</p>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>4.6. Novelty and Outlier Detection &mdash; scikit-learn 0.10-git documentation</title>
+    <title>4.6. Novelty and Outlier Detection &mdash; scikit-learn 0.11-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.10-git',
+        VERSION:     '0.11-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.10-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.11-git documentation" href="../index.html" />
     <link rel="up" title="4. Unsupervised learning" href="../unsupervised_learning.html" />
     <link rel="next" title="4.7. Hidden Markov Models" href="hmm.html" />
     <link rel="prev" title="4.5. Covariance estimation" href="covariance.html" />
@@ -136,7 +136,7 @@
 	</div>
     </div>
     <p style="text-align: center">This documentation is
-    for scikit-learn <strong>version 0.10-git</strong>
+    for scikit-learn <strong>version 0.11-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3>Citing</h3>
@@ -215,19 +215,20 @@ coming from the same population than the initial
 observations. Otherwise, if they lay outside the frontier, we can say
 that they are abnormal with a given confidence in our assessment.</p>
 <p>The One-Class SVM has been introduced in [1] for that purpose and
-implemented in the <cite>sklearn.svm</cite> package in the <tt class="xref py py-class docutils literal"><span class="pre">OneClassSVM</span></tt>
-object. It requires the choice of a kernel and a scalar parameter to
-define a frontier.  The RBF kernel is usually chosen although there
-exist no exact formula or algorithm to set its bandwith
-parameter. This is the default in the scikit-learn implementation. The
-<img class="math" src="../_images/math/d6a7ccf879c4a4fe694033606332cb83806db296.png" alt="\nu"/> parameter, also known as the margin of the One-Class SVM,
-corresponds to the probability of finding a new, but regular,
-observation outside the frontier.</p>
+implemented in the <a class="reference internal" href="svm.html#svm"><em>Support Vector Machines</em></a> module in the
+<a class="reference internal" href="generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM" title="sklearn.svm.OneClassSVM"><tt class="xref py py-class docutils literal"><span class="pre">svm.OneClassSVM</span></tt></a> object. It requires the choice of a
+kernel and a scalar parameter to define a frontier.  The RBF kernel is
+usually chosen although there exist no exact formula or algorithm to
+set its bandwith parameter. This is the default in the scikit-learn
+implementation. The <img class="math" src="../_images/math/d6a7ccf879c4a4fe694033606332cb83806db296.png" alt="\nu"/> parameter, also known as the margin of
+the One-Class SVM, corresponds to the probability of finding a new,
+but regular, observation outside the frontier.</p>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
-<li>See <a class="reference internal" href="../auto_examples/svm/plot_oneclass.html#example-svm-plot-oneclass-py"><em>One-class SVM with non-linear kernel (RBF)</em></a> for vizualizing the frontier
-learned around some data by a <tt class="xref py py-class docutils literal"><span class="pre">OneClassSVM</span></tt> object.</li>
+<li>See <a class="reference internal" href="../auto_examples/svm/plot_oneclass.html#example-svm-plot-oneclass-py"><em>One-class SVM with non-linear kernel (RBF)</em></a> for vizualizing the
+frontier learned around some data by a
+<a class="reference internal" href="generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM" title="sklearn.svm.OneClassSVM"><tt class="xref py py-class docutils literal"><span class="pre">svm.OneClassSVM</span></tt></a> object.</li>
 </ul>
 </div>
 <div class="figure align-center">
@@ -248,9 +249,10 @@ regular data come from a known distribution (e.g. data are Gaussian
 distributed). From this assumption, we generaly try to define the
 &#8220;shape&#8221; of the data, and can define outlying observations as
 observations which stand far enough from the fit shape.</p>
-<p>The scikit-learn provides an object <tt class="xref py py-class docutils literal"><span class="pre">EllipticEnvelop</span></tt> that fits a
-robust covariance estimate to the data, and thus fits an ellipse to the
-central data points, ignoring points outside the central mode.</p>
+<p>The scikit-learn provides an object
+<tt class="xref py py-class docutils literal"><span class="pre">covariance.EllipticEnvelop</span></tt> that fits a robust covariance
+estimate to the data, and thus fits an ellipse to the central data
+points, ignoring points outside the central mode.</p>
 <p>For instance, assuming that the inlier data are Gaussian distributed, it
 will estimate the inlier location and covariance in a robust way (i.e.
 whithout being influenced by outliers). The Mahalanobis distances
@@ -264,9 +266,9 @@ This strategy is illustrated below.</p>
 <ul class="simple">
 <li>See <a class="reference internal" href="../auto_examples/covariance/plot_mahalanobis_distances.html#example-covariance-plot-mahalanobis-distances-py"><em>Robust covariance estimation and Mahalanobis distances relevance</em></a> for
 an illustration of the difference between using a standard
-(<a class="reference internal" href="generated/sklearn.covariance.EmpiricalCovariance.html#sklearn.covariance.EmpiricalCovariance" title="sklearn.covariance.EmpiricalCovariance"><tt class="xref py py-class docutils literal"><span class="pre">EmpiricalCovariance</span></tt></a>) or a robust estimate (<a class="reference internal" href="generated/sklearn.covariance.MinCovDet.html#sklearn.covariance.MinCovDet" title="sklearn.covariance.MinCovDet"><tt class="xref py py-class docutils literal"><span class="pre">MinCovDet</span></tt></a>)
-of location and covariance to assess the degree of outlyingness of an
-observation.</li>
+(<a class="reference internal" href="generated/sklearn.covariance.EmpiricalCovariance.html#sklearn.covariance.EmpiricalCovariance" title="sklearn.covariance.EmpiricalCovariance"><tt class="xref py py-class docutils literal"><span class="pre">covariance.EmpiricalCovariance</span></tt></a>) or a robust estimate
+(<a class="reference internal" href="generated/sklearn.covariance.MinCovDet.html#sklearn.covariance.MinCovDet" title="sklearn.covariance.MinCovDet"><tt class="xref py py-class docutils literal"><span class="pre">covariance.MinCovDet</span></tt></a>) of location and covariance to
+assess the degree of outlyingness of an observation.</li>
 </ul>
 </div>
 </div>
@@ -279,8 +281,9 @@ in high-dimension, or without any assumptions on the distribution of the
 inlying data is very challenging, and a One-class SVM gives useful
 results in these situations.</p>
 <p>The examples below illustrate how the performance of the
-<tt class="xref py py-class docutils literal"><span class="pre">EllipticEnvelop</span></tt> degrades as the data is less and less unimodal.
-<tt class="xref py py-class docutils literal"><span class="pre">OneClassSVM</span></tt> works better on data with multiple modes.</p>
+<tt class="xref py py-class docutils literal"><span class="pre">coavariance.EllipticEnvelop</span></tt> degrades as the data is less and
+less unimodal.  <a class="reference internal" href="generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM" title="sklearn.svm.OneClassSVM"><tt class="xref py py-class docutils literal"><span class="pre">svm.OneClassSVM</span></tt></a> works better on data with
+multiple modes.</p>
 <table border="1" class="docutils">
 <caption><strong>Comparing One-class SVM approach, and elliptic envelopp</strong></caption>
 <colgroup>
@@ -289,24 +292,26 @@ results in these situations.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>For a inlier mode well-centered and elliptic, the
-<tt class="xref py py-class docutils literal"><span class="pre">OneClassSVM</span></tt> is not able to benefit from the rotational
-symmetry of the inlier population. In addition, it fits a bit the
-outlyers present in the training set. On the opposite, the
-decision rule based on fitting an <tt class="xref py py-class docutils literal"><span class="pre">EllipticEnvelop</span></tt>
-learns an ellipse, which fits well the inlier distribution.</td>
+<a class="reference internal" href="generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM" title="sklearn.svm.OneClassSVM"><tt class="xref py py-class docutils literal"><span class="pre">svm.OneClassSVM</span></tt></a> is not able to benefit from the
+rotational symmetry of the inlier population. In addition, it
+fits a bit the outlyers present in the training set. On the
+opposite, the decision rule based on fitting an
+<tt class="xref py py-class docutils literal"><span class="pre">covariance.EllipticEnvelop</span></tt> learns an ellipse, which
+fits well the inlier distribution.</td>
 <td><a class="reference external" href="../auto_examples/covariance/plot_outlier_detection.html"><img alt="outlier1" src="../_images/plot_outlier_detection_11.png" style="width: 500.0px; height: 250.0px;" /></a></td>
 </tr>
 <tr class="row-even"><td>As the inlier distribution becomes bimodal, the
-<tt class="xref py py-class docutils literal"><span class="pre">EllipticEnvelop</span></tt> does not fit well the inliers. However,
-we can see that the <tt class="xref py py-class docutils literal"><span class="pre">OneClassSVM</span></tt> tends to overfit:
-because it has not model of inliers, it interprets a region
-where, by chance some outliers are clustered, as inliers.</td>
+<tt class="xref py py-class docutils literal"><span class="pre">covariance.EllipticEnvelop</span></tt> does not fit well the
+inliers. However, we can see that the <a class="reference internal" href="generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM" title="sklearn.svm.OneClassSVM"><tt class="xref py py-class docutils literal"><span class="pre">svm.OneClassSVM</span></tt></a>
+tends to overfit: because it has not model of inliers, it
+interprets a region where, by chance some outliers are
+clustered, as inliers.</td>
 <td><a class="reference external" href="../auto_examples/covariance/plot_outlier_detection.html"><img alt="outlier2" src="../_images/plot_outlier_detection_21.png" style="width: 500.0px; height: 250.0px;" /></a></td>
 </tr>
 <tr class="row-odd"><td>If the inlier distribution is strongly non Gaussian, the
-<tt class="xref py py-class docutils literal"><span class="pre">OneClassSVM</span></tt> is able to recover a reasonable
-approximation, whereas the <tt class="xref py py-class docutils literal"><span class="pre">EllipticEnvelop</span></tt> completely
-fails.</td>
+<a class="reference internal" href="generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM" title="sklearn.svm.OneClassSVM"><tt class="xref py py-class docutils literal"><span class="pre">svm.OneClassSVM</span></tt></a> is able to recover a reasonable
+approximation, whereas the <tt class="xref py py-class docutils literal"><span class="pre">covariance.EllipticEnvelop</span></tt>
+completely fails.</td>
 <td><a class="reference external" href="../auto_examples/covariance/plot_outlier_detection.html"><img alt="outlier3" src="../_images/plot_outlier_detection_31.png" style="width: 500.0px; height: 250.0px;" /></a></td>
 </tr>
 </tbody>
@@ -314,9 +319,10 @@ fails.</td>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
-<li>See <a class="reference internal" href="../auto_examples/covariance/plot_outlier_detection.html#example-covariance-plot-outlier-detection-py"><em>Outlier detection with several methods.</em></a> for a comparison
-of the <tt class="xref py py-class docutils literal"><span class="pre">OneClassSVM</span></tt> (tuned to perform like an outlier detection
-method) and a covariance-based outlier detection with <a class="reference internal" href="generated/sklearn.covariance.MinCovDet.html#sklearn.covariance.MinCovDet" title="sklearn.covariance.MinCovDet"><tt class="xref py py-class docutils literal"><span class="pre">MinCovDet</span></tt></a>.</li>
+<li>See <a class="reference internal" href="../auto_examples/covariance/plot_outlier_detection.html#example-covariance-plot-outlier-detection-py"><em>Outlier detection with several methods.</em></a> for a
+comparison of the <a class="reference internal" href="generated/sklearn.svm.OneClassSVM.html#sklearn.svm.OneClassSVM" title="sklearn.svm.OneClassSVM"><tt class="xref py py-class docutils literal"><span class="pre">svm.OneClassSVM</span></tt></a> (tuned to perform like
+an outlier detection method) and a covariance-based outlier
+detection with <a class="reference internal" href="generated/sklearn.covariance.MinCovDet.html#sklearn.covariance.MinCovDet" title="sklearn.covariance.MinCovDet"><tt class="xref py py-class docutils literal"><span class="pre">covariance.MinCovDet</span></tt></a>.</li>
 </ul>
 </div>
 </div>

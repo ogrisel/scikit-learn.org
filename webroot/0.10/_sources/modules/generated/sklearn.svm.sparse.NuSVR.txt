@@ -1,0 +1,11 @@
+sklearn.svm.sparse.NuSVR
+========================
+
+.. currentmodule:: sklearn.svm.sparse
+
+.. autoclass:: NuSVR
+
+   
+   .. automethod:: __init__
+   
+

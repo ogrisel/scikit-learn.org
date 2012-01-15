@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.9. Ensemble methods &mdash; scikit-learn 0.10-git documentation</title>
+    <title>3.9. Ensemble methods &mdash; scikit-learn 0.11-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.10-git',
+        VERSION:     '0.11-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.10-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.11-git documentation" href="../index.html" />
     <link rel="up" title="3. Supervised learning" href="../supervised_learning.html" />
     <link rel="next" title="3.10. Multiclass and multilabel algorithms" href="multiclass.html" />
     <link rel="prev" title="3.8. Decision Trees" href="tree.html" />
@@ -136,7 +136,7 @@
 	</div>
     </div>
     <p style="text-align: center">This documentation is
-    for scikit-learn <strong>version 0.10-git</strong>
+    for scikit-learn <strong>version 0.11-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3>Citing</h3>
@@ -145,7 +145,13 @@
     <h3>This page</h3>
 	<ul>
 <li><a class="reference internal" href="#">3.9. Ensemble methods</a><ul>
-<li><a class="reference internal" href="#forests-of-randomized-trees">3.9.1. Forests of randomized trees</a></li>
+<li><a class="reference internal" href="#forests-of-randomized-trees">3.9.1. Forests of randomized trees</a><ul>
+<li><a class="reference internal" href="#random-forests">3.9.1.1. Random Forests</a></li>
+<li><a class="reference internal" href="#extremely-randomized-trees">3.9.1.2. Extremely Randomized Trees</a></li>
+<li><a class="reference internal" href="#parameters">3.9.1.3. Parameters</a></li>
+<li><a class="reference internal" href="#parallelization">3.9.1.4. Parallelization</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -184,8 +190,15 @@ several weak models to produce a powerful ensemble.</p>
 <span id="forest"></span><h2>3.9.1. Forests of randomized trees<a class="headerlink" href="#forests-of-randomized-trees" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="classes.html#module-sklearn.ensemble" title="sklearn.ensemble"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.ensemble</span></tt></a> module includes two averaging algorithms based on
 randomized <a class="reference internal" href="tree.html#tree"><em>decision trees</em></a>: the RandomForest algorithm and the
-Extra-Trees method. Both algorithms are perturb-and-combine techniques
-specifically designed for trees:</p>
+Extra-Trees method. Both algorithms are perturb-and-combine techniques <a class="reference internal" href="#b1998">[B1998]</a>
+specifically designed for trees. This means a diverse set of classifiers
+is created by introducing randomness in the classifier construction.
+The prediction of the ensemble is given as the averaged prediction of
+the individual classifiers.</p>
+<p>As other classifiers, forest classifiers have to be fitted with two arrays: an
+array X of size <tt class="docutils literal"><span class="pre">[n_samples,</span> <span class="pre">n_features]</span></tt> holding the training samples, and an
+array Y of size <tt class="docutils literal"><span class="pre">[n_samples]</span></tt> holding the target values (class labels) for the
+training samples:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
@@ -193,6 +206,8 @@ specifically designed for trees:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="section" id="random-forests">
+<h3>3.9.1.1. Random Forests<a class="headerlink" href="#random-forests" title="Permalink to this headline">¶</a></h3>
 <p>In random forests (see <a class="reference internal" href="generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="sklearn.ensemble.RandomForestClassifier"><tt class="xref py py-class docutils literal"><span class="pre">RandomForestClassifier</span></tt></a> and
 <a class="reference internal" href="generated/sklearn.ensemble.RandomForestRegressor.html#sklearn.ensemble.RandomForestRegressor" title="sklearn.ensemble.RandomForestRegressor"><tt class="xref py py-class docutils literal"><span class="pre">RandomForestRegressor</span></tt></a> classes), each tree in the ensemble is built from
 a sample drawn with replacement (i.e., a bootstrap sample) from the training
@@ -203,7 +218,13 @@ features. As a result of this randomness, the bias of the forest usually
 slightly increases (with respect to the bias of a single non-random tree) but,
 due to averaging, its variance also decreases, usually more than compensating
 for the increase in bias, hence yielding an overall better model.</p>
-<p>In extra-trees (see <a class="reference internal" href="generated/sklearn.ensemble.ExtraTreesClassifier.html#sklearn.ensemble.ExtraTreesClassifier" title="sklearn.ensemble.ExtraTreesClassifier"><tt class="xref py py-class docutils literal"><span class="pre">ExtraTreesClassifier</span></tt></a> and
+<p>In contrast to the original publication <a class="reference internal" href="#b2001">[B2001]</a>, the scikit-learn
+implementation combines classifiers by averaging their probabilistic
+prediction, instead of letting each classifier vote for a single class.</p>
+</div>
+<div class="section" id="extremely-randomized-trees">
+<h3>3.9.1.2. Extremely Randomized Trees<a class="headerlink" href="#extremely-randomized-trees" title="Permalink to this headline">¶</a></h3>
+<p>In extremely randomized trees (see <a class="reference internal" href="generated/sklearn.ensemble.ExtraTreesClassifier.html#sklearn.ensemble.ExtraTreesClassifier" title="sklearn.ensemble.ExtraTreesClassifier"><tt class="xref py py-class docutils literal"><span class="pre">ExtraTreesClassifier</span></tt></a> and
 <a class="reference internal" href="generated/sklearn.ensemble.ExtraTreesRegressor.html#sklearn.ensemble.ExtraTreesRegressor" title="sklearn.ensemble.ExtraTreesRegressor"><tt class="xref py py-class docutils literal"><span class="pre">ExtraTreesRegressor</span></tt></a> classes), randomness goes one step further in the
 way splits are computed. As in random forests, a random subset of candidate
 features is used, but instead of looking for the most discriminative thresholds,
@@ -239,6 +260,9 @@ slightly greater increase in bias:</p>
 <span class="go">True</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="parameters">
+<h3>3.9.1.3. Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
 <p>The main parameters to adjust when using these methods is <tt class="docutils literal"><span class="pre">n_estimators</span></tt> and
 <tt class="docutils literal"><span class="pre">max_features</span></tt>. The former is the number of trees in the forest. The larger
 the better, but also the longer it will take to compute. In addition, note that
@@ -255,6 +279,13 @@ are usually not optimal. The best parameter values should always be cross-
 validated. In addition, note that bootstrap samples are used by default in
 random forests (<tt class="docutils literal"><span class="pre">bootstrap=True</span></tt>) while the default strategy is to use the
 original dataset for building extra-trees (<tt class="docutils literal"><span class="pre">bootstrap=False</span></tt>).</p>
+<p>When training on large datasets, where runtime and memory requirements
+are important, it might also be beneficial to adjust the <tt class="docutils literal"><span class="pre">min_density</span></tt> parameter,
+that controls a heuristic for speeding up computations in each tree.
+See <a class="reference internal" href="tree.html#tree-complexity"><em>Complexity of trees</em></a> for details.</p>
+</div>
+<div class="section" id="parallelization">
+<h3>3.9.1.4. Parallelization<a class="headerlink" href="#parallelization" title="Permalink to this headline">¶</a></h3>
 <p>Finally, this module also features the parallel construction of the trees and
 the parallel computation of the predictions through the <tt class="docutils literal"><span class="pre">n_jobs</span></tt> parameter. If
 <tt class="docutils literal"><span class="pre">n_jobs=k</span></tt> then computations are partitioned into <tt class="docutils literal"><span class="pre">k</span></tt> jobs, and run on <tt class="docutils literal"><span class="pre">k</span></tt>
@@ -271,13 +302,25 @@ time (e.g., on large datasets).</p>
 <li><a class="reference internal" href="../auto_examples/ensemble/plot_forest_importances_faces.html#example-ensemble-plot-forest-importances-faces-py"><em>Pixel importances with a parallel forest of trees</em></a></li>
 </ul>
 </div>
-<div class="topic">
-<p class="topic-title first">References</p>
-<ul class="simple">
-<li>Leo Breiman, &#8220;Random Forests&#8221;, Machine Learning, 45(1), 5-32, 2001.</li>
-<li>Pierre Geurts, Damien Ernst., and Louis Wehenkel, &#8220;Extremely randomized
-trees&#8221;, Machine Learning, 63(1), 3-42, 2006.</li>
-</ul>
+<table class="docutils citation" frame="void" id="b2001" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[B2001]</a></td><td>Leo Breiman, &#8220;Random Forests&#8221;, Machine Learning, 45(1), 5-32, 2001.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="b1998" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[B1998]</a></td><td>Leo Breiman, &#8220;Arcing Classifiers&#8221;, Annals of Statistics 1998.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="gew2006" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[GEW2006]</td><td>Pierre Geurts, Damien Ernst., and Louis Wehenkel, &#8220;Extremely randomized
+trees&#8221;, Machine Learning, 63(1), 3-42, 2006.</td></tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

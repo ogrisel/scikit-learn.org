@@ -8,7 +8,7 @@ Spectral clustering for image segmentation
 ===========================================
 
 In this example, an image with connected circles is generated and
-spectral clustering is used to separate the circles.
+:ref:`spectral_clustering` is used to separate the circles.
 
 In these settings, the spectral clustering approach solves the problem
 know as 'normalized graph cuts': the image is seen as a graph of
@@ -35,6 +35,16 @@ separating the objects one from the other, and not from the background.
 
     *
 
+      .. image:: images/plot_segmentation_toy_3.png
+            :scale: 50
+
+    *
+
+      .. image:: images/plot_segmentation_toy_4.png
+            :scale: 50
+
+    *
+
       .. image:: images/plot_segmentation_toy_1.png
             :scale: 50
 
@@ -43,15 +53,7 @@ separating the objects one from the other, and not from the background.
       .. image:: images/plot_segmentation_toy_2.png
             :scale: 50
 
-    *
 
-      .. image:: images/plot_segmentation_toy_3.png
-            :scale: 50
-
-    *
-
-      .. image:: images/plot_segmentation_toy_4.png
-            :scale: 50
 
 
 **Python source code:** :download:`plot_segmentation_toy.py <plot_segmentation_toy.py>`

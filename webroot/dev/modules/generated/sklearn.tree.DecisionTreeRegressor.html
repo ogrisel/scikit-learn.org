@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.25.2. sklearn.tree.DecisionTreeRegressor &mdash; scikit-learn 0.10-git documentation</title>
+    <title>8.25.2. sklearn.tree.DecisionTreeRegressor &mdash; scikit-learn 0.11-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.10-git',
+        VERSION:     '0.11-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.10-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.11-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.25.3. sklearn.tree.ExtraTreeClassifier" href="sklearn.tree.ExtraTreeClassifier.html" />
     <link rel="prev" title="8.25.1. sklearn.tree.DecisionTreeClassifier" href="sklearn.tree.DecisionTreeClassifier.html" />
@@ -136,7 +136,7 @@
 	</div>
     </div>
     <p style="text-align: center">This documentation is
-    for scikit-learn <strong>version 0.10-git</strong>
+    for scikit-learn <strong>version 0.11-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3>Citing</h3>
@@ -183,7 +183,7 @@ samples.</p>
 </div></blockquote>
 <p><strong>min_density</strong> : float, optional (default=0.1)</p>
 <blockquote>
-<div><p>This parameter trades runtime against memory requirement. It
+<div><p>This parameter controls a trade-off in an optimization heuristic. It
 controls the minimum density of the <cite>sample_mask</cite> (i.e. the
 fraction of samples in the mask). If the density falls below this
 threshold the mask is recomputed and the input data is packed
@@ -223,30 +223,30 @@ by <cite>np.random</cite>.</p>
 </div>
 <p class="rubric">Notes</p>
 <p><strong>References</strong>:</p>
+<table class="docutils citation" frame="void" id="r61" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R61]</td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Decision_tree_learning">http://en.wikipedia.org/wiki/Decision_tree_learning</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r62" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R62]</td><td>L. Breiman, J. Friedman, R. Olshen, and C. Stone, &#8220;Classification
+and Regression Trees&#8221;, Wadsworth, Belmont, CA, 1984.</td></tr>
+</tbody>
+</table>
 <table class="docutils citation" frame="void" id="r63" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R63]</td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Decision_tree_learning">http://en.wikipedia.org/wiki/Decision_tree_learning</a></td></tr>
+<tr><td class="label">[R63]</td><td>T. Hastie, R. Tibshirani and J. Friedman. &#8220;Elements of Statistical
+Learning&#8221;, Springer, 2009.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="r64" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R64]</td><td>L. Breiman, J. Friedman, R. Olshen, and C. Stone, &#8220;Classification
-and Regression Trees&#8221;, Wadsworth, Belmont, CA, 1984.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="r65" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R65]</td><td>T. Hastie, R. Tibshirani and J. Friedman. &#8220;Elements of Statistical
-Learning&#8221;, Springer, 2009.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="r66" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R66]</td><td>L. Breiman, and A. Cutler, &#8220;Random Forests&#8221;,
+<tr><td class="label">[R64]</td><td>L. Breiman, and A. Cutler, &#8220;Random Forests&#8221;,
 <a class="reference external" href="http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm">http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm</a></td></tr>
 </tbody>
 </table>
@@ -309,7 +309,7 @@ the Gini importance [4].</p>
 <td>Predict class or regression target for X.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.tree.DecisionTreeRegressor.score" title="sklearn.tree.DecisionTreeRegressor.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
-<td>Returns the coefficient of determination of the prediction</td>
+<td>Returns the coefficient of determination R^2 of the prediction.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.tree.DecisionTreeRegressor.set_params" title="sklearn.tree.DecisionTreeRegressor.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
 <td>Set the parameters of the estimator.</td>
@@ -417,7 +417,11 @@ returned.</p>
 <dl class="method">
 <dt id="sklearn.tree.DecisionTreeRegressor.score">
 <tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.tree.DecisionTreeRegressor.score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the coefficient of determination of the prediction</p>
+<dd><p>Returns the coefficient of determination R^2 of the prediction.</p>
+<p>The coefficient R^2 is defined as (1 - u/v), where u is the
+regression sum of squares ((y - y_pred) ** 2).sum() and v is the
+residual sum of squares ((y_true - y_true.mean()) ** 2).sum().
+Best possible score is 1.0, lower values are worse.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

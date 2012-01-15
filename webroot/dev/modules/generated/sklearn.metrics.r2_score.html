@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8.16.2.1. sklearn.metrics.r2_score &mdash; scikit-learn 0.10-git documentation</title>
+    <title>8.16.2.1. sklearn.metrics.r2_score &mdash; scikit-learn 0.11-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.10-git',
+        VERSION:     '0.11-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.10-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.11-git documentation" href="../../index.html" />
     <link rel="up" title="8. Reference" href="../classes.html" />
     <link rel="next" title="8.16.2.2. sklearn.metrics.mean_square_error" href="sklearn.metrics.mean_square_error.html" />
     <link rel="prev" title="8.16.1.13. sklearn.metrics.hinge_loss" href="sklearn.metrics.hinge_loss.html" />
@@ -136,7 +136,7 @@
 	</div>
     </div>
     <p style="text-align: center">This documentation is
-    for scikit-learn <strong>version 0.10-git</strong>
+    for scikit-learn <strong>version 0.11-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3>Citing</h3>
@@ -163,18 +163,24 @@
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">r2_score</tt><big>(</big><em>y_true</em>, <em>y_pred</em><big>)</big><a class="headerlink" href="#sklearn.metrics.r2_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>R^2 (coefficient of determination) regression score function</p>
 <p>Best possible score is 1.0, lower values are worse.</p>
-<p>Note: not a symmetric function.</p>
-<p>return the R^2 score</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>y_true</strong> : array-like</p>
-<p class="last"><strong>y_pred</strong> : array-like</p>
+<p><strong>y_pred</strong> : array-like</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>z</strong> : float</p>
+<blockquote class="last">
+<div><p>The R^2 score</p>
+</div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>This is not a symmetric function.</p>
 </dd></dl>
 
 </div>

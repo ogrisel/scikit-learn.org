@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Species distribution modeling &mdash; scikit-learn 0.10-git documentation</title>
+    <title>Species distribution modeling &mdash; scikit-learn 0.11-git documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.10-git',
+        VERSION:     '0.11-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.10-git documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.11-git documentation" href="../../index.html" />
     <link rel="up" title="Examples" href="../index.html" />
     <link rel="next" title="Visualizing the stock market structure" href="plot_stock_market.html" />
     <link rel="prev" title="Outlier detection on a real data set" href="plot_outlier_detection_housing.html" />
@@ -136,7 +136,7 @@
 	</div>
     </div>
     <p style="text-align: center">This documentation is
-    for scikit-learn <strong>version 0.10-git</strong>
+    for scikit-learn <strong>version 0.11-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3>Citing</h3>
@@ -192,7 +192,26 @@ S. J. Phillips, R. P. Anderson, R. E. Schapire - Ecological Modelling,
 190:231-259, 2006.</li>
 </ul>
 </div></blockquote>
-<p class="horizontal"><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_species_distribution_modeling.py"><tt class="xref download docutils literal"><span class="pre">plot_species_distribution_modeling.py</span></tt></a></p>
+<img alt="../../_images/plot_species_distribution_modeling_1.png" class="align-center" src="../../_images/plot_species_distribution_modeling_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>________________________________________________________________________________
+Modeling distribution of species 'bradypus variegatus'
+ - fit OneClassSVM ...  done.
+ - plot coastlines from coverage
+ - predict species distribution
+
+ Area under the ROC curve : 0.865318
+________________________________________________________________________________
+Modeling distribution of species 'microryzomys minutus'
+ - fit OneClassSVM ...  done.
+ - plot coastlines from coverage
+ - predict species distribution
+
+ Area under the ROC curve : 0.993920
+
+time elapsed: 10.97s</pre>
+</div>
+<p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_species_distribution_modeling.py"><tt class="xref download docutils literal"><span class="pre">plot_species_distribution_modeling.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Authors: Peter Prettenhoer &lt;peter.prettenhofer@gmail.com&gt;</span>
 <span class="c">#          Jake Vanderplas &lt;vanderplas@astro.washington.edu&gt;</span>
 <span class="c">#</span>
@@ -363,9 +382,8 @@ S. J. Phillips, R. P. Anderson, R. E. Schapire - Ecological Modelling,
     <span class="k">print</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">time elapsed: </span><span class="si">%.2f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">plot_species_distribution</span><span class="p">()</span>
-    <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plot_species_distribution</span><span class="p">()</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

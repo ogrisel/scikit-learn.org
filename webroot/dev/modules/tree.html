@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.8. Decision Trees &mdash; scikit-learn 0.10-git documentation</title>
+    <title>3.8. Decision Trees &mdash; scikit-learn 0.11-git documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.10-git',
+        VERSION:     '0.11-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.10-git documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.11-git documentation" href="../index.html" />
     <link rel="up" title="3. Supervised learning" href="../supervised_learning.html" />
     <link rel="next" title="3.9. Ensemble methods" href="ensemble.html" />
     <link rel="prev" title="3.7. Naive Bayes" href="naive_bayes.html" />
@@ -136,7 +136,7 @@
 	</div>
     </div>
     <p style="text-align: center">This documentation is
-    for scikit-learn <strong>version 0.10-git</strong>
+    for scikit-learn <strong>version 0.11-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3>Citing</h3>
@@ -314,7 +314,7 @@ instead of integer values:</p>
 </div>
 </div>
 <div class="section" id="complexity">
-<h2>3.8.3. Complexity<a class="headerlink" href="#complexity" title="Permalink to this headline">¶</a></h2>
+<span id="tree-complexity"></span><h2>3.8.3. Complexity<a class="headerlink" href="#complexity" title="Permalink to this headline">¶</a></h2>
 <p>In general, the run time cost to construct a balanced binary tree is
 <img class="math" src="../_images/math/1b0c70f9b357eb1133ec347cd533751ed661cea3.png" alt="O(n_{samples}n_{features}log(n_{samples}))"/> and query time
 <img class="math" src="../_images/math/2d2c15eb6c9e372089e03ca890e7ac4ca9b65d15.png" alt="O(log(n_{samples}))"/>.  Although the tree construction algorithm attempts
@@ -332,14 +332,13 @@ new split point along a given feature. By presorting the feature over all
 relevant samples, and retaining a running label count, we reduce the complexity
 at each node to <img class="math" src="../_images/math/020b2a0b4e8fcda8d01944759785a8eae4671207.png" alt="O(n_{features}log(n_{samples}))"/>, which results in a
 total cost of <img class="math" src="../_images/math/cd4a4681c2eae329ff3ea1789325cd8e7bd01bf8.png" alt="O(n_{features}n_{samples}log(n_{samples}))"/>.</p>
-<p>This implementation also offers a parameter <cite>min_density</cite> to control the trade-
-off  between memory usage and speed within the tree construction process. A
-sample mask is used to mask data points that are inactive at a given node, which
-avoids the copying of data (important for large datasets or training trees
-within an ensemble). Density is defined as the ratio of &#8216;active&#8217; data samples to
-total samples at a given node.  The minimum density parameter specifies the
-level below which fancy indexing (and therefore data copied) and the sample mask
-reset.
+<p>This implementation also offers a parameter <cite>min_density</cite> to control an
+optimization heuristic. A sample mask is used to mask data points that are
+inactive at a given node, which avoids the copying of data (important for large
+datasets or training trees within an ensemble). Density is defined as the ratio
+of &#8216;active&#8217; data samples to total samples at a given node.  The minimum density
+parameter specifies the level below which fancy indexing (and therefore data
+copied) and the sample mask reset.
 If <cite>min_density</cite> is 1, then fancy indexing is always used for data partitioning
 during the tree building phase. In this case, the size of memory (as a
 proportion of the input data <img class="math" src="../_images/math/c7d457e388298246adb06c587bccd419ea67f7e8.png" alt="a"/>) required at a node of depth <img class="math" src="../_images/math/174fadd07fd54c9afe288e96558c92e0c1da733a.png" alt="n"/>
@@ -352,10 +351,10 @@ a"/>. In practise it usually requires 3 to 4 times <img class="math" src="../_im
 Setting <cite>min_density</cite> to 0 will always use the sample mask to select the subset
 of samples at each node.  This results in little to no additional memory being
 allocated, making it appropriate for massive datasets or within ensemble
-learners, but at the expense of being slower when training deep trees. The
-default value for <cite>min_density</cite> is 0.1 which strikes a balance between
-potentially excessive allocation of temporary memory and the long training
-times.</p>
+learners. The default value for <cite>min_density</cite> is 0.1 which empirically
+leads to fast training for many problems.
+Typically high values of <tt class="docutils literal"><span class="pre">min_density</span></tt> will lead to excessive reallocation,
+slowing down the algorithm significantly.</p>
 </div>
 <div class="section" id="tips-on-practical-use">
 <h2>3.8.4. Tips on practical use<a class="headerlink" href="#tips-on-practical-use" title="Permalink to this headline">¶</a></h2>
@@ -379,6 +378,8 @@ will prevent the tree from learning the data.  Try <tt class="docutils literal">
 initial value.</li>
 <li>Balance your dataset before training to prevent the tree from creating
 a tree biased toward the classes that are dominant.</li>
+<li>All decision trees use Fortran ordered <tt class="docutils literal"><span class="pre">np.float32</span></tt> arrays internally.
+If training data is not in this format, a copy of the dataset will be made.</li>
 </ul>
 </div></blockquote>
 </div>

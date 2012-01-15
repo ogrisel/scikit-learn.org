@@ -313,6 +313,16 @@ interactive user interface.
 
    applications/plot_stock_market
 
+.. figure:: applications/images/thumb/plot_tomography_l1_reconstruction.png
+   :target: ./applications/plot_tomography_l1_reconstruction.html
+
+   :ref:`example_applications_plot_tomography_l1_reconstruction.py`
+
+.. toctree::
+   :hidden:
+
+   applications/plot_tomography_l1_reconstruction
+
 .. figure:: applications/images/thumb/face_recognition.png
    :target: ./applications/face_recognition.html
 

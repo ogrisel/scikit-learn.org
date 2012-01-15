@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>User guide: contents &mdash; scikit-learn 0.10-git documentation</title>
+    <title>User guide: contents &mdash; scikit-learn 0.11-git documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.10-git',
+        VERSION:     '0.11-git',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="about.html" />
-    <link rel="top" title="scikit-learn 0.10-git documentation" href="index.html" />
+    <link rel="top" title="scikit-learn 0.11-git documentation" href="index.html" />
     <link rel="next" title="1. Installing scikit-learn" href="install.html" />
     <link rel="prev" title="User Guide" href="index.html" />
 <script type="text/javascript">
@@ -119,7 +119,7 @@
 	<!-- Ad a link to the 'up' page -->
     </div>
     <p style="text-align: center">This documentation is
-    for scikit-learn <strong>version 0.10-git</strong>
+    for scikit-learn <strong>version 0.11-git</strong>
     &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
     
     <h3>Citing</h3>
@@ -343,7 +343,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules/ensemble.html">3.9. Ensemble methods</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#forests-of-randomized-trees">3.9.1. Forests of randomized trees</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/ensemble.html#forests-of-randomized-trees">3.9.1. Forests of randomized trees</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#random-forests">3.9.1.1. Random Forests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#extremely-randomized-trees">3.9.1.2. Extremely Randomized Trees</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#parameters">3.9.1.3. Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/ensemble.html#parallelization">3.9.1.4. Parallelization</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules/multiclass.html">3.10. Multiclass and multilabel algorithms</a><ul>
@@ -623,37 +629,39 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.datasets">8.4. <tt class="docutils literal"><span class="pre">sklearn.datasets</span></tt>: Datasets</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="modules/classes.html#loaders">8.4.1. Loaders</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_boston.html">8.4.1.1. sklearn.datasets.load_boston</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_files.html">8.4.1.2. sklearn.datasets.load_files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_diabetes.html">8.4.1.3. sklearn.datasets.load_diabetes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_digits.html">8.4.1.4. sklearn.datasets.load_digits</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_iris.html">8.4.1.5. sklearn.datasets.load_iris</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_linnerud.html">8.4.1.6. sklearn.datasets.load_linnerud</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_lfw_pairs.html">8.4.1.7. sklearn.datasets.load_lfw_pairs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.fetch_lfw_pairs.html">8.4.1.8. sklearn.datasets.fetch_lfw_pairs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_lfw_people.html">8.4.1.9. sklearn.datasets.load_lfw_people</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.fetch_lfw_people.html">8.4.1.10. sklearn.datasets.fetch_lfw_people</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_20newsgroups.html">8.4.1.11. sklearn.datasets.load_20newsgroups</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.fetch_20newsgroups.html">8.4.1.12. sklearn.datasets.fetch_20newsgroups</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.fetch_20newsgroups_vectorized.html">8.4.1.13. sklearn.datasets.fetch_20newsgroups_vectorized</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_20newsgroups.html">8.4.1.1. sklearn.datasets.load_20newsgroups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.fetch_20newsgroups.html">8.4.1.2. sklearn.datasets.fetch_20newsgroups</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.fetch_20newsgroups_vectorized.html">8.4.1.3. sklearn.datasets.fetch_20newsgroups_vectorized</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_boston.html">8.4.1.4. sklearn.datasets.load_boston</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_diabetes.html">8.4.1.5. sklearn.datasets.load_diabetes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_digits.html">8.4.1.6. sklearn.datasets.load_digits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_files.html">8.4.1.7. sklearn.datasets.load_files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_iris.html">8.4.1.8. sklearn.datasets.load_iris</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_lfw_pairs.html">8.4.1.9. sklearn.datasets.load_lfw_pairs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.fetch_lfw_pairs.html">8.4.1.10. sklearn.datasets.fetch_lfw_pairs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_lfw_people.html">8.4.1.11. sklearn.datasets.load_lfw_people</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.fetch_lfw_people.html">8.4.1.12. sklearn.datasets.fetch_lfw_people</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_linnerud.html">8.4.1.13. sklearn.datasets.load_linnerud</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.fetch_olivetti_faces.html">8.4.1.14. sklearn.datasets.fetch_olivetti_faces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_sample_image.html">8.4.1.15. sklearn.datasets.load_sample_image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.load_sample_images.html">8.4.1.16. sklearn.datasets.load_sample_images</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="modules/classes.html#samples-generator">8.4.2. Samples generator</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_classification.html">8.4.2.1. sklearn.datasets.make_classification</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_multilabel_classification.html">8.4.2.2. sklearn.datasets.make_multilabel_classification</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_regression.html">8.4.2.3. sklearn.datasets.make_regression</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_blobs.html">8.4.2.4. sklearn.datasets.make_blobs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_friedman1.html">8.4.2.5. sklearn.datasets.make_friedman1</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_friedman2.html">8.4.2.6. sklearn.datasets.make_friedman2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_friedman3.html">8.4.2.7. sklearn.datasets.make_friedman3</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_low_rank_matrix.html">8.4.2.8. sklearn.datasets.make_low_rank_matrix</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_sparse_coded_signal.html">8.4.2.9. sklearn.datasets.make_sparse_coded_signal</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_sparse_uncorrelated.html">8.4.2.10. sklearn.datasets.make_sparse_uncorrelated</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_spd_matrix.html">8.4.2.11. sklearn.datasets.make_spd_matrix</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_sparse_spd_matrix.html">8.4.2.12. sklearn.datasets.make_sparse_spd_matrix</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_swiss_roll.html">8.4.2.13. sklearn.datasets.make_swiss_roll</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_s_curve.html">8.4.2.14. sklearn.datasets.make_s_curve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_blobs.html">8.4.2.1. sklearn.datasets.make_blobs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_classification.html">8.4.2.2. sklearn.datasets.make_classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_friedman1.html">8.4.2.3. sklearn.datasets.make_friedman1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_friedman2.html">8.4.2.4. sklearn.datasets.make_friedman2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_friedman3.html">8.4.2.5. sklearn.datasets.make_friedman3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_low_rank_matrix.html">8.4.2.6. sklearn.datasets.make_low_rank_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_multilabel_classification.html">8.4.2.7. sklearn.datasets.make_multilabel_classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_regression.html">8.4.2.8. sklearn.datasets.make_regression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_s_curve.html">8.4.2.9. sklearn.datasets.make_s_curve</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_sparse_coded_signal.html">8.4.2.10. sklearn.datasets.make_sparse_coded_signal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_sparse_spd_matrix.html">8.4.2.11. sklearn.datasets.make_sparse_spd_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_sparse_uncorrelated.html">8.4.2.12. sklearn.datasets.make_sparse_uncorrelated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_spd_matrix.html">8.4.2.13. sklearn.datasets.make_spd_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/generated/sklearn.datasets.make_swiss_roll.html">8.4.2.14. sklearn.datasets.make_swiss_roll</a></li>
 </ul>
 </li>
 </ul>
@@ -868,13 +876,11 @@
 <li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.neighbors.NearestNeighbors.html">8.20.1. sklearn.neighbors.NearestNeighbors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.neighbors.KNeighborsClassifier.html">8.20.2. sklearn.neighbors.KNeighborsClassifier</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.neighbors.RadiusNeighborsClassifier.html">8.20.3. sklearn.neighbors.RadiusNeighborsClassifier</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.neighbors.NeighborsClassifier.html">8.20.4. sklearn.neighbors.NeighborsClassifier</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.neighbors.KNeighborsRegressor.html">8.20.5. sklearn.neighbors.KNeighborsRegressor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.neighbors.RadiusNeighborsRegressor.html">8.20.6. sklearn.neighbors.RadiusNeighborsRegressor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.neighbors.NeighborsRegressor.html">8.20.7. sklearn.neighbors.NeighborsRegressor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.neighbors.BallTree.html">8.20.8. sklearn.neighbors.BallTree</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.neighbors.kneighbors_graph.html">8.20.9. sklearn.neighbors.kneighbors_graph</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.neighbors.radius_neighbors_graph.html">8.20.10. sklearn.neighbors.radius_neighbors_graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.neighbors.KNeighborsRegressor.html">8.20.4. sklearn.neighbors.KNeighborsRegressor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.neighbors.RadiusNeighborsRegressor.html">8.20.5. sklearn.neighbors.RadiusNeighborsRegressor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.neighbors.BallTree.html">8.20.6. sklearn.neighbors.BallTree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.neighbors.kneighbors_graph.html">8.20.7. sklearn.neighbors.kneighbors_graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/generated/sklearn.neighbors.radius_neighbors_graph.html">8.20.8. sklearn.neighbors.radius_neighbors_graph</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.pls">8.21. <tt class="docutils literal"><span class="pre">sklearn.pls</span></tt>: Partial Least Squares</a><ul>

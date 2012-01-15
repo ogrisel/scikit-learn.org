@@ -68,11 +68,11 @@ An illustration of various embeddings on the digits dataset.
   Computing Isomap embedding
   Done.
   Computing LLE embedding
-  Done. Reconstruction error: 1.28544e-06
+  Done. Reconstruction error: 1.28548e-06
   Computing modified LLE embedding
   Done. Reconstruction error: 0.359939
   Computing Hessian LLE embedding
-  Done. Reconstruction error: 0.212069
+  Done. Reconstruction error: 0.212066
   Computing LTSA embedding
   Done. Reconstruction error: 0.212076
 

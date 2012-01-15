@@ -13,7 +13,7 @@ unique colors to 64, while preserving the overall appearance quality.
 
 In this example, pixels are represented in a 3D-space and K-means is used to
 find 64 color clusters. In the image processing literature, the codebook
-obtained from K-means (the cluster centers) is called the color palette. Using a
+obtained from K-means (the cluster centers) is called the color palette. Using
 a single byte, up to 256 colors can be addressed, whereas an RGB encoding
 requires 3 bytes per pixel. The GIF file format, for example, uses such a
 palette.
@@ -28,18 +28,29 @@ randomly) is also shown.
 
     *
 
-      .. image:: images/plot_color_quantization_1.png
+      .. image:: images/plot_color_quantization_2.png
             :scale: 50
 
     *
 
-      .. image:: images/plot_color_quantization_2.png
+      .. image:: images/plot_color_quantization_1.png
             :scale: 50
 
     *
 
       .. image:: images/plot_color_quantization_3.png
             :scale: 50
+
+
+**Script output**::
+
+  Fitting estimator on a small sub-sample of the data
+  done in 0.955s.
+  Predicting color indices on the full image (k-means)
+  done in 1.038s.
+  Predicting color indices on the full image (random)
+  done in 1.126s.
+
 
 
 **Python source code:** :download:`plot_color_quantization.py <plot_color_quantization.py>`
