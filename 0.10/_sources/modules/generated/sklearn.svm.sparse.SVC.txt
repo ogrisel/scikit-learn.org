@@ -1,0 +1,11 @@
+sklearn.svm.sparse.SVC
+======================
+
+.. currentmodule:: sklearn.svm.sparse
+
+.. autoclass:: SVC
+
+   
+   .. automethod:: __init__
+   
+
