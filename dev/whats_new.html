@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>0.10 &mdash; scikit-learn 0.11-git documentation</title>
+    <title>0.11 &mdash; scikit-learn 0.11-git documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -95,35 +95,39 @@
     <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
     <h3>This page</h3>
 	<ul>
-<li><a class="reference internal" href="#">0.10</a><ul>
-<li><a class="reference internal" href="#changelog">Changelog</a></li>
+<li><a class="reference internal" href="#">0.11</a><ul>
 <li><a class="reference internal" href="#api-changes-summary">API changes summary</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">0.10</a><ul>
+<li><a class="reference internal" href="#changelog">Changelog</a></li>
+<li><a class="reference internal" href="#id3">API changes summary</a></li>
 <li><a class="reference internal" href="#people">People</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#changes-0-9">0.9</a><ul>
-<li><a class="reference internal" href="#id3">Changelog</a></li>
-<li><a class="reference internal" href="#id4">API changes summary</a></li>
-<li><a class="reference internal" href="#id5">People</a></li>
+<li><a class="reference internal" href="#id5">Changelog</a></li>
+<li><a class="reference internal" href="#id6">API changes summary</a></li>
+<li><a class="reference internal" href="#id7">People</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#changes-0-8">0.8</a><ul>
-<li><a class="reference internal" href="#id7">Changelog</a></li>
-<li><a class="reference internal" href="#id8">People</a></li>
+<li><a class="reference internal" href="#id9">Changelog</a></li>
+<li><a class="reference internal" href="#id10">People</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#changes-0-7">0.7</a><ul>
-<li><a class="reference internal" href="#id10">Changelog</a></li>
-<li><a class="reference internal" href="#id11">People</a></li>
+<li><a class="reference internal" href="#id12">Changelog</a></li>
+<li><a class="reference internal" href="#id13">People</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#changes-0-6">0.6</a><ul>
-<li><a class="reference internal" href="#id13">Changelog</a></li>
-<li><a class="reference internal" href="#id14">People</a></li>
+<li><a class="reference internal" href="#id15">Changelog</a></li>
+<li><a class="reference internal" href="#id16">People</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#changes-0-5">0.5</a><ul>
-<li><a class="reference internal" href="#id16">Changelog</a><ul>
+<li><a class="reference internal" href="#id18">Changelog</a><ul>
 <li><a class="reference internal" href="#new-classes">New classes</a></li>
 <li><a class="reference internal" href="#documentation">Documentation</a></li>
 <li><a class="reference internal" href="#fixes">Fixes</a></li>
@@ -136,9 +140,9 @@
 <li><a class="reference internal" href="#authors">Authors</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id17">0.4</a><ul>
-<li><a class="reference internal" href="#id18">Changelog</a></li>
-<li><a class="reference internal" href="#id19">Authors</a></li>
+<li><a class="reference internal" href="#id19">0.4</a><ul>
+<li><a class="reference internal" href="#id20">Changelog</a></li>
+<li><a class="reference internal" href="#id21">Authors</a></li>
 </ul>
 </li>
 </ul>
@@ -153,7 +157,21 @@
           <div class="body">
             
   <div class="section" id="changes-0-10">
-<span id="id1"></span><h1>0.10<a class="headerlink" href="#changes-0-10" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>0.11<a class="headerlink" href="#changes-0-10" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="api-changes-summary">
+<h2>API changes summary<a class="headerlink" href="#api-changes-summary" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><cite>NeighborsClassifier</cite> and <cite>NeighborsRegressor</cite> are gone in the module
+<a class="reference internal" href="modules/neighbors.html#neighbors"><em>Nearest Neighbors</em></a>. Use the classes <tt class="xref py py-class docutils literal"><span class="pre">KNeighborsClassifier</span></tt>,
+<tt class="xref py py-class docutils literal"><span class="pre">RadiusNeighborsClassifier</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">KNeighborsRegressor</span></tt>
+and/or <tt class="xref py py-class docutils literal"><span class="pre">RadiusNeighborsRegressor</span></tt> instead.</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>0.10<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="changelog">
 <h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -186,7 +204,7 @@ samples by <a class="reference external" href="http://www-sop.inria.fr/members/A
 extra-trees method, along with documentation and examples.</li>
 <li><a class="reference internal" href="modules/outlier_detection.html#outlier-detection"><em>Novelty and Outlier Detection</em></a>: outlier and novelty detection, by
 <a class="reference external" href="http://parietal.saclay.inria.fr/Members/virgile-fritsch">Virgile Fritsch</a>.</li>
-<li><a class="reference internal" href="modules/kernel_approximation.html#kernel-approximation"><em>Kernel Approximation</em></a>: a transform implement kernel
+<li><a class="reference internal" href="modules/kernel_approximation.html#kernel-approximation"><em>Kernel Approximation</em></a>: a transform implementing kernel
 approximation for fast SGD on non-linear kernels by
 <a class="reference external" href="http://www.ais.uni-bonn.de/~amueller/">Andreas Müller</a>.</li>
 <li>Fixed a bug due to atom swapping in <a class="reference internal" href="modules/linear_model.html#omp"><em>Orthogonal Matching Pursuit (OMP)</em></a> by <a class="reference external" href="http://vene.ro">Vlad Niculae</a>.</li>
@@ -210,11 +228,12 @@ by <a class="reference external" href="http://www.montefiore.ulg.ac.be/~glouppe/
 <a class="reference external" href="http://www.montefiore.ulg.ac.be/~glouppe/">Gilles Louppe</a>.</li>
 <li><a class="reference internal" href="modules/generated/sklearn.cross_validation.ShuffleSplit.html#sklearn.cross_validation.ShuffleSplit" title="sklearn.cross_validation.ShuffleSplit"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.cross_validation.ShuffleSplit</span></tt></a> can subsample the train
 sets as well as the test sets by <a class="reference external" href="http://twitter.com/ogrisel">Olivier Grisel</a>.</li>
+<li>Errors in the build of the documentation fixed by <a class="reference external" href="http://www.ais.uni-bonn.de/~amueller/">Andreas Müller</a>.</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="api-changes-summary">
-<h2>API changes summary<a class="headerlink" href="#api-changes-summary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>API changes summary<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>Here are the code migration instructions when updgrading from scikit-learn
 version 0.9:</p>
 <blockquote>
@@ -273,7 +292,7 @@ follows the reference paper.</p>
 </div>
 <div class="section" id="people">
 <h2>People<a class="headerlink" href="#people" title="Permalink to this headline">¶</a></h2>
-<p>The folling people contributed to scikit-learn since last release:</p>
+<p>The following people contributed to scikit-learn since last release:</p>
 <blockquote>
 <div><ul class="simple">
 <li>246  <a class="reference external" href="http://www.ais.uni-bonn.de/~amueller/">Andreas Müller</a></li>
@@ -312,15 +331,15 @@ follows the reference paper.</p>
 </div>
 </div>
 <div class="section" id="changes-0-9">
-<span id="id2"></span><h1>0.9<a class="headerlink" href="#changes-0-9" title="Permalink to this headline">¶</a></h1>
+<span id="id4"></span><h1>0.9<a class="headerlink" href="#changes-0-9" title="Permalink to this headline">¶</a></h1>
 <p>scikit-learn 0.9 was released on September 2011, three months after the 0.8
 release and includes the new modules <a class="reference internal" href="modules/manifold.html#manifold"><em>Manifold learning</em></a>, <a class="reference internal" href="modules/mixture.html#dirichlet-process"><em>The Dirichlet Process</em></a>
 as well as several new algorithms and documentation improvements.</p>
 <p>This release also includes the dictionary-learning work developed by
 <a class="reference external" href="http://vene.ro">Vlad Niculae</a> as part of the <a class="reference external" href="http://code.google.com/soc/">Google Summer of Code</a> program.</p>
 <p><div style="text-align: center; margin: 0px 0 -5px 0;"> <a class="reference external" href="auto_examples/linear_model/plot_omp.html"><img alt="banner2" src="_images/plot_omp1.png" /></a> <a class="reference external" href="auto_examples/manifold/plot_compare_methods.html"><img alt="banner1" src="_images/plot_compare_methods1.png" /></a> <a class="reference external" href="auto_examples/decomposition/plot_kernel_pca.html"><img alt="banner3" src="_images/plot_kernel_pca1.png" /></a> </div></p>
-<div class="section" id="id3">
-<h2>Changelog<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>Changelog<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>New <a class="reference internal" href="modules/manifold.html#manifold"><em>Manifold learning</em></a> module by <a class="reference external" href="http://www.astro.washington.edu/users/vanderplas/">Jake Vanderplas</a> and
@@ -371,13 +390,13 @@ and <a class="reference external" href="http://www-sop.inria.fr/members/Alexandr
 <li>Distance helper functions <a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.pairwise_distances.html#sklearn.metrics.pairwise.pairwise_distances" title="sklearn.metrics.pairwise.pairwise_distances"><tt class="xref py py-func docutils literal"><span class="pre">metrics.pairwise.pairwise_distances</span></tt></a>
 and <a class="reference internal" href="modules/generated/sklearn.metrics.pairwise.pairwise_kernels.html#sklearn.metrics.pairwise.pairwise_kernels" title="sklearn.metrics.pairwise.pairwise_kernels"><tt class="xref py py-func docutils literal"><span class="pre">metrics.pairwise.pairwise_kernels</span></tt></a> by Robert Layton</li>
 <li><a class="reference internal" href="modules/generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans" title="sklearn.cluster.MiniBatchKMeans"><tt class="xref py py-class docutils literal"><span class="pre">Mini-Batch</span> <span class="pre">K-Means</span></tt></a> by Nelle Varoquaux and Peter Prettenhofer.</li>
-<li><a class="reference internal" href="datasets/mldata.html#mldata"><em>Downloading datasets from the mldata.org repository</em></a> utilities by Pietro Berkes.</li>
-<li><a class="reference internal" href="datasets/olivetti_faces.html#olivetti-faces"><em>The Olivetti faces dataset</em></a> by <a class="reference external" href="http://www-etud.iro.umontreal.ca/~wardefar/">David Warde-Farley</a>.</li>
+<li><a class="reference internal" href="datasets/index.html#mldata"><em>Downloading datasets from the mldata.org repository</em></a> utilities by Pietro Berkes.</li>
+<li><a class="reference internal" href="datasets/index.html#olivetti-faces"><em>The Olivetti faces dataset</em></a> by <a class="reference external" href="http://www-etud.iro.umontreal.ca/~wardefar/">David Warde-Farley</a>.</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id4">
-<h2>API changes summary<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>API changes summary<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>Here are the code migration instructions when updgrading from scikit-learn
 version 0.8:</p>
 <blockquote>
@@ -450,8 +469,8 @@ set the parameter <tt class="docutils literal"><span class="pre">sum_over_featur
 <p>Backward compatibilty package aliases and other deprecated classes and
 functions will be removed in version 0.11.</p>
 </div>
-<div class="section" id="id5">
-<h2>People<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>People<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>38 people contributed to this release.</p>
 <blockquote>
 <div><ul class="simple">
@@ -496,21 +515,21 @@ functions will be removed in version 0.11.</p>
 </div>
 </div>
 <div class="section" id="changes-0-8">
-<span id="id6"></span><h1>0.8<a class="headerlink" href="#changes-0-8" title="Permalink to this headline">¶</a></h1>
+<span id="id8"></span><h1>0.8<a class="headerlink" href="#changes-0-8" title="Permalink to this headline">¶</a></h1>
 <p>scikit-learn 0.8 was released on May 2011, one month after the first
 &#8220;international&#8221; <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/wiki/Upcoming-events">scikit-learn coding sprint</a> and is
 marked by the inclusion of important modules: <a class="reference internal" href="modules/clustering.html#hierarchical-clustering"><em>Hierarchical clustering</em></a>,
 <a class="reference internal" href="modules/pls.html#pls"><em>Partial Least Squares</em></a>, <a class="reference internal" href="modules/decomposition.html#nmf"><em>Non-negative matrix factorization (NMF or NNMF)</em></a>, initial support for Python 3 and by important
 enhacements and bug fixes.</p>
-<div class="section" id="id7">
-<h2>Changelog<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2>Changelog<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>Several new modules where introduced during this release:</p>
 <blockquote>
 <div><ul class="simple">
 <li>New <a class="reference internal" href="modules/clustering.html#hierarchical-clustering"><em>Hierarchical clustering</em></a> module by Vincent Michel,
 <a class="reference external" href="http://parietal.saclay.inria.fr/Members/bertrand-thirion">Bertrand Thirion</a>, <a class="reference external" href="http://www-sop.inria.fr/members/Alexandre.Gramfort/">Alexandre Gramfort</a> and <a class="reference external" href="http://gael-varoquaux.info">Gael Varoquaux</a>.</li>
 <li><a class="reference internal" href="modules/decomposition.html#kernel-pca"><em>Kernel PCA</em></a> implementation by <a class="reference external" href="http://www.mblondel.org/journal/">Mathieu Blondel</a></li>
-<li><a class="reference internal" href="datasets/labeled_faces.html#labeled-faces-in-the-wild"><em>The Labeled Faces in the Wild face recognition dataset</em></a> by <a class="reference external" href="http://twitter.com/ogrisel">Olivier Grisel</a>.</li>
+<li><a class="reference internal" href="datasets/index.html#labeled-faces-in-the-wild"><em>The Labeled Faces in the Wild face recognition dataset</em></a> by <a class="reference external" href="http://twitter.com/ogrisel">Olivier Grisel</a>.</li>
 <li>New <a class="reference internal" href="modules/pls.html#pls"><em>Partial Least Squares</em></a> module by <a class="reference external" href="http://www.lnao.fr/spip.php?rubrique30">Edouard Duchesnay</a>.</li>
 <li><a class="reference internal" href="modules/decomposition.html#nmf"><em>Non-negative matrix factorization (NMF or NNMF)</em></a> module <a class="reference external" href="http://vene.ro">Vlad Niculae</a></li>
 <li>Implementation of the <a class="reference internal" href="modules/covariance.html#oracle-approximating-shrinkage"><em>Oracle Approximating Shrinkage</em></a> algorithm by
@@ -540,8 +559,8 @@ added interface for sample weight by <a class="reference external" href="http://
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id8">
-<h2>People<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h2>People<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <p>People that made this release possible preceeded by number of commits:</p>
 <blockquote>
 <div><ul class="simple">
@@ -575,15 +594,15 @@ added interface for sample weight by <a class="reference external" href="http://
 </div>
 </div>
 <div class="section" id="changes-0-7">
-<span id="id9"></span><h1>0.7<a class="headerlink" href="#changes-0-7" title="Permalink to this headline">¶</a></h1>
+<span id="id11"></span><h1>0.7<a class="headerlink" href="#changes-0-7" title="Permalink to this headline">¶</a></h1>
 <p>scikit-learn 0.7 was released in March 2011, roughly three months
 after the 0.6 release. This release is marked by the speed
 improvements in existing algorithms like k-Nearest Neighbors and
 K-Means algorithm and by the inclusion of an efficient algorithm for
 computing the Ridge Generalized Cross Validation solution. Unlike the
 preceding release, no new modules where added to this release.</p>
-<div class="section" id="id10">
-<h2>Changelog<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h2>Changelog<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>Performance improvements for Gaussian Mixture Model sampling [Jan
@@ -600,7 +619,7 @@ high-dimensional spaces [<a class="reference external" href="http://fseoane.net/
 <li>Performance improvements for <a class="reference internal" href="modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="sklearn.cluster.KMeans"><tt class="xref py py-class docutils literal"><span class="pre">cluster.KMeans</span></tt></a> [<a class="reference external" href="http://gael-varoquaux.info">Gael
 Varoquaux</a> and <a class="reference external" href="http://www-etud.iro.umontreal.ca/~bergstrj/">James Bergstra</a>].</li>
 <li>Sanity checks for SVM-based classes [<a class="reference external" href="http://www.mblondel.org/journal/">Mathieu Blondel</a>].</li>
-<li>Refactoring of <a class="reference internal" href="modules/generated/sklearn.neighbors.NeighborsClassifier.html#sklearn.neighbors.NeighborsClassifier" title="sklearn.neighbors.NeighborsClassifier"><tt class="xref py py-class docutils literal"><span class="pre">neighbors.NeighborsClassifier</span></tt></a> and
+<li>Refactoring of <tt class="xref py py-class docutils literal"><span class="pre">neighbors.NeighborsClassifier</span></tt> and
 <a class="reference internal" href="modules/generated/sklearn.neighbors.kneighbors_graph.html#sklearn.neighbors.kneighbors_graph" title="sklearn.neighbors.kneighbors_graph"><tt class="xref py py-func docutils literal"><span class="pre">neighbors.kneighbors_graph</span></tt></a>: added different algorithms for
 the k-Nearest Neighbor Search and implemented a more stable
 algorithm for finding barycenter weigths. Also added some
@@ -625,8 +644,8 @@ dense and sparse variants, like <a class="reference internal" href="modules/gene
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id11">
-<h2>People<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h2>People<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <p>People that made this release possible preceeded by number of commits:</p>
 <blockquote>
 <div><ul class="simple">
@@ -652,13 +671,13 @@ dense and sparse variants, like <a class="reference internal" href="modules/gene
 </div>
 </div>
 <div class="section" id="changes-0-6">
-<span id="id12"></span><h1>0.6<a class="headerlink" href="#changes-0-6" title="Permalink to this headline">¶</a></h1>
+<span id="id14"></span><h1>0.6<a class="headerlink" href="#changes-0-6" title="Permalink to this headline">¶</a></h1>
 <p>scikit-learn 0.6 was released on december 2010. It is marked by the
 inclusion of several new modules and a general renaming of old
 ones. It is also marked by the inclusion of new example, including
 applications to real-world datasets.</p>
-<div class="section" id="id13">
-<h2>Changelog<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id15">
+<h2>Changelog<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
 <li>New <a class="reference external" href="http://scikit-learn.org/stable/modules/sgd.html">stochastic gradient</a> descent
@@ -702,8 +721,8 @@ model and the sgd module has been included in linear_model.</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id14">
-<h2>People<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id16">
+<h2>People<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
 <p>People that made this release possible preceeded by number of commits:</p>
 <blockquote>
 <div><ul class="simple">
@@ -725,9 +744,9 @@ model and the sgd module has been included in linear_model.</li>
 </div>
 </div>
 <div class="section" id="changes-0-5">
-<span id="id15"></span><h1>0.5<a class="headerlink" href="#changes-0-5" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id16">
-<h2>Changelog<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<span id="id17"></span><h1>0.5<a class="headerlink" href="#changes-0-5" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id18">
+<h2>Changelog<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="new-classes">
 <h3>New classes<a class="headerlink" href="#new-classes" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -842,10 +861,10 @@ number of commits:</p>
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="id17">
-<h1>0.4<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id18">
-<h2>Changelog<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id19">
+<h1>0.4<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id20">
+<h2>Changelog<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
 <p>Major changes in this release include:</p>
 <blockquote>
 <div><ul class="simple">
@@ -870,8 +889,8 @@ found.</li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="id19">
-<h2>Authors<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id21">
+<h2>Authors<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
 <p>The committer list for this release is the following (preceded by number
 of commits):</p>
 <blockquote>

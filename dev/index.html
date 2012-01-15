@@ -83,7 +83,7 @@
     <div class="sphinxsidebar">
     <h3>News</h3>
 
-    <p>scikit-learn 0.9 is available
+    <p>scikit-learn 0.10 is available
     for <a href="https://sourceforge.net/projects/scikit-learn/files/">download</a>.
     See <a href="whats_new.html">what's new</a> and tips
     on <a href="install.html">installing</a>.</p>
@@ -138,14 +138,35 @@ p {
 span.linkdescr a {
     color:  #3E4349 ;
 }
-</style><p><div style="text-align: center; margin: -7px 0 -13px 0;"> <a class="reference external" href="auto_examples/svm/plot_oneclass.html"><img alt="banner1" src="_images/plot_oneclass_1.png" style="height: 150px;" /></a> <a class="reference external" href="auto_examples/cluster/plot_ward_structured_vs_unstructured.html"><img alt="banner2" src="_images/plot_ward_structured_vs_unstructured_2.png" style="height: 150px;" /></a> <a class="reference external" href="auto_examples/gaussian_process/plot_gp_regression.html"><img alt="banner3" src="_images/plot_gp_regression_1.png" style="height: 150px;" /></a> <a class="reference external" href="auto_examples/cluster/plot_lena_ward_segmentation.html"><img alt="banner4" src="_images/plot_lena_ward_segmentation_1.png" style="height: 150px;" /></a> </div></p>
+</style><p><div style="text-align: center; margin: -7px 0 -10px 0;" id="banner"> <a class="reference external" href="auto_examples/svm/plot_oneclass.html"><img alt="banner1" src="_images/plot_oneclass_1.png" style="height: 140px;" /></a> <a class="reference external" href="auto_examples/cluster/plot_ward_structured_vs_unstructured.html"><img alt="banner2" src="_images/plot_ward_structured_vs_unstructured_2.png" style="height: 140px;" /></a> <a class="reference external" href="auto_examples/gaussian_process/plot_gp_regression.html"><img alt="banner3" src="_images/plot_gp_regression_1.png" style="height: 140px;" /></a> <a class="reference external" href="auto_examples/cluster/plot_lena_ward_segmentation.html"><img alt="banner4" src="_images/plot_lena_ward_segmentation_1.png" style="height: 140px;" /></a> <a class="reference external" href="auto_examples/svm/plot_svm_nonlinear.html"><img alt="banner5" src="_images/plot_svm_nonlinear_1.png" style="height: 140px;" /></a> <a class="reference external" href="auto_examples/applications/plot_species_distribution_modeling.html"><img alt="banner6" src="_images/plot_species_distribution_modeling_1.png" style="height: 140px;" /></a> <a class="reference external" href="auto_examples/gaussian_process/plot_gp_probabilistic_classification_after_regression.html"><img alt="banner7" src="_images/plot_gp_probabilistic_classification_after_regression_1.png" style="height: 140px;" /></a> <a class="reference external" href="auto_examples/ensemble/plot_forest_importances_faces.html"><img alt="banner8" src="_images/plot_forest_importances_faces_1.png" style="height: 140px;" /></a> <a class="reference external" href="auto_examples/svm/plot_weighted_samples.html"><img alt="banner9" src="_images/plot_weighted_samples_1.png" style="height: 140px;" /></a> <a class="reference external" href="auto_examples/linear_model/plot_sgd_weighted_samples.html"><img alt="banner10" src="_images/plot_sgd_weighted_samples_1.png" style="height: 140px;" /></a> <a class="reference external" href="auto_examples/cluster/plot_kmeans_digits.html"><img alt="banner11" src="_images/plot_kmeans_digits_1.png" style="height: 140px;" /></a> <a class="reference external" href="auto_examples/decomposition/plot_faces_decomposition.html"><img alt="banner12" src="_images/plot_faces_decomposition_2.png" style="height: 140px;" /></a> <a class="reference external" href="auto_examples/decomposition/plot_faces_decomposition.html"><img alt="banner13" src="_images/plot_faces_decomposition_3.png" style="height: 140px;" /></a> <a class="reference external" href="auto_examples/plot_lda_vs_qda.html"><img alt="banner14" src="_images/plot_lda_vs_qda_1.png" style="height: 140px;" /></a> </div>
+
+<SCRIPT>
+// Function to select 4 imgs in random order from a div
+function shuffle(e) {       // pass the divs to the function
+  var replace = $('<div>');
+  var size = 4;
+  var num_choices = e.size();
+
+  while (size >= 1) {
+    var rand = Math.floor(Math.random() * num_choices);
+    var temp = e.get(rand);      // grab a random div from our set
+    replace.append(temp);        // add the selected div to our new set
+    e = e.not(temp); // remove our selected div from the main set
+    size--;
+    num_choices--;
+  }
+  $('#banner').html(replace.html() ); // update our container div
+                                      // with the new, randomized divs
+}
+shuffle ($('#banner a.external'));
+</SCRIPT></p>
 <div class="topic">
 <p class="topic-title first">Easy-to-use and general-purpose machine learning in Python</p>
 <p><tt class="docutils literal"><span class="pre">scikit-learn</span></tt> is a Python module integrating classic machine
-learning algorithms in the tightly-knit world of scientific Python
-packages (<a class="reference external" href="http://numpy.scipy.org">numpy</a>, <a class="reference external" href="http://www.scipy.org">scipy</a>, <a class="reference external" href="http://matplotlib.sourceforge.net/">matplotlib</a>).
+learning algorithms in the tightly-knit scientific Python
+world (<a class="reference external" href="http://numpy.scipy.org">numpy</a>, <a class="reference external" href="http://www.scipy.org">scipy</a>, <a class="reference external" href="http://matplotlib.sourceforge.net/">matplotlib</a>).
 It aims to provide simple and efficient solutions to learning
-problems that are accessible to everybody and reusable in various
+problems, accessible to everybody and reusable in various
 contexts: <strong>machine-learning as a versatile tool for science and
 engineering</strong>.</p>
 </div>

@@ -369,6 +369,10 @@ to <tt class="docutils literal"><span class="pre">n</span></tt>.  Used in <tt cl
 <li><tt class="xref py py-class docutils literal"><span class="pre">arraybuilder.ArrayBuilder</span></tt>: Helper class to incrementally build
 a 1-d numpy.ndarray.  Currently used in
 <tt class="docutils literal"><span class="pre">sklearn.datasets._svmlight_format.pyx</span></tt>.</li>
+<li><tt class="xref py py-func docutils literal"><span class="pre">safe_mask</span></tt>: Helper function to convert a mask to the format expected
+by the numpy array or scipy sparse matrix on which to use it (sparse
+matrices support integer indices only while numpy arrays support both
+boolean masks and integer indices).</li>
 </ul>
 </div>
 <div class="section" id="warnings-and-exceptions">

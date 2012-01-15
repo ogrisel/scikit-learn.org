@@ -27,12 +27,12 @@ the clusters form a nice parcellation of the swiss roll.
 
     *
 
-      .. image:: images/plot_ward_structured_vs_unstructured_1.png
+      .. image:: images/plot_ward_structured_vs_unstructured_2.png
             :scale: 50
 
     *
 
-      .. image:: images/plot_ward_structured_vs_unstructured_2.png
+      .. image:: images/plot_ward_structured_vs_unstructured_1.png
             :scale: 50
 
 

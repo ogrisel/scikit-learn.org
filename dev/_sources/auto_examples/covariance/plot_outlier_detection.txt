@@ -34,17 +34,17 @@ fraction.
 
     *
 
-      .. image:: images/plot_outlier_detection_1.png
-            :scale: 50
-
-    *
-
       .. image:: images/plot_outlier_detection_2.png
             :scale: 50
 
     *
 
       .. image:: images/plot_outlier_detection_3.png
+            :scale: 50
+
+    *
+
+      .. image:: images/plot_outlier_detection_1.png
             :scale: 50
 
 

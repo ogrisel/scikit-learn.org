@@ -25,17 +25,17 @@ marginal log-likelihood of the observations.
 
     *
 
-      .. image:: images/plot_bayesian_ridge_1.png
-            :scale: 50
-
-    *
-
       .. image:: images/plot_bayesian_ridge_2.png
             :scale: 50
 
     *
 
       .. image:: images/plot_bayesian_ridge_3.png
+            :scale: 50
+
+    *
+
+      .. image:: images/plot_bayesian_ridge_1.png
             :scale: 50
 
 

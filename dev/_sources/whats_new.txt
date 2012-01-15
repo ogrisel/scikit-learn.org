@@ -2,6 +2,18 @@
 
 .. _changes_0_10:
 
+0.11
+====
+
+API changes summary
+-------------------
+
+   - `NeighborsClassifier` and `NeighborsRegressor` are gone in the module
+     :ref:`neighbors`. Use the classes :class:`KNeighborsClassifier`,
+     :class:`RadiusNeighborsClassifier`, :class:`KNeighborsRegressor`
+     and/or :class:`RadiusNeighborsRegressor` instead.
+
+
 0.10
 ====
 
@@ -49,7 +61,7 @@ Changelog
    - :ref:`outlier_detection`: outlier and novelty detection, by
      `Virgile Fritsch`_.
 
-   - :ref:`kernel_approximation`: a transform implement kernel
+   - :ref:`kernel_approximation`: a transform implementing kernel
      approximation for fast SGD on non-linear kernels by
      `Andreas Müller`_.
 
@@ -85,6 +97,8 @@ Changelog
 
    - :class:`sklearn.cross_validation.ShuffleSplit` can subsample the train
      sets as well as the test sets by `Olivier Grisel`_.
+
+   - Errors in the build of the documentation fixed by `Andreas Müller`_.
 
 
 API changes summary
@@ -147,7 +161,7 @@ version 0.9:
 People
 ------
 
-The folling people contributed to scikit-learn since last release:
+The following people contributed to scikit-learn since last release:
 
    * 246  `Andreas Müller`_
    * 242  `Olivier Grisel`_

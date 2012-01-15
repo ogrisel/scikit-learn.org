@@ -483,11 +483,17 @@ features some artificial data generators.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston" title="sklearn.datasets.load_boston"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_boston</span></tt></a>()</td>
-<td>Load and return the boston house-prices dataset (regression).</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.load_20newsgroups.html#sklearn.datasets.load_20newsgroups" title="sklearn.datasets.load_20newsgroups"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_20newsgroups</span></tt></a>(*args,&nbsp;**kwargs)</td>
+<td>DEPRECATED: Use fetch_20newsgroups instead with download_if_missing=False</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.load_files.html#sklearn.datasets.load_files" title="sklearn.datasets.load_files"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_files</span></tt></a>(container_path[,&nbsp;...])</td>
-<td>Load text files with categories as subfolder names.</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.fetch_20newsgroups.html#sklearn.datasets.fetch_20newsgroups" title="sklearn.datasets.fetch_20newsgroups"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.fetch_20newsgroups</span></tt></a>([data_home,&nbsp;...])</td>
+<td>Load the filenames of the 20 newsgroups dataset.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.fetch_20newsgroups_vectorized.html#sklearn.datasets.fetch_20newsgroups_vectorized" title="sklearn.datasets.fetch_20newsgroups_vectorized"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.fetch_20newsgroups_vectorized</span></tt></a>([...])</td>
+<td>Load the 20 newsgroups dataset and transform it into tf-idf vectors.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston" title="sklearn.datasets.load_boston"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_boston</span></tt></a>()</td>
+<td>Load and return the boston house-prices dataset (regression).</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.load_diabetes.html#sklearn.datasets.load_diabetes" title="sklearn.datasets.load_diabetes"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_diabetes</span></tt></a>()</td>
 <td>Load and return the diabetes dataset (regression).</td>
@@ -495,11 +501,11 @@ features some artificial data generators.</p>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.load_digits.html#sklearn.datasets.load_digits" title="sklearn.datasets.load_digits"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_digits</span></tt></a>([n_class])</td>
 <td>Load and return the digits dataset (classification).</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="sklearn.datasets.load_iris"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_iris</span></tt></a>()</td>
-<td>Load and return the iris dataset (classification).</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.load_files.html#sklearn.datasets.load_files" title="sklearn.datasets.load_files"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_files</span></tt></a>(container_path[,&nbsp;...])</td>
+<td>Load text files with categories as subfolder names.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.load_linnerud.html#sklearn.datasets.load_linnerud" title="sklearn.datasets.load_linnerud"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_linnerud</span></tt></a>()</td>
-<td>Load and return the linnerud dataset (multivariate regression).</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="sklearn.datasets.load_iris"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_iris</span></tt></a>()</td>
+<td>Load and return the iris dataset (classification).</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.load_lfw_pairs.html#sklearn.datasets.load_lfw_pairs" title="sklearn.datasets.load_lfw_pairs"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_lfw_pairs</span></tt></a>([download_if_missing])</td>
 <td>Alias for fetch_lfw_pairs(download_if_missing=False)</td>
@@ -513,17 +519,17 @@ features some artificial data generators.</p>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.fetch_lfw_people.html#sklearn.datasets.fetch_lfw_people" title="sklearn.datasets.fetch_lfw_people"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.fetch_lfw_people</span></tt></a>([data_home,&nbsp;...])</td>
 <td>Loader for the Labeled Faces in the Wild (LFW) people dataset</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.load_20newsgroups.html#sklearn.datasets.load_20newsgroups" title="sklearn.datasets.load_20newsgroups"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_20newsgroups</span></tt></a>(*args,&nbsp;**kwargs)</td>
-<td>DEPRECATED: Use fetch_20newsgroups instead with download_if_missing=False</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.fetch_20newsgroups.html#sklearn.datasets.fetch_20newsgroups" title="sklearn.datasets.fetch_20newsgroups"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.fetch_20newsgroups</span></tt></a>([data_home,&nbsp;...])</td>
-<td>Load the filenames of the 20 newsgroups dataset.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.fetch_20newsgroups_vectorized.html#sklearn.datasets.fetch_20newsgroups_vectorized" title="sklearn.datasets.fetch_20newsgroups_vectorized"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.fetch_20newsgroups_vectorized</span></tt></a>([...])</td>
-<td>Load the 20 newsgroups dataset and transform it into tf-idf vectors</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.load_linnerud.html#sklearn.datasets.load_linnerud" title="sklearn.datasets.load_linnerud"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_linnerud</span></tt></a>()</td>
+<td>Load and return the linnerud dataset (multivariate regression).</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.fetch_olivetti_faces.html#sklearn.datasets.fetch_olivetti_faces" title="sklearn.datasets.fetch_olivetti_faces"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.fetch_olivetti_faces</span></tt></a>([data_home,&nbsp;...])</td>
 <td>Loader for the Olivetti faces data-set from AT&amp;T.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.load_sample_image.html#sklearn.datasets.load_sample_image" title="sklearn.datasets.load_sample_image"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_sample_image</span></tt></a>(image_name)</td>
+<td>Load the numpy array of a single sample image</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.load_sample_images.html#sklearn.datasets.load_sample_images" title="sklearn.datasets.load_sample_images"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.load_sample_images</span></tt></a>()</td>
+<td>Load sample images for image manipulation.</td>
 </tr>
 </tbody>
 </table>
@@ -536,17 +542,11 @@ features some artificial data generators.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_classification</span></tt></a>([n_samples,&nbsp;...])</td>
-<td>Generate a random n-class classification problem.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.make_multilabel_classification.html#sklearn.datasets.make_multilabel_classification" title="sklearn.datasets.make_multilabel_classification"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_multilabel_classification</span></tt></a>([...])</td>
-<td>Generate a random multilabel classification problem.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.make_regression.html#sklearn.datasets.make_regression" title="sklearn.datasets.make_regression"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_regression</span></tt></a>([n_samples,&nbsp;...])</td>
-<td>Generate a random regression problem.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.make_blobs.html#sklearn.datasets.make_blobs" title="sklearn.datasets.make_blobs"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_blobs</span></tt></a>([n_samples,&nbsp;n_features,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.make_blobs.html#sklearn.datasets.make_blobs" title="sklearn.datasets.make_blobs"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_blobs</span></tt></a>([n_samples,&nbsp;n_features,&nbsp;...])</td>
 <td>Generate isotropic Gaussian blobs for clustering.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_classification</span></tt></a>([n_samples,&nbsp;...])</td>
+<td>Generate a random n-class classification problem.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" title="sklearn.datasets.make_friedman1"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_friedman1</span></tt></a>([n_samples,&nbsp;...])</td>
 <td>Generate the &#8220;Friedman #1&#8221; regression problem</td>
@@ -560,8 +560,20 @@ features some artificial data generators.</p>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.make_low_rank_matrix.html#sklearn.datasets.make_low_rank_matrix" title="sklearn.datasets.make_low_rank_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_low_rank_matrix</span></tt></a>([n_samples,&nbsp;...])</td>
 <td>Generate a mostly low rank matrix with bell-shaped singular values</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.make_sparse_coded_signal.html#sklearn.datasets.make_sparse_coded_signal" title="sklearn.datasets.make_sparse_coded_signal"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_sparse_coded_signal</span></tt></a>(n_samples,&nbsp;...)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.make_multilabel_classification.html#sklearn.datasets.make_multilabel_classification" title="sklearn.datasets.make_multilabel_classification"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_multilabel_classification</span></tt></a>([...])</td>
+<td>Generate a random multilabel classification problem.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.make_regression.html#sklearn.datasets.make_regression" title="sklearn.datasets.make_regression"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_regression</span></tt></a>([n_samples,&nbsp;...])</td>
+<td>Generate a random regression problem.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.make_s_curve.html#sklearn.datasets.make_s_curve" title="sklearn.datasets.make_s_curve"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_s_curve</span></tt></a>([n_samples,&nbsp;noise,&nbsp;...])</td>
+<td>Generate an S curve dataset.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.make_sparse_coded_signal.html#sklearn.datasets.make_sparse_coded_signal" title="sklearn.datasets.make_sparse_coded_signal"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_sparse_coded_signal</span></tt></a>(n_samples,&nbsp;...)</td>
 <td>Generate a signal as a sparse combination of dictionary elements.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.make_sparse_spd_matrix.html#sklearn.datasets.make_sparse_spd_matrix" title="sklearn.datasets.make_sparse_spd_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_sparse_spd_matrix</span></tt></a>([dim,&nbsp;...])</td>
+<td>Generate a sparse symetric definite positive matrix.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.make_sparse_uncorrelated.html#sklearn.datasets.make_sparse_uncorrelated" title="sklearn.datasets.make_sparse_uncorrelated"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_sparse_uncorrelated</span></tt></a>([...])</td>
 <td>Generate a random regression problem with sparse uncorrelated design</td>
@@ -569,14 +581,8 @@ features some artificial data generators.</p>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.make_spd_matrix.html#sklearn.datasets.make_spd_matrix" title="sklearn.datasets.make_spd_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_spd_matrix</span></tt></a>(n_dim[,&nbsp;random_state])</td>
 <td>Generate a random symmetric, positive-definite matrix.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.make_sparse_spd_matrix.html#sklearn.datasets.make_sparse_spd_matrix" title="sklearn.datasets.make_sparse_spd_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_sparse_spd_matrix</span></tt></a>([dim,&nbsp;...])</td>
-<td>Generate a sparse symetric definite positive matrix.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.make_swiss_roll.html#sklearn.datasets.make_swiss_roll" title="sklearn.datasets.make_swiss_roll"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_swiss_roll</span></tt></a>([n_samples,&nbsp;noise,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.make_swiss_roll.html#sklearn.datasets.make_swiss_roll" title="sklearn.datasets.make_swiss_roll"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_swiss_roll</span></tt></a>([n_samples,&nbsp;noise,&nbsp;...])</td>
 <td>Generate a swiss roll dataset.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.datasets.make_s_curve.html#sklearn.datasets.make_s_curve" title="sklearn.datasets.make_s_curve"><tt class="xref py py-obj docutils literal"><span class="pre">datasets.make_s_curve</span></tt></a>([n_samples,&nbsp;noise,&nbsp;...])</td>
-<td>Generate an S curve dataset.</td>
 </tr>
 </tbody>
 </table>
@@ -1397,17 +1403,11 @@ algorithm.</p>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.neighbors.RadiusNeighborsClassifier.html#sklearn.neighbors.RadiusNeighborsClassifier" title="sklearn.neighbors.RadiusNeighborsClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.RadiusNeighborsClassifier</span></tt></a>([...])</td>
 <td>Classifier implementing a vote among neighbors within a given radius</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.neighbors.NeighborsClassifier.html#sklearn.neighbors.NeighborsClassifier" title="sklearn.neighbors.NeighborsClassifier"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.NeighborsClassifier</span></tt></a>(*args,&nbsp;**kwargs)</td>
-<td>Classifier implementing the nearest neighbors vote.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.neighbors.KNeighborsRegressor.html#sklearn.neighbors.KNeighborsRegressor" title="sklearn.neighbors.KNeighborsRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.KNeighborsRegressor</span></tt></a>([n_neighbors,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.neighbors.KNeighborsRegressor.html#sklearn.neighbors.KNeighborsRegressor" title="sklearn.neighbors.KNeighborsRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.KNeighborsRegressor</span></tt></a>([n_neighbors,&nbsp;...])</td>
 <td>Regression based on k-nearest neighbors.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sklearn.neighbors.RadiusNeighborsRegressor.html#sklearn.neighbors.RadiusNeighborsRegressor" title="sklearn.neighbors.RadiusNeighborsRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.RadiusNeighborsRegressor</span></tt></a>([radius,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.neighbors.RadiusNeighborsRegressor.html#sklearn.neighbors.RadiusNeighborsRegressor" title="sklearn.neighbors.RadiusNeighborsRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.RadiusNeighborsRegressor</span></tt></a>([radius,&nbsp;...])</td>
 <td>Regression based on neighbors within a fixed radius.</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.neighbors.NeighborsRegressor.html#sklearn.neighbors.NeighborsRegressor" title="sklearn.neighbors.NeighborsRegressor"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.NeighborsRegressor</span></tt></a>(*args,&nbsp;**kwargs)</td>
-<td>Regression based on nearest neighbors.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree" title="sklearn.neighbors.BallTree"><tt class="xref py py-obj docutils literal"><span class="pre">neighbors.BallTree</span></tt></a></td>
 <td>Ball Tree for fast nearest-neighbor searches :</td>

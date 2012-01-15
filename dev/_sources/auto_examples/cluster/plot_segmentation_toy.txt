@@ -35,22 +35,22 @@ separating the objects one from the other, and not from the background.
 
     *
 
-      .. image:: images/plot_segmentation_toy_1.png
-            :scale: 50
-
-    *
-
-      .. image:: images/plot_segmentation_toy_2.png
-            :scale: 50
-
-    *
-
       .. image:: images/plot_segmentation_toy_3.png
             :scale: 50
 
     *
 
       .. image:: images/plot_segmentation_toy_4.png
+            :scale: 50
+
+    *
+
+      .. image:: images/plot_segmentation_toy_1.png
+            :scale: 50
+
+    *
+
+      .. image:: images/plot_segmentation_toy_2.png
             :scale: 50
 
 

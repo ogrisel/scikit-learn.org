@@ -47,22 +47,6 @@ References
 
 **Script output**::
 
-  Downloading species data from http://www.cs.princeton.edu/~schapire/maxent/datasets/samples.zip to /home/ogrisel/scikit_learn_data
-  Downloading coverage data from http://www.cs.princeton.edu/~schapire/maxent/datasets/coverages.zip to /home/ogrisel/scikit_learn_data
-   - converting coverages/cld6190_ann.asc
-   - converting coverages/dtr6190_ann.asc
-   - converting coverages/ecoreg.asc
-   - converting coverages/frs6190_ann.asc
-   - converting coverages/h_dem.asc
-   - converting coverages/pre6190_ann.asc
-   - converting coverages/pre6190_l1.asc
-   - converting coverages/pre6190_l10.asc
-   - converting coverages/pre6190_l4.asc
-   - converting coverages/pre6190_l7.asc
-   - converting coverages/tmn6190_ann.asc
-   - converting coverages/tmp6190_ann.asc
-   - converting coverages/tmx6190_ann.asc
-   - converting coverages/vap6190_ann.asc
   ________________________________________________________________________________
   Modeling distribution of species 'bradypus variegatus'
    - fit OneClassSVM ...  done. 
@@ -78,7 +62,7 @@ References
   
    Area under the ROC curve : 0.993920
   
-  time elapsed: 41.01s
+  time elapsed: 10.97s
 
 
 

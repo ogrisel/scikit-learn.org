@@ -314,7 +314,10 @@ as GridSearchCV except that it defaults to Generalized Cross-Validation
 It is useful in some contexts due to its tendency to prefer solutions
 with fewer parameter values, effectively reducing the number of variables
 upon which the given solution is dependent. For this reason, the Lasso
-and its variants are fundamental to the field of compressed sensing.</p>
+and its variants are fundamental to the field of compressed sensing.
+Under certain conditions, it can recover the exact set of non-zero
+weights (see
+<a class="reference internal" href="../auto_examples/applications/plot_tomography_l1_reconstruction.html#example-applications-plot-tomography-l1-reconstruction-py"><em>Compressive sensing: tomography reconstruction with L1 prior (Lasso)</em></a>).</p>
 <p>Mathematically, it consists of a linear model trained with <img class="math" src="../_images/math/3ff9d2add1273f7f294d4f0318b0ed4340c07768.png" alt="\ell_1"/> prior
 as regularizer. The objective function to minimize is:</p>
 <div class="math">
@@ -340,6 +343,7 @@ computes the coefficients along the full path of possible values.</p>
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
 <li><a class="reference internal" href="../auto_examples/linear_model/lasso_and_elasticnet.html#example-linear-model-lasso-and-elasticnet-py"><em>Lasso regression example</em></a></li>
+<li><a class="reference internal" href="../auto_examples/applications/plot_tomography_l1_reconstruction.html#example-applications-plot-tomography-l1-reconstruction-py"><em>Compressive sensing: tomography reconstruction with L1 prior (Lasso)</em></a></li>
 </ul>
 </div>
 <div class="section" id="setting-regularization-parameter">

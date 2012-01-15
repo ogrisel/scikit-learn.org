@@ -38,7 +38,12 @@ necessarily related to visualisation.
 
     *
 
-      .. image:: images/plot_image_denoising_1.png
+      .. image:: images/plot_image_denoising_4.png
+            :scale: 50
+
+    *
+
+      .. image:: images/plot_image_denoising_5.png
             :scale: 50
 
     *
@@ -48,17 +53,12 @@ necessarily related to visualisation.
 
     *
 
+      .. image:: images/plot_image_denoising_1.png
+            :scale: 50
+
+    *
+
       .. image:: images/plot_image_denoising_3.png
-            :scale: 50
-
-    *
-
-      .. image:: images/plot_image_denoising_4.png
-            :scale: 50
-
-    *
-
-      .. image:: images/plot_image_denoising_5.png
             :scale: 50
 
     *
