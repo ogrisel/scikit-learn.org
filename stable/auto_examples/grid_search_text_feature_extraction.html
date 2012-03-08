@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sample pipeline for text feature extraction and evaluation &mdash; scikit-learn 0.9 documentation</title>
+    <title>Sample pipeline for text feature extraction and evaluation &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
+    <link rel="up" title="Examples" href="index.html" />
+    <link rel="next" title="Classification of text documents: using a MLComp dataset" href="mlcomp_sparse_document_classification.html" />
+    <link rel="prev" title="Parameter estimation using grid search with a nested cross-validation" href="grid_search_digits.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="grid_search_digits.html" title="Parameter estimation using grid search with a nested cross-validation"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Parameter estima...
+	    </span>
+	    <span class="hiddenrellink">
+	    Parameter estimation using grid search with a nested cross-validation
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="mlcomp_sparse_document_classification.html" title="Classification of text documents: using a MLComp dataset"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Classification o...
+	    </span>
+	    <span class="hiddenrellink">
+	    Classification of text documents: using a MLComp dataset
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Sample pipeline for text feature extraction and evaluation</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -172,7 +215,7 @@ Best parameters set:
                     <span class="n">format</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(asctime)s</span><span class="s"> </span><span class="si">%(levelname)s</span><span class="s"> </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">)</span>
 
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># Load some categories from the training set</span>
 <span class="n">categories</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s">&#39;alt.atheism&#39;</span><span class="p">,</span>
@@ -189,7 +232,7 @@ Best parameters set:
 <span class="k">print</span> <span class="s">&quot;</span><span class="si">%d</span><span class="s"> categories&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
 <span class="k">print</span>
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># define a pipeline combining a text feature extractor with a simple</span>
 <span class="c"># classifier</span>
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
@@ -203,7 +246,7 @@ Best parameters set:
 <span class="c"># increase processing time in a combinatorial way</span>
     <span class="s">&#39;vect__max_df&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
 <span class="c">#    &#39;vect__max_features&#39;: (None, 5000, 10000, 50000),</span>
-    <span class="s">&#39;vect__analyzer__max_n&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="c"># words or bigrams</span>
+    <span class="s">&#39;vect__analyzer__max_n&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>  <span class="c"># words or bigrams</span>
 <span class="c">#    &#39;tfidf__use_idf&#39;: (True, False),</span>
 <span class="c">#    &#39;tfidf__norm&#39;: (&#39;l1&#39;, &#39;l2&#39;),</span>
     <span class="s">&#39;clf__alpha&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.00001</span><span class="p">,</span> <span class="mf">0.000001</span><span class="p">),</span>
@@ -215,16 +258,12 @@ Best parameters set:
 <span class="c"># classifier</span>
 <span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="c"># cross-validation doesn&#39;t work if the length of the data is not known,</span>
-<span class="c"># hence use lists instead of iterators</span>
-<span class="n">text_docs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">filenames</span><span class="p">]</span>
-
 <span class="k">print</span> <span class="s">&quot;Performing grid search...&quot;</span>
 <span class="k">print</span> <span class="s">&quot;pipeline:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">steps</span><span class="p">]</span>
 <span class="k">print</span> <span class="s">&quot;parameters:&quot;</span>
 <span class="n">pprint</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">text_docs</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
 <span class="k">print</span>
 
@@ -246,8 +285,6 @@ Best parameters set:
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

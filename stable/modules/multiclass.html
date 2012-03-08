@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.8. Multiclass algorithms &mdash; scikit-learn 0.9 documentation</title>
+    <title>3.10. Multiclass and multilabel algorithms &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
     <link rel="up" title="3. Supervised learning" href="../supervised_learning.html" />
-    <link rel="next" title="3.9. Feature selection" href="feature_selection.html" />
-    <link rel="prev" title="3.7. Naive Bayes" href="naive_bayes.html" />
+    <link rel="next" title="3.11. Feature selection" href="feature_selection.html" />
+    <link rel="prev" title="3.9. Ensemble methods" href="ensemble.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="../auto_examples/index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,47 +77,86 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="naive_bayes.html" title="3.7. Naive Bayes"
-             accesskey="P">previous</a> |
-          <a href="feature_selection.html" title="3.9. Feature selection"
-             accesskey="N">next</a> |
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">3.8. Multiclass algorithms</a><ul>
-<li><a class="reference internal" href="#one-vs-the-rest">3.8.1. One-Vs-The-Rest</a></li>
-<li><a class="reference internal" href="#one-vs-one">3.8.2. One-Vs-One</a></li>
-<li><a class="reference internal" href="#error-correcting-output-codes">3.8.3. Error-Correcting Output-Codes</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="ensemble.html" title="3.9. Ensemble methods"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    3.9. Ensemble me...
+	    </span>
+	    <span class="hiddenrellink">
+	    3.9. Ensemble methods
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="feature_selection.html" title="3.11. Feature selection"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    3.11. Feature se...
+	    </span>
+	    <span class="hiddenrellink">
+	    3.11. Feature selection
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../supervised_learning.html" title="3. Supervised learning" >
+	Up
+	<br>
+	<span class="smallrellink">
+	3. Supervised le...
+	</span>
+	<span class="hiddenrellink">
+	3. Supervised learning
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">3.10. Multiclass and multilabel algorithms</a><ul>
+<li><a class="reference internal" href="#one-vs-the-rest">3.10.1. One-Vs-The-Rest</a><ul>
+<li><a class="reference internal" href="#multilabel-learning-with-ovr">3.10.1.1. Multilabel learning with OvR</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#one-vs-one">3.10.2. One-Vs-One</a></li>
+<li><a class="reference internal" href="#error-correcting-output-codes">3.10.3. Error-Correcting Output-Codes</a></li>
 </ul>
 </li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -125,10 +164,10 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="multiclass-algorithms">
-<span id="multiclass"></span><h1>3.8. Multiclass algorithms<a class="headerlink" href="#multiclass-algorithms" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="multiclass-and-multilabel-algorithms">
+<span id="multiclass"></span><h1>3.10. Multiclass and multilabel algorithms<a class="headerlink" href="#multiclass-and-multilabel-algorithms" title="Permalink to this headline">¶</a></h1>
 <dl class="docutils">
-<dt>This module implements multiclass learning algorithms:</dt>
+<dt>This module implements multiclass and multilabel learning algorithms:</dt>
 <dd><ul class="first last simple">
 <li>one-vs-the-rest / one-vs-all</li>
 <li>one-vs-one</li>
@@ -136,6 +175,11 @@
 </ul>
 </dd>
 </dl>
+<p>Multiclass classification means classification with more than two classes.
+Multilabel classification is a different task, where a classifier is used to
+predict a set of target labels for each instance; i.e., the set of target
+classes is not assumed to be disjoint as in ordinary (binary or multiclass)
+classification. This is also called any-of classification.</p>
 <p>The estimators provided in this module are meta-estimators: they require a base
 estimator to be provided in their constructor. For example, it is possible to
 use these estimators to turn a binary classifier or a regressor into a
@@ -149,13 +193,19 @@ different multiclass strategies: all classifiers in scikit-learn support
 multiclass classification out-of-the-box. Below is a summary of the
 classifiers supported in scikit-learn grouped by the strategy used.</p>
 <ul class="last simple">
-<li>Inherently multiclass: Naive Bayes, LDA.</li>
-<li>One-Vs-One: SVC.</li>
-<li>One-Vs-All: LinearSVC, LogisticRegression, SGDClassifier, RidgeClassifier.</li>
+<li>Inherently multiclass: Naive Bayes, <tt class="xref py py-class docutils literal"><span class="pre">LDA</span></tt>.</li>
+<li>One-Vs-One: <tt class="xref py py-class docutils literal"><span class="pre">SVC</span></tt>.</li>
+<li>One-Vs-All: <tt class="xref py py-class docutils literal"><span class="pre">LinearSVC</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">LogisticRegression</span></tt>,
+<tt class="xref py py-class docutils literal"><span class="pre">SGDClassifier</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">RidgeClassifier</span></tt>.</li>
 </ul>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">At the moment there are no evaluation metrics implemented for multilabel
+learnings.</p>
+</div>
 <div class="section" id="one-vs-the-rest">
-<h2>3.8.1. One-Vs-The-Rest<a class="headerlink" href="#one-vs-the-rest" title="Permalink to this headline">¶</a></h2>
+<h2>3.10.1. One-Vs-The-Rest<a class="headerlink" href="#one-vs-the-rest" title="Permalink to this headline">¶</a></h2>
 <p>Also known as <strong>one-vs-all</strong>, this strategy consists in fitting one classifier
 per class. For each classifier, the class is fitted against all the other
 classes. In addition to its computational efficiency (only <cite>n_classes</cite>
@@ -179,9 +229,24 @@ fair default choice. Below is an example:</p>
 <span class="go">       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])</span>
 </pre></div>
 </div>
+<div class="section" id="multilabel-learning-with-ovr">
+<h3>3.10.1.1. Multilabel learning with OvR<a class="headerlink" href="#multilabel-learning-with-ovr" title="Permalink to this headline">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">OneVsRestClassifier</span></tt> also supports multilabel classification.
+To use this feature, feed the classifier a list of tuples containing
+target labels, like in the example below.</p>
+<div class="figure align-center">
+<a class="reference external image-reference" href="../auto_examples/plot_multilabel.html"><img alt="../_images/plot_multilabel_11.png" src="../_images/plot_multilabel_11.png" style="width: 600.0px; height: 450.0px;" /></a>
+</div>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/plot_multilabel.html#example-plot-multilabel-py"><em>Multilabel classification</em></a></li>
+</ul>
+</div>
+</div>
 </div>
 <div class="section" id="one-vs-one">
-<h2>3.8.2. One-Vs-One<a class="headerlink" href="#one-vs-one" title="Permalink to this headline">¶</a></h2>
+<h2>3.10.2. One-Vs-One<a class="headerlink" href="#one-vs-one" title="Permalink to this headline">¶</a></h2>
 <p>This strategy consists in fitting one classifier per class pair.
 At prediction time, the class which received the most votes is selected.
 Since it requires to fit <cite>n_classes * (n_classes - 1) / 2</cite> classifiers,
@@ -208,7 +273,7 @@ dataset is used <cite>n_classes</cite> times. Below is an example:</p>
 </div>
 </div>
 <div class="section" id="error-correcting-output-codes">
-<h2>3.8.3. Error-Correcting Output-Codes<a class="headerlink" href="#error-correcting-output-codes" title="Permalink to this headline">¶</a></h2>
+<h2>3.10.3. Error-Correcting Output-Codes<a class="headerlink" href="#error-correcting-output-codes" title="Permalink to this headline">¶</a></h2>
 <p>Output-code based strategies are fairly different from one-vs-the-rest and
 one-vs-one. With these strategies, each class is represented in a euclidean
 space, where each dimension can only be 0 or 1. Another way to put it is
@@ -292,8 +357,6 @@ Journal of Computational and Graphical statistics 7,
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

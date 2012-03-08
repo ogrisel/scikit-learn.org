@@ -1,0 +1,18 @@
+
+
+.. _example_tutorial_plot_iris_dataset.py:
+
+
+
+
+.. image:: images/plot_iris_dataset_1.png
+    :align: center
+
+
+
+
+**Python source code:** :download:`plot_iris_dataset.py <plot_iris_dataset.py>`
+
+.. literalinclude:: plot_iris_dataset.py
+    :lines: 2-
+    

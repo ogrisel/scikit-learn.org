@@ -1,0 +1,29 @@
+
+
+.. _example_tutorial_plot_ridge_variance.py:
+
+
+=========================================================
+Ridge Regression Variance Example
+=========================================================
+Ridge regression is basically minimizing a penalised version
+of the least-squared function. The penalising `shrinks` the
+value of the regression coefficients.
+Despite the few data points in each dimension, the slope
+of the prediction is much more stable and the variance
+in the line itself is greatly reduced, in comparison to that
+of the standard linear regression
+
+
+
+.. image:: images/plot_ridge_variance_1.png
+    :align: center
+
+
+
+
+**Python source code:** :download:`plot_ridge_variance.py <plot_ridge_variance.py>`
+
+.. literalinclude:: plot_ridge_variance.py
+    :lines: 16-
+    

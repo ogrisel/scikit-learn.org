@@ -1,0 +1,24 @@
+
+
+.. _example_tutorial_plot_sdss_photoz.py:
+
+
+
+
+.. image:: images/plot_sdss_photoz_1.png
+    :align: center
+
+
+**Script output**::
+
+  0.221389887832
+  102798
+  1538
+
+
+
+**Python source code:** :download:`plot_sdss_photoz.py <plot_sdss_photoz.py>`
+
+.. literalinclude:: plot_sdss_photoz.py
+    :lines: 2-
+    

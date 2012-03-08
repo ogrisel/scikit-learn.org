@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.4.4. Exercises &mdash; scikit-learn 0.11-git documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.11-git',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikit-learn 0.11-git documentation" href="../../index.html" />
+    <link rel="up" title="2.4. Machine Learning for Text Analytics with scikit-learn" href="index.html" />
+    <link rel="next" title="2.4.5. How to select the right algorithm for the task" href="which_algorithm.html" />
+    <link rel="prev" title="2.4.3. Working with text data" href="working_with_text_data.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="working_with_text_data.html" title="2.4.3. Working with text data"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    2.4.3. Working w...
+	    </span>
+	    <span class="hiddenrellink">
+	    2.4.3. Working with text data
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="which_algorithm.html" title="2.4.5. How to select the right algorithm for the task"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    2.4.5. How to se...
+	    </span>
+	    <span class="hiddenrellink">
+	    2.4.5. How to select the right algorithm for the task
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="index.html" title="2.4. Machine Learning for Text Analytics with scikit-learn" >
+	Up
+	<br>
+	<span class="smallrellink">
+	2.4. Machine Lea...
+	</span>
+	<span class="hiddenrellink">
+	2.4. Machine Learning for Text Analytics with scikit-learn
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.11-git</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">2.4.4. Exercises</a><ul>
+<li><a class="reference internal" href="#exercise-0-digits-recognition">2.4.4.1. Exercise 0: Digits recognition</a></li>
+<li><a class="reference internal" href="#exercise-1-language-identification">2.4.4.2. Exercise 1: Language identification</a></li>
+<li><a class="reference internal" href="#exercise-2-sentiment-analysis-on-movie-reviews">2.4.4.3. Exercise 2: Sentiment Analysis on movie reviews</a></li>
+<li><a class="reference internal" href="#exercise-3-unsupervised-topic-extraction">2.4.4.4. Exercise 3: Unsupervised topic extraction</a></li>
+<li><a class="reference internal" href="#exercise-4-cli-text-classification-utility">2.4.4.5. Exercise 4: CLI text classification utility</a></li>
+</ul>
+</li>
+</ul>
+
+    
+    </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="exercises">
+<span id="ta-tutorial-exercises"></span><h1>2.4.4. Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
+<p>To do the exercises, copy the content of the &#8216;skeletons&#8217; folder as
+a new folder named &#8216;workspace&#8217;:</p>
+<div class="highlight-python"><pre>% cp -r skeletons workspace</pre>
+</div>
+<p>You can then edit the content of the workspace without fear of loosing
+the original exercise instructions.</p>
+<p>Then fire an ipython shell and run the work-in-progress script with:</p>
+<div class="highlight-python"><pre>[1] %run workspace/exercise_XX_script.py arg1 arg2 arg3</pre>
+</div>
+<p>If an exception is triggered, use <tt class="docutils literal"><span class="pre">%debug</span></tt> to fire-up a post
+mortem ipdb session.</p>
+<p>Refine the implementation and iterate until the exercise is solved.</p>
+<p><strong>For each exercise, the skeleton file provides all the necessary import
+statements, boilerplate code to load the data and sample code to evaluate
+the predictive accurracy of the model.</strong></p>
+<div class="section" id="exercise-0-digits-recognition">
+<span id="digits-exercise"></span><h2>2.4.4.1. Exercise 0: Digits recognition<a class="headerlink" href="#exercise-0-digits-recognition" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Train a Support Vector Machine classifier.</li>
+<li>Evaluate the performance using cross validation.</li>
+<li>Change the value of C and gamma to see the impact on the generalization
+performance.</li>
+</ul>
+<p>ipython command line:</p>
+<div class="highlight-python"><pre>%run workspace/exercise_00_digits.py</pre>
+</div>
+</div>
+<div class="section" id="exercise-1-language-identification">
+<span id="language-id-exercise"></span><h2>2.4.4.2. Exercise 1: Language identification<a class="headerlink" href="#exercise-1-language-identification" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Write a text classification pipeline using 3-grams of characters
+on data from Wikipedia articles as training set.</li>
+<li>Evaluate the performance on some held out test set.</li>
+</ul>
+<p>ipython command line:</p>
+<div class="highlight-python"><pre>%run workspace/exercise_01_language_train_model.py data/languages/paragraphs/</pre>
+</div>
+</div>
+<div class="section" id="exercise-2-sentiment-analysis-on-movie-reviews">
+<span id="sentiment-analysis-exercise"></span><h2>2.4.4.3. Exercise 2: Sentiment Analysis on movie reviews<a class="headerlink" href="#exercise-2-sentiment-analysis-on-movie-reviews" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Write a text classification pipeline to classify movie reviews as either
+positive or negative.</li>
+<li>Find a good set of parameters using grid search.</li>
+<li>Evaluate the performance on a held out test set.</li>
+<li>Display the most discriminative features for the each class.</li>
+</ul>
+<p>ipython command line:</p>
+<div class="highlight-python"><pre>%run workspace/exercise_02_sentiment.py data/movie_reviews/txt_sentoken/</pre>
+</div>
+</div>
+<div class="section" id="exercise-3-unsupervised-topic-extraction">
+<span id="topic-extraction-exercise"></span><h2>2.4.4.4. Exercise 3: Unsupervised topic extraction<a class="headerlink" href="#exercise-3-unsupervised-topic-extraction" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Train Non Negative Matrix Factorization model on the movie review
+dataset to extract the 10 main topics.</li>
+<li>Display the most important words for each topic.</li>
+</ul>
+<p>ipython command line:</p>
+<div class="highlight-python"><pre>%run workspace/exercise_03_topic.py data/movie_reviews/txt_sentoken/</pre>
+</div>
+</div>
+<div class="section" id="exercise-4-cli-text-classification-utility">
+<h2>2.4.4.5. Exercise 4: CLI text classification utility<a class="headerlink" href="#exercise-4-cli-text-classification-utility" title="Permalink to this headline">¶</a></h2>
+<p>Using the results of the previous exercises and the <tt class="docutils literal"><span class="pre">cPickle</span></tt>
+module of the standard library, write a command line utility that
+detects the language of some text provided on <tt class="docutils literal"><span class="pre">stdin</span></tt> and estimate
+the polarity (positive or negative) if the text is written in
+English.</p>
+<p>Bonus point if the utility is able to give a confidence level for its
+predictions.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">While python cPickle works it is recommended to use
+<tt class="docutils literal"><span class="pre">sklearn.external.joblib</span></tt> optimized pickler for large models.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/tutorial/text_analytics/exercises.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

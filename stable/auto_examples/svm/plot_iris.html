@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Plot different SVM classifiers in the iris dataset &mdash; scikit-learn 0.9 documentation</title>
+    <title>Plot different SVM classifiers in the iris dataset &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="One-class SVM with non-linear kernel (RBF)" href="plot_oneclass.html" />
+    <link rel="prev" title="SVM with custom kernel" href="plot_custom_kernel.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="plot_custom_kernel.html" title="SVM with custom kernel"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    SVM with custom ...
+	    </span>
+	    <span class="hiddenrellink">
+	    SVM with custom kernel
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="plot_oneclass.html" title="One-class SVM with non-linear kernel (RBF)"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    One-class SVM wi...
+	    </span>
+	    <span class="hiddenrellink">
+	    One-class SVM with non-linear kernel (RBF)
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Plot different SVM classifiers in the iris dataset</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -127,38 +170,38 @@ will plot the decision surface for four different SVM classifiers.</p>
 
 <span class="c"># import some data to play with</span>
 <span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c"># we only take the first two features. We could</span>
-                     <span class="c"># avoid this ugly slicing by using a two-dim dataset</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c"># we only take the first two features. We could</span>
+                      <span class="c"># avoid this ugly slicing by using a two-dim dataset</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
 
-<span class="n">h</span><span class="o">=.</span><span class="mo">02</span> <span class="c"># step size in the mesh</span>
+<span class="n">h</span> <span class="o">=</span> <span class="o">.</span><span class="mo">02</span>  <span class="c"># step size in the mesh</span>
 
 <span class="c"># we create an instance of SVM and fit out data. We do not scale our</span>
 <span class="c"># data since we want to plot the support vectors</span>
-<span class="n">svc</span>     <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
-<span class="n">rbf_svc</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;poly&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
-<span class="n">nu_svc</span>  <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">NuSVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">svc</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+<span class="n">rbf_svc</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+<span class="n">poly_svc</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;poly&#39;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
 <span class="n">lin_svc</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">LinearSVC</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
 
 <span class="c"># create a mesh to plot in</span>
-<span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span>
-<span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span>
                      <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
 
 <span class="c"># title for the plots</span>
 <span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;SVC with linear kernel&#39;</span><span class="p">,</span>
+          <span class="s">&#39;SVC with RBF kernel&#39;</span><span class="p">,</span>
           <span class="s">&#39;SVC with polynomial (degree 3) kernel&#39;</span><span class="p">,</span>
-          <span class="s">&#39;NuSVC with linear kernel&#39;</span><span class="p">,</span>
           <span class="s">&#39;LinearSVC (linear kernel)&#39;</span><span class="p">]</span>
 
 
 <span class="n">pl</span><span class="o">.</span><span class="n">set_cmap</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">clf</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">((</span><span class="n">svc</span><span class="p">,</span> <span class="n">rbf_svc</span><span class="p">,</span> <span class="n">nu_svc</span><span class="p">,</span> <span class="n">lin_svc</span><span class="p">)):</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">clf</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">((</span><span class="n">svc</span><span class="p">,</span> <span class="n">rbf_svc</span><span class="p">,</span> <span class="n">poly_svc</span><span class="p">,</span> <span class="n">lin_svc</span><span class="p">)):</span>
     <span class="c"># Plot the decision boundary. For that, we will asign a color to each</span>
     <span class="c"># point in the mesh [x_min, m_max]x[y_min, y_max].</span>
-    <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">Z</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
 
     <span class="c"># Put the result into a color plot</span>
@@ -168,7 +211,7 @@ will plot the decision surface for four different SVM classifiers.</p>
     <span class="n">pl</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
 
     <span class="c"># Plot also the training points</span>
-    <span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">Y</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">Y</span><span class="p">)</span>
 
     <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
@@ -186,8 +229,6 @@ will plot the decision surface for four different SVM classifiers.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

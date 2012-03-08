@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Plot Ridge coefficients as a function of the regularization &mdash; scikit-learn 0.9 documentation</title>
+    <title>Plot Ridge coefficients as a function of the regularization &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Plot multi-class SGD on the iris dataset" href="plot_sgd_iris.html" />
+    <link rel="prev" title="Polynomial interpolation" href="plot_polynomial_interpolation.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="plot_polynomial_interpolation.html" title="Polynomial interpolation"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Polynomial inter...
+	    </span>
+	    <span class="hiddenrellink">
+	    Polynomial interpolation
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="plot_sgd_iris.html" title="Plot multi-class SGD on the iris dataset"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Plot multi-class...
+	    </span>
+	    <span class="hiddenrellink">
+	    Plot multi-class SGD on the iris dataset
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Plot Ridge coefficients as a function of the regularization</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -134,7 +177,7 @@ exhibit big oscillations.</p>
 <span class="n">X</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># Compute paths</span>
 
 <span class="n">n_alphas</span> <span class="o">=</span> <span class="mi">200</span>
@@ -147,7 +190,7 @@ exhibit big oscillations.</p>
     <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="n">coefs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># Display results</span>
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
@@ -155,7 +198,7 @@ exhibit big oscillations.</p>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="n">coefs</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s">&#39;log&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c"># reverse axis</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c"># reverse axis</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;alpha&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;weights&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Ridge coefficients as a function of the regularization&#39;</span><span class="p">)</span>
@@ -174,8 +217,6 @@ exhibit big oscillations.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

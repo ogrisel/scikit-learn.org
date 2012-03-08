@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>7. Preprocessing data &mdash; scikit-learn 0.9 documentation</title>
+    <title>6.1. Preprocessing data &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
-    <link rel="up" title="&lt;no title&gt;" href="../contents.html" />
-    <link rel="next" title="8. Feature extraction" href="feature_extraction.html" />
-    <link rel="prev" title="6. Dataset loading utilities" href="../datasets/index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
+    <link rel="up" title="6. Dataset transformations" href="../data_transforms.html" />
+    <link rel="next" title="6.2. Feature extraction" href="feature_extraction.html" />
+    <link rel="prev" title="6. Dataset transformations" href="../data_transforms.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="../auto_examples/index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,50 +77,86 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../datasets/index.html" title="6. Dataset loading utilities"
-             accesskey="P">previous</a> |
-          <a href="feature_extraction.html" title="8. Feature extraction"
-             accesskey="N">next</a> |
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">7. Preprocessing data</a><ul>
-<li><a class="reference internal" href="#standardization-or-mean-removal-and-variance-scaling">7.1. Standardization or Mean Removal and Variance Scaling</a></li>
-<li><a class="reference internal" href="#normalization">7.2. Normalization</a></li>
-<li><a class="reference internal" href="#binarization">7.3. Binarization</a><ul>
-<li><a class="reference internal" href="#feature-binarization">7.3.1. Feature binarization</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="../data_transforms.html" title="6. Dataset transformations"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    6. Dataset trans...
+	    </span>
+	    <span class="hiddenrellink">
+	    6. Dataset transformations
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="feature_extraction.html" title="6.2. Feature extraction"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    6.2. Feature ext...
+	    </span>
+	    <span class="hiddenrellink">
+	    6.2. Feature extraction
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../data_transforms.html" title="6. Dataset transformations" >
+	Up
+	<br>
+	<span class="smallrellink">
+	6. Dataset trans...
+	</span>
+	<span class="hiddenrellink">
+	6. Dataset transformations
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">6.1. Preprocessing data</a><ul>
+<li><a class="reference internal" href="#standardization-or-mean-removal-and-variance-scaling">6.1.1. Standardization or Mean Removal and Variance Scaling</a></li>
+<li><a class="reference internal" href="#normalization">6.1.2. Normalization</a></li>
+<li><a class="reference internal" href="#binarization">6.1.3. Binarization</a><ul>
+<li><a class="reference internal" href="#feature-binarization">6.1.3.1. Feature binarization</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -129,12 +165,12 @@
           <div class="body">
             
   <div class="section" id="preprocessing-data">
-<span id="preprocessing"></span><h1>7. Preprocessing data<a class="headerlink" href="#preprocessing-data" title="Permalink to this headline">¶</a></h1>
+<span id="preprocessing"></span><h1>6.1. Preprocessing data<a class="headerlink" href="#preprocessing-data" title="Permalink to this headline">¶</a></h1>
 <p>The <tt class="docutils literal"><span class="pre">sklearn.preprocessing</span></tt> package provides several common
 utility functions and transformer classes to change raw feature vectors
 into a representation that is more suitable for the downstream estimators.</p>
 <div class="section" id="standardization-or-mean-removal-and-variance-scaling">
-<span id="preprocessing-scaler"></span><h2>7.1. Standardization or Mean Removal and Variance Scaling<a class="headerlink" href="#standardization-or-mean-removal-and-variance-scaling" title="Permalink to this headline">¶</a></h2>
+<span id="preprocessing-scaler"></span><h2>6.1.1. Standardization or Mean Removal and Variance Scaling<a class="headerlink" href="#standardization-or-mean-removal-and-variance-scaling" title="Permalink to this headline">¶</a></h2>
 <p><strong>Standardization</strong> of datasets is a <strong>common requirement for many
 machine learning estimators</strong> implemented in the scikit: they might behave
 badly if the individual feature do not more or less look like standard
@@ -209,19 +245,32 @@ of <a class="reference internal" href="generated/sklearn.preprocessing.Scaler.ht
 available on this FAQ: <a class="reference external" href="http://www.faqs.org/faqs/ai-faq/neural-nets/part2/section-16.html">Should I normalize/standardize/rescale the data?</a></p>
 </div>
 <div class="topic">
-<p class="topic-title first">Notes</p>
-<p>It is sometimes not enough to center and scale the features independently
-since downstream model can further make assumption on the linear independence
-of the features.</p>
+<p class="topic-title first">Scaling vs Whitening</p>
+<p>It is sometimes not enough to center and scale the features
+independently, since a downstream model can further make some assumption
+on the linear independence of the features.</p>
 <p>To address this issue you can use <a class="reference internal" href="generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.decomposition.PCA</span></tt></a>
 or <a class="reference internal" href="generated/sklearn.decomposition.RandomizedPCA.html#sklearn.decomposition.RandomizedPCA" title="sklearn.decomposition.RandomizedPCA"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.decomposition.RandomizedPCA</span></tt></a> with <tt class="docutils literal"><span class="pre">whiten=True</span></tt>
 to further remove the linear correlation across features.</p>
-<p>Also note that the current implementation of <a class="reference internal" href="generated/sklearn.preprocessing.scale.html#sklearn.preprocessing.scale" title="sklearn.preprocessing.scale"><tt class="xref py py-func docutils literal"><span class="pre">scale</span></tt></a> and
-<a class="reference internal" href="generated/sklearn.preprocessing.Scaler.html#sklearn.preprocessing.Scaler" title="sklearn.preprocessing.Scaler"><tt class="xref py py-class docutils literal"><span class="pre">Scaler</span></tt></a> <strong>do not yet work with scipy.sparse matrices</strong>.</p>
+</div>
+<div class="topic">
+<p class="topic-title first">Sparse input</p>
+<p><a class="reference internal" href="generated/sklearn.preprocessing.scale.html#sklearn.preprocessing.scale" title="sklearn.preprocessing.scale"><tt class="xref py py-func docutils literal"><span class="pre">scale</span></tt></a> and <a class="reference internal" href="generated/sklearn.preprocessing.Scaler.html#sklearn.preprocessing.Scaler" title="sklearn.preprocessing.Scaler"><tt class="xref py py-class docutils literal"><span class="pre">Scaler</span></tt></a> accept <tt class="docutils literal"><span class="pre">scipy.sparse</span></tt> matrices
+as input <strong>only when with_mean=False is explicitly passed to the
+constructor</strong>. Otherwise a <tt class="docutils literal"><span class="pre">ValueError</span></tt> will be raised as
+silently centering would break the sparsity and would often crash the
+execution by allocating excessive amounts of memory unintentionally.</p>
+<p>If the centered data is expected to be small enough, explicitly convert
+the input to an array using the <tt class="docutils literal"><span class="pre">toarray</span></tt> method of sparse matrices
+instead.</p>
+<p>For sparse input the data is <strong>converted to the Compressed Sparse Rows
+representation</strong> (see <tt class="docutils literal"><span class="pre">scipy.sparse.csr_matrix</span></tt>).
+To avoid unnecessary memory copies, it is recommended to choose the CSR
+representation upstream.</p>
 </div>
 </div>
 <div class="section" id="normalization">
-<h2>7.2. Normalization<a class="headerlink" href="#normalization" title="Permalink to this headline">¶</a></h2>
+<h2>6.1.2. Normalization<a class="headerlink" href="#normalization" title="Permalink to this headline">¶</a></h2>
 <p><strong>Normalization</strong> is the process of <strong>scaling individual samples to have
 unit norm</strong>. This process can be useful if you plan to use a quadratic form
 such as the dot-product or any other kernel to quantify the similarity
@@ -264,7 +313,7 @@ the class is stateless as this operation treats samples independently).</p>
 </pre></div>
 </div>
 <div class="topic">
-<p class="topic-title first">Notes</p>
+<p class="topic-title first">Sparse input</p>
 <p><a class="reference internal" href="generated/sklearn.preprocessing.normalize.html#sklearn.preprocessing.normalize" title="sklearn.preprocessing.normalize"><tt class="xref py py-func docutils literal"><span class="pre">normalize</span></tt></a> and <a class="reference internal" href="generated/sklearn.preprocessing.Normalizer.html#sklearn.preprocessing.Normalizer" title="sklearn.preprocessing.Normalizer"><tt class="xref py py-class docutils literal"><span class="pre">Normalizer</span></tt></a> accept <strong>both dense array-like
 and sparse matrices from scipy.sparse as input</strong>.</p>
 <p>For sparse input the data is <strong>converted to the Compressed Sparse Rows
@@ -274,9 +323,9 @@ recommended to choose the CSR representation upstream.</p>
 </div>
 </div>
 <div class="section" id="binarization">
-<h2>7.3. Binarization<a class="headerlink" href="#binarization" title="Permalink to this headline">¶</a></h2>
+<h2>6.1.3. Binarization<a class="headerlink" href="#binarization" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="feature-binarization">
-<h3>7.3.1. Feature binarization<a class="headerlink" href="#feature-binarization" title="Permalink to this headline">¶</a></h3>
+<h3>6.1.3.1. Feature binarization<a class="headerlink" href="#feature-binarization" title="Permalink to this headline">¶</a></h3>
 <p><strong>Feature binarization</strong> is the process of <strong>thresholding numerical
 features to get boolean values</strong>. This can be useful for downsteam
 probabilistic estimators that make assumption that the input data
@@ -318,7 +367,7 @@ as each sample is treated independently of others:</p>
 preprocessing module provides a companion function <a class="reference internal" href="generated/sklearn.preprocessing.binarize.html#sklearn.preprocessing.binarize" title="sklearn.preprocessing.binarize"><tt class="xref py py-func docutils literal"><span class="pre">binarize</span></tt></a>
 to be used when the transformer API is not necessary.</p>
 <div class="topic">
-<p class="topic-title first">Notes</p>
+<p class="topic-title first">Sparse input</p>
 <p><a class="reference internal" href="generated/sklearn.preprocessing.binarize.html#sklearn.preprocessing.binarize" title="sklearn.preprocessing.binarize"><tt class="xref py py-func docutils literal"><span class="pre">binarize</span></tt></a> and <a class="reference internal" href="generated/sklearn.preprocessing.Binarizer.html#sklearn.preprocessing.Binarizer" title="sklearn.preprocessing.Binarizer"><tt class="xref py py-class docutils literal"><span class="pre">Binarizer</span></tt></a> accept <strong>both dense array-like
 and sparse matrices from scipy.sparse as input</strong>.</p>
 <p>For sparse input the data is <strong>converted to the Compressed Sparse Rows
@@ -339,8 +388,6 @@ representation upstream.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

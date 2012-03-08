@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.3.4. sklearn.naive_bayes.BernoulliNB &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.19.3. sklearn.naive_bayes.BernoulliNB &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.4.1. sklearn.neighbors.NearestNeighbors" href="sklearn.neighbors.NearestNeighbors.html" />
-    <link rel="prev" title="9.3.3. sklearn.naive_bayes.MultinomialNB" href="sklearn.naive_bayes.MultinomialNB.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.20.1. sklearn.neighbors.NearestNeighbors" href="sklearn.neighbors.NearestNeighbors.html" />
+    <link rel="prev" title="8.19.2. sklearn.naive_bayes.MultinomialNB" href="sklearn.naive_bayes.MultinomialNB.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.naive_bayes.MultinomialNB.html" title="9.3.3. sklearn.naive_bayes.MultinomialNB"
-             accesskey="P">previous</a> |
-          <a href="sklearn.neighbors.NearestNeighbors.html" title="9.4.1. sklearn.neighbors.NearestNeighbors"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.3.4. sklearn.naive_bayes.BernoulliNB</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.naive_bayes.MultinomialNB.html" title="8.19.2. sklearn.naive_bayes.MultinomialNB"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.19.2. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.19.2. sklearn.naive_bayes.MultinomialNB
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.neighbors.NearestNeighbors.html" title="8.20.1. sklearn.neighbors.NearestNeighbors"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.20.1. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.20.1. sklearn.neighbors.NearestNeighbors
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.19.3. sklearn.naive_bayes.BernoulliNB</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,7 +157,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-naive-bayes-bernoullinb">
-<h1>9.3.4. sklearn.naive_bayes.BernoulliNB<a class="headerlink" href="#sklearn-naive-bayes-bernoullinb" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.3. sklearn.naive_bayes.BernoulliNB<a class="headerlink" href="#sklearn-naive-bayes-bernoullinb" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.naive_bayes.BernoulliNB">
 <em class="property">class </em><tt class="descclassname">sklearn.naive_bayes.</tt><tt class="descname">BernoulliNB</tt><big>(</big><em>alpha=1.0</em>, <em>binarize=0.0</em>, <em>fit_prior=True</em><big>)</big><a class="headerlink" href="#sklearn.naive_bayes.BernoulliNB" title="Permalink to this definition">¶</a></dt>
@@ -153,7 +189,8 @@ If false, a uniform prior will be used.</p>
 </tr>
 </tbody>
 </table>
-<p class="rubric">References</p>
+<p class="rubric">Notes</p>
+<p><strong>References</strong>:</p>
 <p>C.D. Manning, P. Raghavan and H. Schütze (2008). Introduction to
 Information Retrieval. Cambridge University Press, pp. 234–265.</p>
 <p>A. McCallum and K. Nigam (1998). A comparison of event models for naive
@@ -192,28 +229,29 @@ naive Bayes &#8211; Which naive Bayes? 3rd Conf. on Email and Anti-Spam (CEAS).<
 </tbody>
 </table>
 <p class="rubric">Methods</p>
-<table border="1" class="docutils">
+<table border="1" class="longtable docutils">
 <colgroup>
-<col width="24%" />
-<col width="6%" />
-<col width="70%" />
+<col width="10%" />
+<col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td>fit(X, y)</td>
-<td>self</td>
-<td>Fit the model</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.naive_bayes.BernoulliNB.fit" title="sklearn.naive_bayes.BernoulliNB.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;sample_weight,&nbsp;class_prior])</td>
+<td>Fit Naive Bayes classifier according to X, y</td>
 </tr>
-<tr class="row-even"><td>predict(X)</td>
-<td>array</td>
-<td>Predict using the model.</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.naive_bayes.BernoulliNB.predict" title="sklearn.naive_bayes.BernoulliNB.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
+<td>Perform classification on an array of test vectors X.</td>
 </tr>
-<tr class="row-odd"><td>predict_proba(X)</td>
-<td>array</td>
-<td>Predict the probability of each class using the model.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.naive_bayes.BernoulliNB.predict_log_proba" title="sklearn.naive_bayes.BernoulliNB.predict_log_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_log_proba</span></tt></a>(X)</td>
+<td>Return log-probability estimates for the test vector X.</td>
 </tr>
-<tr class="row-even"><td>predict_log_proba(X)</td>
-<td>array</td>
-<td>Predict the log probability of each class using the model.</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.naive_bayes.BernoulliNB.predict_proba" title="sklearn.naive_bayes.BernoulliNB.predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt></a>(X)</td>
+<td>Return probability estimates for the test vector X.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.naive_bayes.BernoulliNB.score" title="sklearn.naive_bayes.BernoulliNB.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
+<td>Returns the mean accuracy on the given test data and labels.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.naive_bayes.BernoulliNB.set_params" title="sklearn.naive_bayes.BernoulliNB.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
+<td>Set the parameters of the estimator.</td>
 </tr>
 </tbody>
 </table>
@@ -224,7 +262,7 @@ naive Bayes &#8211; Which naive Bayes? 3rd Conf. on Email and Anti-Spam (CEAS).<
 
 <dl class="method">
 <dt id="sklearn.naive_bayes.BernoulliNB.fit">
-<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>class_prior=None</em><big>)</big><a class="headerlink" href="#sklearn.naive_bayes.BernoulliNB.fit" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>sample_weight=None</em>, <em>class_prior=None</em><big>)</big><a class="headerlink" href="#sklearn.naive_bayes.BernoulliNB.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit Naive Bayes classifier according to X, y</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -238,6 +276,10 @@ n_features is the number of features.</p>
 <p><strong>y</strong> : array-like, shape = [n_samples]</p>
 <blockquote>
 <div><p>Target values.</p>
+</div></blockquote>
+<p><strong>sample_weight</strong> : array-like, shape = [n_samples], optional</p>
+<blockquote>
+<div><p>Weights applied to individual samples (1. for unweighted).</p>
 </div></blockquote>
 <p><strong>class_prior</strong> : array, shape [n_classes]</p>
 <blockquote>
@@ -264,9 +306,14 @@ Overrides the fit_prior parameter.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><strong>X</strong> : {array-like, sparse matrix}, shape = [n_samples, n_features]</td>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><strong>C</strong> : array, shape = [n_samples]</td>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>C</strong> : array, shape = [n_samples]</p>
+<blockquote class="last">
+<div><p>Predicted target values for X</p>
+</div></blockquote>
+</td>
 </tr>
 </tbody>
 </table>
@@ -280,14 +327,13 @@ Overrides the fit_prior parameter.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix}, shape = [n_samples, n_features]</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>C</strong> : array-like, shape = [n_samples, n_classes]</p>
 <blockquote class="last">
 <div><p>Returns the log-probability of the sample for each class
-in the model, where classes are ordered by arithmetical
-order.</p>
+in the model, where classes are ordered arithmetically.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -303,14 +349,13 @@ order.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix}, shape = [n_samples, n_features]</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>C</strong> : array-like, shape = [n_samples, n_classes]</p>
 <blockquote class="last">
 <div><p>Returns the probability of the sample for each class in
-the model, where classes are ordered by arithmetical
-order.</p>
+the model, where classes are ordered arithmetically.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -321,7 +366,7 @@ order.</p>
 <dl class="method">
 <dt id="sklearn.naive_bayes.BernoulliNB.score">
 <tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.naive_bayes.BernoulliNB.score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the mean error rate on the given test data and labels.</p>
+<dd><p>Returns the mean accuracy on the given test data and labels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -347,10 +392,10 @@ order.</p>
 <dt id="sklearn.naive_bayes.BernoulliNB.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.naive_bayes.BernoulliNB.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of the estimator.</p>
-<p>The method works on simple estimators as well as on nested
-objects (such as pipelines). The former have parameters of the
-form &lt;component&gt;__&lt;parameter&gt; so that it&#8217;s possible to update
-each component of a nested object.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The former have parameters of the form
+<tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
+component of a nested object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -374,8 +419,6 @@ each component of a nested object.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

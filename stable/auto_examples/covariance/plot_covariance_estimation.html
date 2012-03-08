@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Ledoit-Wolf vs Covariance simple estimation &mdash; scikit-learn 0.9 documentation</title>
+    <title>Ledoit-Wolf vs Covariance simple estimation &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Ledoit-Wolf vs OAS estimation" href="plot_lw_vs_oas.html" />
+    <link rel="prev" title="Hierarchical clustering: structured vs unstructured ward" href="../cluster/plot_ward_structured_vs_unstructured.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="../cluster/plot_ward_structured_vs_unstructured.html" title="Hierarchical clustering: structured vs unstructured ward"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Hierarchical clu...
+	    </span>
+	    <span class="hiddenrellink">
+	    Hierarchical clustering: structured vs unstructured ward
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="plot_lw_vs_oas.html" title="Ledoit-Wolf vs OAS estimation"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Ledoit-Wolf vs O...
+	    </span>
+	    <span class="hiddenrellink">
+	    Ledoit-Wolf vs OAS estimation
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Ledoit-Wolf vs Covariance simple estimation</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -178,19 +221,25 @@ number a observations.</p>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Plot results</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Regularized covariance: likelihood and shrinkage coefficient&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Shrinkage&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Negative log-likelihood&#39;</span><span class="p">)</span>
 <span class="c"># range shrinkage curve</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">shrinkages</span><span class="p">,</span> <span class="n">negative_logliks</span><span class="p">)</span>
+
 <span class="c"># real likelihood reference</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">loglik_real</span><span class="p">,</span> <span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;red&#39;</span><span class="p">,</span>
-          <span class="n">label</span><span class="o">=</span><span class="s">&quot;real covariance likelihood&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
+<span class="c"># BUG: hlines(..., linestyle=&#39;--&#39;) breaks on some older versions of matplotlib</span>
+<span class="c">#pl.hlines(loglik_real, pl.xlim()[0], pl.xlim()[1], color=&#39;red&#39;,</span>
+<span class="c">#          label=&quot;real covariance likelihood&quot;, linestyle=&#39;--&#39;)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">(),</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">[</span><span class="n">loglik_real</span><span class="p">],</span> <span class="s">&#39;--r&#39;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s">&quot;real covariance likelihood&quot;</span><span class="p">)</span>
+
 <span class="c"># adjust view</span>
 <span class="n">lik_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">negative_logliks</span><span class="p">)</span>
 <span class="n">lik_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">negative_logliks</span><span class="p">)</span>
-<span class="n">ylim0</span> <span class="o">=</span> <span class="n">lik_min</span> <span class="o">-</span> <span class="mf">5.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
-<span class="n">ylim1</span> <span class="o">=</span> <span class="n">lik_max</span> <span class="o">+</span> <span class="mf">10.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">lik_max</span><span class="o">-</span><span class="n">lik_min</span><span class="p">)</span>
+<span class="n">ylim0</span> <span class="o">=</span> <span class="n">lik_min</span> <span class="o">-</span> <span class="mf">5.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">ylim1</span> <span class="o">=</span> <span class="n">lik_max</span> <span class="o">+</span> <span class="mf">10.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">lik_max</span> <span class="o">-</span> <span class="n">lik_min</span><span class="p">)</span>
 <span class="c"># LW likelihood</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">lw</span><span class="o">.</span><span class="n">shrinkage_</span><span class="p">,</span> <span class="n">ylim0</span><span class="p">,</span> <span class="o">-</span><span class="n">loglik_lw</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">,</span>
           <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Ledoit-Wolf estimate&#39;</span><span class="p">)</span>
@@ -215,8 +264,6 @@ number a observations.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

@@ -17,6 +17,15 @@ for each segmented region to be in one piece.
     :align: center
 
 
+**Script output**::
+
+  Compute structured hierarchical clustering...
+  Elaspsed time:  22.4488079548
+  Number of pixels:  65536
+  Number of clusters:  15
+
+
+
 **Python source code:** :download:`plot_lena_ward_segmentation.py <plot_lena_ward_segmentation.py>`
 
 .. literalinclude:: plot_lena_ward_segmentation.py

@@ -16,6 +16,18 @@ Finds core samples of high density and expands clusters from them.
     :align: center
 
 
+**Script output**::
+
+  Estimated number of clusters: 3
+  Homogeneity: 0.928
+  Completeness: 0.805
+  V-measure: 0.862
+  Adjusted Rand Index: 0.897
+  Adjusted Mutual Information: 0.805
+  Silhouette Coefficient: 0.577
+
+
+
 **Python source code:** :download:`plot_dbscan.py <plot_dbscan.py>`
 
 .. literalinclude:: plot_dbscan.py

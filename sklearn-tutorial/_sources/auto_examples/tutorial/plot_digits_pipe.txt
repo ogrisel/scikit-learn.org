@@ -1,0 +1,18 @@
+
+
+.. _example_tutorial_plot_digits_pipe.py:
+
+
+
+
+.. image:: images/plot_digits_pipe_1.png
+    :align: center
+
+
+
+
+**Python source code:** :download:`plot_digits_pipe.py <plot_digits_pipe.py>`
+
+.. literalinclude:: plot_digits_pipe.py
+    :lines: 2-
+    

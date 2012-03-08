@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.18.2. sklearn.manifold.Isomap &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.15.2. sklearn.manifold.Isomap &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.18.3. sklearn.manifold.locally_linear_embedding" href="sklearn.manifold.locally_linear_embedding.html" />
-    <link rel="prev" title="9.18.1. sklearn.manifold.LocallyLinearEmbedding" href="sklearn.manifold.LocallyLinearEmbedding.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.15.3. sklearn.manifold.locally_linear_embedding" href="sklearn.manifold.locally_linear_embedding.html" />
+    <link rel="prev" title="8.15.1. sklearn.manifold.LocallyLinearEmbedding" href="sklearn.manifold.LocallyLinearEmbedding.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.manifold.LocallyLinearEmbedding.html" title="9.18.1. sklearn.manifold.LocallyLinearEmbedding"
-             accesskey="P">previous</a> |
-          <a href="sklearn.manifold.locally_linear_embedding.html" title="9.18.3. sklearn.manifold.locally_linear_embedding"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.18.2. sklearn.manifold.Isomap</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.manifold.LocallyLinearEmbedding.html" title="8.15.1. sklearn.manifold.LocallyLinearEmbedding"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.15.1. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.15.1. sklearn.manifold.LocallyLinearEmbedding
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.manifold.locally_linear_embedding.html" title="8.15.3. sklearn.manifold.locally_linear_embedding"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.15.3. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.15.3. sklearn.manifold.locally_linear_embedding
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.15.2. sklearn.manifold.Isomap</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,10 +157,10 @@
           <div class="body">
             
   <div class="section" id="sklearn-manifold-isomap">
-<h1>9.18.2. sklearn.manifold.Isomap<a class="headerlink" href="#sklearn-manifold-isomap" title="Permalink to this headline">¶</a></h1>
+<h1>8.15.2. sklearn.manifold.Isomap<a class="headerlink" href="#sklearn-manifold-isomap" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.manifold.Isomap">
-<em class="property">class </em><tt class="descclassname">sklearn.manifold.</tt><tt class="descname">Isomap</tt><big>(</big><em>n_neighbors=5</em>, <em>out_dim=2</em>, <em>eigen_solver='auto'</em>, <em>tol=0</em>, <em>max_iter=None</em>, <em>path_method='auto'</em><big>)</big><a class="headerlink" href="#sklearn.manifold.Isomap" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.manifold.</tt><tt class="descname">Isomap</tt><big>(</big><em>n_neighbors=5</em>, <em>out_dim=2</em>, <em>eigen_solver='auto'</em>, <em>tol=0</em>, <em>max_iter=None</em>, <em>path_method='auto'</em>, <em>neighbors_algorithm='auto'</em><big>)</big><a class="headerlink" href="#sklearn.manifold.Isomap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Isomap Embedding</p>
 <p>Non-linear dimensionality reduction through Isometric Mapping</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -165,17 +201,23 @@ not used if eigen_solver == &#8216;dense&#8217;</p>
 not used if eigen_solver == &#8216;dense&#8217;</p>
 </div></blockquote>
 <p><strong>path_method</strong> : string [&#8216;auto&#8217;|&#8217;FW&#8217;|&#8217;D&#8217;]</p>
-<blockquote class="last">
+<blockquote>
 <div><p>method to use in finding shortest path.
 &#8216;auto&#8217; : attempt to choose the best algorithm automatically
 &#8216;FW&#8217; : Floyd-Warshall algorithm
 &#8216;D&#8217; : Dijkstra algorithm with Fibonacci Heaps</p>
 </div></blockquote>
+<p><strong>neighbors_algorithm</strong> : string [&#8216;auto&#8217;|&#8217;brute&#8217;|&#8217;kd_tree&#8217;|&#8217;ball_tree&#8217;]</p>
+<blockquote class="last">
+<div><p>algorithm to use for nearest neighbors search,
+passed to neighbors.NearestNeighbors instance</p>
+</div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">References</p>
+<p class="rubric">Notes</p>
+<p><strong>References</strong>:</p>
 <dl class="docutils">
 <dt>[1] Tenenbaum, J.B.; De Silva, V.; &amp; Langford, J.C. A global geometric</dt>
 <dd>framework for nonlinear dimensionality reduction. Science 290 (5500)</dd>
@@ -183,9 +225,9 @@ not used if eigen_solver == &#8216;dense&#8217;</p>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="13%" />
-<col width="42%" />
-<col width="45%" />
+<col width="12%" />
+<col width="39%" />
+<col width="49%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><cite>embedding_</cite></td>
@@ -200,9 +242,10 @@ not used if eigen_solver == &#8216;dense&#8217;</p>
 <td>array-like, shape (n_samples, n_features)</td>
 <td>Stores the training data</td>
 </tr>
-<tr class="row-even"><td><cite>ball_tree_</cite></td>
-<td>sklearn.neighbors.BallTree instance</td>
-<td>Stores ball tree of training data for faster transform</td>
+<tr class="row-even"><td><cite>nbrs_</cite></td>
+<td>sklearn.neighbors.NearestNeighbors instance</td>
+<td>Stores nearest neighbors instance, including BallTree or KDtree
+if applicable.</td>
 </tr>
 <tr class="row-odd"><td><cite>dist_matrix_</cite></td>
 <td>array-like, shape (n_samples, n_samples)</td>
@@ -236,7 +279,7 @@ not used if eigen_solver == &#8216;dense&#8217;</p>
 </table>
 <dl class="method">
 <dt id="sklearn.manifold.Isomap.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>n_neighbors=5</em>, <em>out_dim=2</em>, <em>eigen_solver='auto'</em>, <em>tol=0</em>, <em>max_iter=None</em>, <em>path_method='auto'</em><big>)</big><a class="headerlink" href="#sklearn.manifold.Isomap.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>n_neighbors=5</em>, <em>out_dim=2</em>, <em>eigen_solver='auto'</em>, <em>tol=0</em>, <em>max_iter=None</em>, <em>path_method='auto'</em>, <em>neighbors_algorithm='auto'</em><big>)</big><a class="headerlink" href="#sklearn.manifold.Isomap.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -247,9 +290,11 @@ not used if eigen_solver == &#8216;dense&#8217;</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like of shape (n_samples, n_features)</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix, BallTree, cKDTree, NearestNeighbors}</p>
 <blockquote>
-<div><p>training set.</p>
+<div><p>Sample data, shape = (n_samples, n_features), in the form of a
+numpy array, sparse array, precomputed tree, or NearestNeighbors
+object.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -268,7 +313,7 @@ not used if eigen_solver == &#8216;dense&#8217;</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array-like, shape (n_samples, n_features)</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: {array-like, sparse matrix, BallTree, cKDTree}</strong> :</p>
 <blockquote>
 <div><p>Training vector, where n_samples in the number of samples
 and n_features is the number of features.</p>
@@ -294,16 +339,23 @@ and n_features is the number of features.</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>The cost function of an isomap embedding is</p>
+<p><tt class="docutils literal"><span class="pre">E</span> <span class="pre">=</span> <span class="pre">frobenius_norm[K(D)</span> <span class="pre">-</span> <span class="pre">K(D_fit)]</span> <span class="pre">/</span> <span class="pre">n_samples</span></tt></p>
+<p>Where D is the matrix of distances for the input data X,
+D_fit is the matrix of distances for the output embedding X_fit,
+and K is the isomap kernel:</p>
+<p><tt class="docutils literal"><span class="pre">K(D)</span> <span class="pre">=</span> <span class="pre">-0.5</span> <span class="pre">*</span> <span class="pre">(I</span> <span class="pre">-</span> <span class="pre">1/n_samples)</span> <span class="pre">*</span> <span class="pre">D^2</span> <span class="pre">*</span> <span class="pre">(I</span> <span class="pre">-</span> <span class="pre">1/n_samples)</span></tt></p>
 </dd></dl>
 
 <dl class="method">
 <dt id="sklearn.manifold.Isomap.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.manifold.Isomap.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of the estimator.</p>
-<p>The method works on simple estimators as well as on nested
-objects (such as pipelines). The former have parameters of the
-form &lt;component&gt;__&lt;parameter&gt; so that it&#8217;s possible to update
-each component of a nested object.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The former have parameters of the form
+<tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
+component of a nested object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -350,8 +402,6 @@ embedding vectors of the training set.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.19.2.4. sklearn.datasets.make_friedman1 &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.4.2.5. sklearn.datasets.make_friedman1 &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.19.2.5. sklearn.datasets.make_friedman2" href="sklearn.datasets.make_friedman2.html" />
-    <link rel="prev" title="9.19.2.3. sklearn.datasets.make_blobs" href="sklearn.datasets.make_blobs.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.4.2.6. sklearn.datasets.make_friedman2" href="sklearn.datasets.make_friedman2.html" />
+    <link rel="prev" title="8.4.2.4. sklearn.datasets.make_blobs" href="sklearn.datasets.make_blobs.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.datasets.make_blobs.html" title="9.19.2.3. sklearn.datasets.make_blobs"
-             accesskey="P">previous</a> |
-          <a href="sklearn.datasets.make_friedman2.html" title="9.19.2.5. sklearn.datasets.make_friedman2"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.19.2.4. sklearn.datasets.make_friedman1</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.datasets.make_blobs.html" title="8.4.2.4. sklearn.datasets.make_blobs"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.4.2.4. sklearn...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.4.2.4. sklearn.datasets.make_blobs
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.datasets.make_friedman2.html" title="8.4.2.6. sklearn.datasets.make_friedman2"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.4.2.6. sklearn...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.4.2.6. sklearn.datasets.make_friedman2
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.4.2.5. sklearn.datasets.make_friedman1</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,12 +157,12 @@
           <div class="body">
             
   <div class="section" id="sklearn-datasets-make-friedman1">
-<h1>9.19.2.4. sklearn.datasets.make_friedman1<a class="headerlink" href="#sklearn-datasets-make-friedman1" title="Permalink to this headline">¶</a></h1>
+<h1>8.4.2.5. sklearn.datasets.make_friedman1<a class="headerlink" href="#sklearn-datasets-make-friedman1" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.datasets.make_friedman1">
 <tt class="descclassname">sklearn.datasets.</tt><tt class="descname">make_friedman1</tt><big>(</big><em>n_samples=100</em>, <em>n_features=10</em>, <em>noise=0.0</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.datasets.make_friedman1" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate the &#8220;Friedman #1&#8221; regression problem as described in Friedman [1]
-and Breiman [2].</p>
+<dd><p>Generate the &#8220;Friedman #1&#8221; regression problem</p>
+<p>This dataset is described in Friedman [1] and Breiman [2].</p>
 <p>Inputs <cite>X</cite> are independent features uniformly distributed on the interval
 [0, 1]. The output <cite>y</cite> is created according to the formula:</p>
 <div class="highlight-python"><pre>y(X) = 10 * sin(pi * X[:, 0] * X[:, 1]) + 20 * (X[:, 2] - 0.5) ** 2                + 10 * X[:, 3] + 5 * X[:, 4] + noise * N(0, 1).</pre>
@@ -171,18 +207,19 @@ by <cite>np.random</cite>.</p>
 </tr>
 </tbody>
 </table>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r31" rules="none">
+<p class="rubric">Notes</p>
+<p><strong>References</strong>:</p>
+<table class="docutils citation" frame="void" id="r45" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R31]</a></td><td>J. Friedman, &#8220;Multivariate adaptive regression splines&#8221;, The Annals
+<tr><td class="label">[R45]</td><td>J. Friedman, &#8220;Multivariate adaptive regression splines&#8221;, The Annals
 of Statistics 19 (1), pages 1-67, 1991.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r32" rules="none">
+<table class="docutils citation" frame="void" id="r46" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R32]</a></td><td>L. Breiman, &#8220;Bagging predictors&#8221;, Machine Learning 24,
+<tr><td class="label">[R46]</td><td>L. Breiman, &#8220;Bagging predictors&#8221;, Machine Learning 24,
 pages 123-140, 1996.</td></tr>
 </tbody>
 </table>
@@ -199,8 +236,6 @@ pages 123-140, 1996.</td></tr>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

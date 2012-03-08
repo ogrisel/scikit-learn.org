@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &mdash; scikit-learn 0.11-git documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.11-git',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikit-learn 0.11-git documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="SVM-SVC (Support Vector Classification)" href="plot_svm_iris.html" />
+    <link rel="prev" title="SDSS Spectra Plots" href="plot_sdss_specPCA.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../index.html">Examples</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="plot_sdss_specPCA.html" title="SDSS Spectra Plots"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    SDSS Spectra Plo...
+	    </span>
+	    <span class="hiddenrellink">
+	    SDSS Spectra Plots
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="plot_svm_iris.html" title="SVM-SVC (Support Vector Classification)"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    SVM-SVC (Support...
+	    </span>
+	    <span class="hiddenrellink">
+	    SVM-SVC (Support Vector Classification)
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.11-git</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul class="simple">
+</ul>
+
+    
+    </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p class="horizontal" id="example-tutorial-plot-stock-market-py"><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_stock_market1.py"><tt class="xref download docutils literal"><span class="pre">plot_stock_market.py</span></tt></a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">finance</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c">################################################################################</span>
+<span class="k">if</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="c"># Choose a time period reasonnably calm: before the 2008 crash)</span>
+    <span class="c"># and after Google&#39;s start</span>
+    <span class="n">d1</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2004</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">19</span><span class="p">)</span>
+    <span class="n">d2</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2008</span><span class="p">,</span> <span class="mo">01</span><span class="p">,</span> <span class="mo">01</span><span class="p">)</span>
+
+    <span class="n">symbol_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;TOT&#39;</span>  <span class="p">:</span> <span class="s">&#39;Total&#39;</span><span class="p">,</span>
+            <span class="s">&#39;XOM&#39;</span>  <span class="p">:</span> <span class="s">&#39;Exxon&#39;</span><span class="p">,</span>
+            <span class="s">&#39;CVX&#39;</span>  <span class="p">:</span> <span class="s">&#39;Chevron&#39;</span><span class="p">,</span>
+            <span class="s">&#39;COP&#39;</span>  <span class="p">:</span> <span class="s">&#39;ConocoPhillips&#39;</span><span class="p">,</span>
+            <span class="s">&#39;VLO&#39;</span>  <span class="p">:</span> <span class="s">&#39;Valero Energy&#39;</span><span class="p">,</span>
+            <span class="s">&#39;MSFT&#39;</span> <span class="p">:</span> <span class="s">&#39;Microsoft&#39;</span><span class="p">,</span>
+            <span class="s">&#39;B&#39;</span>    <span class="p">:</span> <span class="s">&#39;Barnes group&#39;</span><span class="p">,</span>
+            <span class="s">&#39;EK&#39;</span>   <span class="p">:</span> <span class="s">&#39;Eastman kodak&#39;</span><span class="p">,</span>
+            <span class="s">&#39;IBM&#39;</span>  <span class="p">:</span> <span class="s">&#39;IBM&#39;</span><span class="p">,</span>
+            <span class="s">&#39;TWX&#39;</span>  <span class="p">:</span> <span class="s">&#39;Time Warner&#39;</span><span class="p">,</span>
+            <span class="s">&#39;CMCSA&#39;</span><span class="p">:</span> <span class="s">&#39;Comcast&#39;</span><span class="p">,</span>
+            <span class="s">&#39;CVC&#39;</span>  <span class="p">:</span> <span class="s">&#39;Cablevision&#39;</span><span class="p">,</span>
+            <span class="s">&#39;YHOO&#39;</span> <span class="p">:</span> <span class="s">&#39;Yahoo&#39;</span><span class="p">,</span>
+            <span class="s">&#39;DELL&#39;</span> <span class="p">:</span> <span class="s">&#39;Dell&#39;</span><span class="p">,</span>
+            <span class="s">&#39;DE&#39;</span>   <span class="p">:</span> <span class="s">&#39;Deere and company&#39;</span><span class="p">,</span>
+            <span class="s">&#39;HPQ&#39;</span>  <span class="p">:</span> <span class="s">&#39;Hewlett-Packard&#39;</span><span class="p">,</span>
+            <span class="s">&#39;AMZN&#39;</span> <span class="p">:</span> <span class="s">&#39;Amazon&#39;</span><span class="p">,</span>
+            <span class="s">&#39;TM&#39;</span>   <span class="p">:</span> <span class="s">&#39;Toyota&#39;</span><span class="p">,</span>
+            <span class="s">&#39;CAJ&#39;</span>  <span class="p">:</span> <span class="s">&#39;Canon&#39;</span><span class="p">,</span>
+            <span class="s">&#39;MTU&#39;</span>  <span class="p">:</span> <span class="s">&#39;Mitsubishi&#39;</span><span class="p">,</span>
+            <span class="s">&#39;SNE&#39;</span>  <span class="p">:</span> <span class="s">&#39;Sony&#39;</span><span class="p">,</span>
+            <span class="s">&#39;EMR&#39;</span>  <span class="p">:</span> <span class="s">&#39;Emerson electric&#39;</span><span class="p">,</span>
+            <span class="s">&#39;F&#39;</span>    <span class="p">:</span> <span class="s">&#39;Ford&#39;</span><span class="p">,</span>
+            <span class="s">&#39;HMC&#39;</span>  <span class="p">:</span> <span class="s">&#39;Honda&#39;</span><span class="p">,</span>
+            <span class="s">&#39;NAV&#39;</span>  <span class="p">:</span> <span class="s">&#39;Navistar&#39;</span><span class="p">,</span>
+            <span class="s">&#39;NOC&#39;</span>  <span class="p">:</span> <span class="s">&#39;Northrop Grumman&#39;</span><span class="p">,</span>
+            <span class="s">&#39;BA&#39;</span>   <span class="p">:</span> <span class="s">&#39;Boeing&#39;</span><span class="p">,</span>
+            <span class="s">&#39;KO&#39;</span>   <span class="p">:</span> <span class="s">&#39;Coca Cola&#39;</span><span class="p">,</span>
+            <span class="s">&#39;MMM&#39;</span>  <span class="p">:</span> <span class="s">&#39;3M&#39;</span><span class="p">,</span>
+            <span class="s">&#39;MCD&#39;</span>  <span class="p">:</span> <span class="s">&#39;Mc Donalds&#39;</span><span class="p">,</span>
+            <span class="s">&#39;PEP&#39;</span>  <span class="p">:</span> <span class="s">&#39;Pepsi&#39;</span><span class="p">,</span>
+            <span class="s">&#39;KFT&#39;</span>  <span class="p">:</span> <span class="s">&#39;Kraft Foods&#39;</span><span class="p">,</span>
+            <span class="s">&#39;K&#39;</span>    <span class="p">:</span> <span class="s">&#39;Kellogg&#39;</span><span class="p">,</span>
+            <span class="s">&#39;VOD&#39;</span>  <span class="p">:</span> <span class="s">&#39;Vodaphone&#39;</span><span class="p">,</span>
+            <span class="s">&#39;UN&#39;</span>   <span class="p">:</span> <span class="s">&#39;Unilever&#39;</span><span class="p">,</span>
+            <span class="s">&#39;MAR&#39;</span>  <span class="p">:</span> <span class="s">&#39;Marriott&#39;</span><span class="p">,</span>
+            <span class="s">&#39;PG&#39;</span>   <span class="p">:</span> <span class="s">&#39;Procter Gamble&#39;</span><span class="p">,</span>
+            <span class="s">&#39;CL&#39;</span>   <span class="p">:</span> <span class="s">&#39;Colgate-Palmolive&#39;</span><span class="p">,</span>
+            <span class="s">&#39;NWS&#39;</span>  <span class="p">:</span> <span class="s">&#39;News Corporation&#39;</span><span class="p">,</span>
+            <span class="s">&#39;GE&#39;</span>   <span class="p">:</span> <span class="s">&#39;General Electrics&#39;</span><span class="p">,</span>
+            <span class="s">&#39;WFC&#39;</span>  <span class="p">:</span> <span class="s">&#39;Wells Fargo&#39;</span><span class="p">,</span>
+            <span class="s">&#39;JPM&#39;</span>  <span class="p">:</span> <span class="s">&#39;JPMorgan Chase&#39;</span><span class="p">,</span>
+            <span class="s">&#39;AIG&#39;</span>  <span class="p">:</span> <span class="s">&#39;AIG&#39;</span><span class="p">,</span>
+            <span class="s">&#39;AXP&#39;</span>  <span class="p">:</span> <span class="s">&#39;American express&#39;</span><span class="p">,</span>
+            <span class="s">&#39;BAC&#39;</span>  <span class="p">:</span> <span class="s">&#39;Bank of America&#39;</span><span class="p">,</span>
+            <span class="s">&#39;GS&#39;</span>   <span class="p">:</span> <span class="s">&#39;Goldman Sachs&#39;</span><span class="p">,</span>
+            <span class="s">&#39;PMI&#39;</span>  <span class="p">:</span> <span class="s">&#39;PMI group&#39;</span><span class="p">,</span>
+            <span class="s">&#39;AAPL&#39;</span> <span class="p">:</span> <span class="s">&#39;Apple&#39;</span><span class="p">,</span>
+            <span class="s">&#39;SAP&#39;</span>  <span class="p">:</span> <span class="s">&#39;SAP&#39;</span><span class="p">,</span>
+            <span class="s">&#39;CSCO&#39;</span> <span class="p">:</span> <span class="s">&#39;Cisco&#39;</span><span class="p">,</span>
+            <span class="s">&#39;QCOM&#39;</span> <span class="p">:</span> <span class="s">&#39;Qualcomm&#39;</span><span class="p">,</span>
+            <span class="s">&#39;HAL&#39;</span>  <span class="p">:</span> <span class="s">&#39;Haliburton&#39;</span><span class="p">,</span>
+            <span class="s">&#39;HTCH&#39;</span> <span class="p">:</span> <span class="s">&#39;Hutchinson&#39;</span><span class="p">,</span>
+            <span class="s">&#39;JDSU&#39;</span> <span class="p">:</span> <span class="s">&#39;JDS uniphase&#39;</span><span class="p">,</span>
+            <span class="s">&#39;TXN&#39;</span>  <span class="p">:</span> <span class="s">&#39;Texas instruments&#39;</span><span class="p">,</span>
+            <span class="s">&#39;O&#39;</span>    <span class="p">:</span> <span class="s">&#39;Reality income&#39;</span><span class="p">,</span>
+            <span class="s">&#39;UPS&#39;</span>  <span class="p">:</span> <span class="s">&#39;UPS&#39;</span><span class="p">,</span>
+            <span class="s">&#39;BP&#39;</span>   <span class="p">:</span> <span class="s">&#39;BP&#39;</span><span class="p">,</span>
+            <span class="s">&#39;L&#39;</span>    <span class="p">:</span> <span class="s">&#39;Loews corporation&#39;</span><span class="p">,</span>
+            <span class="s">&#39;M&#39;</span>    <span class="p">:</span> <span class="s">&quot;Macy&#39;s&quot;</span><span class="p">,</span>
+            <span class="s">&#39;S&#39;</span>    <span class="p">:</span> <span class="s">&#39;Sprint nextel&#39;</span><span class="p">,</span>
+            <span class="s">&#39;XRX&#39;</span>  <span class="p">:</span> <span class="s">&#39;Xerox&#39;</span><span class="p">,</span>
+            <span class="s">&#39;WYNN&#39;</span> <span class="p">:</span> <span class="s">&#39;Wynn resorts&#39;</span><span class="p">,</span>
+            <span class="s">&#39;DIS&#39;</span>  <span class="p">:</span> <span class="s">&#39;Walt disney&#39;</span><span class="p">,</span>
+            <span class="s">&#39;WFR&#39;</span>  <span class="p">:</span> <span class="s">&#39;MEMC electronic materials&#39;</span><span class="p">,</span>
+            <span class="s">&#39;UTX&#39;</span>  <span class="p">:</span> <span class="s">&#39;United Technology corp&#39;</span><span class="p">,</span>
+            <span class="s">&#39;X&#39;</span>    <span class="p">:</span> <span class="s">&#39;United States Steel corp&#39;</span><span class="p">,</span>
+            <span class="s">&#39;LMT&#39;</span>  <span class="p">:</span> <span class="s">&#39;Lookheed Martin&#39;</span><span class="p">,</span>
+            <span class="s">&#39;WMT&#39;</span>  <span class="p">:</span> <span class="s">&#39;Wal-Mart&#39;</span><span class="p">,</span>
+            <span class="s">&#39;WAG&#39;</span>  <span class="p">:</span> <span class="s">&#39;Walgreen&#39;</span><span class="p">,</span>
+            <span class="s">&#39;HD&#39;</span>   <span class="p">:</span> <span class="s">&#39;Home Depot&#39;</span><span class="p">,</span>
+            <span class="s">&#39;GSK&#39;</span>  <span class="p">:</span> <span class="s">&#39;GlaxoSmithKline&#39;</span><span class="p">,</span>
+            <span class="s">&#39;PFE&#39;</span>  <span class="p">:</span> <span class="s">&#39;Pfizer&#39;</span><span class="p">,</span>
+            <span class="s">&#39;SNY&#39;</span>  <span class="p">:</span> <span class="s">&#39;Sanofi-Aventis&#39;</span><span class="p">,</span>
+            <span class="s">&#39;NVS&#39;</span>  <span class="p">:</span> <span class="s">&#39;Novartis&#39;</span><span class="p">,</span>
+            <span class="s">&#39;KMB&#39;</span>  <span class="p">:</span> <span class="s">&#39;Kimberly-Clark&#39;</span><span class="p">,</span>
+            <span class="s">&#39;R&#39;</span>    <span class="p">:</span> <span class="s">&#39;Ryder&#39;</span><span class="p">,</span>
+            <span class="s">&#39;GD&#39;</span>   <span class="p">:</span> <span class="s">&#39;General Dynamics&#39;</span><span class="p">,</span>
+            <span class="s">&#39;RTN&#39;</span>  <span class="p">:</span> <span class="s">&#39;Raytheon&#39;</span><span class="p">,</span>
+            <span class="s">&#39;CVS&#39;</span>  <span class="p">:</span> <span class="s">&#39;CVS&#39;</span><span class="p">,</span>
+            <span class="s">&#39;CAT&#39;</span>  <span class="p">:</span> <span class="s">&#39;Caterpillar&#39;</span><span class="p">,</span>
+            <span class="s">&#39;DD&#39;</span>   <span class="p">:</span> <span class="s">&#39;DuPont de Nemours&#39;</span><span class="p">,</span>
+            <span class="s">&#39;MON&#39;</span>  <span class="p">:</span> <span class="s">&#39;Monsanto&#39;</span><span class="p">,</span>
+            <span class="s">&#39;CLF&#39;</span>  <span class="p">:</span> <span class="s">&#39;Cliffs natural ressources&#39;</span><span class="p">,</span>
+            <span class="s">&#39;BTU&#39;</span>  <span class="p">:</span> <span class="s">&#39;Peabody energy&#39;</span><span class="p">,</span>
+            <span class="s">&#39;ACI&#39;</span>  <span class="p">:</span> <span class="s">&#39;Arch Coal&#39;</span><span class="p">,</span>
+            <span class="s">&#39;BTU&#39;</span>  <span class="p">:</span> <span class="s">&#39;Patriot coal corp&#39;</span><span class="p">,</span>
+            <span class="s">&#39;PPG&#39;</span>  <span class="p">:</span> <span class="s">&#39;PPC&#39;</span><span class="p">,</span>
+            <span class="s">&#39;CMI&#39;</span>  <span class="p">:</span> <span class="s">&#39;Cummins common stock&#39;</span><span class="p">,</span>
+            <span class="s">&#39;JNJ&#39;</span>  <span class="p">:</span> <span class="s">&#39;Johnson and johnson&#39;</span><span class="p">,</span>
+            <span class="s">&#39;ABT&#39;</span>  <span class="p">:</span> <span class="s">&#39;Abbott laboratories&#39;</span><span class="p">,</span>
+            <span class="s">&#39;MRK&#39;</span>  <span class="p">:</span> <span class="s">&#39;Merck and co&#39;</span><span class="p">,</span>
+            <span class="s">&#39;T&#39;</span>    <span class="p">:</span> <span class="s">&#39;AT and T&#39;</span><span class="p">,</span>
+            <span class="s">&#39;VZ&#39;</span>   <span class="p">:</span> <span class="s">&#39;Verizon&#39;</span><span class="p">,</span>
+            <span class="s">&#39;FTR&#39;</span>  <span class="p">:</span> <span class="s">&#39;Frontiers communication&#39;</span><span class="p">,</span>
+            <span class="s">&#39;CTL&#39;</span>  <span class="p">:</span> <span class="s">&#39;Centurylink&#39;</span><span class="p">,</span>
+            <span class="s">&#39;MO&#39;</span>   <span class="p">:</span> <span class="s">&#39;Altria group&#39;</span><span class="p">,</span>
+            <span class="s">&#39;NLY&#39;</span>  <span class="p">:</span> <span class="s">&#39;Annaly capital management&#39;</span><span class="p">,</span>
+            <span class="s">&#39;QQQ&#39;</span>  <span class="p">:</span> <span class="s">&#39;Powershares&#39;</span><span class="p">,</span>
+            <span class="s">&#39;BMY&#39;</span>  <span class="p">:</span> <span class="s">&#39;Bristal-myers squibb&#39;</span><span class="p">,</span>
+            <span class="s">&#39;LLY&#39;</span>  <span class="p">:</span> <span class="s">&#39;Eli lilly and co&#39;</span><span class="p">,</span>
+            <span class="s">&#39;C&#39;</span>    <span class="p">:</span> <span class="s">&#39;Citigroup&#39;</span><span class="p">,</span>
+            <span class="s">&#39;MS&#39;</span>   <span class="p">:</span> <span class="s">&#39;Morgan Stanley&#39;</span><span class="p">,</span>
+            <span class="s">&#39;TGT&#39;</span>  <span class="p">:</span> <span class="s">&#39;Target corporation&#39;</span><span class="p">,</span>
+            <span class="s">&#39;SCHW&#39;</span> <span class="p">:</span> <span class="s">&#39;Charles schwad&#39;</span><span class="p">,</span>
+            <span class="s">&#39;ETFC&#39;</span> <span class="p">:</span> <span class="s">&#39;E*Trade&#39;</span><span class="p">,</span>
+            <span class="s">&#39;AMTD&#39;</span> <span class="p">:</span> <span class="s">&#39;TD ameritrade holding&#39;</span><span class="p">,</span>
+            <span class="s">&#39;INTC&#39;</span> <span class="p">:</span> <span class="s">&#39;Intel&#39;</span><span class="p">,</span>
+            <span class="s">&#39;AMD&#39;</span>  <span class="p">:</span> <span class="s">&#39;AMD&#39;</span><span class="p">,</span>
+            <span class="s">&#39;NOK&#39;</span>  <span class="p">:</span> <span class="s">&#39;Nokia&#39;</span><span class="p">,</span>
+            <span class="s">&#39;MU&#39;</span>   <span class="p">:</span> <span class="s">&#39;Micron technologies&#39;</span><span class="p">,</span>
+            <span class="s">&#39;NVDA&#39;</span> <span class="p">:</span> <span class="s">&#39;Nvidia&#39;</span><span class="p">,</span>
+            <span class="s">&#39;MRVL&#39;</span> <span class="p">:</span> <span class="s">&#39;Marvel technology group&#39;</span><span class="p">,</span>
+            <span class="s">&#39;SNDK&#39;</span> <span class="p">:</span> <span class="s">&#39;Sandisk&#39;</span><span class="p">,</span>
+            <span class="s">&#39;RIMM&#39;</span> <span class="p">:</span> <span class="s">&#39;Research in mention&#39;</span><span class="p">,</span>
+            <span class="s">&#39;TXN&#39;</span>  <span class="p">:</span> <span class="s">&#39;Texas instruments&#39;</span><span class="p">,</span>
+            <span class="s">&#39;EMC&#39;</span>  <span class="p">:</span> <span class="s">&#39;EMC&#39;</span><span class="p">,</span>
+            <span class="s">&#39;ORCL&#39;</span> <span class="p">:</span> <span class="s">&#39;Oracle&#39;</span><span class="p">,</span>
+            <span class="s">&#39;LOW&#39;</span>  <span class="p">:</span> <span class="s">&quot;Lowe&#39;s&quot;</span><span class="p">,</span>
+            <span class="s">&#39;BBY&#39;</span>  <span class="p">:</span> <span class="s">&#39;Best buy&#39;</span><span class="p">,</span>
+            <span class="s">&#39;FDX&#39;</span>  <span class="p">:</span> <span class="s">&#39;Fedex&#39;</span><span class="p">,</span>
+            <span class="s">&#39;FE&#39;</span>   <span class="p">:</span> <span class="s">&#39;First energy&#39;</span><span class="p">,</span>
+            <span class="s">&#39;JNPR&#39;</span> <span class="p">:</span> <span class="s">&#39;Juniper&#39;</span><span class="p">,</span>
+            <span class="s">&#39;GOOG&#39;</span> <span class="p">:</span> <span class="s">&#39;Google&#39;</span><span class="p">,</span>
+            <span class="s">&#39;AXP&#39;</span>  <span class="p">:</span> <span class="s">&#39;American express&#39;</span><span class="p">,</span>
+            <span class="s">&#39;AMAT&#39;</span> <span class="p">:</span> <span class="s">&#39;Applied material&#39;</span><span class="p">,</span>
+            <span class="s">&#39;^DJI&#39;</span> <span class="p">:</span> <span class="s">&#39;Dow Jones Industrial average&#39;</span><span class="p">,</span>
+            <span class="s">&#39;^DJA&#39;</span> <span class="p">:</span> <span class="s">&#39;Dow Jones Composite average&#39;</span><span class="p">,</span>
+            <span class="s">&#39;^DJT&#39;</span> <span class="p">:</span> <span class="s">&#39;Dow Jones Transportation average&#39;</span><span class="p">,</span>
+            <span class="s">&#39;^DJU&#39;</span> <span class="p">:</span> <span class="s">&#39;Dow Jones Utility average&#39;</span><span class="p">,</span>
+            <span class="s">&#39;^IXIC&#39;</span><span class="p">:</span> <span class="s">&#39;Nasdaq composite&#39;</span><span class="p">,</span>
+            <span class="c">#&#39;^FCHI&#39;: &#39;CAC40&#39;,</span>
+        <span class="p">}</span>
+
+    <span class="n">symbols</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">symbol_dict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="n">quotes</span> <span class="o">=</span> <span class="p">[</span><span class="n">finance</span><span class="o">.</span><span class="n">quotes_historical_yahoo</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">asobject</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">]</span>
+
+    <span class="c">#volumes = np.array([q.volume for q in quotes]).astype(np.float)</span>
+    <span class="nb">open</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">q</span><span class="o">.</span><span class="n">open</span>   <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+    <span class="n">close</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">q</span><span class="o">.</span><span class="n">close</span>  <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quotes</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+    <span class="n">variation</span> <span class="o">=</span> <span class="n">close</span> <span class="o">-</span> <span class="nb">open</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;variation.npy&#39;</span><span class="p">,</span> <span class="n">variation</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;names.npy&#39;</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;names.npy&#39;</span><span class="p">)</span>
+    <span class="n">variation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">&#39;variation.npy&#39;</span><span class="p">)</span>
+
+<span class="c">################################################################################</span>
+<span class="c"># Get our X and y variables</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">variation</span><span class="p">[</span><span class="n">names</span> <span class="o">!=</span> <span class="s">&#39;Google&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">variation</span><span class="p">[</span><span class="n">names</span> <span class="o">==</span> <span class="s">&#39;Google&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="n">names</span> <span class="o">!=</span> <span class="s">&#39;Google&#39;</span><span class="p">]</span>
+
+<span class="n">X</span> <span class="o">-=</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">/=</span> <span class="n">X</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c">################################################################################</span>
+<span class="c"># Shuffle the data because of non-stationarity</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
+
+<span class="kn">from</span> <span class="nn">scikits.learn</span> <span class="kn">import</span> <span class="n">linear_model</span><span class="p">,</span> <span class="n">cross_val</span>
+
+<span class="n">lasso</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LassoCV</span><span class="p">()</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val</span><span class="o">.</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">lasso</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">lasso</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">n</span><span class="p">[</span><span class="n">lasso</span><span class="o">.</span><span class="n">coef_</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c">################################################################################</span>
+<span class="c"># Plot the time series</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">variation</span><span class="p">[</span><span class="n">names</span> <span class="o">==</span> <span class="s">&#39;Google&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Google stock value&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Google quote daily increment&#39;</span><span class="p">)</span>
+
+<span class="c">#_, labels, _ = cluster.k_means(X.T, 10)</span>
+<span class="c">#</span>
+<span class="c">#for i in range(labels.max()+1):</span>
+<span class="c">#    print &#39;Cluster %i: %s&#39; % ((i+1),</span>
+<span class="c">#                              &#39;, &#39;.join(n[labels==i]))</span>
+</pre></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/auto_examples/tutorial/plot_stock_market.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

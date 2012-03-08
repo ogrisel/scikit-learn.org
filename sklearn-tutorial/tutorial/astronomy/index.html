@@ -1,0 +1,278 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.3. Using scikit-learn with Astronomical Data &mdash; scikit-learn 0.11-git documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.11-git',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="top" title="scikit-learn 0.11-git documentation" href="../../index.html" />
+    <link rel="up" title="2. Tutorials: From the bottom up with scikit-learn" href="../index.html" />
+    <link rel="next" title="2.3.1. Astronomy Tutorial setup" href="setup.html" />
+    <link rel="prev" title="6. Finding help" href="../statistical_inference/finding_help.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../../index.html">
+            <img src="../../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../../install.html">Download</a></li>
+            <li><a href="../../support.html">Support</a></li>
+            <li><a href="../../user_guide.html">User Guide</a></li>
+            <li><a href="../../auto_examples/index.html">Examples</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="../statistical_inference/finding_help.html" title="6. Finding help"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    6. Finding help
+	    </span>
+	    <span class="hiddenrellink">
+	    6. Finding help
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="setup.html" title="2.3.1. Astronomy Tutorial setup"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    2.3.1. Astronomy...
+	    </span>
+	    <span class="hiddenrellink">
+	    2.3.1. Astronomy Tutorial setup
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="2. Tutorials: From the bottom up with scikit-learn" >
+	Up
+	<br>
+	<span class="smallrellink">
+	2. Tutorials: Fr...
+	</span>
+	<span class="hiddenrellink">
+	2. Tutorials: From the bottom up with scikit-learn
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.11-git</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="../../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">2.3. Using scikit-learn with Astronomical Data</a><ul>
+</ul>
+</li>
+</ul>
+
+    
+    </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="using-scikit-learn-with-astronomical-data">
+<h1>2.3. Using scikit-learn with Astronomical Data<a class="headerlink" href="#using-scikit-learn-with-astronomical-data" title="Permalink to this headline">¶</a></h1>
+<div class="topic">
+<p class="topic-title first">Machine Learning for Astronomy with scikit-learn</p>
+<p><tt class="docutils literal"><span class="pre">scikit-learn</span></tt> is a Python module integrating classic machine
+learning algorithms in the tightly-knit world of scientific Python
+packages (<a class="reference external" href="http://numpy.scipy.org">numpy</a>, <a class="reference external" href="http://www.scipy.org">scipy</a>, <a class="reference external" href="http://matplotlib.sourceforge.net/">matplotlib</a>).</p>
+<p>It aims to provide simple and efficient solutions to learning
+problems that are accessible to everybody and reusable in various
+contexts: <strong>machine-learning as a versatile tool for science and
+engineering</strong>.</p>
+</div>
+<style type="text/css">
+  div.bodywrapper blockquote {
+      margin: 0 ;
+  }
+
+  div.toctree-wrapper ul {
+      margin-top: 0 ;
+      margin-bottom: 0 ;
+      padding-left: 10px ;
+  }
+
+  li.toctree-l1 {
+      padding: 0 0 0.5em 0 ;
+      list-style-type: none;
+      font-size: 150% ;
+      font-weight: bold;
+      }
+
+  li.toctree-l1 ul {
+      padding-left: 40px ;
+  }
+
+  li.toctree-l2 {
+      font-size: 70% ;
+      list-style-type: square;
+      font-weight: normal;
+      }
+
+  li.toctree-l3 {
+      font-size: 85% ;
+      list-style-type: circle;
+      font-weight: normal;
+      }
+
+</style><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This document is meant to be used with <strong>scikit-learn version
+0.11+</strong> (i.e. the current state of the master branch at the time of
+writing: 2012-02-13).</p>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">2.3.1. Astronomy Tutorial setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#setup">2.3.1.1. Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="general_concepts.html">2.3.2. Machine Learning 101: General Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="general_concepts.html#features-and-feature-extraction">2.3.2.1. Features and feature extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_concepts.html#supervised-learning-model-fit-x-y">2.3.2.2. Supervised Learning: <tt class="docutils literal"><span class="pre">model.fit(X,</span> <span class="pre">y)</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_concepts.html#unsupervised-learning-model-fit-x">2.3.2.3. Unsupervised Learning: <tt class="docutils literal"><span class="pre">model.fit(X)</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_concepts.html#linearly-separable-data">2.3.2.4. Linearly separable data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_concepts.html#training-set-test-set-and-overfitting">2.3.2.5. Training set, test set and overfitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_concepts.html#key-takeaway-points">2.3.2.6. Key takeaway points</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="practical.html">2.3.3. Machine Learning 102: Practical Advice</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="practical.html#bias-variance-over-fitting-and-under-fitting">2.3.3.1. Bias, Variance, Over-fitting, and Under-fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="practical.html#cross-validation-and-testing">2.3.3.2. Cross-Validation and Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="practical.html#learning-curves">2.3.3.3. Learning Curves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="practical.html#summary">2.3.3.4. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classification.html">2.3.4. Classification: Learning Labels of Astronomical Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classification.html#motivation-why-is-this-important">2.3.4.1. Motivation: Why is this Important?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classification.html#star-quasar-classification-naive-bayes">2.3.4.2. Star-Quasar Classification: Naive Bayes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">2.3.5. Regression: Photometric Redshifts of Galaxies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="regression.html#motivation-dark-energy-dark-matter-and-the-fate-of-the-universe">2.3.5.1. Motivation: Dark Energy, Dark Matter, and the Fate of the Universe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regression.html#a-simple-method-decision-tree-regression">2.3.5.2. A Simple Method: Decision Tree Regression</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dimensionality_reduction.html">2.3.6. Dimensionality Reduction of Astronomical Spectra</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dimensionality_reduction.html#sdss-spectral-data">2.3.6.1. SDSS Spectral Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimensionality_reduction.html#principal-component-analysis">2.3.6.2. Principal Component Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimensionality_reduction.html#references">2.3.6.3. References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exercises.html">2.3.7. Exercises: Taking it a step further</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exercises.html#exercise-1-photometric-classification-with-gmm">2.3.7.1. Exercise 1: Photometric Classification with GMM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exercises.html#exercise-2-photometric-redshifts-with-decision-trees">2.3.7.2. Exercise 2: Photometric redshifts with Decision Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exercises.html#exercise-3-dimensionality-reduction-of-spectra">2.3.7.3. Exercise 3: Dimensionality Reduction of Spectra</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../../_sources/tutorial/astronomy/index.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

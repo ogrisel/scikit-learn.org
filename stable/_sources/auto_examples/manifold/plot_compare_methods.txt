@@ -19,6 +19,16 @@ For a discussion and comparison of these algorithms, see the
     :align: center
 
 
+**Script output**::
+
+  standard: 0.17 sec
+  ltsa: 0.34 sec
+  hessian: 0.43 sec
+  modified: 0.4 sec
+  Isomap: 0.68 sec
+
+
+
 **Python source code:** :download:`plot_compare_methods.py <plot_compare_methods.py>`
 
 .. literalinclude:: plot_compare_methods.py

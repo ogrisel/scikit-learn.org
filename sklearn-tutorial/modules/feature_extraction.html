@@ -1,0 +1,552 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6.2. Feature extraction &mdash; scikit-learn 0.11-git documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.11-git',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="top" title="scikit-learn 0.11-git documentation" href="../index.html" />
+    <link rel="up" title="6. Dataset transformations" href="../data_transforms.html" />
+    <link rel="next" title="6.3. Kernel Approximation" href="kernel_approximation.html" />
+    <link rel="prev" title="6.1. Preprocessing data" href="preprocessing.html" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="../index.html">
+            <img src="../_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="../install.html">Download</a></li>
+            <li><a href="../support.html">Support</a></li>
+            <li><a href="../user_guide.html">User Guide</a></li>
+            <li><a href="../auto_examples/index.html">Examples</a></li>
+            <li><a href="classes.html">Reference</a></li>
+       </ul>
+
+<div class="search_form">
+
+<div id="cse" style="width: 100%;"></div>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load('search', '1', {language : 'en'});
+  google.setOnLoadCallback(function() {
+    var customSearchControl = new google.search.CustomSearchControl('016639176250731907682:tjtqbvtvij0');
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+  }, true);
+</script>
+
+</div>
+          </div> <!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="preprocessing.html" title="6.1. Preprocessing data"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    6.1. Preprocessi...
+	    </span>
+	    <span class="hiddenrellink">
+	    6.1. Preprocessing data
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="kernel_approximation.html" title="6.3. Kernel Approximation"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    6.3. Kernel Appr...
+	    </span>
+	    <span class="hiddenrellink">
+	    6.3. Kernel Approximation
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../data_transforms.html" title="6. Dataset transformations" >
+	Up
+	<br>
+	<span class="smallrellink">
+	6. Dataset trans...
+	</span>
+	<span class="hiddenrellink">
+	6. Dataset transformations
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.11-git</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="../about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">6.2. Feature extraction</a><ul>
+<li><a class="reference internal" href="#text-feature-extraction">6.2.1. Text feature extraction</a><ul>
+<li><a class="reference internal" href="#the-bag-of-words-representation">6.2.1.1. The Bag of Words representation</a></li>
+<li><a class="reference internal" href="#sparsity">6.2.1.2. Sparsity</a></li>
+<li><a class="reference internal" href="#common-vectorizer-usage">6.2.1.3. Common Vectorizer usage</a></li>
+<li><a class="reference internal" href="#tf-idf-normalization">6.2.1.4. TF-IDF normalization</a></li>
+<li><a class="reference internal" href="#applications-and-examples">6.2.1.5. Applications and examples</a></li>
+<li><a class="reference internal" href="#limitations-of-the-bag-of-words-representation">6.2.1.6. Limitations of the Bag of Words representation</a></li>
+<li><a class="reference internal" href="#customizing-the-vectorizer-classes">6.2.1.7. Customizing the vectorizer classes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#image-feature-extraction">6.2.2. Image feature extraction</a><ul>
+<li><a class="reference internal" href="#patch-extraction">6.2.2.1. Patch extraction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    
+    </div>
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="feature-extraction">
+<span id="id1"></span><h1>6.2. Feature extraction<a class="headerlink" href="#feature-extraction" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference internal" href="classes.html#module-sklearn.feature_extraction" title="sklearn.feature_extraction"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.feature_extraction</span></tt></a> module can be used to extract
+features in a format supported by machine learning algorithms from datasets
+consisting of formats such as text and image.</p>
+<div class="section" id="text-feature-extraction">
+<span id="id2"></span><h2>6.2.1. Text feature extraction<a class="headerlink" href="#text-feature-extraction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-bag-of-words-representation">
+<h3>6.2.1.1. The Bag of Words representation<a class="headerlink" href="#the-bag-of-words-representation" title="Permalink to this headline">¶</a></h3>
+<p>Text Analysis is a major application field for machine learning
+algorithms. However the raw data, a sequence of symbols cannot be fed
+directly to the algorithms themselves as most of them expect numerical
+feature vectors with a fixed size rather than the raw text documents
+with variable length.</p>
+<p>In order to address this, scikit-learn provides utilities for the most
+common ways to extract numerical features from text content, namely:</p>
+<ul class="simple">
+<li><strong>tokenizing</strong> strings and giving an integer id for each possible token,
+for instance by using whitespaces and punctuation as token separators.</li>
+<li><strong>counting</strong> the occurrences of tokens in each document.</li>
+<li><strong>normalizing</strong> and weighting with diminishing importance tokens that
+occur in the majority of samples / documents.</li>
+</ul>
+<p>In this scheme, features and samples are defined as follows:</p>
+<ul class="simple">
+<li>each <strong>individual token occurrence frequency</strong> (normalized or not)
+is treated as a <strong>feature</strong>.</li>
+<li>the vector of all the token frequencies for a given <strong>document</strong> is
+considered a multivariate <strong>sample</strong>.</li>
+</ul>
+<p>A corpus of documents can thus be represented by a matrix with one row
+per document and one column per token (e.g. word) occurring in the corpus.</p>
+<p>We call <strong>vectorization</strong> the general process of turning a collection
+of text documents into numerical feature vectors. This specific stragegy
+(tokenization, counting and normalization) is called the <strong>Bag of Words</strong>
+or &#8220;Bag of n-grams&#8221; representation. Documents are described by word
+occurrences while completely ignoring the relative position information
+of the words in the document.</p>
+<p>When combined with <a class="reference internal" href="#tfidf"><em>TF-IDF normalization</em></a>, the bag of words encoding is also known
+as the <a class="reference external" href="https://en.wikipedia.org/wiki/Vector_space_model">Vector Space Model</a>.</p>
+</div>
+<div class="section" id="sparsity">
+<h3>6.2.1.2. Sparsity<a class="headerlink" href="#sparsity" title="Permalink to this headline">¶</a></h3>
+<p>As most documents will typically use a very subset of a the words used in
+the corpus, the resulting matrix will have many feature values that are
+zeros (typically more than 99% of them).</p>
+<p>For instance a collection of 10,000 short text documents (such as emails)
+will use a vocabulary with a size in the order of 100,000 unique words in
+total while each document will use 100 to 1000 unique words individually.</p>
+<p>In order to be able to store such a matrix in memory but also to speed
+up algebraic operations matrix / vector, implementations will typically
+use a sparse representation such as the implementations available in the
+<tt class="docutils literal"><span class="pre">scipy.sparse</span></tt> package.</p>
+</div>
+<div class="section" id="common-vectorizer-usage">
+<h3>6.2.1.3. Common Vectorizer usage<a class="headerlink" href="#common-vectorizer-usage" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">CountVectorizer</span></tt></a> implements both tokenization and occurrence
+counting in a single class:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+</pre></div>
+</div>
+<p>This model has many parameters, however the default values are quite
+reasonable (please see  the <a class="reference internal" href="classes.html#text-feature-extraction-ref"><em>reference documentation</em></a> for the details):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span>
+<span class="go">CountVectorizer(analyzer=&#39;word&#39;, binary=False, charset=&#39;utf-8&#39;,</span>
+<span class="go">        charset_error=&#39;strict&#39;, dtype=&lt;type &#39;long&#39;&gt;, input=&#39;content&#39;,</span>
+<span class="go">        lowercase=True, max_df=1.0, max_features=None, max_n=1, min_n=1,</span>
+<span class="go">        preprocessor=None, stop_words=None, strip_accents=None,</span>
+<span class="go">        token_pattern=u&#39;\\b\\w\\w+\\b&#39;, tokenizer=None, vocabulary=None)</span>
+</pre></div>
+</div>
+<p>Let&#8217;s use it to tokenize and count the word occurrences of a minimalistic
+corpus of text documents:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="s">&#39;This is the first document.&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s">&#39;This is the second second document.&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s">&#39;And the third one.&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s">&#39;Is this the first document?&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span>                                       
+<span class="go">&lt;4x9 sparse matrix of type &#39;&lt;type &#39;numpy.int64&#39;&gt;&#39;</span>
+<span class="go">    with 19 stored elements in COOrdinate format&gt;</span>
+</pre></div>
+</div>
+<p>The default configuration tokenizes the string by extracting words of
+at least 2 letters. The specific function that does this step can be
+requested explicitly:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">build_analyzer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span><span class="p">(</span><span class="s">&quot;This is a text document to analyze.&quot;</span><span class="p">)</span>
+<span class="go">[u&#39;this&#39;, u&#39;is&#39;, u&#39;text&#39;, u&#39;document&#39;, u&#39;to&#39;, u&#39;analyze&#39;]</span>
+</pre></div>
+</div>
+<p>Each term found by the analyzer during the fit is assigned a unique
+integer index corresponding to a column in the resulting matrix. This
+interpretation of the columns can be retrieved as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
+<span class="go">[u&#39;and&#39;, u&#39;document&#39;, u&#39;first&#39;, u&#39;is&#39;, u&#39;one&#39;, u&#39;second&#39;, u&#39;the&#39;, u&#39;third&#39;, u&#39;this&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<span class="go">array([[0, 1, 1, 1, 0, 0, 1, 0, 1],</span>
+<span class="go">       [0, 1, 0, 1, 0, 2, 1, 0, 1],</span>
+<span class="go">       [1, 0, 0, 0, 1, 0, 1, 1, 0],</span>
+<span class="go">       [0, 1, 1, 1, 0, 0, 1, 0, 1]])</span>
+</pre></div>
+</div>
+<p>The converse mapping from feature name to column index is stored in the
+<tt class="docutils literal"><span class="pre">vocabulary_</span></tt> attribute of the vectorizer:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">vocabulary_</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;document&#39;</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p>Hence words that were not seen in the training corpus will be completely
+ignored in future calls to the transform method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="s">&#39;Something completely new.&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<span class="go">array([[0, 0, 0, 0, 0, 0, 0, 0, 0]])</span>
+</pre></div>
+</div>
+<p>Note that in the previous corpus, the first and the last documents have
+exactly the same words hence are encoded in equal vectors. In particular
+we lose the information that the last document is an interogative form. To
+preserve some of the local ordering information we can extract 2-grams
+of words in addition to the 1-grams (the word themselvs):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">bigram_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">min_n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>                                    <span class="n">token_pattern</span><span class="o">=</span><span class="s">ur&#39;\b\w+\b&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span> <span class="o">=</span> <span class="n">bigram_vectorizer</span><span class="o">.</span><span class="n">build_analyzer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">analyze</span><span class="p">(</span><span class="s">&#39;Bi-grams are cool!&#39;</span><span class="p">)</span>
+<span class="go">[u&#39;bi&#39;, u&#39;grams&#39;, u&#39;are&#39;, u&#39;cool&#39;, u&#39;bi grams&#39;, u&#39;grams are&#39;, u&#39;are cool&#39;]</span>
+</pre></div>
+</div>
+<p>The vocabulary extracted by this vectorizer is hence much bigger and
+can now resolve ambiguities encoded in local positioning patterns:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">X_2</span> <span class="o">=</span> <span class="n">bigram_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_2</span>
+<span class="go">array([[0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0],</span>
+<span class="go">       [0, 0, 1, 0, 0, 1, 1, 0, 0, 2, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0],</span>
+<span class="go">       [1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0],</span>
+<span class="go">       [0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1]])</span>
+</pre></div>
+</div>
+<p>In particular the interogative form &#8220;Is this&#8221; is only present in the
+last document:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">feature_index</span> <span class="o">=</span> <span class="n">bigram_vectorizer</span><span class="o">.</span><span class="n">vocabulary_</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">u&#39;is this&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_2</span><span class="p">[:,</span> <span class="n">feature_index</span><span class="p">]</span>
+<span class="go">array([0, 0, 0, 1])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tf-idf-normalization">
+<span id="tfidf"></span><h3>6.2.1.4. TF-IDF normalization<a class="headerlink" href="#tf-idf-normalization" title="Permalink to this headline">¶</a></h3>
+<p>In a large text corpus, some words will be very present (e.g. &#8220;the&#8221;, &#8220;a&#8221;,
+&#8220;is&#8221; in English) hence carrying very little meaningul information about
+the actual contents of the document. If we were to feed the direct count
+data directly to a classifier those very frequent terms would shadow
+the frequencies of rarer yet more interesting terms.</p>
+<p>In order to re-weight the count features into floating point values
+suitable for usage by a classifier it is very common to use the tf–idf
+transform.</p>
+<p>Tf means <strong>term-frequency</strong> while tf–idf means term-frequency times
+<strong>inverse document-frequency</strong>. This is a orginally a term weighting
+scheme developed for information retrieval (as a ranking function
+for search engines results), that has also found good use in document
+classification and clustering.</p>
+<p>This normalization is implemented by the <a class="reference internal" href="generated/sklearn.feature_extraction.text.TfidfTransformer.html#sklearn.feature_extraction.text.TfidfTransformer" title="sklearn.feature_extraction.text.TfidfTransformer"><tt class="xref py py-class docutils literal"><span class="pre">TfidfTransformer</span></tt></a> class:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span> <span class="o">=</span> <span class="n">TfidfTransformer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span>
+<span class="go">TfidfTransformer(norm=&#39;l2&#39;, smooth_idf=True, sublinear_tf=False, use_idf=True)</span>
+</pre></div>
+</div>
+<p>Again please see the <a class="reference internal" href="classes.html#text-feature-extraction-ref"><em>reference documentation</em></a> for the details on all the parameters.</p>
+<p>Let&#8217;s take an example with the following counts. The first term is present
+100% of the time hence not very interesting. The two other features only
+in less than 50% of the time hence probably more representative of the
+content of the documents:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">counts</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>          <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>          <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>          <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>          <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>          <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tfidf</span> <span class="o">=</span> <span class="n">transformer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tfidf</span>                                  
+<span class="go">&lt;6x3 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span>
+<span class="go">    with 9 stored elements in Compressed Sparse Row format&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tfidf</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>                        
+<span class="go">array([[ 0.85...,  0.  ...,  0.52...],</span>
+<span class="go">       [ 1.  ...,  0.  ...,  0.  ...],</span>
+<span class="go">       [ 1.  ...,  0.  ...,  0.  ...],</span>
+<span class="go">       [ 1.  ...,  0.  ...,  0.  ...],</span>
+<span class="go">       [ 0.55...,  0.83...,  0.  ...],</span>
+<span class="go">       [ 0.63...,  0.  ...,  0.77...]])</span>
+</pre></div>
+</div>
+<p>Each row is normalized to have unit euclidean norm. The weights of each
+feature computed by the <tt class="docutils literal"><span class="pre">fit</span></tt> method call are stored in a model
+attribute:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">transformer</span><span class="o">.</span><span class="n">idf_</span>                       
+<span class="go">array([ 1. ...,  2.25...,  1.84...])</span>
+</pre></div>
+</div>
+<p>As tf–idf is a very often used for text features, there is also another
+class called <a class="reference internal" href="generated/sklearn.feature_extraction.text.Vectorizer.html#sklearn.feature_extraction.text.Vectorizer" title="sklearn.feature_extraction.text.Vectorizer"><tt class="xref py py-class docutils literal"><span class="pre">Vectorizer</span></tt></a> that combines all the option of
+<a class="reference internal" href="generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">CountVectorizer</span></tt></a> and <a class="reference internal" href="generated/sklearn.feature_extraction.text.TfidfTransformer.html#sklearn.feature_extraction.text.TfidfTransformer" title="sklearn.feature_extraction.text.TfidfTransformer"><tt class="xref py py-class docutils literal"><span class="pre">TfidfTransformer</span></tt></a> in a single model:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">Vectorizer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span> <span class="o">=</span> <span class="n">Vectorizer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
+<span class="gp">... </span>                                      
+<span class="go">&lt;4x9 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span>
+<span class="go">    with 19 stored elements in Compressed Sparse Row format&gt;</span>
+</pre></div>
+</div>
+<p>While the tf–idf normalization is often very useful, there might
+be cases where the binary occurrence markers might offer better
+features. This can be achieved by using the <tt class="docutils literal"><span class="pre">binary</span></tt> parameter
+of <a class="reference internal" href="generated/sklearn.feature_extraction.text.CountVectorizer.html#sklearn.feature_extraction.text.CountVectorizer" title="sklearn.feature_extraction.text.CountVectorizer"><tt class="xref py py-class docutils literal"><span class="pre">CountVectorizer</span></tt></a>. In particular, some estimators such as
+<a class="reference internal" href="naive_bayes.html#bernoulli-naive-bayes"><em>Bernoulli Naive Bayes</em></a> explicitly model discrete boolean random
+variables. Also very short text are likely to have noisy tf–idf values
+while the binary occurrence info is more stable.</p>
+<p>As usual the only way how to best adjust the feature extraction parameters
+is to use a cross-validated grid search, for instance by pipelining the
+feature extractor with a classifier:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../auto_examples/grid_search_text_feature_extraction.html#example-grid-search-text-feature-extraction-py"><em>Sample pipeline for text feature extraction and evaluation</em></a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="applications-and-examples">
+<h3>6.2.1.5. Applications and examples<a class="headerlink" href="#applications-and-examples" title="Permalink to this headline">¶</a></h3>
+<p>The bag of words representation is quite simplistic but surprisingly
+useful in practice.</p>
+<p>In particular in a <strong>supervised setting</strong> it can be successfully combined
+with fast and scalable linear models to train <strong>document classificers</strong>,
+for instance:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../auto_examples/document_classification_20newsgroups.html#example-document-classification-20newsgroups-py"><em>Classification of text documents using sparse features</em></a></li>
+</ul>
+</div></blockquote>
+<p>In an <strong>unsupervised setting</strong> it can be used to group similar documents
+together by applying clustering algorithms such as <a class="reference internal" href="clustering.html#k-means"><em>K-means</em></a>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../auto_examples/document_clustering.html#example-document-clustering-py"><em>Clustering text documents using k-means</em></a></li>
+</ul>
+</div></blockquote>
+<p>Finally it is possible to discover the main topics of a corpus by
+relaxing the hard assignement constraint of clustering, for instance by
+using <a class="reference internal" href="decomposition.html#nmf"><em>Non-negative matrix factorization (NMF or NNMF)</em></a>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../auto_examples/applications/topics_extraction_with_nmf.html#example-applications-topics-extraction-with-nmf-py"><em>Topics extraction with Non-Negative Matrix Factorization</em></a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="limitations-of-the-bag-of-words-representation">
+<h3>6.2.1.6. Limitations of the Bag of Words representation<a class="headerlink" href="#limitations-of-the-bag-of-words-representation" title="Permalink to this headline">¶</a></h3>
+<p>While some local positioning information can be preserved by extracting
+n-grams instead of individual words, Bag of Words and Bag of n-grams
+destroy most of the inner structure of the document and hence most of
+the meaning carried by that internal structure.</p>
+<p>In order to address the wider task of Natural Language Understanding,
+the local structure of sentences and paragraphs should thus be taken
+into account. Many such models will thus be casted as &#8220;Structured output&#8221;
+problems which are currently outside of the scope of scikit-learn.</p>
+</div>
+<div class="section" id="customizing-the-vectorizer-classes">
+<h3>6.2.1.7. Customizing the vectorizer classes<a class="headerlink" href="#customizing-the-vectorizer-classes" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to customize the behavior by passing some callable as
+parameters of the vectorizer:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_tokenizer</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">=</span><span class="n">my_tokenizer</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vectorizer</span><span class="o">.</span><span class="n">build_analyzer</span><span class="p">()(</span><span class="s">u&quot;Some... punctuation!&quot;</span><span class="p">)</span>
+<span class="go">[u&#39;some...&#39;, u&#39;punctuation!&#39;]</span>
+</pre></div>
+</div>
+<p>In particular we name:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">preprocessor</span></tt> a callable that takes a string as input and return
+another string (removing HTML tags or converting to lower case for
+instance)</li>
+<li><tt class="docutils literal"><span class="pre">tokenizer</span></tt> a callable that takes a string as input and output a
+sequence of feature occurrences (a.k.a. the tokens).</li>
+<li><tt class="docutils literal"><span class="pre">analyzer</span></tt> a callable that wraps calls to the preprocessor and
+tokenizer and further perform some filtering or n-grams extractions
+on the tokens.</li>
+</ul>
+</div></blockquote>
+<p>To make the preprocessor, tokenizer and analyzers aware of the model
+parameters it is possible to derive from the class and override the
+<tt class="docutils literal"><span class="pre">build_preprocessor</span></tt>, <tt class="docutils literal"><span class="pre">build_tokenizer`</span></tt> and <tt class="docutils literal"><span class="pre">build_analyzer</span></tt>
+factory method instead.</p>
+<p>Customizing the vectorizer can be very useful to handle Asian languages
+that do not use an explicit word separator such as the whitespace for
+instance.</p>
+</div>
+</div>
+<div class="section" id="image-feature-extraction">
+<h2>6.2.2. Image feature extraction<a class="headerlink" href="#image-feature-extraction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="patch-extraction">
+<h3>6.2.2.1. Patch extraction<a class="headerlink" href="#patch-extraction" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="generated/sklearn.feature_extraction.image.extract_patches_2d.html#sklearn.feature_extraction.image.extract_patches_2d" title="sklearn.feature_extraction.image.extract_patches_2d"><tt class="xref py py-func docutils literal"><span class="pre">extract_patches_2d</span></tt></a> function extracts patches from an image stored
+as a two-dimensional array, or three-dimensional with color information along
+the third axis. For rebuilding an image from all its patches, use
+<a class="reference internal" href="generated/sklearn.feature_extraction.image.reconstruct_from_patches_2d.html#sklearn.feature_extraction.image.reconstruct_from_patches_2d" title="sklearn.feature_extraction.image.reconstruct_from_patches_2d"><tt class="xref py py-func docutils literal"><span class="pre">reconstruct_from_patches_2d</span></tt></a>. For example let use generate a 4x4 pixel
+picture with 3 color channels (e.g. in RGB format):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction</span> <span class="kn">import</span> <span class="n">image</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">one_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">one_image</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c"># R channel of a fake RGB picture</span>
+<span class="go">array([[ 0,  3,  6,  9],</span>
+<span class="go">       [12, 15, 18, 21],</span>
+<span class="go">       [24, 27, 30, 33],</span>
+<span class="go">       [36, 39, 42, 45]])</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">patches</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">extract_patches_2d</span><span class="p">(</span><span class="n">one_image</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">max_patches</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">patches</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(2, 2, 2, 3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">patches</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="go">array([[[ 0,  3],</span>
+<span class="go">        [12, 15]],</span>
+
+<span class="go">       [[15, 18],</span>
+<span class="go">        [27, 30]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">patches</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">extract_patches_2d</span><span class="p">(</span><span class="n">one_image</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">patches</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(9, 2, 2, 3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">patches</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="go">array([[15, 18],</span>
+<span class="go">       [27, 30]])</span>
+</pre></div>
+</div>
+<p>Let us now try to reconstruct the original image from the patches by averaging
+on overlapping areas:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">reconstructed</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">reconstruct_from_patches_2d</span><span class="p">(</span><span class="n">patches</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_array_equal</span><span class="p">(</span><span class="n">one_image</span><span class="p">,</span> <span class="n">reconstructed</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="generated/sklearn.feature_extraction.image.PatchExtractor.html#sklearn.feature_extraction.image.PatchExtractor" title="sklearn.feature_extraction.image.PatchExtractor"><tt class="xref py py-class docutils literal"><span class="pre">PatchExtractor</span></tt></a> class works in the same way as
+<a class="reference internal" href="generated/sklearn.feature_extraction.image.extract_patches_2d.html#sklearn.feature_extraction.image.extract_patches_2d" title="sklearn.feature_extraction.image.extract_patches_2d"><tt class="xref py py-func docutils literal"><span class="pre">extract_patches_2d</span></tt></a>, only it supports multiple images as input. It is
+implemented as an estimator, so it can be used in pipelines. See:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">five_images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">patches</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">PatchExtractor</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">five_images</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">patches</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(45, 2, 2, 3)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2010–2011, scikit-learn developers (BSD License).
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
+    <span style="padding-left: 5ex;">
+    <a href="../_sources/modules/feature_extraction.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+  </body>
+</html>

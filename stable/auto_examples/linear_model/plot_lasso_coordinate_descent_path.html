@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Lasso and Elastic Net &mdash; scikit-learn 0.9 documentation</title>
+    <title>Lasso and Elastic Net &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Lasso path using LARS" href="plot_lasso_lars.html" />
+    <link rel="prev" title="Bayesian Ridge Regression" href="plot_bayesian_ridge.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="plot_bayesian_ridge.html" title="Bayesian Ridge Regression"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Bayesian Ridge R...
+	    </span>
+	    <span class="hiddenrellink">
+	    Bayesian Ridge Regression
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="plot_lasso_lars.html" title="Lasso path using LARS"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Lasso path using...
+	    </span>
+	    <span class="hiddenrellink">
+	    Lasso path using LARS
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Lasso and Elastic Net</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -118,6 +161,10 @@
 <p>Lasso and elastic net (L1 and L2 penalisation) implemented using a
 coordinate descent.</p>
 <img alt="../../_images/plot_lasso_coordinate_descent_path_1.png" class="align-center" src="../../_images/plot_lasso_coordinate_descent_path_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Computing regularization path using the lasso...
+Computing regularization path using the elastic net...</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_lasso_coordinate_descent_path.py"><tt class="xref download docutils literal"><span class="pre">plot_lasso_coordinate_descent_path.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -134,12 +181,12 @@ coordinate descent.</p>
 <span class="n">X</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">data</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">target</span>
 
-<span class="n">X</span> <span class="o">/=</span> <span class="n">X</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c"># Standardize data (easier to set the rho parameter)</span>
+<span class="n">X</span> <span class="o">/=</span> <span class="n">X</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c"># Standardize data (easier to set the rho parameter)</span>
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># Compute paths</span>
 
-<span class="n">eps</span> <span class="o">=</span> <span class="mf">5e-3</span> <span class="c"># the smaller it is the longer is the path</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">5e-3</span>  <span class="c"># the smaller it is the longer is the path</span>
 
 <span class="k">print</span> <span class="s">&quot;Computing regularization path using the lasso...&quot;</span>
 <span class="n">models</span> <span class="o">=</span> <span class="n">lasso_path</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">)</span>
@@ -151,7 +198,7 @@ coordinate descent.</p>
 <span class="n">alphas_enet</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">alpha</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">])</span>
 <span class="n">coefs_enet</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">])</span>
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># Display results</span>
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
@@ -178,8 +225,6 @@ coordinate descent.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

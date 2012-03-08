@@ -16,6 +16,12 @@ number of features selected with cross-validation.
     :align: center
 
 
+**Script output**::
+
+  Optimal number of features : 3
+
+
+
 **Python source code:** :download:`plot_rfe_with_cross_validation.py <plot_rfe_with_cross_validation.py>`
 
 .. literalinclude:: plot_rfe_with_cross_validation.py

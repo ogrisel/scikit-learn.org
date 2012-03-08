@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>sklearn.datasets.make_classification &mdash; scikit-learn 0.9 documentation</title>
+    <title>sklearn.datasets.make_classification &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +55,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +74,32 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel rellarge">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<!-- Ad a link to the 'up' page -->
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">sklearn.datasets.make_classification</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -196,11 +190,21 @@ happens after shifting.</p>
 <div><p>Shuffle the samples and the features.</p>
 </div></blockquote>
 <p><strong>random_state</strong> : int, RandomState instance or None, optional (default=None)</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If int, random_state is the seed used by the random number generator;
 If RandomState instance, random_state is the random number generator;
 If None, the random number generator is the RandomState instance used
 by <cite>np.random</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>X</strong> : array of shape [n_samples, n_features]</p>
+<blockquote>
+<div><p>The generated samples.</p>
+</div></blockquote>
+<p><strong>y</strong> : array of shape [n_samples]</p>
+<blockquote class="last">
+<div><p>The integer labels for class membership of each sample.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -209,11 +213,11 @@ by <cite>np.random</cite>.</p>
 <p class="rubric">Notes</p>
 <p>The algorithm is adapted from Guyon [1] and was designed to generate
 the &#8220;Madelon&#8221; dataset.</p>
-<p class="rubric">References</p>
+<p><strong>References</strong>:</p>
 <table class="docutils citation" frame="void" id="r1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R1]</a></td><td>I. Guyon, &#8220;Design of experiments for the NIPS 2003 variable
+<tr><td class="label">[R1]</td><td>I. Guyon, &#8220;Design of experiments for the NIPS 2003 variable
 selection benchmark&#8221;, 2003.</td></tr>
 </tbody>
 </table>
@@ -230,8 +234,6 @@ selection benchmark&#8221;, 2003.</td></tr>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

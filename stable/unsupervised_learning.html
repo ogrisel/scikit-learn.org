@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>4. Unsupervised learning &mdash; scikit-learn 0.9 documentation</title>
+    <title>4. Unsupervised learning &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="index.html" />
-    <link rel="up" title="&lt;no title&gt;" href="contents.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="index.html" />
+    <link rel="up" title="&lt;no title&gt;" href="user_guide.html" />
     <link rel="next" title="4.1. Gaussian mixture models" href="modules/mixture.html" />
-    <link rel="prev" title="3.9. Feature selection" href="modules/feature_selection.html" />
+    <link rel="prev" title="3.11. Feature selection" href="modules/feature_selection.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="support.html">Support</a></li>
             <li><a href="user_guide.html">User Guide</a></li>
             <li><a href="auto_examples/index.html">Examples</a></li>
-            <li><a href="developers/index.html">Development</a></li>
+            <li><a href="modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,44 +77,76 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="modules/feature_selection.html" title="3.9. Feature selection"
-             accesskey="P">previous</a> |
-          <a href="modules/mixture.html" title="4.1. Gaussian mixture models"
-             accesskey="N">next</a> |
-          <a href="np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="modules/feature_selection.html" title="3.11. Feature selection"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    3.11. Feature se...
+	    </span>
+	    <span class="hiddenrellink">
+	    3.11. Feature selection
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="modules/mixture.html" title="4.1. Gaussian mixture models"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    4.1. Gaussian mi...
+	    </span>
+	    <span class="hiddenrellink">
+	    4.1. Gaussian mixture models
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="user_guide.html" title="<no title>" >
+	Up
+	<br>
+	<span class="smallrellink">
+	<no title>
+	</span>
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">4. Unsupervised learning</a><ul>
 </ul>
 </li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -219,17 +251,30 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="modules/clustering.html#ajusted-rand-index">4.3.7.2. Ajusted Rand index</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id5">4.3.7.2.1. Presentation and usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id6">4.3.7.2.2. Advantages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id7">4.3.7.2.3. Drawbacks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id7">4.3.7.2.1. Presentation and usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id8">4.3.7.2.2. Advantages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id9">4.3.7.2.3. Drawbacks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#mathematical-formulation">4.3.7.2.4. Mathematical formulation</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="modules/clustering.html#homogeneity-completeness-and-v-measure">4.3.7.3. Homogeneity, completeness and V-measure</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id8">4.3.7.3.1. Presentation and usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id9">4.3.7.3.2. Advantages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id10">4.3.7.3.3. Drawbacks</a></li>
-<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id11">4.3.7.3.4. Mathematical formulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/clustering.html#ajusted-mutual-information">4.3.7.3. Ajusted Mutual Information</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id10">4.3.7.3.1. Presentation and usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id11">4.3.7.3.2. Advantages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id12">4.3.7.3.3. Drawbacks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id13">4.3.7.3.4. Mathematical formulation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="modules/clustering.html#homogeneity-completeness-and-v-measure">4.3.7.4. Homogeneity, completeness and V-measure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id14">4.3.7.4.1. Presentation and usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id15">4.3.7.4.2. Advantages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id16">4.3.7.4.3. Drawbacks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id17">4.3.7.4.4. Mathematical formulation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="modules/clustering.html#silhouette-coefficient">4.3.7.5. Silhouette Coefficient</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id19">4.3.7.5.1. Presentation and usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id20">4.3.7.5.2. Advantages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/clustering.html#id21">4.3.7.5.3. Drawbacks</a></li>
 </ul>
 </li>
 </ul>
@@ -245,8 +290,9 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules/decomposition.html#dictionary-learning">4.4.2. Dictionary Learning</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="modules/decomposition.html#generic-dictionary-learning">4.4.2.1. Generic dictionary learning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/decomposition.html#mini-batch-dictionary-learning">4.4.2.2. Mini-batch dictionary learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/decomposition.html#sparse-coding-with-a-precomputed-dictionary">4.4.2.1. Sparse coding with a precomputed dictionary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/decomposition.html#generic-dictionary-learning">4.4.2.2. Generic dictionary learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/decomposition.html#mini-batch-dictionary-learning">4.4.2.3. Mini-batch dictionary learning</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="modules/decomposition.html#independent-component-analysis-ica">4.4.3. Independent component analysis (ICA)</a></li>
@@ -261,9 +307,23 @@
 <li class="toctree-l3"><a class="reference internal" href="modules/covariance.html#oracle-approximating-shrinkage">4.5.2.3. Oracle Approximating Shrinkage</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="modules/covariance.html#sparse-inverse-covariance">4.5.3. Sparse inverse covariance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/covariance.html#robust-covariance-estimation">4.5.4. Robust Covariance Estimation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/covariance.html#minimum-covariance-determinant">4.5.4.1. Minimum Covariance Determinant</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="modules/hmm.html">4.6. Hidden Markov Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/outlier_detection.html">4.6. Novelty and Outlier Detection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/outlier_detection.html#novelty-detection">4.6.1. Novelty Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/outlier_detection.html#id1">4.6.2. Outlier Detection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/outlier_detection.html#fitting-an-elliptic-envelop">4.6.2.1. Fitting an elliptic envelop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/outlier_detection.html#one-class-svm-versus-elliptic-envelop">4.6.2.2. One-class SVM versus elliptic envelop</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/hmm.html">4.7. Hidden Markov Models</a></li>
 </ul>
 </div>
 </div>
@@ -277,8 +337,6 @@
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

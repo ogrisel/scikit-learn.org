@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Pipeline Anova SVM &mdash; scikit-learn 0.9 documentation</title>
+    <title>Pipeline Anova SVM &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
+    <link rel="up" title="Examples" href="index.html" />
+    <link rel="next" title="Parameter estimation using grid search with a nested cross-validation" href="grid_search_digits.html" />
+    <link rel="prev" title="Clustering text documents using k-means" href="document_clustering.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="document_clustering.html" title="Clustering text documents using k-means"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Clustering text ...
+	    </span>
+	    <span class="hiddenrellink">
+	    Clustering text documents using k-means
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="grid_search_digits.html" title="Parameter estimation using grid search with a nested cross-validation"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Parameter estima...
+	    </span>
+	    <span class="hiddenrellink">
+	    Parameter estimation using grid search with a nested cross-validation
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Pipeline Anova SVM</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -127,8 +170,8 @@ feature selection with anova and then a C-SVM of the selected features.</p>
 
 <span class="c"># import some data to play with</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">samples_generator</span><span class="o">.</span><span class="n">make_classification</span><span class="p">(</span>
-	<span class="n">n_features</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-	<span class="n">n_classes</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">n_features</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">n_classes</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_clusters_per_class</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c"># ANOVA SVM-C</span>
 <span class="c"># 1) anova filter, take 3 best ranked features</span>
@@ -152,8 +195,6 @@ feature selection with anova and then a C-SVM of the selected features.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

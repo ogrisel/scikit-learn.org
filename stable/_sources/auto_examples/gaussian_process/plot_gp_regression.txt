@@ -20,6 +20,8 @@ confidence interval.
     :align: center
 
 
+
+
 **Python source code:** :download:`plot_gp_regression.py <plot_gp_regression.py>`
 
 .. literalinclude:: plot_gp_regression.py

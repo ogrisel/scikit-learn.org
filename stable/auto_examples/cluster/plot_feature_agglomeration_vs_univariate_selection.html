@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Feature agglomeration vs. univariate selection &mdash; scikit-learn 0.9 documentation</title>
+    <title>Feature agglomeration vs. univariate selection &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="A demo of K-Means clustering on the handwritten digits data" href="plot_kmeans_digits.html" />
+    <link rel="prev" title="Demo of DBSCAN clustering algorithm" href="plot_dbscan.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="plot_dbscan.html" title="Demo of DBSCAN clustering algorithm"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Demo of DBSCAN c...
+	    </span>
+	    <span class="hiddenrellink">
+	    Demo of DBSCAN clustering algorithm
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="plot_kmeans_digits.html" title="A demo of K-Means clustering on the handwritten digits data"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    A demo of K-Mean...
+	    </span>
+	    <span class="hiddenrellink">
+	    A demo of K-Means clustering on the handwritten digits data
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Feature agglomeration vs. univariate selection</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -145,7 +188,7 @@ a BayesianRidge as supervised estimator.</p>
 <span class="c">###############################################################################</span>
 <span class="c"># Generate data</span>
 <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">200</span>
-<span class="n">size</span> <span class="o">=</span> <span class="mi">40</span> <span class="c"># image size</span>
+<span class="n">size</span> <span class="o">=</span> <span class="mi">40</span>  <span class="c"># image size</span>
 <span class="n">roi_size</span> <span class="o">=</span> <span class="mi">15</span>
 <span class="n">snr</span> <span class="o">=</span> <span class="mf">5.</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -155,8 +198,8 @@ a BayesianRidge as supervised estimator.</p>
 <span class="n">coef</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">roi_size</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">roi_size</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.</span>
 <span class="n">coef</span><span class="p">[</span><span class="o">-</span><span class="n">roi_size</span><span class="p">:,</span> <span class="o">-</span><span class="n">roi_size</span><span class="p">:]</span> <span class="o">=</span> <span class="mf">1.</span>
 
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">size</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">:</span> <span class="c"># smooth data</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">size</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">:</span>  <span class="c"># smooth data</span>
     <span class="n">x</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">),</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 <span class="n">X</span> <span class="o">-=</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">/=</span> <span class="n">X</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -164,11 +207,11 @@ a BayesianRidge as supervised estimator.</p>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">coef</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
 <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">noise_coef</span> <span class="o">=</span> <span class="p">(</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">snr</span> <span class="o">/</span> <span class="mf">20.</span><span class="p">))</span> <span class="o">/</span> <span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">+=</span> <span class="n">noise_coef</span> <span class="o">*</span> <span class="n">noise</span> <span class="c"># add noise</span>
+<span class="n">y</span> <span class="o">+=</span> <span class="n">noise_coef</span> <span class="o">*</span> <span class="n">noise</span>  <span class="c"># add noise</span>
 
 <span class="c">###############################################################################</span>
 <span class="c"># Compute the coefs of a Bayesian Ridge with GridSearch</span>
-<span class="n">cv</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="c"># cross-validation generator for model selection</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>  <span class="c"># cross-validation generator for model selection</span>
 <span class="n">ridge</span> <span class="o">=</span> <span class="n">BayesianRidge</span><span class="p">()</span>
 <span class="n">mem</span> <span class="o">=</span> <span class="n">Memory</span><span class="p">(</span><span class="n">cachedir</span><span class="o">=</span><span class="s">&#39;.&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
@@ -178,21 +221,21 @@ a BayesianRidge as supervised estimator.</p>
                          <span class="n">n_components</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s">&#39;ward&#39;</span><span class="p">,</span> <span class="n">ward</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;ridge&#39;</span><span class="p">,</span> <span class="n">ridge</span><span class="p">)])</span>
 <span class="c"># Select the optimal number of parcels with grid search</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;ward__n_clusters&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]},</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">)</span> <span class="c"># set the best parameters</span>
-<span class="n">coef_</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">coef_</span>
-<span class="n">coef_</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">coef_</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;ward__n_clusters&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]},</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c"># set the best parameters</span>
+<span class="n">coef_</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">coef_</span>
+<span class="n">coef_</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">coef_</span><span class="p">)</span>
 <span class="n">coef_agglomeration_</span> <span class="o">=</span> <span class="n">coef_</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
 
 <span class="c"># Anova univariate feature selection followed by BayesianRidge</span>
-<span class="n">f_regression</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">feature_selection</span><span class="o">.</span><span class="n">f_regression</span><span class="p">)</span> <span class="c"># caching function</span>
+<span class="n">f_regression</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">feature_selection</span><span class="o">.</span><span class="n">f_regression</span><span class="p">)</span>  <span class="c"># caching function</span>
 <span class="n">anova</span> <span class="o">=</span> <span class="n">feature_selection</span><span class="o">.</span><span class="n">SelectPercentile</span><span class="p">(</span><span class="n">f_regression</span><span class="p">)</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s">&#39;anova&#39;</span><span class="p">,</span> <span class="n">anova</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;ridge&#39;</span><span class="p">,</span> <span class="n">ridge</span><span class="p">)])</span>
 <span class="c"># Select the optimal percentage of features with grid search</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;anova__percentile&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]})</span>
-<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">)</span> <span class="c"># set the best parameters</span>
-<span class="n">coef_</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">coef_</span>
-<span class="n">coef_</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">coef_</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;anova__percentile&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]},</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c"># set the best parameters</span>
+<span class="n">coef_</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">coef_</span>
+<span class="n">coef_</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">coef_</span><span class="p">)</span>
 <span class="n">coef_selection_</span> <span class="o">=</span> <span class="n">coef_</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
 
 <span class="c">###############################################################################</span>
@@ -223,8 +266,6 @@ a BayesianRidge as supervised estimator.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

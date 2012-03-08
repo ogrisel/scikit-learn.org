@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Classification of text documents using sparse features &mdash; scikit-learn 0.9 documentation</title>
+    <title>Classification of text documents using sparse features &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
+    <link rel="up" title="Examples" href="index.html" />
+    <link rel="next" title="Clustering text documents using k-means" href="document_clustering.html" />
+    <link rel="prev" title="Train error vs Test error" href="plot_train_error_vs_test_error.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="plot_train_error_vs_test_error.html" title="Train error vs Test error"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Train error vs T...
+	    </span>
+	    <span class="hiddenrellink">
+	    Train error vs Test error
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="document_clustering.html" title="Clustering text documents using k-means"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Clustering text ...
+	    </span>
+	    <span class="hiddenrellink">
+	    Clustering text documents using k-means
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Classification of text documents using sparse features</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,7 +164,7 @@ a scipy.sparse matrix to store the features instead of standard numpy arrays
 and demos various classifiers that can efficiently handle sparse matrices.</p>
 <p>The dataset used in this example is the 20 newsgroups dataset which will be
 automatically downloaded and then cached.</p>
-<p>You can adjust the number of categories by giving there name to the dataset
+<p>You can adjust the number of categories by giving their names to the dataset
 loader or setting them to None to get the 20 of them.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/document_classification_20newsgroups.py"><tt class="xref download docutils literal"><span class="pre">document_classification_20newsgroups.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Author: Peter Prettenhofer &lt;peter.prettenhofer@gmail.com&gt;</span>
@@ -245,7 +288,6 @@ loader or setting them to None to get the 20 of them.</p>
     <span class="k">return</span> <span class="n">s</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">80</span> <span class="k">else</span> <span class="n">s</span><span class="p">[:</span><span class="mi">77</span><span class="p">]</span> <span class="o">+</span> <span class="s">&quot;...&quot;</span>
 
 
-
 <span class="c">###############################################################################</span>
 <span class="c"># Benchmark classifiers</span>
 <span class="k">def</span> <span class="nf">benchmark</span><span class="p">(</span><span class="n">clf</span><span class="p">):</span>
@@ -272,7 +314,7 @@ loader or setting them to None to get the 20 of them.</p>
         <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">print_top10</span><span class="p">:</span>
             <span class="k">print</span> <span class="s">&quot;top 10 keywords per class:&quot;</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">category</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">categories</span><span class="p">):</span>
-                <span class="n">top10</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:])[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span>
+                <span class="n">top10</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="n">i</span><span class="p">])[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span>
                 <span class="k">print</span> <span class="n">trim</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">vocabulary</span><span class="p">[</span><span class="n">top10</span><span class="p">])))</span>
         <span class="k">print</span>
 
@@ -317,6 +359,7 @@ loader or setting them to None to get the 20 of them.</p>
 <span class="n">mnnb_results</span> <span class="o">=</span> <span class="n">benchmark</span><span class="p">(</span><span class="n">MultinomialNB</span><span class="p">(</span><span class="n">alpha</span><span class="o">=.</span><span class="mo">01</span><span class="p">))</span>
 <span class="n">bnb_result</span> <span class="o">=</span> <span class="n">benchmark</span><span class="p">(</span><span class="n">BernoulliNB</span><span class="p">(</span><span class="n">alpha</span><span class="o">=.</span><span class="mo">01</span><span class="p">))</span>
 
+
 <span class="k">class</span> <span class="nc">L1LinearSVC</span><span class="p">(</span><span class="n">LinearSVC</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -347,8 +390,6 @@ loader or setting them to None to get the 20 of them.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

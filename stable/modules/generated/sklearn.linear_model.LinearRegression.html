@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.2.1. sklearn.linear_model.LinearRegression &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.14.1.1. sklearn.linear_model.LinearRegression &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.2.2. sklearn.linear_model.Ridge" href="sklearn.linear_model.Ridge.html" />
-    <link rel="prev" title="9.1.9.5. sklearn.svm.libsvm.cross_validation" href="sklearn.svm.libsvm.cross_validation.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.14.1.2. sklearn.linear_model.Ridge" href="sklearn.linear_model.Ridge.html" />
+    <link rel="prev" title="8.13.1. sklearn.lda.LDA" href="sklearn.lda.LDA.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.svm.libsvm.cross_validation.html" title="9.1.9.5. sklearn.svm.libsvm.cross_validation"
-             accesskey="P">previous</a> |
-          <a href="sklearn.linear_model.Ridge.html" title="9.2.2. sklearn.linear_model.Ridge"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.2.1. sklearn.linear_model.LinearRegression</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.lda.LDA.html" title="8.13.1. sklearn.lda.LDA"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.13.1. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.13.1. sklearn.lda.LDA
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.linear_model.Ridge.html" title="8.14.1.2. sklearn.linear_model.Ridge"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.14.1.2. sklear...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.14.1.2. sklearn.linear_model.Ridge
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.14.1.1. sklearn.linear_model.LinearRegression</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,11 +157,29 @@
           <div class="body">
             
   <div class="section" id="sklearn-linear-model-linearregression">
-<h1>9.2.1. sklearn.linear_model.LinearRegression<a class="headerlink" href="#sklearn-linear-model-linearregression" title="Permalink to this headline">¶</a></h1>
+<h1>8.14.1.1. sklearn.linear_model.LinearRegression<a class="headerlink" href="#sklearn-linear-model-linearregression" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.linear_model.LinearRegression">
-<em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">LinearRegression</tt><big>(</big><em>fit_intercept=True</em>, <em>normalize=False</em>, <em>overwrite_X=False</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.LinearRegression" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">LinearRegression</tt><big>(</big><em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.LinearRegression" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ordinary least squares Linear Regression.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>fit_intercept</strong> : boolean, optional</p>
+<blockquote>
+<div><p>wether to calculate the intercept for this model. If set
+to false, no intercept will be used in calculations
+(e.g. data is expected to be already centered).</p>
+</div></blockquote>
+<p><strong>normalize</strong> : boolean, optional</p>
+<blockquote class="last">
+<div><p>If True, the regressors X are normalized</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Notes</p>
 <p>From the implementation point of view, this is just plain Ordinary
 Least Squares (numpy.linalg.lstsq) wrapped as a predictor object.</p>
@@ -154,24 +208,48 @@ Least Squares (numpy.linalg.lstsq) wrapped as a predictor object.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.LinearRegression.fit" title="sklearn.linear_model.LinearRegression.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.LinearRegression.decision_function" title="sklearn.linear_model.LinearRegression.decision_function"><tt class="xref py py-obj docutils literal"><span class="pre">decision_function</span></tt></a>(X)</td>
+<td>Decision function of the linear model</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.LinearRegression.fit" title="sklearn.linear_model.LinearRegression.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y)</td>
 <td>Fit linear model.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.LinearRegression.predict" title="sklearn.linear_model.LinearRegression.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.LinearRegression.predict" title="sklearn.linear_model.LinearRegression.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
 <td>Predict using the linear model</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.LinearRegression.score" title="sklearn.linear_model.LinearRegression.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
-<td>Returns the coefficient of determination of the prediction</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.LinearRegression.score" title="sklearn.linear_model.LinearRegression.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
+<td>Returns the coefficient of determination R^2 of the prediction.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.LinearRegression.set_params" title="sklearn.linear_model.LinearRegression.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.LinearRegression.set_params" title="sklearn.linear_model.LinearRegression.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
 <td>Set the parameters of the estimator.</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="sklearn.linear_model.LinearRegression.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>fit_intercept=True</em>, <em>normalize=False</em>, <em>overwrite_X=False</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.LinearRegression.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.LinearRegression.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="sklearn.linear_model.LinearRegression.decision_function">
+<tt class="descname">decision_function</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.LinearRegression.decision_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decision function of the linear model</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : numpy array of shape [n_samples, n_features]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>C</strong> : array, shape = [n_samples]</p>
+<blockquote class="last">
+<div><p>Returns predicted values.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="sklearn.linear_model.LinearRegression.fit">
@@ -181,7 +259,7 @@ Least Squares (numpy.linalg.lstsq) wrapped as a predictor object.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : numpy array of shape [n_samples,n_features]</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : numpy array or sparse matrix of shape [n_samples,n_features]</p>
 <blockquote>
 <div><p>Training data</p>
 </div></blockquote>
@@ -189,19 +267,9 @@ Least Squares (numpy.linalg.lstsq) wrapped as a predictor object.</p>
 <blockquote>
 <div><p>Target values</p>
 </div></blockquote>
-<p><strong>fit_intercept</strong> : boolean, optional</p>
-<blockquote>
-<div><p>wether to calculate the intercept for this model. If set
-to false, no intercept will be used in calculations
-(e.g. data is expected to be already centered).</p>
-</div></blockquote>
-<p><strong>normalize</strong> : boolean, optional</p>
-<blockquote>
-<div><p>If True, the regressors X are normalized</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first last"><strong>self</strong> : returns an instance of self.</p>
+<p><strong>Returns</strong> :</p>
+<p><strong>&#8212;&#8212;-</strong> :</p>
+<p class="last"><strong>self</strong> : returns an instance of self.</p>
 </td>
 </tr>
 </tbody>
@@ -232,7 +300,11 @@ to false, no intercept will be used in calculations
 <dl class="method">
 <dt id="sklearn.linear_model.LinearRegression.score">
 <tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.LinearRegression.score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the coefficient of determination of the prediction</p>
+<dd><p>Returns the coefficient of determination R^2 of the prediction.</p>
+<p>The coefficient R^2 is defined as (1 - u/v), where u is the
+regression sum of squares ((y - y_pred) ** 2).sum() and v is the
+residual sum of squares ((y_true - y_true.mean()) ** 2).sum().
+Best possible score is 1.0, lower values are worse.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -255,10 +327,10 @@ to false, no intercept will be used in calculations
 <dt id="sklearn.linear_model.LinearRegression.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.LinearRegression.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of the estimator.</p>
-<p>The method works on simple estimators as well as on nested
-objects (such as pipelines). The former have parameters of the
-form &lt;component&gt;__&lt;parameter&gt; so that it&#8217;s possible to update
-each component of a nested object.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The former have parameters of the form
+<tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
+component of a nested object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -282,8 +354,6 @@ each component of a nested object.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

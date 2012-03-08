@@ -16,11 +16,6 @@ An illustration of various embeddings on the digits dataset.
 
     *
 
-      .. image:: images/plot_lle_digits_1.png
-            :scale: 50
-
-    *
-
       .. image:: images/plot_lle_digits_2.png
             :scale: 50
 
@@ -31,7 +26,7 @@ An illustration of various embeddings on the digits dataset.
 
     *
 
-      .. image:: images/plot_lle_digits_4.png
+      .. image:: images/plot_lle_digits_6.png
             :scale: 50
 
     *
@@ -41,12 +36,7 @@ An illustration of various embeddings on the digits dataset.
 
     *
 
-      .. image:: images/plot_lle_digits_6.png
-            :scale: 50
-
-    *
-
-      .. image:: images/plot_lle_digits_7.png
+      .. image:: images/plot_lle_digits_9.png
             :scale: 50
 
     *
@@ -56,8 +46,36 @@ An illustration of various embeddings on the digits dataset.
 
     *
 
-      .. image:: images/plot_lle_digits_9.png
+      .. image:: images/plot_lle_digits_4.png
             :scale: 50
+
+    *
+
+      .. image:: images/plot_lle_digits_1.png
+            :scale: 50
+
+    *
+
+      .. image:: images/plot_lle_digits_7.png
+            :scale: 50
+
+
+**Script output**::
+
+  Computing random projection
+  Computing PCA projection
+  Computing LDA projection
+  Computing Isomap embedding
+  Done.
+  Computing LLE embedding
+  Done. Reconstruction error: 1.28548e-06
+  Computing modified LLE embedding
+  Done. Reconstruction error: 0.359939
+  Computing Hessian LLE embedding
+  Done. Reconstruction error: 0.212066
+  Computing LTSA embedding
+  Done. Reconstruction error: 0.212076
+
 
 
 **Python source code:** :download:`plot_lle_digits.py <plot_lle_digits.py>`

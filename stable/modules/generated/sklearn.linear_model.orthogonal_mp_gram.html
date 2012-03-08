@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.2.22. sklearn.linear_model.orthogonal_mp_gram &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.14.1.22. sklearn.linear_model.orthogonal_mp_gram &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.2.23.1. sklearn.linear_model.sparse.Lasso" href="sklearn.linear_model.sparse.Lasso.html" />
-    <link rel="prev" title="9.2.21. sklearn.linear_model.orthogonal_mp" href="sklearn.linear_model.orthogonal_mp.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.14.2.1. sklearn.linear_model.sparse.Lasso" href="sklearn.linear_model.sparse.Lasso.html" />
+    <link rel="prev" title="8.14.1.21. sklearn.linear_model.orthogonal_mp" href="sklearn.linear_model.orthogonal_mp.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.linear_model.orthogonal_mp.html" title="9.2.21. sklearn.linear_model.orthogonal_mp"
-             accesskey="P">previous</a> |
-          <a href="sklearn.linear_model.sparse.Lasso.html" title="9.2.23.1. sklearn.linear_model.sparse.Lasso"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.2.22. sklearn.linear_model.orthogonal_mp_gram</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.linear_model.orthogonal_mp.html" title="8.14.1.21. sklearn.linear_model.orthogonal_mp"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.14.1.21. sklea...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.14.1.21. sklearn.linear_model.orthogonal_mp
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.linear_model.sparse.Lasso.html" title="8.14.2.1. sklearn.linear_model.sparse.Lasso"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.14.2.1. sklear...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.14.2.1. sklearn.linear_model.sparse.Lasso
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.14.1.22. sklearn.linear_model.orthogonal_mp_gram</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,10 +157,10 @@
           <div class="body">
             
   <div class="section" id="sklearn-linear-model-orthogonal-mp-gram">
-<h1>9.2.22. sklearn.linear_model.orthogonal_mp_gram<a class="headerlink" href="#sklearn-linear-model-orthogonal-mp-gram" title="Permalink to this headline">¶</a></h1>
+<h1>8.14.1.22. sklearn.linear_model.orthogonal_mp_gram<a class="headerlink" href="#sklearn-linear-model-orthogonal-mp-gram" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.linear_model.orthogonal_mp_gram">
-<tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">orthogonal_mp_gram</tt><big>(</big><em>Gram</em>, <em>Xy</em>, <em>n_nonzero_coefs=None</em>, <em>tol=None</em>, <em>norms_squared=None</em>, <em>overwrite_gram=False</em>, <em>overwrite_Xy=False</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.orthogonal_mp_gram" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">orthogonal_mp_gram</tt><big>(</big><em>Gram</em>, <em>Xy</em>, <em>n_nonzero_coefs=None</em>, <em>tol=None</em>, <em>norms_squared=None</em>, <em>copy_Gram=True</em>, <em>copy_Xy=True</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.orthogonal_mp_gram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gram Orthogonal Matching Pursuit (OMP)</p>
 <p>Solves n_targets Orthogonal Matching Pursuit problems using only
 the Gram matrix X.T * X and the product X.T * y.</p>
@@ -153,15 +189,16 @@ default) this value is set to 10% of n_features.</p>
 <blockquote>
 <div><p>Squared L2 norms of the lines of y. Required if tol is not None.</p>
 </div></blockquote>
-<p><strong>overwrite_gram: bool,</strong> :</p>
+<p><strong>copy_Gram: bool, optional</strong> :</p>
 <blockquote>
-<div><p>Whether the gram matrix can be overwritten by the algorithm. This
-is only helpful if it is already Fortran-ordered, otherwise a copy
-is made anyway.</p>
+<div><p>Whether the gram matrix must be copied by the algorithm. A false
+value is only helpful if it is already Fortran-ordered, otherwise a
+copy is made anyway.</p>
 </div></blockquote>
-<p><strong>overwrite_Xy: bool,</strong> :</p>
+<p><strong>copy_Xy: bool, optional</strong> :</p>
 <blockquote>
-<div><p>Whether the covariance vector Xy can be overwritten by the algorithm.</p>
+<div><p>Whether the covariance vector Xy must be copied by the algorithm.
+If False, it may be overwritten.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -185,7 +222,7 @@ Signal Processing, Vol. 41, No. 12. (December 1993), pp. 3397-3415.
 <p>This implementation is based on Rubinstein, R., Zibulevsky, M. and Elad,
 M., Efficient Implementation of the K-SVD Algorithm using Batch Orthogonal
 Matching Pursuit Technical Report - CS Technion, April 2008.
-<a class="reference external" href="http://www.cs.technion.ac.il/~ronrubin/Publications/KSVX-OMP-v2.pdf">http://www.cs.technion.ac.il/~ronrubin/Publications/KSVX-OMP-v2.pdf</a></p>
+<a class="reference external" href="http://www.cs.technion.ac.il/~ronrubin/Publications/KSVD-OMP-v2.pdf">http://www.cs.technion.ac.il/~ronrubin/Publications/KSVD-OMP-v2.pdf</a></p>
 </dd></dl>
 
 </div>
@@ -199,8 +236,6 @@ Matching Pursuit Technical Report - CS Technion, April 2008.
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

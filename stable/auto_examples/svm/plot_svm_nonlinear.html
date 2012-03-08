@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Non-linear SVM &mdash; scikit-learn 0.9 documentation</title>
+    <title>Non-linear SVM &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Seleting hyper-parameter C and gamma of a RBF-Kernel SVM" href="plot_svm_parameters_selection.html" />
+    <link rel="prev" title="SVM-Anova: SVM with univariate feature selection" href="plot_svm_anova.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="plot_svm_anova.html" title="SVM-Anova: SVM with univariate feature selection"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    SVM-Anova: SVM w...
+	    </span>
+	    <span class="hiddenrellink">
+	    SVM-Anova: SVM with univariate feature selection
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="plot_svm_parameters_selection.html" title="Seleting hyper-parameter C and gamma of a RBF-Kernel SVM"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Seleting hyper-p...
+	    </span>
+	    <span class="hiddenrellink">
+	    Seleting hyper-parameter C and gamma of a RBF-Kernel SVM
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Non-linear SVM</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -118,6 +161,7 @@
 <p>Perform binary classification using non-linear SVC
 with RBF kernel. The target to predict is a XOR of the
 inputs.</p>
+<p>The color map illustrates the decision function learn by the SVC.</p>
 <img alt="../../_images/plot_svm_nonlinear_1.png" class="align-center" src="../../_images/plot_svm_nonlinear_1.png" />
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_svm_nonlinear.py"><tt class="xref download docutils literal"><span class="pre">plot_svm_nonlinear.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
@@ -126,24 +170,29 @@ inputs.</p>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
 
-<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span>
+                     <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">500</span><span class="p">))</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="c"># fit the model</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">NuSVC</span><span class="p">()</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
 
-<span class="c"># plot the line, the points, and the nearest vectors to the plane</span>
-<span class="n">Z</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+<span class="c"># plot the decision function for each datapoint on the grid</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-<span class="n">pl</span><span class="o">.</span><span class="n">set_cmap</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">Y</span><span class="p">)</span>
-
-<span class="n">pl</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;nearest&#39;</span><span class="p">,</span>
+            <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">xx</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span>
+            <span class="n">aspect</span><span class="o">=</span><span class="s">&#39;auto&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s">&#39;lower&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">PuOr_r</span><span class="p">)</span>
+<span class="n">contours</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                      <span class="n">linetypes</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">(())</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -158,8 +207,6 @@ inputs.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

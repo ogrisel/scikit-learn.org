@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Faces dataset decompositions &mdash; scikit-learn 0.9 documentation</title>
+    <title>Faces dataset decompositions &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Blind source separation using FastICA" href="plot_ica_blind_source_separation.html" />
+    <link rel="prev" title="Sparse inverse covariance estimation" href="../covariance/plot_sparse_cov.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="../covariance/plot_sparse_cov.html" title="Sparse inverse covariance estimation"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Sparse inverse c...
+	    </span>
+	    <span class="hiddenrellink">
+	    Sparse inverse covariance estimation
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="plot_ica_blind_source_separation.html" title="Blind source separation using FastICA"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Blind source sep...
+	    </span>
+	    <span class="hiddenrellink">
+	    Blind source separation using FastICA
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Faces dataset decompositions</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -120,21 +163,36 @@ unsupervised matrix decomposition (dimension reduction) methods  from the
 module <a class="reference internal" href="../../modules/classes.html#module-sklearn.decomposition" title="sklearn.decomposition"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.decomposition</span></tt></a> (see the documentation
 chapter <a class="reference internal" href="../../modules/decomposition.html#decompositions"><em>Decomposing signals in components (matrix factorization problems)</em></a>) .</p>
 <ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_1.png"><img alt="../../_images/plot_faces_decomposition_1.png" src="../../_images/plot_faces_decomposition_1.png" style="width: 300.0px; height: 225.5px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_2.png"><img alt="../../_images/plot_faces_decomposition_2.png" src="../../_images/plot_faces_decomposition_2.png" style="width: 300.0px; height: 225.5px;" /></a>
+<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_5.png"><img alt="../../_images/plot_faces_decomposition_5.png" src="../../_images/plot_faces_decomposition_5.png" style="width: 300.0px; height: 225.5px;" /></a>
 </li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_3.png"><img alt="../../_images/plot_faces_decomposition_3.png" src="../../_images/plot_faces_decomposition_3.png" style="width: 300.0px; height: 225.5px;" /></a>
 </li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_4.png"><img alt="../../_images/plot_faces_decomposition_4.png" src="../../_images/plot_faces_decomposition_4.png" style="width: 300.0px; height: 225.5px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_5.png"><img alt="../../_images/plot_faces_decomposition_5.png" src="../../_images/plot_faces_decomposition_5.png" style="width: 300.0px; height: 225.5px;" /></a>
+<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_7.png"><img alt="../../_images/plot_faces_decomposition_7.png" src="../../_images/plot_faces_decomposition_7.png" style="width: 300.0px; height: 225.5px;" /></a>
 </li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_6.png"><img alt="../../_images/plot_faces_decomposition_6.png" src="../../_images/plot_faces_decomposition_6.png" style="width: 300.0px; height: 225.5px;" /></a>
 </li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_7.png"><img alt="../../_images/plot_faces_decomposition_7.png" src="../../_images/plot_faces_decomposition_7.png" style="width: 300.0px; height: 225.5px;" /></a>
+<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_1.png"><img alt="../../_images/plot_faces_decomposition_1.png" src="../../_images/plot_faces_decomposition_1.png" style="width: 300.0px; height: 225.5px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_4.png"><img alt="../../_images/plot_faces_decomposition_4.png" src="../../_images/plot_faces_decomposition_4.png" style="width: 300.0px; height: 225.5px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_faces_decomposition_2.png"><img alt="../../_images/plot_faces_decomposition_2.png" src="../../_images/plot_faces_decomposition_2.png" style="width: 300.0px; height: 225.5px;" /></a>
 </li>
 </ul>
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Dataset consists of 400 faces
+Extracting the top 6 Eigenfaces - RandomizedPCA...
+done in 0.217s
+Extracting the top 6 Non-negative components - NMF...
+done in 1.240s
+Extracting the top 6 Independent components - FastICA...
+done in 1.573s
+Extracting the top 6 Sparse comp. - MiniBatchSparsePCA...
+done in 1.163s
+Extracting the top 6 MiniBatchDictionaryLearning...
+done in 1.409s
+Extracting the top 6 Cluster centers - MiniBatchKMeans...
+done in 0.657s</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_faces_decomposition.py"><tt class="xref download docutils literal"><span class="pre">plot_faces_decomposition.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -203,17 +261,18 @@ chapter <a class="reference internal" href="../../modules/decomposition.html#dec
      <span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
 
     <span class="p">(</span><span class="s">&#39;Independent components - FastICA&#39;</span><span class="p">,</span>
-     <span class="n">decomposition</span><span class="o">.</span><span class="n">FastICA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">,</span> <span class="n">whiten</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
+     <span class="n">decomposition</span><span class="o">.</span><span class="n">FastICA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">,</span> <span class="n">whiten</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                           <span class="n">max_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
      <span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">),</span>
 
     <span class="p">(</span><span class="s">&#39;Sparse comp. - MiniBatchSparsePCA&#39;</span><span class="p">,</span>
-     <span class="n">decomposition</span><span class="o">.</span><span class="n">MiniBatchSparsePCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span>
+     <span class="n">decomposition</span><span class="o">.</span><span class="n">MiniBatchSparsePCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
                                       <span class="n">n_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
                                       <span class="n">random_state</span><span class="o">=</span><span class="n">rng</span><span class="p">),</span>
      <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
 
     <span class="p">(</span><span class="s">&#39;MiniBatchDictionaryLearning&#39;</span><span class="p">,</span>
-    <span class="n">decomposition</span><span class="o">.</span><span class="n">MiniBatchDictionaryLearning</span><span class="p">(</span><span class="n">n_atoms</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">,</span>
+    <span class="n">decomposition</span><span class="o">.</span><span class="n">MiniBatchDictionaryLearning</span><span class="p">(</span><span class="n">n_atoms</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
                                               <span class="n">n_iter</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
                                               <span class="n">random_state</span><span class="o">=</span><span class="n">rng</span><span class="p">),</span>
      <span class="bp">True</span><span class="p">,</span> <span class="bp">False</span><span class="p">),</span>
@@ -266,8 +325,6 @@ chapter <a class="reference internal" href="../../modules/decomposition.html#dec
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

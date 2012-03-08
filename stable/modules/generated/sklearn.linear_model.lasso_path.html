@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.2.19. sklearn.linear_model.lasso_path &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.14.1.19. sklearn.linear_model.lasso_path &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.2.20. sklearn.linear_model.lars_path" href="sklearn.linear_model.lars_path.html" />
-    <link rel="prev" title="9.2.18. sklearn.linear_model.ARDRegression" href="sklearn.linear_model.ARDRegression.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.14.1.20. sklearn.linear_model.lars_path" href="sklearn.linear_model.lars_path.html" />
+    <link rel="prev" title="8.14.1.18. sklearn.linear_model.ARDRegression" href="sklearn.linear_model.ARDRegression.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.linear_model.ARDRegression.html" title="9.2.18. sklearn.linear_model.ARDRegression"
-             accesskey="P">previous</a> |
-          <a href="sklearn.linear_model.lars_path.html" title="9.2.20. sklearn.linear_model.lars_path"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.2.19. sklearn.linear_model.lasso_path</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.linear_model.ARDRegression.html" title="8.14.1.18. sklearn.linear_model.ARDRegression"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.14.1.18. sklea...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.14.1.18. sklearn.linear_model.ARDRegression
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.linear_model.lars_path.html" title="8.14.1.20. sklearn.linear_model.lars_path"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.14.1.20. sklea...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.14.1.20. sklearn.linear_model.lars_path
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.14.1.19. sklearn.linear_model.lasso_path</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,11 +157,14 @@
           <div class="body">
             
   <div class="section" id="sklearn-linear-model-lasso-path">
-<h1>9.2.19. sklearn.linear_model.lasso_path<a class="headerlink" href="#sklearn-linear-model-lasso-path" title="Permalink to this headline">¶</a></h1>
+<h1>8.14.1.19. sklearn.linear_model.lasso_path<a class="headerlink" href="#sklearn-linear-model-lasso-path" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.linear_model.lasso_path">
-<tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">lasso_path</tt><big>(</big><em>X</em>, <em>y</em>, <em>eps=0.001</em>, <em>n_alphas=100</em>, <em>alphas=None</em>, <em>precompute='auto'</em>, <em>Xy=None</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>overwrite_X=False</em>, <em>verbose=False</em>, <em>**params</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.lasso_path" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">sklearn.linear_model.</tt><tt class="descname">lasso_path</tt><big>(</big><em>X</em>, <em>y</em>, <em>eps=0.001</em>, <em>n_alphas=100</em>, <em>alphas=None</em>, <em>precompute='auto'</em>, <em>Xy=None</em>, <em>fit_intercept=True</em>, <em>normalize=False</em>, <em>copy_X=True</em>, <em>verbose=False</em>, <em>**params</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.lasso_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute Lasso path with coordinate descent</p>
+<p>The optimization objective for Lasso is:</p>
+<div class="highlight-python"><pre>(1 / (2 * n_samples)) * ||y - Xw||^2_2 + alpha * ||w||_1</pre>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -162,7 +201,7 @@ matrix can also be passed as argument.</p>
 <p><strong>Xy</strong> : array-like, optional</p>
 <blockquote>
 <div><p>Xy = np.dot(X.T, y) that can be precomputed. It is useful
-only when the Gram matrix is precomuted.</p>
+only when the Gram matrix is precomputed.</p>
 </div></blockquote>
 <p><strong>fit_intercept</strong> : bool</p>
 <blockquote>
@@ -172,10 +211,9 @@ only when the Gram matrix is precomuted.</p>
 <blockquote>
 <div><p>If True, the regressors X are normalized</p>
 </div></blockquote>
-<p><strong>overwrite_X</strong> : boolean, optional</p>
+<p><strong>copy_X</strong> : boolean, optional, default True</p>
 <blockquote>
-<div><p>If True, X will not be copied
-Default is False</p>
+<div><p>If True, X will be copied; else, it may be overwritten.</p>
 </div></blockquote>
 <p><strong>verbose</strong> : bool or integer</p>
 <blockquote>
@@ -192,6 +230,10 @@ Default is False</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="sklearn.linear_model.lars_path.html#sklearn.linear_model.lars_path" title="sklearn.linear_model.lars_path"><tt class="xref py py-obj docutils literal"><span class="pre">lars_path</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="sklearn.linear_model.Lasso"><tt class="xref py py-obj docutils literal"><span class="pre">Lasso</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.LassoLars.html#sklearn.linear_model.LassoLars" title="sklearn.linear_model.LassoLars"><tt class="xref py py-obj docutils literal"><span class="pre">LassoLars</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV" title="sklearn.linear_model.LassoCV"><tt class="xref py py-obj docutils literal"><span class="pre">LassoCV</span></tt></a>, <a class="reference internal" href="sklearn.linear_model.LassoLarsCV.html#sklearn.linear_model.LassoLarsCV" title="sklearn.linear_model.LassoLarsCV"><tt class="xref py py-obj docutils literal"><span class="pre">LassoLarsCV</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.sparse_encode.html#sklearn.decomposition.sparse_encode" title="sklearn.decomposition.sparse_encode"><tt class="xref py py-obj docutils literal"><span class="pre">sklearn.decomposition.sparse_encode</span></tt></a></p>
+</div>
 <p class="rubric">Notes</p>
 <p>See examples/plot_lasso_coordinate_descent_path.py for an example.</p>
 <p>To avoid unnecessary memory duplication the X argument of the fit method
@@ -209,8 +251,6 @@ should be directly passed as a fortran contiguous numpy array.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

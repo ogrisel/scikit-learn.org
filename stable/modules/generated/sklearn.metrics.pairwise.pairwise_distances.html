@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.8.4.6. sklearn.metrics.pairwise.pairwise_distances &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.16.4.7. sklearn.metrics.pairwise.pairwise_distances &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.8.4.7. sklearn.metrics.pairwise.kernel_metrics" href="sklearn.metrics.pairwise.kernel_metrics.html" />
-    <link rel="prev" title="9.8.4.5. sklearn.metrics.pairwise.distance_metrics" href="sklearn.metrics.pairwise.distance_metrics.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.16.4.8. sklearn.metrics.pairwise.kernel_metrics" href="sklearn.metrics.pairwise.kernel_metrics.html" />
+    <link rel="prev" title="8.16.4.6. sklearn.metrics.pairwise.distance_metrics" href="sklearn.metrics.pairwise.distance_metrics.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.metrics.pairwise.distance_metrics.html" title="9.8.4.5. sklearn.metrics.pairwise.distance_metrics"
-             accesskey="P">previous</a> |
-          <a href="sklearn.metrics.pairwise.kernel_metrics.html" title="9.8.4.7. sklearn.metrics.pairwise.kernel_metrics"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.8.4.6. sklearn.metrics.pairwise.pairwise_distances</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.metrics.pairwise.distance_metrics.html" title="8.16.4.6. sklearn.metrics.pairwise.distance_metrics"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.16.4.6. sklear...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.16.4.6. sklearn.metrics.pairwise.distance_metrics
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.metrics.pairwise.kernel_metrics.html" title="8.16.4.8. sklearn.metrics.pairwise.kernel_metrics"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.16.4.8. sklear...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.16.4.8. sklearn.metrics.pairwise.kernel_metrics
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.16.4.7. sklearn.metrics.pairwise.pairwise_distances</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,7 +157,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-pairwise-pairwise-distances">
-<h1>9.8.4.6. sklearn.metrics.pairwise.pairwise_distances<a class="headerlink" href="#sklearn-metrics-pairwise-pairwise-distances" title="Permalink to this headline">¶</a></h1>
+<h1>8.16.4.7. sklearn.metrics.pairwise.pairwise_distances<a class="headerlink" href="#sklearn-metrics-pairwise-pairwise-distances" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.pairwise.pairwise_distances">
 <tt class="descclassname">sklearn.metrics.pairwise.</tt><tt class="descname">pairwise_distances</tt><big>(</big><em>X</em>, <em>Y=None</em>, <em>metric='euclidean'</em>, <em>**kwds</em><big>)</big><a class="headerlink" href="#sklearn.metrics.pairwise.pairwise_distances" title="Permalink to this definition">¶</a></dt>
@@ -136,15 +172,16 @@ array.</p>
 distance between the arrays from both X and Y.</p>
 <p>Please note that support for sparse matrices is currently limited to those
 metrics listed in pairwise.pairwise_distance_functions.</p>
-<p>Valid values for metric are:
-- from scikits.learn: [&#8216;euclidean&#8217;, &#8216;l2&#8217;, &#8216;l1&#8217;, &#8216;manhattan&#8217;, &#8216;cityblock&#8217;]
-- from scipy.spatial.distance: [&#8216;braycurtis&#8217;, &#8216;canberra&#8217;, &#8216;chebyshev&#8217;,</p>
-<blockquote>
-<div>&#8216;correlation&#8217;, &#8216;cosine&#8217;, &#8216;dice&#8217;, &#8216;hamming&#8217;, &#8216;jaccard&#8217;, &#8216;kulsinski&#8217;,
+<p>Valid values for metric are:</p>
+<ul class="simple">
+<li>from scikits.learn: [&#8216;euclidean&#8217;, &#8216;l2&#8217;, &#8216;l1&#8217;, &#8216;manhattan&#8217;, &#8216;cityblock&#8217;]</li>
+<li>from scipy.spatial.distance: [&#8216;braycurtis&#8217;, &#8216;canberra&#8217;, &#8216;chebyshev&#8217;,
+&#8216;correlation&#8217;, &#8216;cosine&#8217;, &#8216;dice&#8217;, &#8216;hamming&#8217;, &#8216;jaccard&#8217;, &#8216;kulsinski&#8217;,
 &#8216;mahalanobis&#8217;, &#8216;matching&#8217;, &#8216;minkowski&#8217;, &#8216;rogerstanimoto&#8217;, &#8216;russellrao&#8217;,
 &#8216;seuclidean&#8217;, &#8216;sokalmichener&#8217;, &#8216;sokalsneath&#8217;, &#8216;sqeucludean&#8217;, &#8216;yule&#8217;]
 See the documentation for scipy.spatial.distance for details on these
-metrics.</div></blockquote>
+metrics.</li>
+</ul>
 <p>Note in the case of &#8216;euclidean&#8217; and &#8216;cityblock&#8217; (which are valid
 scipy.spatial.distance metrics), the values will use the scikits.learn
 implementation, which is faster and has support for sparse matrices.
@@ -154,18 +191,15 @@ __doc__ of the sklearn.pairwise.distance_metrics function.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array [n_samples_a, n_samples_a] if metric == &#8220;precomputed&#8221;, or,</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array [n_samples_a, n_samples_a] if metric == &#8220;precomputed&#8221;, or,              [n_samples_a, n_features] otherwise</p>
 <blockquote>
-<div><blockquote>
-<div><p>[n_samples_a, n_features] otherwise</p>
+<div><p>Array of pairwise distances between samples, or a feature array.</p>
 </div></blockquote>
-<p>Array of pairwise distances between samples, or a feature array.</p>
-</div></blockquote>
-<p><strong>Y: array [n_samples_b, n_features]</strong> :</p>
+<p><strong>Y</strong> : array [n_samples_b, n_features]</p>
 <blockquote>
 <div><p>A second feature array only if X has shape [n_samples_a, n_features].</p>
 </div></blockquote>
-<p><strong>metric: string, or callable</strong> :</p>
+<p><strong>metric</strong> : string, or callable</p>
 <blockquote>
 <div><p>The metric to use when calculating distance between instances in a
 feature array. If metric is a string, it must be one of the options
@@ -178,7 +212,7 @@ pair of instances (rows) and the resulting value recorded. The callable
 should take two arrays from X as input and return a value indicating
 the distance between them.</p>
 </div></blockquote>
-<p><strong>**kwds: optional keyword parameters</strong> :</p>
+<p><strong>`**kwds`</strong> : optional keyword parameters</p>
 <blockquote>
 <div><p>Any further parameters are passed directly to the distance function.
 If using a scipy.spatial.distance metric, the parameters are still
@@ -186,7 +220,7 @@ metric dependent. See the scipy docs for usage examples.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>D: array [n_samples_a, n_samples_a] or [n_samples_a, n_samples_b]</strong> :</p>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>D</strong> : array [n_samples_a, n_samples_a] or [n_samples_a, n_samples_b]</p>
 <blockquote class="last">
 <div><p>A distance matrix D such that D_{i, j} is the distance between the
 ith and jth vectors of the given matrix X, if Y is None.
@@ -210,8 +244,6 @@ from X and the jth array from Y.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

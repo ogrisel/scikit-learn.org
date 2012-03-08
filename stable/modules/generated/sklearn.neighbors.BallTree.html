@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.4.8. sklearn.neighbors.BallTree &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.20.8. sklearn.neighbors.BallTree &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.4.9. sklearn.neighbors.kneighbors_graph" href="sklearn.neighbors.kneighbors_graph.html" />
-    <link rel="prev" title="9.4.7. sklearn.neighbors.NeighborsRegressor" href="sklearn.neighbors.NeighborsRegressor.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.20.9. sklearn.neighbors.kneighbors_graph" href="sklearn.neighbors.kneighbors_graph.html" />
+    <link rel="prev" title="8.20.7. sklearn.neighbors.NeighborsRegressor" href="sklearn.neighbors.NeighborsRegressor.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.neighbors.NeighborsRegressor.html" title="9.4.7. sklearn.neighbors.NeighborsRegressor"
-             accesskey="P">previous</a> |
-          <a href="sklearn.neighbors.kneighbors_graph.html" title="9.4.9. sklearn.neighbors.kneighbors_graph"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.4.8. sklearn.neighbors.BallTree</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.neighbors.NeighborsRegressor.html" title="8.20.7. sklearn.neighbors.NeighborsRegressor"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.20.7. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.20.7. sklearn.neighbors.NeighborsRegressor
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.neighbors.kneighbors_graph.html" title="8.20.9. sklearn.neighbors.kneighbors_graph"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.20.9. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.20.9. sklearn.neighbors.kneighbors_graph
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.20.8. sklearn.neighbors.BallTree</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,7 +157,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-neighbors-balltree">
-<h1>9.4.8. sklearn.neighbors.BallTree<a class="headerlink" href="#sklearn-neighbors-balltree" title="Permalink to this headline">¶</a></h1>
+<h1>8.20.8. sklearn.neighbors.BallTree<a class="headerlink" href="#sklearn-neighbors-balltree" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.neighbors.BallTree">
 <em class="property">class </em><tt class="descclassname">sklearn.neighbors.</tt><tt class="descname">BallTree</tt><a class="headerlink" href="#sklearn.neighbors.BallTree" title="Permalink to this definition">¶</a></dt>
@@ -152,17 +188,16 @@ the case that <tt class="docutils literal"><span class="pre">n_samples</span> <s
 </div></blockquote>
 <p><strong>p</strong> : distance metric for the BallTree.  <tt class="docutils literal"><span class="pre">p</span></tt> encodes the Minkowski</p>
 <blockquote class="last">
-<div><dl class="docutils">
-<dt>p-distance:</dt>
-<dd><p class="first last">D = sum((X[i] - X[j]) ** p) ** (1. / p)</p>
-</dd>
-</dl>
+<div><p>p-distance:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">D</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">X</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">**</span> <span class="n">p</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">/</span> <span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>p must be greater than or equal to 1, so that the triangle
 inequality will hold.  If <tt class="docutils literal"><span class="pre">p</span> <span class="pre">==</span> <span class="pre">np.inf</span></tt>, then the distance is
-equivalent to</p>
-<blockquote>
-<div><p>D = max(X[i] - X[j])</p>
-</div></blockquote>
+equivalent to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">D</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">X</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+</pre></div>
+</div>
 </div></blockquote>
 </td>
 </tr>
@@ -170,32 +205,49 @@ equivalent to</p>
 </table>
 <p class="rubric">Examples</p>
 <p>Query for k-nearest neighbors</p>
-<blockquote>
-<div># &gt;&gt;&gt; import numpy as np
-# &gt;&gt;&gt; np.random.seed(0)
-# &gt;&gt;&gt; X = np.random.random((10,3))  # 10 points in 3 dimensions
-# &gt;&gt;&gt; ball_tree = BallTree(X, leaf_size=2)
-# &gt;&gt;&gt; dist, ind = ball_tree.query(X[0], n_neighbors=3)
-# &gt;&gt;&gt; print ind  # indices of 3 closest neighbors
-# [0 3 1]
-# &gt;&gt;&gt; print dist  # distances to 3 closest neighbors
-# [ 0.          0.19662693  0.29473397]</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>  <span class="c"># 10 points in 3 dimensions</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ball_tree</span> <span class="o">=</span> <span class="n">BallTree</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">leaf_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>              
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span><span class="p">,</span> <span class="n">ind</span> <span class="o">=</span> <span class="n">ball_tree</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">ind</span>  <span class="c"># indices of 3 closest neighbors</span>
+<span class="go">[0 3 1]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">dist</span>  <span class="c"># distances to 3 closest neighbors</span>
+<span class="go">[ 0.          0.19662693  0.29473397]</span>
+</pre></div>
+</div>
 <p>Pickle and Unpickle a ball tree (using protocol = 2).  Note that the
 state of the tree is saved in the pickle operation: the tree is not
 rebuilt on un-pickling</p>
-<blockquote>
-<div># &gt;&gt;&gt; import numpy as np
-# &gt;&gt;&gt; import pickle
-# &gt;&gt;&gt; np.random.seed(0)
-# &gt;&gt;&gt; X = np.random.random((10,3))  # 10 points in 3 dimensions
-# &gt;&gt;&gt; ball_tree = BallTree(X, leaf_size=2)
-# &gt;&gt;&gt; s = pickle.dumps(ball_tree, protocol=2)
-# &gt;&gt;&gt; ball_tree_copy = pickle.loads(s)
-# &gt;&gt;&gt; dist, ind = ball_tree_copy.query(X[0], k=3)
-# &gt;&gt;&gt; print ind  # indices of 3 closest neighbors
-# [0 3 1]
-# &gt;&gt;&gt; print dist  # distances to 3 closest neighbors
-# [ 0.          0.19662693  0.29473397]</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pickle</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>  <span class="c"># 10 points in 3 dimensions</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ball_tree</span> <span class="o">=</span> <span class="n">BallTree</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">leaf_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>          
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">ball_tree</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>       
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ball_tree_copy</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>              
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span><span class="p">,</span> <span class="n">ind</span> <span class="o">=</span> <span class="n">ball_tree_copy</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>   
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">ind</span>  <span class="c"># indices of 3 closest neighbors   </span>
+<span class="go">[0 3 1]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">dist</span>  <span class="c"># distances to 3 closest neighbors</span>
+<span class="go">[ 0.          0.19662693  0.29473397]</span>
+</pre></div>
+</div>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">data</span></tt></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">warning_flag</span></tt></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -214,7 +266,7 @@ rebuilt on un-pickling</p>
 <dl class="method">
 <dt id="sklearn.neighbors.BallTree.__init__">
 <tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#sklearn.neighbors.BallTree.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>x.__init__(...) initializes x; see x.__class__.__doc__ for signature</p>
+<dd><p>x.__init__(...) initializes x; see help(type(x)) for signature</p>
 </dd></dl>
 
 <dl class="method">
@@ -260,16 +312,17 @@ neighbors of the corresponding point
 </table>
 <p class="rubric">Examples</p>
 <p>Query for k-nearest neighbors</p>
-<blockquote>
-<div># &gt;&gt;&gt; import numpy as np
-# &gt;&gt;&gt; np.random.seed(0)
-# &gt;&gt;&gt; X = np.random.random((10,3))  # 10 points in 3 dimensions
-# &gt;&gt;&gt; ball_tree = BallTree(X, leaf_size=2)
-# &gt;&gt;&gt; dist, ind = ball_tree.query(X[0], k=3)
-# &gt;&gt;&gt; print ind  # indices of 3 closest neighbors
-# [0 3 1]
-# &gt;&gt;&gt; print dist  # distances to 3 closest neighbors
-# [ 0.          0.19662693  0.29473397]</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>  <span class="c"># 10 points in 3 dimensions</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ball_tree</span> <span class="o">=</span> <span class="n">BallTree</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">leaf_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>    
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span><span class="p">,</span> <span class="n">ind</span> <span class="o">=</span> <span class="n">ball_tree</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">ind</span>  <span class="c"># indices of 3 closest neighbors</span>
+<span class="go">[0 3 1]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">dist</span>  <span class="c"># distances to 3 closest neighbors</span>
+<span class="go">[ 0.          0.19662693  0.29473397]</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -310,7 +363,7 @@ result in an error.</p>
 <blockquote>
 <div><p>if True, the distances and indices will be sorted before being
 returned.  If False, the results will not be sorted.  If
-return_distance == False, settinng sort_results = True will
+return_distance == False, setting sort_results = True will
 result in an error.</p>
 </div></blockquote>
 </td>
@@ -341,16 +394,17 @@ listing the distances corresponding to indices in i.</p>
 </table>
 <p class="rubric">Examples</p>
 <p>Query for neighbors in a given radius</p>
-<blockquote>
-<div># &gt;&gt;&gt; import numpy as np
-# &gt;&gt;&gt; np.random.seed(0)
-# &gt;&gt;&gt; X = np.random.random((10,3))  # 10 points in 3 dimensions
-# &gt;&gt;&gt; ball_tree = BallTree(X, leaf_size=2)
-# &gt;&gt;&gt; print ball_tree.query_radius(X[0], r=0.3, count_only=True)
-# 3
-# &gt;&gt;&gt; ind = ball_tree.query_radius(X[0], r=0.3)
-# &gt;&gt;&gt; print ind  # indices of neighbors within distance 0.3
-# [3 0 1]</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>  <span class="c"># 10 points in 3 dimensions</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ball_tree</span> <span class="o">=</span> <span class="n">BallTree</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">leaf_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>        
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">ball_tree</span><span class="o">.</span><span class="n">query_radius</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">count_only</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ind</span> <span class="o">=</span> <span class="n">ball_tree</span><span class="o">.</span><span class="n">query_radius</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">ind</span>  <span class="c"># indices of neighbors within distance 0.3</span>
+<span class="go">[3 0 1]</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </dd></dl>
@@ -366,8 +420,6 @@ listing the distances corresponding to indices in i.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

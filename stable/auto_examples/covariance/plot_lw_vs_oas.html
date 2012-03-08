@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Ledoit-Wolf vs OAS estimation &mdash; scikit-learn 0.9 documentation</title>
+    <title>Ledoit-Wolf vs OAS estimation &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Robust covariance estimation and Mahalanobis distances relevance" href="plot_mahalanobis_distances.html" />
+    <link rel="prev" title="Ledoit-Wolf vs Covariance simple estimation" href="plot_covariance_estimation.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="plot_covariance_estimation.html" title="Ledoit-Wolf vs Covariance simple estimation"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Ledoit-Wolf vs C...
+	    </span>
+	    <span class="hiddenrellink">
+	    Ledoit-Wolf vs Covariance simple estimation
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="plot_mahalanobis_distances.html" title="Robust covariance estimation and Mahalanobis distances relevance"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Robust covarianc...
+	    </span>
+	    <span class="hiddenrellink">
+	    Robust covariance estimation and Mahalanobis distances relevance
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Ledoit-Wolf vs OAS estimation</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -141,7 +184,7 @@ Chen et al., IEEE Trans. on Sign. Proc., Volume 58, Issue 10, October 2010.</p>
 <span class="n">n_features</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="c"># simulation covariance matrix (AR(1) process)</span>
 <span class="n">r</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">real_cov</span> <span class="o">=</span> <span class="n">toeplitz</span><span class="p">(</span><span class="n">r</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_features</span><span class="p">))</span>
+<span class="n">real_cov</span> <span class="o">=</span> <span class="n">toeplitz</span><span class="p">(</span><span class="n">r</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_features</span><span class="p">))</span>
 <span class="n">coloring_matrix</span> <span class="o">=</span> <span class="n">cholesky</span><span class="p">(</span><span class="n">real_cov</span><span class="p">)</span>
 
 <span class="n">n_samples_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -157,16 +200,16 @@ Chen et al., IEEE Trans. on Sign. Proc., Volume 58, Issue 10, October 2010.</p>
 
         <span class="n">lw</span> <span class="o">=</span> <span class="n">LedoitWolf</span><span class="p">(</span><span class="n">store_precision</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
         <span class="n">lw</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">assume_centered</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-        <span class="n">lw_mse</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">lw</span><span class="o">.</span><span class="n">error_norm</span><span class="p">(</span><span class="n">real_cov</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-        <span class="n">lw_shrinkage</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">lw</span><span class="o">.</span><span class="n">shrinkage_</span>
+        <span class="n">lw_mse</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">lw</span><span class="o">.</span><span class="n">error_norm</span><span class="p">(</span><span class="n">real_cov</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">lw_shrinkage</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">lw</span><span class="o">.</span><span class="n">shrinkage_</span>
 
         <span class="n">oa</span> <span class="o">=</span> <span class="n">OAS</span><span class="p">(</span><span class="n">store_precision</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
         <span class="n">oa</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">assume_centered</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-        <span class="n">oa_mse</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">oa</span><span class="o">.</span><span class="n">error_norm</span><span class="p">(</span><span class="n">real_cov</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-        <span class="n">oa_shrinkage</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">oa</span><span class="o">.</span><span class="n">shrinkage_</span>
+        <span class="n">oa_mse</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">oa</span><span class="o">.</span><span class="n">error_norm</span><span class="p">(</span><span class="n">real_cov</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">oa_shrinkage</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">oa</span><span class="o">.</span><span class="n">shrinkage_</span>
 
 <span class="c"># plot MSE</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">n_samples_range</span><span class="p">,</span> <span class="n">lw_mse</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">yerr</span><span class="o">=</span><span class="n">lw_mse</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
             <span class="n">label</span><span class="o">=</span><span class="s">&#39;Ledoit-Wolf&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">n_samples_range</span><span class="p">,</span> <span class="n">oa_mse</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">yerr</span><span class="o">=</span><span class="n">oa_mse</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
@@ -177,7 +220,7 @@ Chen et al., IEEE Trans. on Sign. Proc., Volume 58, Issue 10, October 2010.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
 
 <span class="c"># plot shrinkage coefficient</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">n_samples_range</span><span class="p">,</span> <span class="n">lw_shrinkage</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">yerr</span><span class="o">=</span><span class="n">lw_shrinkage</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
             <span class="n">label</span><span class="o">=</span><span class="s">&#39;Ledoit-Wolf&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">n_samples_range</span><span class="p">,</span> <span class="n">oa_shrinkage</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">yerr</span><span class="o">=</span><span class="n">oa_shrinkage</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
@@ -185,7 +228,7 @@ Chen et al., IEEE Trans. on Sign. Proc., Volume 58, Issue 10, October 2010.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;n_samples&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;Shrinkage&quot;</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&quot;lower right&quot;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="mf">1.</span> <span class="o">+</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mf">10.</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="mf">1.</span> <span class="o">+</span> <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="mf">10.</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -202,8 +245,6 @@ Chen et al., IEEE Trans. on Sign. Proc., Volume 58, Issue 10, October 2010.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

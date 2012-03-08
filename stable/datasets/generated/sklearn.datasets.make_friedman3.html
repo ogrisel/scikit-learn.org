@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>sklearn.datasets.make_friedman3 &mdash; scikit-learn 0.9 documentation</title>
+    <title>sklearn.datasets.make_friedman3 &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +55,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +74,32 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel rellarge">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<!-- Ad a link to the 'up' page -->
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">sklearn.datasets.make_friedman3</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -118,8 +112,8 @@
 <dl class="function">
 <dt id="sklearn.datasets.make_friedman3">
 <tt class="descclassname">sklearn.datasets.</tt><tt class="descname">make_friedman3</tt><big>(</big><em>n_samples=100</em>, <em>noise=0.0</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.datasets.make_friedman3" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate the &#8220;Friedman #3&#8221; regression problem as described in Friedman [1]
-and Breiman [2].</p>
+<dd><p>Generate the &#8220;Friedman #3&#8221; regression problem</p>
+<p>This dataset is described in Friedman [1] and Breiman [2].</p>
 <p>Inputs <cite>X</cite> are 4 independent features uniformly distributed on the
 intervals:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">,</span>
@@ -164,18 +158,19 @@ by <cite>np.random</cite>.</p>
 </tr>
 </tbody>
 </table>
-<p class="rubric">References</p>
+<p class="rubric">Notes</p>
+<p><strong>References</strong>:</p>
 <table class="docutils citation" frame="void" id="r6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R6]</a></td><td>J. Friedman, &#8220;Multivariate adaptive regression splines&#8221;, The Annals
+<tr><td class="label">[R6]</td><td>J. Friedman, &#8220;Multivariate adaptive regression splines&#8221;, The Annals
 of Statistics 19 (1), pages 1-67, 1991.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="r7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R7]</a></td><td>L. Breiman, &#8220;Bagging predictors&#8221;, Machine Learning 24,
+<tr><td class="label">[R7]</td><td>L. Breiman, &#8220;Bagging predictors&#8221;, Machine Learning 24,
 pages 123-140, 1996.</td></tr>
 </tbody>
 </table>
@@ -192,8 +187,6 @@ pages 123-140, 1996.</td></tr>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

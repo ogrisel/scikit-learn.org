@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.3.2. sklearn.naive_bayes.GaussianNB &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.19.1. sklearn.naive_bayes.GaussianNB &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.3.3. sklearn.naive_bayes.MultinomialNB" href="sklearn.naive_bayes.MultinomialNB.html" />
-    <link rel="prev" title="9.2.23.5. sklearn.linear_model.sparse.LogisticRegression" href="sklearn.linear_model.sparse.LogisticRegression.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.19.2. sklearn.naive_bayes.MultinomialNB" href="sklearn.naive_bayes.MultinomialNB.html" />
+    <link rel="prev" title="8.18.10. sklearn.multiclass.predict_ecoc" href="sklearn.multiclass.predict_ecoc.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.linear_model.sparse.LogisticRegression.html" title="9.2.23.5. sklearn.linear_model.sparse.LogisticRegression"
-             accesskey="P">previous</a> |
-          <a href="sklearn.naive_bayes.MultinomialNB.html" title="9.3.3. sklearn.naive_bayes.MultinomialNB"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.3.2. sklearn.naive_bayes.GaussianNB</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.multiclass.predict_ecoc.html" title="8.18.10. sklearn.multiclass.predict_ecoc"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.18.10. sklearn...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.18.10. sklearn.multiclass.predict_ecoc
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.naive_bayes.MultinomialNB.html" title="8.19.2. sklearn.naive_bayes.MultinomialNB"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.19.2. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.19.2. sklearn.naive_bayes.MultinomialNB
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.19.1. sklearn.naive_bayes.GaussianNB</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,7 +157,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-naive-bayes-gaussiannb">
-<h1>9.3.2. sklearn.naive_bayes.GaussianNB<a class="headerlink" href="#sklearn-naive-bayes-gaussiannb" title="Permalink to this headline">¶</a></h1>
+<h1>8.19.1. sklearn.naive_bayes.GaussianNB<a class="headerlink" href="#sklearn-naive-bayes-gaussiannb" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.naive_bayes.GaussianNB">
 <em class="property">class </em><tt class="descclassname">sklearn.naive_bayes.</tt><tt class="descname">GaussianNB</tt><a class="headerlink" href="#sklearn.naive_bayes.GaussianNB" title="Permalink to this definition">¶</a></dt>
@@ -158,55 +194,62 @@ n_features is the number of features.</p>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="11%" />
-<col width="39%" />
-<col width="50%" />
+<col width="16%" />
+<col width="44%" />
+<col width="40%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td>class_prior</td>
+<tr class="row-odd"><td><cite>class_prior_</cite></td>
 <td>array, shape = [n_classes]</td>
 <td>probability of each class.</td>
 </tr>
-<tr class="row-even"><td>theta</td>
-<td>array, shape [n_classes * n_features]</td>
-<td>mean of each feature for the different class</td>
+<tr class="row-even"><td><cite>theta_</cite></td>
+<td>array, shape = [n_classes, n_features]</td>
+<td>mean of each feature per class</td>
 </tr>
-<tr class="row-odd"><td>sigma</td>
-<td>array, shape [n_classes * n_features]</td>
-<td>variance of each feature for the different class</td>
+<tr class="row-odd"><td><cite>sigma_</cite></td>
+<td>array, shape = [n_classes, n_features]</td>
+<td>variance of each feature per class</td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
-<table border="1" class="docutils">
+<table border="1" class="longtable docutils">
 <colgroup>
-<col width="24%" />
-<col width="6%" />
-<col width="70%" />
+<col width="10%" />
+<col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td>fit(X, y)</td>
-<td>self</td>
-<td>Fit the model</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.naive_bayes.GaussianNB.fit" title="sklearn.naive_bayes.GaussianNB.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y)</td>
+<td>Fit Gaussian Naive Bayes according to X, y</td>
 </tr>
-<tr class="row-even"><td>predict(X)</td>
-<td>array</td>
-<td>Predict using the model.</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.naive_bayes.GaussianNB.predict" title="sklearn.naive_bayes.GaussianNB.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(X)</td>
+<td>Perform classification on an array of test vectors X.</td>
 </tr>
-<tr class="row-odd"><td>predict_proba(X)</td>
-<td>array</td>
-<td>Predict the probability of each class using the model.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.naive_bayes.GaussianNB.predict_log_proba" title="sklearn.naive_bayes.GaussianNB.predict_log_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_log_proba</span></tt></a>(X)</td>
+<td>Return log-probability estimates for the test vector X.</td>
 </tr>
-<tr class="row-even"><td>predict_log_proba(X)</td>
-<td>array</td>
-<td>Predict the log-probability of each class using the model.</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.naive_bayes.GaussianNB.predict_proba" title="sklearn.naive_bayes.GaussianNB.predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt></a>(X)</td>
+<td>Return probability estimates for the test vector X.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.naive_bayes.GaussianNB.score" title="sklearn.naive_bayes.GaussianNB.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
+<td>Returns the mean accuracy on the given test data and labels.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.naive_bayes.GaussianNB.set_params" title="sklearn.naive_bayes.GaussianNB.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
+<td>Set the parameters of the estimator.</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="sklearn.naive_bayes.GaussianNB.__init__">
 <tt class="descname">__init__</tt><big>(</big><big>)</big><a class="headerlink" href="#sklearn.naive_bayes.GaussianNB.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>x.__init__(...) initializes x; see x.__class__.__doc__ for signature</p>
+<dd><p>x.__init__(...) initializes x; see help(type(x)) for signature</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sklearn.naive_bayes.GaussianNB.class_prior">
+<tt class="descname">class_prior</tt><a class="headerlink" href="#sklearn.naive_bayes.GaussianNB.class_prior" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED: GaussianNB.class_prior is deprecated and will be removed in version 0.12. Please use <tt class="docutils literal"><span class="pre">GaussianNB.class_prior_</span></tt> instead.</p>
 </dd></dl>
 
 <dl class="method">
@@ -246,9 +289,14 @@ and n_features is the number of features.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><strong>X</strong> : array-like, shape = [n_samples, n_features]</td>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><strong>C</strong> : array, shape = [n_samples]</td>
+<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>C</strong> : array, shape = [n_samples]</p>
+<blockquote class="last">
+<div><p>Predicted target values for X</p>
+</div></blockquote>
+</td>
 </tr>
 </tbody>
 </table>
@@ -268,8 +316,7 @@ and n_features is the number of features.</p>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>C</strong> : array-like, shape = [n_samples, n_classes]</p>
 <blockquote class="last">
 <div><p>Returns the log-probability of the sample for each class
-in the model, where classes are ordered by arithmetical
-order.</p>
+in the model, where classes are ordered arithmetically.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -291,8 +338,7 @@ order.</p>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>C</strong> : array-like, shape = [n_samples, n_classes]</p>
 <blockquote class="last">
 <div><p>Returns the probability of the sample for each class in
-the model, where classes are ordered by arithmetical
-order.</p>
+the model, where classes are ordered arithmetically.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -303,7 +349,7 @@ order.</p>
 <dl class="method">
 <dt id="sklearn.naive_bayes.GaussianNB.score">
 <tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.naive_bayes.GaussianNB.score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the mean error rate on the given test data and labels.</p>
+<dd><p>Returns the mean accuracy on the given test data and labels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -329,10 +375,10 @@ order.</p>
 <dt id="sklearn.naive_bayes.GaussianNB.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.naive_bayes.GaussianNB.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of the estimator.</p>
-<p>The method works on simple estimators as well as on nested
-objects (such as pipelines). The former have parameters of the
-form &lt;component&gt;__&lt;parameter&gt; so that it&#8217;s possible to update
-each component of a nested object.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The former have parameters of the form
+<tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
+component of a nested object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -341,6 +387,18 @@ each component of a nested object.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sklearn.naive_bayes.GaussianNB.sigma">
+<tt class="descname">sigma</tt><a class="headerlink" href="#sklearn.naive_bayes.GaussianNB.sigma" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED: GaussianNB.sigma is deprecated and will be removed in version 0.12. Please use <tt class="docutils literal"><span class="pre">GaussianNB.sigma_</span></tt> instead.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sklearn.naive_bayes.GaussianNB.theta">
+<tt class="descname">theta</tt><a class="headerlink" href="#sklearn.naive_bayes.GaussianNB.theta" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED: GaussianNB.theta is deprecated and will be removed in version 0.12. Please use <tt class="docutils literal"><span class="pre">GaussianNB.theta_</span></tt> instead.</p>
 </dd></dl>
 
 </dd></dl>
@@ -356,8 +414,6 @@ each component of a nested object.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

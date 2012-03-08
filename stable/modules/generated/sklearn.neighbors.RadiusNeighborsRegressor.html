@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.4.6. sklearn.neighbors.RadiusNeighborsRegressor &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.20.6. sklearn.neighbors.RadiusNeighborsRegressor &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.4.7. sklearn.neighbors.NeighborsRegressor" href="sklearn.neighbors.NeighborsRegressor.html" />
-    <link rel="prev" title="9.4.5. sklearn.neighbors.KNeighborsRegressor" href="sklearn.neighbors.KNeighborsRegressor.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.20.7. sklearn.neighbors.NeighborsRegressor" href="sklearn.neighbors.NeighborsRegressor.html" />
+    <link rel="prev" title="8.20.5. sklearn.neighbors.KNeighborsRegressor" href="sklearn.neighbors.KNeighborsRegressor.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.neighbors.KNeighborsRegressor.html" title="9.4.5. sklearn.neighbors.KNeighborsRegressor"
-             accesskey="P">previous</a> |
-          <a href="sklearn.neighbors.NeighborsRegressor.html" title="9.4.7. sklearn.neighbors.NeighborsRegressor"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.4.6. sklearn.neighbors.RadiusNeighborsRegressor</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.neighbors.KNeighborsRegressor.html" title="8.20.5. sklearn.neighbors.KNeighborsRegressor"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.20.5. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.20.5. sklearn.neighbors.KNeighborsRegressor
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.neighbors.NeighborsRegressor.html" title="8.20.7. sklearn.neighbors.NeighborsRegressor"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.20.7. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.20.7. sklearn.neighbors.NeighborsRegressor
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.20.6. sklearn.neighbors.RadiusNeighborsRegressor</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,7 +157,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-neighbors-radiusneighborsregressor">
-<h1>9.4.6. sklearn.neighbors.RadiusNeighborsRegressor<a class="headerlink" href="#sklearn-neighbors-radiusneighborsregressor" title="Permalink to this headline">¶</a></h1>
+<h1>8.20.6. sklearn.neighbors.RadiusNeighborsRegressor<a class="headerlink" href="#sklearn-neighbors-radiusneighborsregressor" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.neighbors.RadiusNeighborsRegressor">
 <em class="property">class </em><tt class="descclassname">sklearn.neighbors.</tt><tt class="descname">RadiusNeighborsRegressor</tt><big>(</big><em>radius=1.0</em>, <em>weights='uniform'</em>, <em>algorithm='auto'</em>, <em>leaf_size=30</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.RadiusNeighborsRegressor" title="Permalink to this definition">¶</a></dt>
@@ -183,7 +219,6 @@ nature of the problem.</p>
 <p class="rubric">Notes</p>
 <p>See <a class="reference internal" href="../neighbors.html#neighbors"><em>Nearest Neighbors</em></a> in the online documentation
 for a discussion of the choice of <tt class="docutils literal"><span class="pre">algorithm</span></tt> and <tt class="docutils literal"><span class="pre">leaf_size</span></tt>.</p>
-<p class="rubric">References</p>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/K-nearest_neighbor_algorithm">http://en.wikipedia.org/wiki/K-nearest_neighbor_algorithm</a></p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
@@ -216,7 +251,7 @@ for a discussion of the choice of <tt class="docutils literal"><span class="pre"
 <td>Computes the (weighted) graph of Neighbors for points in X</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.neighbors.RadiusNeighborsRegressor.score" title="sklearn.neighbors.RadiusNeighborsRegressor.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
-<td>Returns the coefficient of determination of the prediction</td>
+<td>Returns the coefficient of determination R^2 of the prediction.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.neighbors.RadiusNeighborsRegressor.set_params" title="sklearn.neighbors.RadiusNeighborsRegressor.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
 <td>Set the parameters of the estimator.</td>
@@ -390,7 +425,11 @@ edges are Euclidean distance between points.</p>
 <dl class="method">
 <dt id="sklearn.neighbors.RadiusNeighborsRegressor.score">
 <tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.RadiusNeighborsRegressor.score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the coefficient of determination of the prediction</p>
+<dd><p>Returns the coefficient of determination R^2 of the prediction.</p>
+<p>The coefficient R^2 is defined as (1 - u/v), where u is the
+regression sum of squares ((y - y_pred) ** 2).sum() and v is the
+residual sum of squares ((y_true - y_true.mean()) ** 2).sum().
+Best possible score is 1.0, lower values are worse.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -413,10 +452,10 @@ edges are Euclidean distance between points.</p>
 <dt id="sklearn.neighbors.RadiusNeighborsRegressor.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.neighbors.RadiusNeighborsRegressor.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of the estimator.</p>
-<p>The method works on simple estimators as well as on nested
-objects (such as pipelines). The former have parameters of the
-form &lt;component&gt;__&lt;parameter&gt; so that it&#8217;s possible to update
-each component of a nested object.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The former have parameters of the form
+<tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
+component of a nested object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -440,8 +479,6 @@ each component of a nested object.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.2.23.3. sklearn.linear_model.sparse.SGDClassifier &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.14.2.3. sklearn.linear_model.sparse.SGDClassifier &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.2.23.4. sklearn.linear_model.sparse.SGDRegressor" href="sklearn.linear_model.sparse.SGDRegressor.html" />
-    <link rel="prev" title="9.2.23.2. sklearn.linear_model.sparse.ElasticNet" href="sklearn.linear_model.sparse.ElasticNet.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.14.2.4. sklearn.linear_model.sparse.SGDRegressor" href="sklearn.linear_model.sparse.SGDRegressor.html" />
+    <link rel="prev" title="8.14.2.2. sklearn.linear_model.sparse.ElasticNet" href="sklearn.linear_model.sparse.ElasticNet.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.linear_model.sparse.ElasticNet.html" title="9.2.23.2. sklearn.linear_model.sparse.ElasticNet"
-             accesskey="P">previous</a> |
-          <a href="sklearn.linear_model.sparse.SGDRegressor.html" title="9.2.23.4. sklearn.linear_model.sparse.SGDRegressor"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.2.23.3. sklearn.linear_model.sparse.SGDClassifier</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.linear_model.sparse.ElasticNet.html" title="8.14.2.2. sklearn.linear_model.sparse.ElasticNet"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.14.2.2. sklear...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.14.2.2. sklearn.linear_model.sparse.ElasticNet
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.linear_model.sparse.SGDRegressor.html" title="8.14.2.4. sklearn.linear_model.sparse.SGDRegressor"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.14.2.4. sklear...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.14.2.4. sklearn.linear_model.sparse.SGDRegressor
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.14.2.3. sklearn.linear_model.sparse.SGDClassifier</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,10 +157,10 @@
           <div class="body">
             
   <div class="section" id="sklearn-linear-model-sparse-sgdclassifier">
-<h1>9.2.23.3. sklearn.linear_model.sparse.SGDClassifier<a class="headerlink" href="#sklearn-linear-model-sparse-sgdclassifier" title="Permalink to this headline">¶</a></h1>
+<h1>8.14.2.3. sklearn.linear_model.sparse.SGDClassifier<a class="headerlink" href="#sklearn-linear-model-sparse-sgdclassifier" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.linear_model.sparse.SGDClassifier">
-<em class="property">class </em><tt class="descclassname">sklearn.linear_model.sparse.</tt><tt class="descname">SGDClassifier</tt><big>(</big><em>loss='hinge'</em>, <em>penalty='l2'</em>, <em>alpha=0.0001</em>, <em>rho=0.84999999999999998</em>, <em>fit_intercept=True</em>, <em>n_iter=5</em>, <em>shuffle=False</em>, <em>verbose=0</em>, <em>n_jobs=1</em>, <em>seed=0</em>, <em>learning_rate='optimal'</em>, <em>eta0=0.0</em>, <em>power_t=0.5</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.sparse.SGDClassifier" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.linear_model.sparse.</tt><tt class="descname">SGDClassifier</tt><big>(</big><em>loss='hinge'</em>, <em>penalty='l2'</em>, <em>alpha=0.0001</em>, <em>rho=0.85</em>, <em>fit_intercept=True</em>, <em>n_iter=5</em>, <em>shuffle=False</em>, <em>verbose=0</em>, <em>n_jobs=1</em>, <em>seed=0</em>, <em>learning_rate='optimal'</em>, <em>eta0=0.0</em>, <em>power_t=0.5</em>, <em>class_weight=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.sparse.SGDClassifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Linear model fitted by minimizing a regularized empirical loss with SGD</p>
 <p>SGD stands for Stochastic Gradient Descent: the gradient of the loss is
 estimated each sample at a time and the model is updated along the way with
@@ -135,7 +171,7 @@ L2 or the absolute norm L1 or a combination of both (Elastic Net). If the
 parameter update crosses the 0.0 value because of the regularizer, the
 update is truncated to 0.0 to allow for learning sparse models and achieve
 online feature selection.</p>
-<p>This implementation works on scipy.sparse X and dense <a href="#id1"><span class="problematic" id="id2">coef_</span></a>.</p>
+<p>This implementation works on scipy.sparse X and dense <cite>coef_</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -206,8 +242,16 @@ invscaling: eta = eta0 / pow(t, power_t)</p>
 <div><p>The initial learning rate [default 0.01].</p>
 </div></blockquote>
 <p><strong>power_t</strong> : double, optional</p>
-<blockquote class="last">
+<blockquote>
 <div><p>The exponent for inverse scaling learning rate [default 0.25].</p>
+</div></blockquote>
+<p><strong>class_weight</strong> : dict, {class_label</p>
+<blockquote class="last">
+<div><p>Preset for the class_weight fit parameter.</p>
+<p>Weights associated with classes. If not given, all classes
+are supposed to have weight one.</p>
+<p>The &#8220;auto&#8221; mode uses the values of y to automatically adjust
+weights inversely proportional to class frequencies.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -224,20 +268,21 @@ invscaling: eta = eta0 / pow(t, power_t)</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">SGDClassifier</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="go">SGDClassifier(alpha=0.0001, eta0=0.0, fit_intercept=True,</span>
-<span class="go">       learning_rate=&#39;optimal&#39;, loss=&#39;hinge&#39;, n_iter=5, n_jobs=1,</span>
-<span class="go">       penalty=&#39;l2&#39;, power_t=0.5, rho=1.0, seed=0, shuffle=False,</span>
-<span class="go">       verbose=0)</span>
+<span class="gp">... </span>
+<span class="go">SGDClassifier(alpha=0.0001, class_weight=None, eta0=0.0,</span>
+<span class="go">        fit_intercept=True, learning_rate=&#39;optimal&#39;, loss=&#39;hinge&#39;,</span>
+<span class="go">        n_iter=5, n_jobs=1, penalty=&#39;l2&#39;, power_t=0.5, rho=0.85, seed=0,</span>
+<span class="go">        shuffle=False, verbose=0)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
-<span class="go">[ 1.]</span>
+<span class="go">[1]</span>
 </pre></div>
 </div>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="29%" />
-<col width="42%" />
-<col width="29%" />
+<col width="11%" />
+<col width="59%" />
+<col width="30%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><cite>coef_</cite></td>
@@ -252,14 +297,6 @@ invscaling: eta = eta0 / pow(t, power_t)</p>
 <td>array, shape = [1] if n_classes == 2 else [n_classes]</td>
 <td>Constants in decision function.</td>
 </tr>
-<tr class="row-even"><td><cite>sparse_coef_</cite></td>
-<td>sparse.csr_matrix, , shape = [1, n_features]</td>
-<td>&nbsp;</td>
-</tr>
-<tr class="row-odd"><td>if n_classes == 2 else [n_classes, n_features]</td>
-<td>&nbsp;</td>
-<td>Weights represented as Row Compressed Matrix.</td>
-</tr>
 </tbody>
 </table>
 <p class="rubric">Methods</p>
@@ -270,7 +307,7 @@ invscaling: eta = eta0 / pow(t, power_t)</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.sparse.SGDClassifier.decision_function" title="sklearn.linear_model.sparse.SGDClassifier.decision_function"><tt class="xref py py-obj docutils literal"><span class="pre">decision_function</span></tt></a>(X)</td>
-<td>Predict signed &#8216;distance&#8217; to the hyperplane (aka confidence score).</td>
+<td>Predict signed &#8216;distance&#8217; to the hyperplane (aka confidence score)</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.sparse.SGDClassifier.fit" title="sklearn.linear_model.sparse.SGDClassifier.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;coef_init,&nbsp;intercept_init,&nbsp;...])</td>
 <td>Fit linear model with Stochastic Gradient Descent.</td>
@@ -282,7 +319,7 @@ invscaling: eta = eta0 / pow(t, power_t)</p>
 <td>Predict class membership probability</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sklearn.linear_model.sparse.SGDClassifier.score" title="sklearn.linear_model.sparse.SGDClassifier.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
-<td>Returns the mean error rate on the given test data and labels.</td>
+<td>Returns the mean accuracy on the given test data and labels.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#sklearn.linear_model.sparse.SGDClassifier.set_params" title="sklearn.linear_model.sparse.SGDClassifier.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
 <td>Set the parameters of the estimator.</td>
@@ -291,18 +328,18 @@ invscaling: eta = eta0 / pow(t, power_t)</p>
 </table>
 <dl class="method">
 <dt id="sklearn.linear_model.sparse.SGDClassifier.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>loss='hinge'</em>, <em>penalty='l2'</em>, <em>alpha=0.0001</em>, <em>rho=0.84999999999999998</em>, <em>fit_intercept=True</em>, <em>n_iter=5</em>, <em>shuffle=False</em>, <em>verbose=0</em>, <em>n_jobs=1</em>, <em>seed=0</em>, <em>learning_rate='optimal'</em>, <em>eta0=0.0</em>, <em>power_t=0.5</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.sparse.SGDClassifier.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>loss='hinge'</em>, <em>penalty='l2'</em>, <em>alpha=0.0001</em>, <em>rho=0.85</em>, <em>fit_intercept=True</em>, <em>n_iter=5</em>, <em>shuffle=False</em>, <em>verbose=0</em>, <em>n_jobs=1</em>, <em>seed=0</em>, <em>learning_rate='optimal'</em>, <em>eta0=0.0</em>, <em>power_t=0.5</em>, <em>class_weight=None</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.sparse.SGDClassifier.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="sklearn.linear_model.sparse.SGDClassifier.decision_function">
 <tt class="descname">decision_function</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.sparse.SGDClassifier.decision_function" title="Permalink to this definition">¶</a></dt>
-<dd><p>Predict signed &#8216;distance&#8217; to the hyperplane (aka confidence score).</p>
+<dd><p>Predict signed &#8216;distance&#8217; to the hyperplane (aka confidence score)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : scipy.sparse matrix of shape [n_samples, n_features]</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array, shape [n_samples, n_features]</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>array, shape = [n_samples] if n_classes == 2 else [n_samples,n_classes]</strong> :</p>
@@ -369,7 +406,7 @@ weights inversely proportional to class frequencies.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array or scipy.sparse matrix of shape [n_samples, n_features]</p>
 <blockquote>
-<div><p>Whether the numpy.array or scipy.sparse matrix is accepted dependes
+<div><p>Whether the numpy.array or scipy.sparse matrix is accepted depends
 on the actual implementation</p>
 </div></blockquote>
 </td>
@@ -409,7 +446,7 @@ on the actual implementation</p>
 <dl class="method">
 <dt id="sklearn.linear_model.sparse.SGDClassifier.score">
 <tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.sparse.SGDClassifier.score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the mean error rate on the given test data and labels.</p>
+<dd><p>Returns the mean accuracy on the given test data and labels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -435,10 +472,10 @@ on the actual implementation</p>
 <dt id="sklearn.linear_model.sparse.SGDClassifier.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.linear_model.sparse.SGDClassifier.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of the estimator.</p>
-<p>The method works on simple estimators as well as on nested
-objects (such as pipelines). The former have parameters of the
-form &lt;component&gt;__&lt;parameter&gt; so that it&#8217;s possible to update
-each component of a nested object.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The former have parameters of the form
+<tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
+component of a nested object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -462,8 +499,6 @@ each component of a nested object.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

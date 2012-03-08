@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>4.4. Decomposing signals in components (matrix factorization problems) &mdash; scikit-learn 0.9 documentation</title>
+    <title>4.4. Decomposing signals in components (matrix factorization problems) &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
     <link rel="up" title="4. Unsupervised learning" href="../unsupervised_learning.html" />
     <link rel="next" title="4.5. Covariance estimation" href="covariance.html" />
     <link rel="prev" title="4.3. Clustering" href="clustering.html" />
@@ -58,7 +58,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="../auto_examples/index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,31 +77,73 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="clustering.html" title="4.3. Clustering"
-             accesskey="P">previous</a> |
-          <a href="covariance.html" title="4.5. Covariance estimation"
-             accesskey="N">next</a> |
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="clustering.html" title="4.3. Clustering"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    4.3. Clustering
+	    </span>
+	    <span class="hiddenrellink">
+	    4.3. Clustering
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="covariance.html" title="4.5. Covariance estimation"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    4.5. Covariance ...
+	    </span>
+	    <span class="hiddenrellink">
+	    4.5. Covariance estimation
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../unsupervised_learning.html" title="4. Unsupervised learning" >
+	Up
+	<br>
+	<span class="smallrellink">
+	4. Unsupervised ...
+	</span>
+	<span class="hiddenrellink">
+	4. Unsupervised learning
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">4.4. Decomposing signals in components (matrix factorization problems)</a><ul>
 <li><a class="reference internal" href="#principal-component-analysis-pca">4.4.1. Principal component analysis (PCA)</a><ul>
 <li><a class="reference internal" href="#exact-pca-and-probabilistic-interpretation">4.4.1.1. Exact PCA and probabilistic interpretation</a></li>
@@ -111,8 +153,9 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#dictionary-learning">4.4.2. Dictionary Learning</a><ul>
-<li><a class="reference internal" href="#generic-dictionary-learning">4.4.2.1. Generic dictionary learning</a></li>
-<li><a class="reference internal" href="#mini-batch-dictionary-learning">4.4.2.2. Mini-batch dictionary learning</a></li>
+<li><a class="reference internal" href="#sparse-coding-with-a-precomputed-dictionary">4.4.2.1. Sparse coding with a precomputed dictionary</a></li>
+<li><a class="reference internal" href="#generic-dictionary-learning">4.4.2.2. Generic dictionary learning</a></li>
+<li><a class="reference internal" href="#mini-batch-dictionary-learning">4.4.2.3. Mini-batch dictionary learning</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#independent-component-analysis-ica">4.4.3. Independent component analysis (ICA)</a></li>
@@ -121,14 +164,8 @@
 </li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -144,7 +181,7 @@
 <h3>4.4.1.1. Exact PCA and probabilistic interpretation<a class="headerlink" href="#exact-pca-and-probabilistic-interpretation" title="Permalink to this headline">¶</a></h3>
 <p>PCA is used to decompose a multivariate dataset in a set of successive
 orthogonal components that explain a maximum amount of the variance. In
-the scikit-learn, <a class="reference internal" href="generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a> is implemented as a <cite>transformer</cite> object
+scikit-learn, <a class="reference internal" href="generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-class docutils literal"><span class="pre">PCA</span></tt></a> is implemented as a <cite>transformer</cite> object
 that learns n components in its <cite>fit</cite> method, and can be used on new data
 to project it on these components.</p>
 <p>The optional parameter <cite>whiten=True</cite> parameter make it possible to
@@ -275,13 +312,13 @@ visualization as 64x64 pixel images. The fact that the components shown below
 appear local is the effect of the inherent structure of the data, which makes
 such local patterns minimize reconstruction error. There exist sparsity-inducing
 norms that take into account adjacency and different kinds of structure; see see
-[Jen09] for a review of such methods. For more details on how to use Sparse PCA,
+<a class="reference internal" href="#jen09">[Jen09]</a> for a review of such methods. For more details on how to use Sparse PCA,
 see the <cite>Examples</cite> section below.</p>
 <p class="centered">
 <strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
  <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="spca_img" src="../_images/plot_faces_decomposition_51.png" style="width: 360.0px; height: 270.6px;" /></a>
 </strong></p><p>Note that there are many different formulations for the Sparse PCA
-problem. The one implemented here is based on [Mrl09] . The optimization
+problem. The one implemented here is based on <a class="reference internal" href="#mrl09">[Mrl09]</a> . The optimization
 problem solved is a PCA problem (dictionary learning) with an
 <img class="math" src="../_images/math/3ff9d2add1273f7f294d4f0318b0ed4340c07768.png" alt="\ell_1"/> penalty on the components:</p>
 <div class="math">
@@ -309,44 +346,35 @@ direction.</p>
 </div>
 <div class="topic">
 <p class="topic-title first">References:</p>
-<ul class="simple">
-<li>[Mrl09] <a class="reference external" href="http://www.di.ens.fr/sierra/pdfs/icml09.pdf">&#8220;Online Dictionary Learning for Sparse Coding&#8221;</a>
-J. Mairal, F. Bach, J. Ponce, G. Sapiro, 2009</li>
-<li>[Jen09] <a class="reference external" href="www.di.ens.fr/~fbach/sspca_AISTATS2010.pdf">&#8220;Structured Sparse Principal Component Analysis&#8221;</a>
-R. Jenatton, G. Obozinski, F. Bach, 2009</li>
-</ul>
+<table class="docutils citation" frame="void" id="mrl09" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[Mrl09]</a></td><td><a class="reference external" href="http://www.di.ens.fr/sierra/pdfs/icml09.pdf">&#8220;Online Dictionary Learning for Sparse Coding&#8221;</a>
+J. Mairal, F. Bach, J. Ponce, G. Sapiro, 2009</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="jen09" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[Jen09]</a></td><td><a class="reference external" href="www.di.ens.fr/~fbach/sspca_AISTATS2010.pdf">&#8220;Structured Sparse Principal Component Analysis&#8221;</a>
+R. Jenatton, G. Obozinski, F. Bach, 2009</td></tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 <div class="section" id="dictionary-learning">
 <span id="dictionarylearning"></span><h2>4.4.2. Dictionary Learning<a class="headerlink" href="#dictionary-learning" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="generic-dictionary-learning">
-<h3>4.4.2.1. Generic dictionary learning<a class="headerlink" href="#generic-dictionary-learning" title="Permalink to this headline">¶</a></h3>
-<p>Dictionary learning (<a class="reference internal" href="generated/sklearn.decomposition.DictionaryLearning.html#sklearn.decomposition.DictionaryLearning" title="sklearn.decomposition.DictionaryLearning"><tt class="xref py py-class docutils literal"><span class="pre">DictionaryLearning</span></tt></a>) is a matrix factorization
-problem that amounts to finding a (usually overcomplete) dictionary that will
-perform good at sparsely encoding the fitted data.</p>
-<p>Representing data as sparse combinations of atoms from an overcomplete
-dictionary is suggested to be the way the mammal primary visual cortex works.
-Consequently, dictionary learning applied on image patches has been shown to
-give good results in image processing tasks such as image completion,
-inpainting and denoising, as well as for supervised recognition tasks.</p>
-<p>Dictionary learning is an optimization problem solved by alternatively updating
-the sparse code, as a solution to multiple Lasso problems, considering the
-dictionary fixed, and then updating the dictionary to best fit the sparse code.</p>
-<div class="math">
-<p><img src="../_images/math/476780086ddea762313619c4380de26e6f4ea514.png" alt="(U^*, V^*) = \underset{U, V}{\operatorname{arg\,min\,}} &amp; \frac{1}{2}
-             ||X-UV||_2^2+\alpha||U||_1 \\
-             \text{subject to\,} &amp; ||V_k||_2 = 1 \text{ for all }
-             0 \leq k &lt; n_{atoms}"/></p>
-</div><p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
- <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="dict_img" src="../_images/plot_faces_decomposition_61.png" style="width: 360.0px; height: 270.6px;" /></a>
-</strong></p><p>After using such a procedure to fit the dictionary, the fitted object can be
-used to transform new data. The transformation amounts to a sparse coding
-problem: finding a representation of the data as a linear combination of as few
-dictionary atoms as possible. All variations of dictionary learning implement
-the following transform methods, controllable via the <cite>transform_method</cite>
-initialization parameter:</p>
+<div class="section" id="sparse-coding-with-a-precomputed-dictionary">
+<span id="sparsecoder"></span><h3>4.4.2.1. Sparse coding with a precomputed dictionary<a class="headerlink" href="#sparse-coding-with-a-precomputed-dictionary" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="generated/sklearn.decomposition.SparseCoder.html#sklearn.decomposition.SparseCoder" title="sklearn.decomposition.SparseCoder"><tt class="xref py py-class docutils literal"><span class="pre">SparseCoder</span></tt></a> object is an estimator that can be used to transform signals
+into sparse linear combination of atoms from a fixed, precomputed dictionary
+such as a discrete wavelet basis. This object therefore does not
+implement a <cite>fit</cite> method. The transformation amounts
+to a sparse coding problem: finding a representation of the data as a linear
+combination of as few dictionary atoms as possible. All variations of
+dictionary learning implement the following transform methods, controllable via
+the <cite>transform_method</cite> initialization parameter:</p>
 <ul class="simple">
 <li>Orthogonal matching pursuit (<a class="reference internal" href="linear_model.html#omp"><em>Orthogonal Matching Pursuit (OMP)</em></a>)</li>
 <li>Least-angle regression (<a class="reference internal" href="linear_model.html#least-angle-regression"><em>Least Angle Regression</em></a>)</li>
@@ -370,6 +398,37 @@ and is constructed using the following rule: First, the regular code of length
 filled with the positive part of the regular code vector. The second half of
 the split code is filled with the negative part of the code vector, only with
 a positive sign. Therefore, the split_code is non-negative.</p>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/decomposition/plot_sparse_coding.html#example-decomposition-plot-sparse-coding-py"><em>Sparse coding with a precomputed dictionary</em></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="generic-dictionary-learning">
+<h3>4.4.2.2. Generic dictionary learning<a class="headerlink" href="#generic-dictionary-learning" title="Permalink to this headline">¶</a></h3>
+<p>Dictionary learning (<a class="reference internal" href="generated/sklearn.decomposition.DictionaryLearning.html#sklearn.decomposition.DictionaryLearning" title="sklearn.decomposition.DictionaryLearning"><tt class="xref py py-class docutils literal"><span class="pre">DictionaryLearning</span></tt></a>) is a matrix factorization
+problem that amounts to finding a (usually overcomplete) dictionary that will
+perform good at sparsely encoding the fitted data.</p>
+<p>Representing data as sparse combinations of atoms from an overcomplete
+dictionary is suggested to be the way the mammal primary visual cortex works.
+Consequently, dictionary learning applied on image patches has been shown to
+give good results in image processing tasks such as image completion,
+inpainting and denoising, as well as for supervised recognition tasks.</p>
+<p>Dictionary learning is an optimization problem solved by alternatively updating
+the sparse code, as a solution to multiple Lasso problems, considering the
+dictionary fixed, and then updating the dictionary to best fit the sparse code.</p>
+<div class="math">
+<p><img src="../_images/math/476780086ddea762313619c4380de26e6f4ea514.png" alt="(U^*, V^*) = \underset{U, V}{\operatorname{arg\,min\,}} &amp; \frac{1}{2}
+             ||X-UV||_2^2+\alpha||U||_1 \\
+             \text{subject to\,} &amp; ||V_k||_2 = 1 \text{ for all }
+             0 \leq k &lt; n_{atoms}"/></p>
+</div><p class="centered">
+<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img2" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
+ <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="dict_img2" src="../_images/plot_faces_decomposition_61.png" style="width: 360.0px; height: 270.6px;" /></a>
+</strong></p><p>After using such a procedure to fit the dictionary, the transform is simply a
+sparse coding step that shares the same implementation with all dictionary
+learning objects (see <a class="reference internal" href="#sparsecoder"><em>Sparse coding with a precomputed dictionary</em></a>).</p>
 <p>The following image shows how a dictionary learned from 4x4 pixel image patches
 extracted from part of the image of Lena looks like.</p>
 <div class="figure align-center">
@@ -390,7 +449,7 @@ J. Mairal, F. Bach, J. Ponce, G. Sapiro, 2009</li>
 </div>
 </div>
 <div class="section" id="mini-batch-dictionary-learning">
-<h3>4.4.2.2. Mini-batch dictionary learning<a class="headerlink" href="#mini-batch-dictionary-learning" title="Permalink to this headline">¶</a></h3>
+<span id="minibatchdictionarylearning"></span><h3>4.4.2.3. Mini-batch dictionary learning<a class="headerlink" href="#mini-batch-dictionary-learning" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="generated/sklearn.decomposition.MiniBatchDictionaryLearning.html#sklearn.decomposition.MiniBatchDictionaryLearning" title="sklearn.decomposition.MiniBatchDictionaryLearning"><tt class="xref py py-class docutils literal"><span class="pre">MiniBatchDictionaryLearning</span></tt></a> implements a faster, but less accurate
 version of the dictionary learning algorithm that is better suited for large
 datasets.</p>
@@ -418,8 +477,8 @@ algorithm.</p>
 <p>ICA can also be used as yet another non linear decomposition that finds
 components with some sparsity:</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
- <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="ica_img" src="../_images/plot_faces_decomposition_41.png" style="width: 360.0px; height: 270.6px;" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img3" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
+ <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="ica_img3" src="../_images/plot_faces_decomposition_41.png" style="width: 360.0px; height: 270.6px;" /></a>
 </strong></p><div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
@@ -444,8 +503,8 @@ resulting in interpretable models. The following example displays 16
 sparse components found by <a class="reference internal" href="generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF"><tt class="xref py py-class docutils literal"><span class="pre">NMF</span></tt></a> from the images in the Olivetti
 faces dataset, in comparison with the PCA eigenfaces.</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
- <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="nmf_img" src="../_images/plot_faces_decomposition_31.png" style="width: 360.0px; height: 270.6px;" /></a>
+<strong><a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="pca_img4" src="../_images/plot_faces_decomposition_21.png" style="width: 360.0px; height: 270.6px;" /></a>
+ <a class="reference external image-reference" href="../auto_examples/decomposition/plot_faces_decomposition.html"><img alt="nmf_img4" src="../_images/plot_faces_decomposition_31.png" style="width: 360.0px; height: 270.6px;" /></a>
 </strong></p><p>The <tt class="xref py py-attr docutils literal"><span class="pre">init</span></tt> attribute determines the initialization method applied, which
 has a great impact on the performance of the method. <a class="reference internal" href="generated/sklearn.decomposition.NMF.html#sklearn.decomposition.NMF" title="sklearn.decomposition.NMF"><tt class="xref py py-class docutils literal"><span class="pre">NMF</span></tt></a> implements
 the method Nonnegative Double Singular Value Decomposition. NNDSVD is based on
@@ -495,8 +554,6 @@ C. Boutsidis, E. Gallopoulos, 2008</li>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

@@ -66,6 +66,13 @@ data.
             :scale: 50
 
 
+**Script output**::
+
+  Computing regularization path using the coordinate descent lasso...
+  Computing regularization path using the Lars lasso...
+
+
+
 **Python source code:** :download:`plot_lasso_model_selection.py <plot_lasso_model_selection.py>`
 
 .. literalinclude:: plot_lasso_model_selection.py

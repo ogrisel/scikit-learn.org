@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Image denoising using dictionary learning &mdash; scikit-learn 0.9 documentation</title>
+    <title>Image denoising using dictionary learning &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Kernel PCA" href="plot_kernel_pca.html" />
+    <link rel="prev" title="FastICA on 2D point clouds" href="plot_ica_vs_pca.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="plot_ica_vs_pca.html" title="FastICA on 2D point clouds"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    FastICA on 2D po...
+	    </span>
+	    <span class="hiddenrellink">
+	    FastICA on 2D point clouds
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="plot_kernel_pca.html" title="Kernel PCA"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Kernel PCA
+	    </span>
+	    <span class="hiddenrellink">
+	    Kernel PCA
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Image denoising using dictionary learning</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -133,27 +176,49 @@ it can produce a suggestive output with very high speed, and thus be useful
 for other tasks such as object classification, where performance is not
 necessarily related to visualisation.</p>
 <ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_1.png"><img alt="../../_images/plot_image_denoising_1.png" src="../../_images/plot_image_denoising_1.png" style="width: 210.0px; height: 200.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_2.png"><img alt="../../_images/plot_image_denoising_2.png" src="../../_images/plot_image_denoising_2.png" style="width: 250.0px; height: 165.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_3.png"><img alt="../../_images/plot_image_denoising_3.png" src="../../_images/plot_image_denoising_3.png" style="width: 250.0px; height: 165.0px;" /></a>
-</li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_4.png"><img alt="../../_images/plot_image_denoising_4.png" src="../../_images/plot_image_denoising_4.png" style="width: 250.0px; height: 165.0px;" /></a>
 </li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_5.png"><img alt="../../_images/plot_image_denoising_5.png" src="../../_images/plot_image_denoising_5.png" style="width: 250.0px; height: 165.0px;" /></a>
 </li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_2.png"><img alt="../../_images/plot_image_denoising_2.png" src="../../_images/plot_image_denoising_2.png" style="width: 250.0px; height: 165.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_1.png"><img alt="../../_images/plot_image_denoising_1.png" src="../../_images/plot_image_denoising_1.png" style="width: 210.0px; height: 200.0px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_3.png"><img alt="../../_images/plot_image_denoising_3.png" src="../../_images/plot_image_denoising_3.png" style="width: 250.0px; height: 165.0px;" /></a>
+</li>
 <li><a class="first reference internal image-reference" href="../../_images/plot_image_denoising_6.png"><img alt="../../_images/plot_image_denoising_6.png" src="../../_images/plot_image_denoising_6.png" style="width: 250.0px; height: 165.0px;" /></a>
 </li>
 </ul>
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Distorting image...
+Extracting clean patches...
+done in 0.18s.
+Learning the dictionary...
+done in 6.87s.
+Extracting noisy patches...
+done in 0.40s.
+Orthogonal Matching Pursuit
+1 atom ...
+done in 4.22s.
+Orthogonal Matching Pursuit
+2 atoms ...
+done in 6.48s.
+Least-angle regression
+5 atoms ...
+done in 33.97s.
+Thresholding
+ alpha=0.1 ...
+done in 0.67s.</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_image_denoising.py"><tt class="xref download docutils literal"><span class="pre">plot_image_denoising.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
 
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
-<span class="kn">import</span> <span class="nn">scipy</span> <span class="kn">as</span> <span class="nn">sp</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">scipy.misc</span> <span class="kn">import</span> <span class="n">lena</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">MiniBatchDictionaryLearning</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.image</span> <span class="kn">import</span> <span class="n">extract_patches_2d</span>
@@ -162,7 +227,7 @@ necessarily related to visualisation.</p>
 <span class="c">###############################################################################</span>
 <span class="c"># Load Lena image and extract patches</span>
 
-<span class="n">lena</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span> <span class="o">/</span> <span class="mf">256.0</span>
+<span class="n">lena</span> <span class="o">=</span> <span class="n">lena</span><span class="p">()</span> <span class="o">/</span> <span class="mf">256.0</span>
 
 <span class="c"># downsample for higher speed</span>
 <span class="n">lena</span> <span class="o">=</span> <span class="n">lena</span><span class="p">[::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">lena</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">lena</span><span class="p">[::</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">lena</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
@@ -189,7 +254,7 @@ necessarily related to visualisation.</p>
 
 <span class="k">print</span> <span class="s">&#39;Learning the dictionary... &#39;</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="n">dico</span> <span class="o">=</span> <span class="n">MiniBatchDictionaryLearning</span><span class="p">(</span><span class="n">n_atoms</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">dico</span> <span class="o">=</span> <span class="n">MiniBatchDictionaryLearning</span><span class="p">(</span><span class="n">n_atoms</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 <span class="n">V</span> <span class="o">=</span> <span class="n">dico</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">components_</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
 <span class="k">print</span> <span class="s">&#39;done in </span><span class="si">%.2f</span><span class="s">s.&#39;</span> <span class="o">%</span> <span class="n">dt</span>
@@ -205,6 +270,7 @@ necessarily related to visualisation.</p>
             <span class="s">&#39;Train time </span><span class="si">%.1f</span><span class="s">s on </span><span class="si">%d</span><span class="s"> patches&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)),</span>
             <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.92</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.23</span><span class="p">)</span>
+
 
 <span class="c">###############################################################################</span>
 <span class="c"># Display the distorted image</span>
@@ -289,8 +355,6 @@ necessarily related to visualisation.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.3. Stochastic Gradient Descent &mdash; scikit-learn 0.9 documentation</title>
+    <title>3.3. Stochastic Gradient Descent &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
     <link rel="up" title="3. Supervised learning" href="../supervised_learning.html" />
     <link rel="next" title="3.4. Nearest Neighbors" href="neighbors.html" />
     <link rel="prev" title="3.2. Support Vector Machines" href="svm.html" />
@@ -58,7 +58,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="../auto_examples/index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,31 +77,73 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="svm.html" title="3.2. Support Vector Machines"
-             accesskey="P">previous</a> |
-          <a href="neighbors.html" title="3.4. Nearest Neighbors"
-             accesskey="N">next</a> |
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="svm.html" title="3.2. Support Vector Machines"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    3.2. Support Vec...
+	    </span>
+	    <span class="hiddenrellink">
+	    3.2. Support Vector Machines
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="neighbors.html" title="3.4. Nearest Neighbors"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    3.4. Nearest Nei...
+	    </span>
+	    <span class="hiddenrellink">
+	    3.4. Nearest Neighbors
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../supervised_learning.html" title="3. Supervised learning" >
+	Up
+	<br>
+	<span class="smallrellink">
+	3. Supervised le...
+	</span>
+	<span class="hiddenrellink">
+	3. Supervised learning
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">3.3. Stochastic Gradient Descent</a><ul>
 <li><a class="reference internal" href="#classification">3.3.1. Classification</a></li>
 <li><a class="reference internal" href="#regression">3.3.2. Regression</a></li>
@@ -117,14 +159,8 @@
 </li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -165,7 +201,8 @@ parameter and the number of iterations.</li>
 <h2>3.3.1. Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">Make sure you permute (shuffle) your training data before fitting the model or use <cite>shuffle=True</cite> to shuffle after each iterations.</p>
+<p class="last">Make sure you permute (shuffle) your training data before fitting the
+model or use <cite>shuffle=True</cite> to shuffle after each iterations.</p>
 </div>
 <p>The class <a class="reference internal" href="generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier" title="sklearn.linear_model.SGDClassifier"><tt class="xref py py-class docutils literal"><span class="pre">SGDClassifier</span></tt></a> implements a plain stochastic gradient
 descent learning routine which supports different loss functions and
@@ -182,15 +219,15 @@ for the training samples:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">&quot;hinge&quot;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">&quot;l2&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="go">SGDClassifier(alpha=0.0001, eta0=0.0, fit_intercept=True,</span>
+<span class="go">SGDClassifier(alpha=0.0001, class_weight=None, eta0=0.0, fit_intercept=True,</span>
 <span class="go">       learning_rate=&#39;optimal&#39;, loss=&#39;hinge&#39;, n_iter=5, n_jobs=1,</span>
-<span class="go">       penalty=&#39;l2&#39;, power_t=0.5, rho=1.0, seed=0, shuffle=False,</span>
+<span class="go">       penalty=&#39;l2&#39;, power_t=0.5, rho=0.85, seed=0, shuffle=False,</span>
 <span class="go">       verbose=0)</span>
 </pre></div>
 </div>
 <p>After being fitted, the model can then be used to predict new values:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">]])</span>
-<span class="go">array([ 1.])</span>
+<span class="go">array([1])</span>
 </pre></div>
 </div>
 <p>SGD fits a linear model to the training data. The member <cite>coef_</cite> holds
@@ -320,10 +357,7 @@ exception of training and test data, which is expected to be in a
 matrix format defined in scipy.sparse.</p>
 <p>For maximum efficiency, use the CSR matrix format as defined in
 <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html">scipy.sparse.csr_matrix</a>.</p>
-<p>Implemented classes are <a class="reference internal" href="generated/sklearn.linear_model.sparse.SGDClassifier.html#sklearn.linear_model.sparse.SGDClassifier" title="sklearn.linear_model.sparse.SGDClassifier"><tt class="xref py py-class docutils literal"><span class="pre">SGDClassifier</span></tt></a> and <a class="reference internal" href="generated/sklearn.linear_model.sparse.SGDRegressor.html#sklearn.linear_model.sparse.SGDRegressor" title="sklearn.linear_model.sparse.SGDRegressor"><tt class="xref py py-class docutils literal"><span class="pre">SGDRegressor</span></tt></a>.
-During training both classes maintain a dense representation of the model
-parameters. After training has completed you can obtain a sparse representation
-of the model parameters via the attribute <cite>sparse_coef_</cite>.</p>
+<p>Implemented classes are <a class="reference internal" href="generated/sklearn.linear_model.sparse.SGDClassifier.html#sklearn.linear_model.sparse.SGDClassifier" title="sklearn.linear_model.sparse.SGDClassifier"><tt class="xref py py-class docutils literal"><span class="pre">SGDClassifier</span></tt></a> and <a class="reference internal" href="generated/sklearn.linear_model.sparse.SGDRegressor.html#sklearn.linear_model.sparse.SGDRegressor" title="sklearn.linear_model.sparse.SGDRegressor"><tt class="xref py py-class docutils literal"><span class="pre">SGDRegressor</span></tt></a>.</p>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
@@ -445,24 +479,26 @@ without regularization.</p>
 classification, the default learning rate schedule (<cite>learning_rate=&#8217;optimal&#8217;</cite>)
 is given by</p>
 <div class="math">
-<p><img src="../_images/math/2b3ec26506b706d022aa53d5dfb25f4aebde4886.png" alt="\eta^{(t)} = \frac {1.0}{t+t0}"/></p>
-</div><p>where <img class="math" src="../_images/math/30366e86ea7e37e3c9c0cf9a48e6dc8118d94c6c.png" alt="t0"/> is the time step (there are a total of <cite>n_samples*epochs</cite>
-time steps), <img class="math" src="../_images/math/30366e86ea7e37e3c9c0cf9a48e6dc8118d94c6c.png" alt="t0"/> is choosen automatically assuming that the norm of
-the training samples is approx. 1.
-For regression, the default learning rate schedule, inverse scaling
+<p><img src="../_images/math/817aecbc24ddcea57b42df2d50982cdd8ccae5da.png" alt="\eta^{(t)} = \frac {1}{\alpha  (t_0 + t)}"/></p>
+</div><p>where <img class="math" src="../_images/math/e0d2bf360290fd61d1c1557e763f2622363b3d35.png" alt="t"/> is the time step (there are a total of <cite>n_samples * epochs</cite>
+time steps), <img class="math" src="../_images/math/10fde25257f32317828fde97047bbe76438b6305.png" alt="t_0"/> is determined based on a heuristic proposed by Léon Bottou
+such that the expected initial updates are comparable with the expected
+size of the weights (this assuming that the norm of the training samples is
+approx. 1). See <a class="reference external" href="http://leon.bottou.org/slides/largescale/lstut.pdf">&#8220;The Tradeoffs of Large Scale Machine Learning&#8221;</a> by Léon Bottou for further details.</p>
+<p>For regression, the default learning rate schedule, inverse scaling
 (<cite>learning_rate=&#8217;invscaling&#8217;</cite>), is given by</p>
 <div class="math">
 <p><img src="../_images/math/1d5dd409d3ff0af6931e97cc37087d4d33c4ffd3.png" alt="\eta^{(t)} = \frac{eta_0}{t^{power\_t}}"/></p>
 </div><p>where <img class="math" src="../_images/math/4b2b820d2fd6e45c2457f073ffec25469e13e1c8.png" alt="eta_0"/> and <img class="math" src="../_images/math/9fac8c10bc0c567ad37e956d3f4d8285795be865.png" alt="power\_t"/> are hyperparameters choosen by the
-user.
-For a constant learning rate use <cite>learning_rate=&#8217;constant&#8217;</cite> and use <cite>eta0</cite>
+user via <cite>eta0</cite> and <cite>power_t</cite>, resp.</p>
+<p>For a constant learning rate use <cite>learning_rate=&#8217;constant&#8217;</cite> and use <cite>eta0</cite>
 to specify the learning rate.</p>
-<p>The model parameters can be accessed through the members coef_ and
-intercept_:</p>
+<p>The model parameters can be accessed through the members <cite>coef_</cite> and
+<cite>intercept_</cite>:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Member coef_ holds the weights <img class="math" src="../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w"/></li>
-<li>Member intercept_ holds <img class="math" src="../_images/math/8136a7ef6a03334a7246df9097e5bcc31ba33fd2.png" alt="b"/></li>
+<li>Member <cite>coef_</cite> holds the weights <img class="math" src="../_images/math/9ee4b825a2e36ae093ed7be5e4851ef453b34914.png" alt="w"/></li>
+<li>Member <cite>intercept_</cite> holds <img class="math" src="../_images/math/8136a7ef6a03334a7246df9097e5bcc31ba33fd2.png" alt="b"/></li>
 </ul>
 </div></blockquote>
 <div class="topic">
@@ -496,9 +532,10 @@ The code is written in Cython.</p>
 <p class="topic-title first">References:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://leon.bottou.org/projects/sgd">&#8220;Stochastic Gradient Descent&#8221;</a> L. Bottou - Website, 2010.</li>
+<li><a class="reference external" href="http://leon.bottou.org/slides/largescale/lstut.pdf">&#8220;The Tradeoffs of Large Scale Machine Learning&#8221;</a> L. Bottou - Website, 2011.</li>
 <li><a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.74.8513">&#8220;Pegasos: Primal estimated sub-gradient solver for svm&#8221;</a>
 S. Shalev-Shwartz, Y. Singer, N. Srebro - In Proceedings of ICML &#8216;07.</li>
-<li><a class="reference external" href="www.aclweb.org/anthology/P/P09/P09-1054.pdf">&#8220;Stochastic gradient descent training for l1-regularized log-linear models with cumulative penalty&#8221;</a>
+<li><a class="reference external" href="http://www.aclweb.org/anthology/P/P09/P09-1054.pdf">&#8220;Stochastic gradient descent training for l1-regularized log-linear models with cumulative penalty&#8221;</a>
 Y. Tsuruoka, J. Tsujii, S. Ananiadou -  In Proceedings of the AFNLP/ACL &#8216;09.</li>
 </ul>
 </div>
@@ -514,8 +551,6 @@ Y. Tsuruoka, J. Tsujii, S. Ananiadou -  In Proceedings of the AFNLP/ACL &#8216;0
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

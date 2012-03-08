@@ -1,0 +1,38 @@
+
+
+.. _example_tutorial_plot_bias_variance_examples.py:
+
+
+
+
+.. rst-class:: horizontal
+
+
+    *
+
+      .. image:: images/plot_bias_variance_examples_1.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_bias_variance_examples_2.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_bias_variance_examples_4.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_bias_variance_examples_3.png
+            :scale: 47
+
+
+
+
+**Python source code:** :download:`plot_bias_variance_examples.py <plot_bias_variance_examples.py>`
+
+.. literalinclude:: plot_bias_variance_examples.py
+    :lines: 2-
+    

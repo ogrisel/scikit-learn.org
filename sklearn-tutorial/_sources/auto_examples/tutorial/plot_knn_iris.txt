@@ -1,0 +1,31 @@
+
+
+.. _example_tutorial_plot_knn_iris.py:
+
+
+=========================================================
+KNN (k-nearest neighbors) classification example
+=========================================================
+The K-Nearest-Neighbors algorithm is used below as a
+classification tool. The data set 
+(`Iris <http://en.wikipedia.org/wiki/Iris_flower_data_set>`_)
+has been used for this example.
+
+The decision boundaries, 
+are shown with all the points in the training-set.
+
+
+
+
+
+.. image:: images/plot_knn_iris_1.png
+    :align: center
+
+
+
+
+**Python source code:** :download:`plot_knn_iris.py <plot_knn_iris.py>`
+
+.. literalinclude:: plot_knn_iris.py
+    :lines: 18-
+    

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PLS Partial Least Squares &mdash; scikit-learn 0.9 documentation</title>
+    <title>PLS Partial Least Squares &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
+    <link rel="up" title="Examples" href="index.html" />
+    <link rel="next" title="Precision-Recall" href="plot_precision_recall.html" />
+    <link rel="prev" title="Test with permutations the significance of a classification score" href="plot_permutation_test_for_classification.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="plot_permutation_test_for_classification.html" title="Test with permutations the significance of a classification score"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Test with permut...
+	    </span>
+	    <span class="hiddenrellink">
+	    Test with permutations the significance of a classification score
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="plot_precision_recall.html" title="Precision-Recall"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Precision-Recall
+	    </span>
+	    <span class="hiddenrellink">
+	    Precision-Recall
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">PLS Partial Least Squares</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -129,6 +172,51 @@ first diagonal). This is also true for components 2 in both dataset,
 however, the correlation across datasets for different components is
 weak: the point cloud is very spherical.</p>
 <img alt="../_images/plot_pls_1.png" class="align-center" src="../_images/plot_pls_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Corr(X)
+[[ 1.    0.5  -0.07  0.04]
+ [ 0.5   1.    0.07  0.06]
+ [-0.07  0.07  1.    0.5 ]
+ [ 0.04  0.06  0.5   1.  ]]
+Corr(Y)
+[[ 1.    0.46 -0.04  0.01]
+ [ 0.46  1.   -0.04 -0.02]
+ [-0.04 -0.04  1.    0.54]
+ [ 0.01 -0.02  0.54  1.  ]]
+True B (such that: Y = XB + Err)
+[[1 1 1]
+ [2 2 2]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]
+ [0 0 0]]
+Estimated B
+[[ 1.   1.   1. ]
+ [ 2.   2.1  2. ]
+ [ 0.  -0.   0. ]
+ [-0.   0.  -0. ]
+ [-0.1  0.  -0. ]
+ [ 0.  -0.   0. ]
+ [ 0.   0.  -0. ]
+ [ 0.   0.   0. ]
+ [-0.   0.   0. ]
+ [-0.  -0.  -0. ]]
+Estimated betas
+[[ 1.]
+ [ 2.]
+ [ 0.]
+ [-0.]
+ [-0.]
+ [-0.]
+ [-0.]
+ [ 0.]
+ [ 0.]
+ [ 0.]]</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_pls.py"><tt class="xref download docutils literal"><span class="pre">plot_pls.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -136,7 +224,7 @@ weak: the point cloud is very spherical.</p>
 <span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">pl</span>
 <span class="kn">from</span> <span class="nn">sklearn.pls</span> <span class="kn">import</span> <span class="n">PLSCanonical</span><span class="p">,</span> <span class="n">PLSRegression</span><span class="p">,</span> <span class="n">CCA</span>
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># Dataset based latent variables model</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
@@ -145,20 +233,20 @@ weak: the point cloud is very spherical.</p>
 <span class="n">l2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
 
 <span class="n">latents</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">l1</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">,</span> <span class="n">l2</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">latents</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">latents</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">latents</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">4</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">latents</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">4</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
-<span class="n">X_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
-<span class="n">Y_train</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[:</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">:,</span> <span class="p">:]</span>
-<span class="n">Y_test</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">:,</span> <span class="p">:]</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">Y_train</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[:</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:]</span>
+<span class="n">Y_test</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:]</span>
 
 <span class="k">print</span> <span class="s">&quot;Corr(X)&quot;</span>
 <span class="k">print</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;Corr(Y)&quot;</span>
 <span class="k">print</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">Y</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># Canonical (symetric) PLS</span>
 
 <span class="c"># Transform data</span>
@@ -207,7 +295,7 @@ weak: the point cloud is very spherical.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># PLS regression, with multivariate response, a.k.a. PLS2</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
@@ -227,12 +315,12 @@ weak: the point cloud is very spherical.</p>
 <span class="k">print</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pls2</span><span class="o">.</span><span class="n">coefs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">pls2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># PLS regression, with univariate response, a.k.a. PLS1</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">p</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span> <span class="o">*</span> <span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span>
 <span class="n">pls1</span> <span class="o">=</span> <span class="n">PLSRegression</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">pls1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -240,7 +328,7 @@ weak: the point cloud is very spherical.</p>
 <span class="k">print</span> <span class="s">&quot;Estimated betas&quot;</span>
 <span class="k">print</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pls1</span><span class="o">.</span><span class="n">coefs</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># CCA (PLS mode B with symetric deflation)</span>
 
 <span class="n">cca</span> <span class="o">=</span> <span class="n">CCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -260,8 +348,6 @@ weak: the point cloud is very spherical.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

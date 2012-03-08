@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.7.6. sklearn.cluster.Ward &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.1.7. sklearn.cluster.Ward &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.8.1.1. sklearn.metrics.confusion_matrix" href="sklearn.metrics.confusion_matrix.html" />
-    <link rel="prev" title="9.7.5. sklearn.cluster.AffinityPropagation" href="sklearn.cluster.AffinityPropagation.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.2.1. sklearn.covariance.EmpiricalCovariance" href="sklearn.covariance.EmpiricalCovariance.html" />
+    <link rel="prev" title="8.1.6. sklearn.cluster.SpectralClustering" href="sklearn.cluster.SpectralClustering.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.cluster.AffinityPropagation.html" title="9.7.5. sklearn.cluster.AffinityPropagation"
-             accesskey="P">previous</a> |
-          <a href="sklearn.metrics.confusion_matrix.html" title="9.8.1.1. sklearn.metrics.confusion_matrix"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.7.6. sklearn.cluster.Ward</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.cluster.SpectralClustering.html" title="8.1.6. sklearn.cluster.SpectralClustering"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.1.6. sklearn.c...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.1.6. sklearn.cluster.SpectralClustering
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.covariance.EmpiricalCovariance.html" title="8.2.1. sklearn.covariance.EmpiricalCovariance"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.2.1. sklearn.c...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.2.1. sklearn.covariance.EmpiricalCovariance
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.1.7. sklearn.cluster.Ward</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,7 +157,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-cluster-ward">
-<h1>9.7.6. sklearn.cluster.Ward<a class="headerlink" href="#sklearn-cluster-ward" title="Permalink to this headline">¶</a></h1>
+<h1>8.1.7. sklearn.cluster.Ward<a class="headerlink" href="#sklearn-cluster-ward" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.cluster.Ward">
 <em class="property">class </em><tt class="descclassname">sklearn.cluster.</tt><tt class="descname">Ward</tt><big>(</big><em>n_clusters=2</em>, <em>memory=Memory(cachedir=None)</em>, <em>connectivity=None</em>, <em>copy=True</em>, <em>n_components=None</em><big>)</big><a class="headerlink" href="#sklearn.cluster.Ward" title="Permalink to this definition">¶</a></dt>
@@ -132,13 +168,13 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n_clusters</strong> : int or ndarray</p>
 <blockquote>
-<div><p>The number of clusters.</p>
+<div><p>The number of clusters to find.</p>
 </div></blockquote>
 <p><strong>connectivity</strong> : sparse matrix.</p>
 <blockquote>
-<div><p>connectivity matrix. Defines for each sample the neigbhoring
+<div><p>Connectivity matrix. Defines for each sample the neigbhoring
 samples following a given structure of the data.
-Defaut is None, i.e, the hiearchical clustering algorithm is
+Default is None, i.e, the hiearchical clustering algorithm is
 unstructured.</p>
 </div></blockquote>
 <p><strong>memory</strong> : Instance of joblib.Memory or string</p>
@@ -153,23 +189,46 @@ path to the caching directory.</p>
 </div></blockquote>
 <p><strong>n_components</strong> : int (optional)</p>
 <blockquote class="last">
-<div><p>The number of connected components in the graph defined by the
-connectivity matrix. If not set, it is estimated.</p>
+<div><p>The number of connected components in the graph defined by the         connectivity matrix. If not set, it is estimated.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Attributes</p>
-<p class="rubric">Methods</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="15%" />
-<col width="85%" />
+<col width="10%" />
+<col width="28%" />
+<col width="62%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td>fit:</td>
-<td>Compute the clustering</td>
+<tr class="row-odd"><td><cite>children_</cite></td>
+<td>array-like, shape = [n_nodes, 2]</td>
+<td>List of the children of each nodes.  Leaves of the tree do not appear.</td>
+</tr>
+<tr class="row-even"><td><cite>labels_</cite></td>
+<td>array [n_points]</td>
+<td>cluster labels for each point</td>
+</tr>
+<tr class="row-odd"><td><cite>n_leaves_</cite></td>
+<td>int</td>
+<td>Number of leaves in the hiearchical tree.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.cluster.Ward.fit" title="sklearn.cluster.Ward.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X)</td>
+<td>Fit the hierarchical clustering on the data</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.cluster.Ward.set_params" title="sklearn.cluster.Ward.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
+<td>Set the parameters of the estimator.</td>
 </tr>
 </tbody>
 </table>
@@ -203,10 +262,10 @@ connectivity matrix. If not set, it is estimated.</p>
 <dt id="sklearn.cluster.Ward.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.cluster.Ward.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of the estimator.</p>
-<p>The method works on simple estimators as well as on nested
-objects (such as pipelines). The former have parameters of the
-form &lt;component&gt;__&lt;parameter&gt; so that it&#8217;s possible to update
-each component of a nested object.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The former have parameters of the form
+<tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
+component of a nested object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -230,8 +289,6 @@ each component of a nested object.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

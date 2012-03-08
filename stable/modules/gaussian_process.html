@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>3.5. Gaussian Processes &mdash; scikit-learn 0.9 documentation</title>
+    <title>3.5. Gaussian Processes &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
     <link rel="up" title="3. Supervised learning" href="../supervised_learning.html" />
     <link rel="next" title="3.6. Partial Least Squares" href="pls.html" />
     <link rel="prev" title="3.4. Nearest Neighbors" href="neighbors.html" />
@@ -58,7 +58,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="../auto_examples/index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,31 +77,73 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="neighbors.html" title="3.4. Nearest Neighbors"
-             accesskey="P">previous</a> |
-          <a href="pls.html" title="3.6. Partial Least Squares"
-             accesskey="N">next</a> |
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="neighbors.html" title="3.4. Nearest Neighbors"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    3.4. Nearest Nei...
+	    </span>
+	    <span class="hiddenrellink">
+	    3.4. Nearest Neighbors
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="pls.html" title="3.6. Partial Least Squares"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    3.6. Partial Lea...
+	    </span>
+	    <span class="hiddenrellink">
+	    3.6. Partial Least Squares
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../supervised_learning.html" title="3. Supervised learning" >
+	Up
+	<br>
+	<span class="smallrellink">
+	3. Supervised le...
+	</span>
+	<span class="hiddenrellink">
+	3. Supervised learning
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">3.5. Gaussian Processes</a><ul>
 <li><a class="reference internal" href="#an-introductory-regression-example">3.5.1. An introductory regression example</a></li>
 <li><a class="reference internal" href="#mathematical-formulation">3.5.2. Mathematical formulation</a><ul>
@@ -117,14 +159,8 @@
 </li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -147,7 +183,7 @@ correlation models).</li>
 empirical confidence intervals and exceedence probabilities that might be
 used to refit (online fitting, adaptive fitting) the prediction in some
 region of interest.</li>
-<li>Versatile: different <em class="xref std std-ref">linear regression models</em> and <a class="reference internal" href="#correlation-models"><em>correlation models</em></a> can be specified. Common models are provided, but
+<li>Versatile: different <a class="reference internal" href="linear_model.html#linear-model"><em>linear regression models</em></a> and <a class="reference internal" href="#correlation-models"><em>correlation models</em></a> can be specified. Common models are provided, but
 it is also possible to specify custom models provided they are
 stationary.</li>
 </ul>
@@ -386,6 +422,9 @@ toolbox.</p>
 <ul class="simple">
 <li><a class="reference external" href="http://www2.imm.dtu.dk/~hbn/dace/">DACE, A Matlab Kriging Toolbox</a> S Lophaven, HB Nielsen, J
 Sondergaard 2002,</li>
+<li>W.J. Welch, R.J. Buck, J. Sacks, H.P. Wynn, T.J. Mitchell, and M.D.
+Morris (1992). Screening, predicting, and computer experiments.
+Technometrics, 34(1) 15&#8211;25.</li>
 </ul>
 </div>
 </div>
@@ -400,8 +439,6 @@ Sondergaard 2002,</li>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

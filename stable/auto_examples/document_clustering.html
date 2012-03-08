@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Clustering text documents using MiniBatchKmeans &mdash; scikit-learn 0.9 documentation</title>
+    <title>Clustering text documents using k-means &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
+    <link rel="up" title="Examples" href="index.html" />
+    <link rel="next" title="Pipeline Anova SVM" href="feature_selection_pipeline.html" />
+    <link rel="prev" title="Classification of text documents using sparse features" href="document_classification_20newsgroups.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">Clustering text documents using MiniBatchKmeans</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="document_classification_20newsgroups.html" title="Classification of text documents using sparse features"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Classification o...
+	    </span>
+	    <span class="hiddenrellink">
+	    Classification of text documents using sparse features
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="feature_selection_pipeline.html" title="Pipeline Anova SVM"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Pipeline Anova S...
+	    </span>
+	    <span class="hiddenrellink">
+	    Pipeline Anova SVM
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">Clustering text documents using k-means</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -113,33 +156,50 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="clustering-text-documents-using-minibatchkmeans">
-<span id="example-document-clustering-py"></span><h1>Clustering text documents using MiniBatchKmeans<a class="headerlink" href="#clustering-text-documents-using-minibatchkmeans" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="clustering-text-documents-using-k-means">
+<span id="example-document-clustering-py"></span><h1>Clustering text documents using k-means<a class="headerlink" href="#clustering-text-documents-using-k-means" title="Permalink to this headline">¶</a></h1>
 <p>This is an example showing how the scikit-learn can be used to cluster
 documents by topics using a bag-of-words approach. This example uses
 a scipy.sparse matrix to store the features instead of standard numpy arrays.</p>
+<p>Two algorithms are demoed: ordinary k-means and its faster cousin minibatch
+k-means.</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/document_clustering.py"><tt class="xref download docutils literal"><span class="pre">document_clustering.py</span></tt></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
-
-<span class="c"># Author: Peter Prettenhofer &lt;peter.prettenhofer@gmail.com&gt;</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Author: Peter Prettenhofer &lt;peter.prettenhofer@gmail.com&gt;</span>
+<span class="c">#         Lars Buitinck &lt;L.J.Buitinck@uva.nl&gt;</span>
 <span class="c"># License: Simplified BSD</span>
-
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
-<span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_20newsgroups</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">Vectorizer</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">MiniBatchKMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span><span class="p">,</span> <span class="n">MiniBatchKMeans</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Normalizer</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">optparse</span> <span class="kn">import</span> <span class="n">OptionParser</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 
 <span class="c"># Display progress logs on stdout</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
                     <span class="n">format</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(asctime)s</span><span class="s"> </span><span class="si">%(levelname)s</span><span class="s"> </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">)</span>
+
+<span class="c"># parse commandline arguments</span>
+<span class="n">op</span> <span class="o">=</span> <span class="n">OptionParser</span><span class="p">()</span>
+<span class="n">op</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--no-minibatch&quot;</span><span class="p">,</span>
+              <span class="n">action</span><span class="o">=</span><span class="s">&quot;store_false&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s">&quot;minibatch&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+              <span class="n">help</span><span class="o">=</span><span class="s">&quot;Use ordinary k-means algorithm.&quot;</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">__doc__</span>
+<span class="n">op</span><span class="o">.</span><span class="n">print_help</span><span class="p">()</span>
+
+<span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">op</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&quot;this script takes no arguments.&quot;</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
 
 <span class="c">###############################################################################</span>
 <span class="c"># Load some categories from the training set</span>
@@ -150,54 +210,55 @@ a scipy.sparse matrix to store the features instead of standard numpy arrays.</p
     <span class="s">&#39;sci.space&#39;</span><span class="p">,</span>
 <span class="p">]</span>
 <span class="c"># Uncomment the following to do the analysis on all the categories</span>
-<span class="c"># categories = None</span>
+<span class="c">#categories = None</span>
 
 <span class="k">print</span> <span class="s">&quot;Loading 20 newsgroups dataset for categories:&quot;</span>
 <span class="k">print</span> <span class="n">categories</span>
 
-<span class="n">data_train</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">&#39;train&#39;</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span>
-                               <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">data_test</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">&#39;test&#39;</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span>
-                               <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">&#39;all&#39;</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span>
+                             <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
-<span class="n">documents</span> <span class="o">=</span> <span class="n">data_train</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">data_test</span><span class="o">.</span><span class="n">data</span>
-<span class="n">target_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">target_names</span> <span class="o">+</span> <span class="n">data_test</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
-
-<span class="k">print</span> <span class="s">&quot;</span><span class="si">%d</span><span class="s"> documents&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;</span><span class="si">%d</span><span class="s"> categories&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">target_names</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;</span><span class="si">%d</span><span class="s"> documents&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;</span><span class="si">%d</span><span class="s"> categories&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
 <span class="k">print</span>
 
-<span class="c"># split a training set and a test set</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">data_train</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">data_test</span><span class="o">.</span><span class="n">target</span><span class="p">))</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">target</span>
 <span class="n">true_k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="k">print</span> <span class="s">&quot;Extracting features from the training dataset using a sparse vectorizer&quot;</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">Vectorizer</span><span class="p">(</span><span class="n">max_features</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
-
-<span class="n">X</span> <span class="o">=</span> <span class="n">Normalizer</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="s">&quot;l2&quot;</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">Vectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 
 <span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;n_samples: </span><span class="si">%d</span><span class="s">, n_features: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
 <span class="k">print</span>
 
-<span class="c">###############################################################################</span>
-<span class="c"># Now sparse MiniBatchKmeans</span>
 
-<span class="n">mbkm</span> <span class="o">=</span> <span class="n">MiniBatchKMeans</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="s">&quot;random&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">true_k</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span>
-                       <span class="n">chunk_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Clustering sparse data with </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">mbkm</span><span class="p">)</span>
+<span class="c">###############################################################################</span>
+<span class="c"># Do the actual clustering</span>
+
+<span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">minibatch</span><span class="p">:</span>
+    <span class="n">km</span> <span class="o">=</span> <span class="n">MiniBatchKMeans</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">true_k</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s">&#39;k-means++&#39;</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                         <span class="n">init_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+                         <span class="n">batch_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">true_k</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s">&#39;random&#39;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s">&quot;Clustering sparse data with </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">km</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="n">mbkm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">km</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
 <span class="k">print</span>
 
-<span class="k">print</span> <span class="s">&quot;Homogeneity: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">homogeneity_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">mbkm</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;Completeness: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">completeness_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">mbkm</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">&quot;V-measure: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">v_measure_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">mbkm</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;Homogeneity: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">homogeneity_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;Completeness: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">completeness_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;V-measure: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">v_measure_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;Adjusted Rand-Index: </span><span class="si">%.3f</span><span class="s">&quot;</span> <span class="o">%</span> \
-    <span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_rand_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">mbkm</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+    <span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_rand_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;Silhouette Coefficient: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
 <span class="k">print</span>
 </pre></div>
 </div>
@@ -212,8 +273,6 @@ a scipy.sparse matrix to store the features instead of standard numpy arrays.</p
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

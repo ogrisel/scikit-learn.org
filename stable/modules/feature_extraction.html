@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>8. Feature extraction &mdash; scikit-learn 0.9 documentation</title>
+    <title>6.2. Feature extraction &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
-    <link rel="up" title="&lt;no title&gt;" href="../contents.html" />
-    <link rel="next" title="9. Class reference" href="classes.html" />
-    <link rel="prev" title="7. Preprocessing data" href="preprocessing.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
+    <link rel="up" title="6. Dataset transformations" href="../data_transforms.html" />
+    <link rel="next" title="6.3. Kernel Approximation" href="kernel_approximation.html" />
+    <link rel="prev" title="6.1. Preprocessing data" href="preprocessing.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="../auto_examples/index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,49 +77,85 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="preprocessing.html" title="7. Preprocessing data"
-             accesskey="P">previous</a> |
-          <a href="classes.html" title="9. Class reference"
-             accesskey="N">next</a> |
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">8. Feature extraction</a><ul>
-<li><a class="reference internal" href="#text-feature-extraction">8.1. Text feature extraction</a></li>
-<li><a class="reference internal" href="#image-feature-extraction">8.2. Image feature extraction</a><ul>
-<li><a class="reference internal" href="#patch-extraction">8.2.1. Patch extraction</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="preprocessing.html" title="6.1. Preprocessing data"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    6.1. Preprocessi...
+	    </span>
+	    <span class="hiddenrellink">
+	    6.1. Preprocessing data
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="kernel_approximation.html" title="6.3. Kernel Approximation"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    6.3. Kernel Appr...
+	    </span>
+	    <span class="hiddenrellink">
+	    6.3. Kernel Approximation
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../data_transforms.html" title="6. Dataset transformations" >
+	Up
+	<br>
+	<span class="smallrellink">
+	6. Dataset trans...
+	</span>
+	<span class="hiddenrellink">
+	6. Dataset transformations
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">6.2. Feature extraction</a><ul>
+<li><a class="reference internal" href="#text-feature-extraction">6.2.1. Text feature extraction</a></li>
+<li><a class="reference internal" href="#image-feature-extraction">6.2.2. Image feature extraction</a><ul>
+<li><a class="reference internal" href="#patch-extraction">6.2.2.1. Patch extraction</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -128,18 +164,18 @@
           <div class="body">
             
   <div class="section" id="feature-extraction">
-<span id="id1"></span><h1>8. Feature extraction<a class="headerlink" href="#feature-extraction" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>6.2. Feature extraction<a class="headerlink" href="#feature-extraction" title="Permalink to this headline">¶</a></h1>
 <p>The <a class="reference internal" href="classes.html#module-sklearn.feature_extraction" title="sklearn.feature_extraction"><tt class="xref py py-mod docutils literal"><span class="pre">sklearn.feature_extraction</span></tt></a> module can be used to extract
 features in a format supported by machine learning algorithms from datasets
 consisting of formats such as text and image.</p>
 <div class="section" id="text-feature-extraction">
-<h2>8.1. Text feature extraction<a class="headerlink" href="#text-feature-extraction" title="Permalink to this headline">¶</a></h2>
+<h2>6.2.1. Text feature extraction<a class="headerlink" href="#text-feature-extraction" title="Permalink to this headline">¶</a></h2>
 <p>XXX: a lot to do here</p>
 </div>
 <div class="section" id="image-feature-extraction">
-<h2>8.2. Image feature extraction<a class="headerlink" href="#image-feature-extraction" title="Permalink to this headline">¶</a></h2>
+<h2>6.2.2. Image feature extraction<a class="headerlink" href="#image-feature-extraction" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="patch-extraction">
-<h3>8.2.1. Patch extraction<a class="headerlink" href="#patch-extraction" title="Permalink to this headline">¶</a></h3>
+<h3>6.2.2.1. Patch extraction<a class="headerlink" href="#patch-extraction" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="generated/sklearn.feature_extraction.image.extract_patches_2d.html#sklearn.feature_extraction.image.extract_patches_2d" title="sklearn.feature_extraction.image.extract_patches_2d"><tt class="xref py py-func docutils literal"><span class="pre">extract_patches_2d</span></tt></a> function extracts patches from an image stored
 as a two-dimensional array, or three-dimensional with color information along
 the third axis. For rebuilding an image from all its patches, use
@@ -201,8 +237,6 @@ implemented as an estimator, so it can be used in pipelines. See:</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

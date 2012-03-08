@@ -26,6 +26,8 @@ It will plot the decision boundaries for each class.
             :scale: 50
 
 
+
+
 **Python source code:** :download:`plot_classification.py <plot_classification.py>`
 
 .. literalinclude:: plot_classification.py

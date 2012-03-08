@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Faces recognition example using eigenfaces and SVMs &mdash; scikit-learn 0.9 documentation</title>
+    <title>Faces recognition example using eigenfaces and SVMs &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Libsvm GUI" href="svm_gui.html" />
+    <link rel="prev" title="Visualizing the stock market structure" href="plot_stock_market.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="plot_stock_market.html" title="Visualizing the stock market structure"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Visualizing the ...
+	    </span>
+	    <span class="hiddenrellink">
+	    Visualizing the stock market structure
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="svm_gui.html" title="Libsvm GUI"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Libsvm GUI
+	    </span>
+	    <span class="hiddenrellink">
+	    Libsvm GUI
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Faces recognition example using eigenfaces and SVMs</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -151,7 +194,7 @@ Gerhard_Schroeder       0.91      0.75      0.82        28
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%(asctime)s</span><span class="s"> </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">)</span>
 
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># Download the data, if not already on disk and load it as numpy arrays</span>
 
 <span class="n">lfw_people</span> <span class="o">=</span> <span class="n">fetch_lfw_people</span><span class="p">(</span><span class="n">min_faces_per_person</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">resize</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
@@ -174,7 +217,7 @@ Gerhard_Schroeder       0.91      0.75      0.82        28
 <span class="k">print</span> <span class="s">&quot;n_classes: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">n_classes</span>
 
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># Split into a training set and a test set using a stratified k fold</span>
 
 <span class="c"># split into a training and testing set</span>
@@ -183,7 +226,7 @@ Gerhard_Schroeder       0.91      0.75      0.82        28
 <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">train</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test</span><span class="p">]</span>
 
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># Compute a PCA (eigenfaces) on the face dataset (treated as unlabeled</span>
 <span class="c"># dataset): unsupervised feature extraction / dimensionality reduction</span>
 <span class="n">n_components</span> <span class="o">=</span> <span class="mi">150</span>
@@ -203,7 +246,7 @@ Gerhard_Schroeder       0.91      0.75      0.82        28
 <span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
 
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># Train a SVM classification model</span>
 
 <span class="k">print</span> <span class="s">&quot;Fitting the classifier to the training set&quot;</span>
@@ -217,10 +260,10 @@ Gerhard_Schroeder       0.91      0.75      0.82        28
 <span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;Best estimator found by grid search:&quot;</span>
-<span class="k">print</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator</span>
+<span class="k">print</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span>
 
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># Quantitative evaluation of the model quality on the test set</span>
 
 <span class="k">print</span> <span class="s">&quot;Predicting the people names on the testing set&quot;</span>
@@ -232,7 +275,7 @@ Gerhard_Schroeder       0.91      0.75      0.82        28
 <span class="k">print</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="n">n_classes</span><span class="p">))</span>
 
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># Qualitative evaluation of the predictions using matplotlib</span>
 
 <span class="k">def</span> <span class="nf">plot_gallery</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">titles</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">n_row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_col</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
@@ -245,6 +288,7 @@ Gerhard_Schroeder       0.91      0.75      0.82        28
         <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
         <span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">(())</span>
         <span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
+
 
 <span class="c"># plot the result of the prediction on a portion of the test set</span>
 
@@ -277,8 +321,6 @@ Gerhard_Schroeder       0.91      0.75      0.82        28
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

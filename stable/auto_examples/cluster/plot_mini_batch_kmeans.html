@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>A demo of the K Means clustering algorithm &mdash; scikit-learn 0.9 documentation</title>
+    <title>A demo of the K Means clustering algorithm &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Spectral clustering for image segmentation" href="plot_segmentation_toy.html" />
+    <link rel="prev" title="A demo of the mean-shift clustering algorithm" href="plot_mean_shift.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="plot_mean_shift.html" title="A demo of the mean-shift clustering algorithm"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    A demo of the me...
+	    </span>
+	    <span class="hiddenrellink">
+	    A demo of the mean-shift clustering algorithm
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="plot_segmentation_toy.html" title="Spectral clustering for image segmentation"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Spectral cluster...
+	    </span>
+	    <span class="hiddenrellink">
+	    Spectral clustering for image segmentation
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">A demo of the K Means clustering algorithm</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -142,12 +185,12 @@ algorithms.</p>
 <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">45</span>
 <span class="n">centers</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
 <span class="n">n_clusters</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">centers</span><span class="p">)</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">labels_true</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="n">centers</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">labels_true</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="n">centers</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
 
 <span class="c">##############################################################################</span>
 <span class="c"># Compute clustering with Means</span>
 
-<span class="n">k_means</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="s">&#39;k-means++&#39;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">k_means</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="s">&#39;k-means++&#39;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">k_means</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">t_batch</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
@@ -158,7 +201,8 @@ algorithms.</p>
 <span class="c">##############################################################################</span>
 <span class="c"># Compute clustering with MiniBatchKMeans</span>
 
-<span class="n">mbk</span> <span class="o">=</span> <span class="n">MiniBatchKMeans</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="s">&#39;k-means++&#39;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+<span class="n">mbk</span> <span class="o">=</span> <span class="n">MiniBatchKMeans</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="s">&#39;k-means++&#39;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+                      <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_no_improvement</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">mbk</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="n">t_mini_batch</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
@@ -169,7 +213,8 @@ algorithms.</p>
 <span class="c">##############################################################################</span>
 <span class="c"># Plot result</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.98</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;#4EACC5&#39;</span><span class="p">,</span> <span class="s">&#39;#FF9C34&#39;</span><span class="p">,</span> <span class="s">&#39;#4E9A06&#39;</span><span class="p">]</span>
 
 <span class="c"># We want to have the same colors for the same cluster from the</span>
@@ -191,7 +236,10 @@ algorithms.</p>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cluster_center</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cluster_center</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
                                     <span class="n">markeredgecolor</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;KMeans&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">,</span>  <span class="s">&#39;train time: </span><span class="si">%.2f</span><span class="s">s&#39;</span> <span class="o">%</span> <span class="n">t_batch</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(())</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span>  <span class="s">&#39;train time: </span><span class="si">%.2f</span><span class="s">s</span><span class="se">\n</span><span class="s">inertia: </span><span class="si">%f</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+    <span class="n">t_batch</span><span class="p">,</span> <span class="n">k_means</span><span class="o">.</span><span class="n">inertia_</span><span class="p">))</span>
 
 <span class="c"># MiniBatchKMeans</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -203,7 +251,10 @@ algorithms.</p>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cluster_center</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cluster_center</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s">&#39;o&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="n">col</span><span class="p">,</span>
                                     <span class="n">markeredgecolor</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;MiniBatchKMeans&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">,</span>  <span class="s">&#39;train time: </span><span class="si">%.2f</span><span class="s">s&#39;</span> <span class="o">%</span> <span class="n">t_mini_batch</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(())</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="s">&#39;train time: </span><span class="si">%.2f</span><span class="s">s</span><span class="se">\n</span><span class="s">inertia: </span><span class="si">%f</span><span class="s">&#39;</span> <span class="o">%</span>
+        <span class="p">(</span><span class="n">t_mini_batch</span><span class="p">,</span> <span class="n">mbk</span><span class="o">.</span><span class="n">inertia_</span><span class="p">))</span>
 
 <span class="c"># Initialise the different array to all False</span>
 <span class="n">different</span> <span class="o">=</span> <span class="p">(</span><span class="n">mbk_means_labels</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span>
@@ -218,6 +269,8 @@ algorithms.</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">different</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">different</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s">&#39;w&#39;</span><span class="p">,</span>
         <span class="n">markerfacecolor</span><span class="o">=</span><span class="s">&#39;m&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Difference&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(())</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -233,8 +286,6 @@ algorithms.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Recognizing hand-written digits &mdash; scikit-learn 0.9 documentation</title>
+    <title>Recognizing hand-written digits &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
+    <link rel="up" title="Examples" href="index.html" />
+    <link rel="next" title="Univariate Feature Selection" href="plot_feature_selection.html" />
+    <link rel="prev" title="Confusion matrix" href="plot_confusion_matrix.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="plot_confusion_matrix.html" title="Confusion matrix"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Confusion matrix
+	    </span>
+	    <span class="hiddenrellink">
+	    Confusion matrix
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="plot_feature_selection.html" title="Univariate Feature Selection"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Univariate Featu...
+	    </span>
+	    <span class="hiddenrellink">
+	    Univariate Feature Selection
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Recognizing hand-written digits</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -120,6 +163,37 @@ hand-written digits.</p>
 <p>This example is commented in the
 <a class="reference internal" href="../tutorial.html#getting-started"><em>tutorial section of the user manual</em></a>.</p>
 <img alt="../_images/plot_digits_classification_1.png" class="align-center" src="../_images/plot_digits_classification_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Classification report for classifier SVC(C=1.0, cache_size=200, coef0=0.0, degree=3, gamma=0.001, kernel=rbf,
+  probability=False, scale_C=False, shrinking=True, tol=0.001):
+             precision    recall  f1-score   support
+
+          0       1.00      0.99      0.99        88
+          1       0.99      0.97      0.98        91
+          2       0.99      0.99      0.99        86
+          3       0.98      0.87      0.92        91
+          4       0.99      0.96      0.97        92
+          5       0.95      0.97      0.96        91
+          6       0.99      0.99      0.99        91
+          7       0.96      0.99      0.97        89
+          8       0.94      1.00      0.97        88
+          9       0.93      0.98      0.95        92
+
+avg / total       0.97      0.97      0.97       899
+
+
+Confusion matrix:
+[[87  0  0  0  1  0  0  0  0  0]
+ [ 0 88  1  0  0  0  0  0  1  1]
+ [ 0  0 85  1  0  0  0  0  0  0]
+ [ 0  0  0 79  0  3  0  4  5  0]
+ [ 0  0  0  0 88  0  0  0  0  4]
+ [ 0  0  0  0  0 88  1  0  0  2]
+ [ 0  1  0  0  0  0 90  0  0  0]
+ [ 0  0  0  0  0  1  0 88  0  0]
+ [ 0  0  0  0  0  0  0  0 88  0]
+ [ 0  0  0  1  0  1  0  0  0 90]]</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_digits_classification.py"><tt class="xref download docutils literal"><span class="pre">plot_digits_classification.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -141,8 +215,9 @@ hand-written digits.</p>
 <span class="c"># could load them using pylab.imread. For these images know which</span>
 <span class="c"># digit they represent: it is given in the &#39;target&#39; of the dataset.</span>
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="p">,</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]):</span>
-    <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray_r</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray_r</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;nearest&#39;</span><span class="p">)</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Training: </span><span class="si">%i</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">label</span><span class="p">)</span>
 
 <span class="c"># To apply an classifier on this data, we need to flatten the image, to</span>
@@ -151,23 +226,24 @@ hand-written digits.</p>
 <span class="n">data</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n_samples</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 
 <span class="c"># Create a classifier: a support vector classifier</span>
-<span class="n">classifier</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span>
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
 
 <span class="c"># We learn the digits on the first half of the digits</span>
-<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="n">n_samples</span><span class="o">/</span><span class="mi">2</span><span class="p">],</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="n">n_samples</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="n">n_samples</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="n">n_samples</span> <span class="o">/</span> <span class="mi">2</span><span class="p">])</span>
 
 <span class="c"># Now predict the value of the digit on the second half:</span>
-<span class="n">expected</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="n">n_samples</span><span class="o">/</span><span class="mi">2</span><span class="p">:]</span>
-<span class="n">predicted</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">n_samples</span><span class="o">/</span><span class="mi">2</span><span class="p">:])</span>
+<span class="n">expected</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="n">n_samples</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:]</span>
+<span class="n">predicted</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">n_samples</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:])</span>
 
 <span class="k">print</span> <span class="s">&quot;Classification report for classifier </span><span class="si">%s</span><span class="s">:</span><span class="se">\n</span><span class="si">%s</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span>
     <span class="n">classifier</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">classification_report</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">predicted</span><span class="p">))</span>
 <span class="k">print</span> <span class="s">&quot;Confusion matrix:</span><span class="se">\n</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">predicted</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">prediction</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
-    <span class="nb">zip</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="n">n_samples</span><span class="o">/</span><span class="mi">2</span><span class="p">:],</span> <span class="n">predicted</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]):</span>
-    <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">index</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span>
-    <span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray_r</span><span class="p">)</span>
+    <span class="nb">zip</span><span class="p">(</span><span class="n">digits</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="n">n_samples</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:],</span> <span class="n">predicted</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]):</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray_r</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;nearest&#39;</span><span class="p">)</span>
     <span class="n">pl</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Prediction: </span><span class="si">%i</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">prediction</span><span class="p">)</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -184,8 +260,6 @@ hand-written digits.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

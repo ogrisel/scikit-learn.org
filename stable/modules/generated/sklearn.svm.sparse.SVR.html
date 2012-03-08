@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.1.8.3. sklearn.svm.sparse.SVR &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.24.2.3. sklearn.svm.sparse.SVR &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.1.8.4. sklearn.svm.sparse.NuSVR" href="sklearn.svm.sparse.NuSVR.html" />
-    <link rel="prev" title="9.1.8.2. sklearn.svm.sparse.NuSVC" href="sklearn.svm.sparse.NuSVC.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.24.2.4. sklearn.svm.sparse.NuSVR" href="sklearn.svm.sparse.NuSVR.html" />
+    <link rel="prev" title="8.24.2.2. sklearn.svm.sparse.NuSVC" href="sklearn.svm.sparse.NuSVC.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.svm.sparse.NuSVC.html" title="9.1.8.2. sklearn.svm.sparse.NuSVC"
-             accesskey="P">previous</a> |
-          <a href="sklearn.svm.sparse.NuSVR.html" title="9.1.8.4. sklearn.svm.sparse.NuSVR"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.1.8.3. sklearn.svm.sparse.SVR</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.svm.sparse.NuSVC.html" title="8.24.2.2. sklearn.svm.sparse.NuSVC"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.24.2.2. sklear...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.24.2.2. sklearn.svm.sparse.NuSVC
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.svm.sparse.NuSVR.html" title="8.24.2.4. sklearn.svm.sparse.NuSVR"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.24.2.4. sklear...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.24.2.4. sklearn.svm.sparse.NuSVR
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.24.2.3. sklearn.svm.sparse.SVR</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,10 +157,10 @@
           <div class="body">
             
   <div class="section" id="sklearn-svm-sparse-svr">
-<h1>9.1.8.3. sklearn.svm.sparse.SVR<a class="headerlink" href="#sklearn-svm-sparse-svr" title="Permalink to this headline">¶</a></h1>
+<h1>8.24.2.3. sklearn.svm.sparse.SVR<a class="headerlink" href="#sklearn-svm-sparse-svr" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.svm.sparse.SVR">
-<em class="property">class </em><tt class="descclassname">sklearn.svm.sparse.</tt><tt class="descname">SVR</tt><big>(</big><em>kernel='rbf'</em>, <em>degree=3</em>, <em>gamma=0.0</em>, <em>coef0=0.0</em>, <em>tol=0.001</em>, <em>C=1.0</em>, <em>nu=0.5</em>, <em>epsilon=0.10000000000000001</em>, <em>shrinking=True</em>, <em>probability=False</em><big>)</big><a class="headerlink" href="#sklearn.svm.sparse.SVR" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.svm.sparse.</tt><tt class="descname">SVR</tt><big>(</big><em>kernel='rbf'</em>, <em>degree=3</em>, <em>gamma=0.0</em>, <em>coef0=0.0</em>, <em>tol=0.001</em>, <em>C=1.0</em>, <em>epsilon=0.1</em>, <em>shrinking=True</em>, <em>probability=False</em>, <em>cache_size=200</em>, <em>scale_C=False</em><big>)</big><a class="headerlink" href="#sklearn.svm.sparse.SVR" title="Permalink to this definition">¶</a></dt>
 <dd><p>SVR for sparse matrices (csr)</p>
 <p>See <a class="reference internal" href="sklearn.svm.SVR.html#sklearn.svm.SVR" title="sklearn.svm.SVR"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.svm.SVR</span></tt></a> for a complete list of parameters</p>
 <p class="rubric">Notes</p>
@@ -140,8 +176,9 @@ object (including other sparse representations).</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span> <span class="o">=</span> <span class="n">SVR</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="go">SVR(C=1.0, coef0=0.0, degree=3, epsilon=0.2, gamma=0.2, kernel=&#39;rbf&#39;, nu=0.5,</span>
-<span class="go">  probability=False, shrinking=True, tol=0.001)</span>
+<span class="go">SVR(C=1.0, cache_size=200, coef0=0.0, degree=3, epsilon=0.2, gamma=0.2,</span>
+<span class="go">  kernel=&#39;rbf&#39;, probability=False, scale_C=False, shrinking=True,</span>
+<span class="go">  tol=0.001)</span>
 </pre></div>
 </div>
 <p class="rubric">Methods</p>
@@ -151,61 +188,35 @@ object (including other sparse representations).</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.svm.sparse.SVR.decision_function" title="sklearn.svm.sparse.SVR.decision_function"><tt class="xref py py-obj docutils literal"><span class="pre">decision_function</span></tt></a>(X)</td>
-<td>Distance of the samples T to the separating hyperplane.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.svm.sparse.SVR.fit" title="sklearn.svm.sparse.SVR.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;class_weight,&nbsp;sample_weight])</td>
+<td>Fit the SVM model according to the given training data and parameters.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.svm.sparse.SVR.fit" title="sklearn.svm.sparse.SVR.fit"><tt class="xref py py-obj docutils literal"><span class="pre">fit</span></tt></a>(X,&nbsp;y[,&nbsp;class_weight,&nbsp;sample_weight,&nbsp;...])</td>
-<td>Fit the SVM model according to the given training data and</td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.svm.sparse.SVR.predict" title="sklearn.svm.sparse.SVR.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(T)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.svm.sparse.SVR.predict" title="sklearn.svm.sparse.SVR.predict"><tt class="xref py py-obj docutils literal"><span class="pre">predict</span></tt></a>(T)</td>
 <td>This function does classification or regression on an array of</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.svm.sparse.SVR.predict_log_proba" title="sklearn.svm.sparse.SVR.predict_log_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_log_proba</span></tt></a>(T)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.svm.sparse.SVR.predict_log_proba" title="sklearn.svm.sparse.SVR.predict_log_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_log_proba</span></tt></a>(T)</td>
 <td>Compute the log likehoods each possible outcomes of samples in T.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.svm.sparse.SVR.predict_proba" title="sklearn.svm.sparse.SVR.predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt></a>(X)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.svm.sparse.SVR.predict_proba" title="sklearn.svm.sparse.SVR.predict_proba"><tt class="xref py py-obj docutils literal"><span class="pre">predict_proba</span></tt></a>(X)</td>
 <td>This function does classification or regression on a test vector X</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sklearn.svm.sparse.SVR.score" title="sklearn.svm.sparse.SVR.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
-<td>Returns the coefficient of determination of the prediction</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sklearn.svm.sparse.SVR.score" title="sklearn.svm.sparse.SVR.score"><tt class="xref py py-obj docutils literal"><span class="pre">score</span></tt></a>(X,&nbsp;y)</td>
+<td>Returns the coefficient of determination R^2 of the prediction.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#sklearn.svm.sparse.SVR.set_params" title="sklearn.svm.sparse.SVR.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sklearn.svm.sparse.SVR.set_params" title="sklearn.svm.sparse.SVR.set_params"><tt class="xref py py-obj docutils literal"><span class="pre">set_params</span></tt></a>(**params)</td>
 <td>Set the parameters of the estimator.</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="sklearn.svm.sparse.SVR.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>kernel='rbf'</em>, <em>degree=3</em>, <em>gamma=0.0</em>, <em>coef0=0.0</em>, <em>tol=0.001</em>, <em>C=1.0</em>, <em>nu=0.5</em>, <em>epsilon=0.10000000000000001</em>, <em>shrinking=True</em>, <em>probability=False</em><big>)</big><a class="headerlink" href="#sklearn.svm.sparse.SVR.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>kernel='rbf'</em>, <em>degree=3</em>, <em>gamma=0.0</em>, <em>coef0=0.0</em>, <em>tol=0.001</em>, <em>C=1.0</em>, <em>epsilon=0.1</em>, <em>shrinking=True</em>, <em>probability=False</em>, <em>cache_size=200</em>, <em>scale_C=False</em><big>)</big><a class="headerlink" href="#sklearn.svm.sparse.SVR.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="sklearn.svm.sparse.SVR.decision_function">
-<tt class="descname">decision_function</tt><big>(</big><em>X</em><big>)</big><a class="headerlink" href="#sklearn.svm.sparse.SVR.decision_function" title="Permalink to this definition">¶</a></dt>
-<dd><p>Distance of the samples T to the separating hyperplane.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_features]</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape = [n_samples, n_class * (n_class-1) / 2]</p>
-<blockquote class="last">
-<div><p>Returns the decision function of the sample for each class
-in the model.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="sklearn.svm.sparse.SVR.fit">
-<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>class_weight=None</em>, <em>sample_weight=</em><span class="optional">[</span><span class="optional">]</span>, <em>cache_size=100.0</em><big>)</big><a class="headerlink" href="#sklearn.svm.sparse.SVR.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fit the SVM model according to the given training data and
-parameters.</p>
+<tt class="descname">fit</tt><big>(</big><em>X</em>, <em>y</em>, <em>class_weight=None</em>, <em>sample_weight=None</em><big>)</big><a class="headerlink" href="#sklearn.svm.sparse.SVR.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the SVM model according to the given training data and parameters.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -330,7 +341,11 @@ datasets.</p>
 <dl class="method">
 <dt id="sklearn.svm.sparse.SVR.score">
 <tt class="descname">score</tt><big>(</big><em>X</em>, <em>y</em><big>)</big><a class="headerlink" href="#sklearn.svm.sparse.SVR.score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the coefficient of determination of the prediction</p>
+<dd><p>Returns the coefficient of determination R^2 of the prediction.</p>
+<p>The coefficient R^2 is defined as (1 - u/v), where u is the
+regression sum of squares ((y - y_pred) ** 2).sum() and v is the
+residual sum of squares ((y_true - y_true.mean()) ** 2).sum().
+Best possible score is 1.0, lower values are worse.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -353,10 +368,10 @@ datasets.</p>
 <dt id="sklearn.svm.sparse.SVR.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.svm.sparse.SVR.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of the estimator.</p>
-<p>The method works on simple estimators as well as on nested
-objects (such as pipelines). The former have parameters of the
-form &lt;component&gt;__&lt;parameter&gt; so that it&#8217;s possible to update
-each component of a nested object.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The former have parameters of the form
+<tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
+component of a nested object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -380,8 +395,6 @@ each component of a nested object.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

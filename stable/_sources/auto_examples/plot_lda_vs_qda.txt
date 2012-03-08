@@ -15,6 +15,8 @@ Plot the confidence ellipsoids of each class and decision boundary
     :align: center
 
 
+
+
 **Python source code:** :download:`plot_lda_vs_qda.py <plot_lda_vs_qda.py>`
 
 .. literalinclude:: plot_lda_vs_qda.py

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>sklearn.datasets.make_low_rank_matrix &mdash; scikit-learn 0.9 documentation</title>
+    <title>sklearn.datasets.make_low_rank_matrix &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +55,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +74,32 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel rellarge">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<!-- Ad a link to the 'up' page -->
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">sklearn.datasets.make_low_rank_matrix</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -118,8 +112,7 @@
 <dl class="function">
 <dt id="sklearn.datasets.make_low_rank_matrix">
 <tt class="descclassname">sklearn.datasets.</tt><tt class="descname">make_low_rank_matrix</tt><big>(</big><em>n_samples=100</em>, <em>n_features=100</em>, <em>effective_rank=10</em>, <em>tail_strength=0.5</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.datasets.make_low_rank_matrix" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate a mostly low rank random matrix with bell-shaped singular
-values profile.</p>
+<dd><p>Generate a mostly low rank matrix with bell-shaped singular values</p>
 <p>Most of the variance can be explained by a bell-shaped curve of width
 effective_rank: the low rank part of the singular values profile is:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">tail_strength</span><span class="p">)</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="n">effective_rank</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
@@ -135,7 +128,7 @@ components (singular vectors).</p>
 <dl class="docutils">
 <dt>This kind of singular profiles is often seen in practice, for instance:</dt>
 <dd><ul class="first last simple">
-<li>graw level pictures of faces</li>
+<li>gray level pictures of faces</li>
 <li>TF-IDF vectors of text documents crawled from the web</li>
 </ul>
 </dd>
@@ -192,8 +185,6 @@ by <cite>np.random</cite>.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

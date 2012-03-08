@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.8.1.1. sklearn.metrics.confusion_matrix &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.16.1.1. sklearn.metrics.confusion_matrix &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.8.1.2. sklearn.metrics.roc_curve" href="sklearn.metrics.roc_curve.html" />
-    <link rel="prev" title="9.7.6. sklearn.cluster.Ward" href="sklearn.cluster.Ward.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.16.1.2. sklearn.metrics.roc_curve" href="sklearn.metrics.roc_curve.html" />
+    <link rel="prev" title="8.15.3. sklearn.manifold.locally_linear_embedding" href="sklearn.manifold.locally_linear_embedding.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.cluster.Ward.html" title="9.7.6. sklearn.cluster.Ward"
-             accesskey="P">previous</a> |
-          <a href="sklearn.metrics.roc_curve.html" title="9.8.1.2. sklearn.metrics.roc_curve"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.8.1.1. sklearn.metrics.confusion_matrix</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.manifold.locally_linear_embedding.html" title="8.15.3. sklearn.manifold.locally_linear_embedding"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.15.3. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.15.3. sklearn.manifold.locally_linear_embedding
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.metrics.roc_curve.html" title="8.16.1.2. sklearn.metrics.roc_curve"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.16.1.2. sklear...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.16.1.2. sklearn.metrics.roc_curve
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.16.1.1. sklearn.metrics.confusion_matrix</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,7 +157,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-confusion-matrix">
-<h1>9.8.1.1. sklearn.metrics.confusion_matrix<a class="headerlink" href="#sklearn-metrics-confusion-matrix" title="Permalink to this headline">¶</a></h1>
+<h1>8.16.1.1. sklearn.metrics.confusion_matrix<a class="headerlink" href="#sklearn-metrics-confusion-matrix" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.confusion_matrix">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">confusion_matrix</tt><big>(</big><em>y_true</em>, <em>y_pred</em>, <em>labels=None</em><big>)</big><a class="headerlink" href="#sklearn.metrics.confusion_matrix" title="Permalink to this definition">¶</a></dt>
@@ -151,8 +187,9 @@ to be in group j</p>
 </tr>
 </tbody>
 </table>
-<p class="rubric">References</p>
-<p><a class="reference external" href="http://en.wikipedia.org/wiki/Confusion_matrix">http://en.wikipedia.org/wiki/Confusion_matrix</a></p>
+<p class="rubric">Notes</p>
+<p><strong>References</strong>:
+<a class="reference external" href="http://en.wikipedia.org/wiki/Confusion_matrix">http://en.wikipedia.org/wiki/Confusion_matrix</a></p>
 </dd></dl>
 
 </div>
@@ -166,8 +203,6 @@ to be in group j</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

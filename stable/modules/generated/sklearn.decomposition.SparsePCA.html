@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.10.8. sklearn.decomposition.SparsePCA &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.5.8. sklearn.decomposition.SparsePCA &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.10.9. sklearn.decomposition.MiniBatchSparsePCA" href="sklearn.decomposition.MiniBatchSparsePCA.html" />
-    <link rel="prev" title="9.10.7. sklearn.decomposition.NMF" href="sklearn.decomposition.NMF.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.5.9. sklearn.decomposition.MiniBatchSparsePCA" href="sklearn.decomposition.MiniBatchSparsePCA.html" />
+    <link rel="prev" title="8.5.7. sklearn.decomposition.NMF" href="sklearn.decomposition.NMF.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.decomposition.NMF.html" title="9.10.7. sklearn.decomposition.NMF"
-             accesskey="P">previous</a> |
-          <a href="sklearn.decomposition.MiniBatchSparsePCA.html" title="9.10.9. sklearn.decomposition.MiniBatchSparsePCA"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.10.8. sklearn.decomposition.SparsePCA</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.decomposition.NMF.html" title="8.5.7. sklearn.decomposition.NMF"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.5.7. sklearn.d...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.5.7. sklearn.decomposition.NMF
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.decomposition.MiniBatchSparsePCA.html" title="8.5.9. sklearn.decomposition.MiniBatchSparsePCA"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.5.9. sklearn.d...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.5.9. sklearn.decomposition.MiniBatchSparsePCA
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.5.8. sklearn.decomposition.SparsePCA</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,7 +157,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-decomposition-sparsepca">
-<h1>9.10.8. sklearn.decomposition.SparsePCA<a class="headerlink" href="#sklearn-decomposition-sparsepca" title="Permalink to this headline">¶</a></h1>
+<h1>8.5.8. sklearn.decomposition.SparsePCA<a class="headerlink" href="#sklearn-decomposition-sparsepca" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.decomposition.SparsePCA">
 <em class="property">class </em><tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">SparsePCA</tt><big>(</big><em>n_components</em>, <em>alpha=1</em>, <em>ridge_alpha=0.01</em>, <em>max_iter=1000</em>, <em>tol=1e-08</em>, <em>method='lars'</em>, <em>n_jobs=1</em>, <em>U_init=None</em>, <em>V_init=None</em>, <em>verbose=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.SparsePCA" title="Permalink to this definition">¶</a></dt>
@@ -133,29 +169,29 @@ of the L1 penalty, given by the parameter alpha.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n_components: int,</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>n_components</strong> : int,</p>
 <blockquote>
 <div><p>Number of sparse atoms to extract.</p>
 </div></blockquote>
-<p><strong>alpha: float,</strong> :</p>
+<p><strong>alpha</strong> : float,</p>
 <blockquote>
 <div><p>Sparsity controlling parameter. Higher values lead to sparser
 components.</p>
 </div></blockquote>
-<p><strong>ridge_alpha: float,</strong> :</p>
+<p><strong>ridge_alpha</strong> : float,</p>
 <blockquote>
 <div><p>Amount of ridge shrinkage to apply in order to improve
 conditioning when calling the transform method.</p>
 </div></blockquote>
-<p><strong>max_iter: int,</strong> :</p>
+<p><strong>max_iter</strong> : int,</p>
 <blockquote>
 <div><p>Maximum number of iterations to perform.</p>
 </div></blockquote>
-<p><strong>tol: float,</strong> :</p>
+<p><strong>tol</strong> : float,</p>
 <blockquote>
 <div><p>Tolerance for the stopping condition.</p>
 </div></blockquote>
-<p><strong>method: {&#8216;lars&#8217;, &#8216;cd&#8217;}</strong> :</p>
+<p><strong>method</strong> : {&#8216;lars&#8217;, &#8216;cd&#8217;}</p>
 <blockquote>
 <div><p>lars: uses the least angle regression method to solve the lasso problem
 (linear_model.lars_path)
@@ -163,23 +199,23 @@ cd: uses the coordinate descent method to compute the
 Lasso solution (linear_model.Lasso). Lars will be faster if
 the estimated components are sparse.</p>
 </div></blockquote>
-<p><strong>n_jobs: int,</strong> :</p>
+<p><strong>n_jobs</strong> : int,</p>
 <blockquote>
 <div><p>Number of parallel jobs to run.</p>
 </div></blockquote>
-<p><strong>U_init: array of shape (n_samples, n_atoms),</strong> :</p>
+<p><strong>U_init</strong> : array of shape (n_samples, n_atoms),</p>
 <blockquote>
 <div><p>Initial values for the loadings for warm restart scenarios.</p>
 </div></blockquote>
-<p><strong>V_init: array of shape (n_atoms, n_features),</strong> :</p>
+<p><strong>V_init</strong> : array of shape (n_atoms, n_features),</p>
 <blockquote>
 <div><p>Initial values for the components for warm restart scenarios.</p>
 </div></blockquote>
-<p><strong>verbose:</strong> :</p>
+<p><strong>verbose :</strong> :</p>
 <blockquote>
 <div><p>Degree of verbosity of the printed output.</p>
 </div></blockquote>
-<p><strong>random_state: int or RandomState</strong> :</p>
+<p><strong>random_state</strong> : int or RandomState</p>
 <blockquote class="last">
 <div><p>Pseudo number generator state used for random sampling.</p>
 </div></blockquote>
@@ -189,19 +225,22 @@ the estimated components are sparse.</p>
 </table>
 <div class="admonition-see-also admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-obj docutils literal"><span class="pre">PCA</span></tt></a></p>
+<p class="last"><a class="reference internal" href="sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="sklearn.decomposition.PCA"><tt class="xref py py-obj docutils literal"><span class="pre">PCA</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.MiniBatchSparsePCA.html#sklearn.decomposition.MiniBatchSparsePCA" title="sklearn.decomposition.MiniBatchSparsePCA"><tt class="xref py py-obj docutils literal"><span class="pre">MiniBatchSparsePCA</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.DictionaryLearning.html#sklearn.decomposition.DictionaryLearning" title="sklearn.decomposition.DictionaryLearning"><tt class="xref py py-obj docutils literal"><span class="pre">DictionaryLearning</span></tt></a></p>
 </div>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="52%" />
+<col width="15%" />
+<col width="38%" />
 <col width="48%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a href="#id1"><span class="problematic" id="id2">components_</span></a>: array, [n_components, n_features]</td>
+<tr class="row-odd"><td><cite>components_</cite></td>
+<td>array, [n_components, n_features]</td>
 <td>Sparse components extracted from the data.</td>
 </tr>
-<tr class="row-even"><td><a href="#id3"><span class="problematic" id="id4">error_</span></a>: array</td>
+<tr class="row-even"><td><cite>error_</cite></td>
+<td>array</td>
 <td>Vector of errors at each iteration.</td>
 </tr>
 </tbody>
@@ -285,16 +324,20 @@ and returns a transformed version of X.</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>This method just calls fit and transform consecutively, i.e., it is not
+an optimized implementation of fit_transform, unlike other transformers
+such as PCA.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="sklearn.decomposition.SparsePCA.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.SparsePCA.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of the estimator.</p>
-<p>The method works on simple estimators as well as on nested
-objects (such as pipelines). The former have parameters of the
-form &lt;component&gt;__&lt;parameter&gt; so that it&#8217;s possible to update
-each component of a nested object.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The former have parameters of the form
+<tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
+component of a nested object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -353,8 +396,6 @@ conditioning.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

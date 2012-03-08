@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.10.7. sklearn.decomposition.NMF &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.5.7. sklearn.decomposition.NMF &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.10.8. sklearn.decomposition.SparsePCA" href="sklearn.decomposition.SparsePCA.html" />
-    <link rel="prev" title="9.10.6. sklearn.decomposition.FastICA" href="sklearn.decomposition.FastICA.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.5.8. sklearn.decomposition.SparsePCA" href="sklearn.decomposition.SparsePCA.html" />
+    <link rel="prev" title="8.5.6. sklearn.decomposition.FastICA" href="sklearn.decomposition.FastICA.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.decomposition.FastICA.html" title="9.10.6. sklearn.decomposition.FastICA"
-             accesskey="P">previous</a> |
-          <a href="sklearn.decomposition.SparsePCA.html" title="9.10.8. sklearn.decomposition.SparsePCA"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.10.7. sklearn.decomposition.NMF</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.decomposition.FastICA.html" title="8.5.6. sklearn.decomposition.FastICA"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.5.6. sklearn.d...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.5.6. sklearn.decomposition.FastICA
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.decomposition.SparsePCA.html" title="8.5.8. sklearn.decomposition.SparsePCA"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.5.8. sklearn.d...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.5.8. sklearn.decomposition.SparsePCA
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.5.7. sklearn.decomposition.NMF</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,16 +157,16 @@
           <div class="body">
             
   <div class="section" id="sklearn-decomposition-nmf">
-<h1>9.10.7. sklearn.decomposition.NMF<a class="headerlink" href="#sklearn-decomposition-nmf" title="Permalink to this headline">¶</a></h1>
+<h1>8.5.7. sklearn.decomposition.NMF<a class="headerlink" href="#sklearn-decomposition-nmf" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.decomposition.NMF">
-<em class="property">class </em><tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">NMF</tt><big>(</big><em>n_components=None</em>, <em>init='nndsvdar'</em>, <em>sparseness=None</em>, <em>beta=1</em>, <em>eta=0.10000000000000001</em>, <em>tol=0.0001</em>, <em>max_iter=200</em>, <em>nls_max_iter=2000</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.NMF" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">NMF</tt><big>(</big><em>n_components=None</em>, <em>init='nndsvdar'</em>, <em>sparseness=None</em>, <em>beta=1</em>, <em>eta=0.1</em>, <em>tol=0.0001</em>, <em>max_iter=200</em>, <em>nls_max_iter=2000</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.NMF" title="Permalink to this definition">¶</a></dt>
 <dd><p>Non-Negative matrix factorization by Projected Gradient (NMF)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array, [n_samples, n_features]</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: {array-like, sparse matrix}, shape = [n_samples, n_features]</strong> :</p>
 <blockquote>
 <div><p>Data the model will be fit to.</p>
 </div></blockquote>
@@ -185,12 +221,16 @@ values mean larger error.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>This implements C.-J. Lin. Projected gradient methods
+<p>This implements</p>
+<p>C.-J. Lin. Projected gradient methods
 for non-negative matrix factorization. Neural
 Computation, 19(2007), 2756-2779.
 <a class="reference external" href="http://www.csie.ntu.edu.tw/~cjlin/nmf/">http://www.csie.ntu.edu.tw/~cjlin/nmf/</a></p>
-<p>NNDSVD is introduced in
-C. Boutsidis, E. Gallopoulos: SVD based
+<p>P. Hoyer. Non-negative Matrix Factorization with
+Sparseness Constraints. Journal of Machine Learning
+Research 2004.</p>
+<p>NNDSVD is introduced in</p>
+<p>C. Boutsidis, E. Gallopoulos: SVD based
 initialization: A head start for nonnegative
 matrix factorization - Pattern Recognition, 2008
 <a class="reference external" href="http://www.cs.rpi.edu/~boutsc/files/nndsvd.pdf">http://www.cs.rpi.edu/~boutsc/files/nndsvd.pdf</a></p>
@@ -200,9 +240,8 @@ matrix factorization - Pattern Recognition, 2008
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">ProjectedGradientNMF</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">ProjectedGradientNMF</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> 
-<span class="go">ProjectedGradientNMF(beta=1, eta=0.1,</span>
-<span class="go">           init=&lt;mtrand.RandomState object at 0x...&gt;, max_iter=200,</span>
-<span class="go">           n_components=2, nls_max_iter=2000, sparseness=None, tol=0.0001)</span>
+<span class="go">ProjectedGradientNMF(beta=1, eta=0.1, init=0, max_iter=200, n_components=2,</span>
+<span class="go">                     nls_max_iter=2000, sparseness=None, tol=0.0001)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">components_</span>
 <span class="go">array([[ 0.77032744,  0.11118662],</span>
 <span class="go">       [ 0.38526873,  0.38228063]])</span>
@@ -211,10 +250,8 @@ matrix factorization - Pattern Recognition, 2008
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">ProjectedGradientNMF</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="gp">... </span>                             <span class="n">sparseness</span><span class="o">=</span><span class="s">&#39;components&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> 
-<span class="go">ProjectedGradientNMF(beta=1, eta=0.1,</span>
-<span class="go">           init=&lt;mtrand.RandomState object at 0x...&gt;, max_iter=200,</span>
-<span class="go">           n_components=2, nls_max_iter=2000, sparseness=&#39;components&#39;,</span>
-<span class="go">           tol=0.0001)</span>
+<span class="go">ProjectedGradientNMF(beta=1, eta=0.1, init=0, max_iter=200, n_components=2,</span>
+<span class="go">           nls_max_iter=2000, sparseness=&#39;components&#39;, tol=0.0001)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">components_</span>
 <span class="go">array([[ 1.67481991,  0.29614922],</span>
 <span class="go">       [-0.        ,  0.4681982 ]])</span>
@@ -223,6 +260,27 @@ matrix factorization - Pattern Recognition, 2008
 </pre></div>
 </div>
 <p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="31%" />
+<col width="49%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><cite>components_</cite></td>
+<td>array, [n_components, n_features]</td>
+<td>Non-negative components of the data</td>
+</tr>
+<tr class="row-even"><td><cite>reconstruction_err_</cite></td>
+<td>number</td>
+<td>Frobenius norm of the matrix difference between the
+training data and the reconstructed data from the
+fit produced by the model. <tt class="docutils literal"><span class="pre">||</span> <span class="pre">X</span> <span class="pre">-</span> <span class="pre">WH</span> <span class="pre">||_2</span></tt>
+Not computed for sparse input matrices because it is
+too expensive in terms of memory.</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -246,7 +304,7 @@ matrix factorization - Pattern Recognition, 2008
 </table>
 <dl class="method">
 <dt id="sklearn.decomposition.NMF.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>n_components=None</em>, <em>init='nndsvdar'</em>, <em>sparseness=None</em>, <em>beta=1</em>, <em>eta=0.10000000000000001</em>, <em>tol=0.0001</em>, <em>max_iter=200</em>, <em>nls_max_iter=2000</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.NMF.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>n_components=None</em>, <em>init='nndsvdar'</em>, <em>sparseness=None</em>, <em>beta=1</em>, <em>eta=0.1</em>, <em>tol=0.0001</em>, <em>max_iter=200</em>, <em>nls_max_iter=2000</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.NMF.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -257,7 +315,7 @@ matrix factorization - Pattern Recognition, 2008
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array, [n_samples, n_features]</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: {array-like, sparse matrix}, shape = [n_samples, n_features]</strong> :</p>
 <blockquote>
 <div><p>Data matrix to be decomposed</p>
 </div></blockquote>
@@ -279,7 +337,7 @@ matrix factorization - Pattern Recognition, 2008
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array, [n_samples, n_features]</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: {array-like, sparse matrix}, shape = [n_samples, n_features]</strong> :</p>
 <blockquote>
 <div><p>Data matrix to be decomposed</p>
 </div></blockquote>
@@ -299,10 +357,10 @@ matrix factorization - Pattern Recognition, 2008
 <dt id="sklearn.decomposition.NMF.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.NMF.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of the estimator.</p>
-<p>The method works on simple estimators as well as on nested
-objects (such as pipelines). The former have parameters of the
-form &lt;component&gt;__&lt;parameter&gt; so that it&#8217;s possible to update
-each component of a nested object.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The former have parameters of the form
+<tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
+component of a nested object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -321,7 +379,7 @@ each component of a nested object.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: array, [n_samples, n_features]</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>X: {array-like, sparse matrix}, shape = [n_samples, n_features]</strong> :</p>
 <blockquote>
 <div><p>Data matrix to be transformed by the model</p>
 </div></blockquote>
@@ -350,8 +408,6 @@ each component of a nested object.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

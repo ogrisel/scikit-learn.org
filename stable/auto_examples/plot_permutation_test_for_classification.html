@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Test with permutations the significance of a classification score &mdash; scikit-learn 0.9 documentation</title>
+    <title>Test with permutations the significance of a classification score &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
+    <link rel="up" title="Examples" href="index.html" />
+    <link rel="next" title="PLS Partial Least Squares" href="plot_pls.html" />
+    <link rel="prev" title="Multilabel classification" href="plot_multilabel.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="plot_multilabel.html" title="Multilabel classification"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Multilabel class...
+	    </span>
+	    <span class="hiddenrellink">
+	    Multilabel classification
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="plot_pls.html" title="PLS Partial Least Squares"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    PLS Partial Leas...
+	    </span>
+	    <span class="hiddenrellink">
+	    PLS Partial Least Squares
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Test with permutations the significance of a classification score</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,6 +164,9 @@ the labels. The p-value is then given by the percentage of runs for
 which the score obtained is greater than the classification score
 obtained in the first place.</p>
 <img alt="../_images/plot_permutation_test_for_classification_1.png" class="align-center" src="../_images/plot_permutation_test_for_classification_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Classification score 0.393333333333 (pvalue : 0.0792079207921)</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_permutation_test_for_classification.py"><tt class="xref download docutils literal"><span class="pre">plot_permutation_test_for_classification.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Author:  Alexandre Gramfort &lt;alexandre.gramfort@inria.fr&gt;</span>
 <span class="c"># License: BSD</span>
@@ -161,13 +207,19 @@ obtained in the first place.</p>
 
 <span class="c">###############################################################################</span>
 <span class="c"># View histogram of permutation scores</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">permutation_scores</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Permutation scores&#39;</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">permutation_scores</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Permutation scores&#39;</span><span class="p">)</span>
 <span class="n">ylim</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">()</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">ylim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ylim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">,</span>
-          <span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Classification Score&#39;</span>
-          <span class="s">&#39; (pvalue </span><span class="si">%s</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="n">pvalue</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">n_classes</span><span class="p">,</span> <span class="n">ylim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ylim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">&#39;--&#39;</span><span class="p">,</span>
-          <span class="n">color</span><span class="o">=</span><span class="s">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Luck&#39;</span><span class="p">)</span>
+<span class="c"># BUG: vlines(..., linestyle=&#39;--&#39;) fails on older versions of matplotlib</span>
+<span class="c">#pl.vlines(score, ylim[0], ylim[1], linestyle=&#39;--&#39;,</span>
+<span class="c">#          color=&#39;g&#39;, linewidth=3, label=&#39;Classification Score&#39;</span>
+<span class="c">#          &#39; (pvalue %s)&#39; % pvalue)</span>
+<span class="c">#pl.vlines(1.0 / n_classes, ylim[0], ylim[1], linestyle=&#39;--&#39;,</span>
+<span class="c">#          color=&#39;k&#39;, linewidth=3, label=&#39;Luck&#39;)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">[</span><span class="n">score</span><span class="p">],</span> <span class="n">ylim</span><span class="p">,</span> <span class="s">&#39;--g&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s">&#39;Classification Score&#39;</span>
+        <span class="s">&#39; (pvalue </span><span class="si">%s</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="n">pvalue</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">[</span><span class="mf">1.</span> <span class="o">/</span> <span class="n">n_classes</span><span class="p">],</span> <span class="n">ylim</span><span class="p">,</span> <span class="s">&#39;--k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&#39;Luck&#39;</span><span class="p">)</span>
+
 <span class="n">pl</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Score&#39;</span><span class="p">)</span>
@@ -185,8 +237,6 @@ obtained in the first place.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

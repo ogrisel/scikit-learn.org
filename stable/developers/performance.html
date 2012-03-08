@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>How to optimize for speed &mdash; scikit-learn 0.9 documentation</title>
+    <title>How to optimize for speed &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
-    <link rel="next" title="About us" href="../about.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
+    <link rel="next" title="Utilities for Developers" href="utilities.html" />
     <link rel="prev" title="Contributing" href="index.html" />
 <script type="text/javascript">
 
@@ -57,7 +57,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="../auto_examples/index.html">Examples</a></li>
-            <li><a href="index.html">Development</a></li>
+            <li><a href="../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -76,31 +76,57 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="index.html" title="Contributing"
-             accesskey="P">previous</a> |
-          <a href="../about.html" title="About us"
-             accesskey="N">next</a> |
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel rellarge">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="index.html" title="Contributing"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Contributing
+	    </span>
+	    <span class="hiddenrellink">
+	    Contributing
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="utilities.html" title="Utilities for Developers"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Utilities for De...
+	    </span>
+	    <span class="hiddenrellink">
+	    Utilities for Developers
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">How to optimize for speed</a><ul>
 <li><a class="reference internal" href="#python-cython-or-c-c">Python, Cython or C/C++?</a></li>
 <li><a class="reference internal" href="#profiling-python-code">Profiling Python code</a></li>
@@ -116,14 +142,8 @@
 </li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -200,7 +220,7 @@ loads and prepare you data and then use the IPython integrated profiler
 for interactively exploring the relevant part for the code.</p>
 <p>Suppose we want to profile the Non Negative Matrix Factorization module
 of the scikit. Let us setup a new IPython session and load the digits
-dataset and as in the <em class="xref std std-ref">example_decomposition_plot_nmf.py</em> example:</p>
+dataset and as in the <a class="reference internal" href="../auto_examples/plot_digits_classification.html#example-plot-digits-classification-py"><em>Recognizing hand-written digits</em></a> example:</p>
 <div class="highlight-python"><pre>In [1]: from sklearn.decomposition import NMF
 
 In [2]: from sklearn.datasets import load_digits
@@ -295,7 +315,7 @@ ensure the following lines are present:</p>
 <li><p class="first"><strong>Under IPython 0.11+</strong>, first create a configuration profile:</p>
 <div class="highlight-python"><pre>$ ipython profile create</pre>
 </div>
-<p>Then create a file named <tt class="docutils literal"><span class="pre">~/.ipython/extensions/line_profile_ext</span></tt> with
+<p>Then create a file named <tt class="docutils literal"><span class="pre">~/.ipython/extensions/line_profiler_ext.py</span></tt> with
 the following content:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">line_profiler</span>
 
@@ -444,8 +464,6 @@ regression with Coordinate Descent.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

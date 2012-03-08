@@ -1,0 +1,30 @@
+
+
+.. _example_tutorial_plot_sdss_filters.py:
+
+
+Plot the SDSS filter curves over a reference spectrum
+
+
+
+.. rst-class:: horizontal
+
+
+    *
+
+      .. image:: images/plot_sdss_filters_1.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_sdss_filters_2.png
+            :scale: 47
+
+
+
+
+**Python source code:** :download:`plot_sdss_filters.py <plot_sdss_filters.py>`
+
+.. literalinclude:: plot_sdss_filters.py
+    :lines: 4-
+    

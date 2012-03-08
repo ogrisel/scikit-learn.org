@@ -20,6 +20,14 @@ a result it can identify only the first class.
     :align: center
 
 
+**Script output**::
+
+  classif_rate for Linear SVC : 82.000000 
+  classif_rate for L1 logistic : 79.333333 
+  classif_rate for L2 logistic : 76.666667
+
+
+
 **Python source code:** :download:`plot_classification_probability.py <plot_classification_probability.py>`
 
 .. literalinclude:: plot_classification_probability.py

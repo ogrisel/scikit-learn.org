@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Wikipedia princial eigenvector &mdash; scikit-learn 0.9 documentation</title>
+    <title>Wikipedia princial eigenvector &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Adjustment for chance in clustering performance evaluation" href="../cluster/plot_adjusted_for_chance_measures.html" />
+    <link rel="prev" title="Topics extraction with Non-Negative Matrix Factorization" href="topics_extraction_with_nmf.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="topics_extraction_with_nmf.html" title="Topics extraction with Non-Negative Matrix Factorization"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Topics extractio...
+	    </span>
+	    <span class="hiddenrellink">
+	    Topics extraction with Non-Negative Matrix Factorization
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="../cluster/plot_adjusted_for_chance_measures.html" title="Adjustment for chance in clustering performance evaluation"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Adjustment for c...
+	    </span>
+	    <span class="hiddenrellink">
+	    Adjustment for chance in clustering performance evaluation
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Wikipedia princial eigenvector</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -150,11 +193,11 @@ of the latent structured data of the Wikipedia content.</p>
 
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">sparse</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.utils.extmath</span> <span class="kn">import</span> <span class="n">fast_svd</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils.extmath</span> <span class="kn">import</span> <span class="n">randomized_svd</span>
 <span class="kn">from</span> <span class="nn">sklearn.externals.joblib</span> <span class="kn">import</span> <span class="n">Memory</span>
 
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># Where to download the data, if not already on disk</span>
 <span class="n">redirects_url</span> <span class="o">=</span> <span class="s">&quot;http://downloads.dbpedia.org/3.5.1/en/redirects_en.nt.bz2&quot;</span>
 <span class="n">redirects_filename</span> <span class="o">=</span> <span class="n">redirects_url</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
@@ -176,7 +219,7 @@ of the latent structured data of the Wikipedia content.</p>
         <span class="k">print</span>
 
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># Loading the redirect files</span>
 
 <span class="n">memory</span> <span class="o">=</span> <span class="n">Memory</span><span class="p">(</span><span class="n">cachedir</span><span class="o">=</span><span class="s">&quot;.&quot;</span><span class="p">)</span>
@@ -277,9 +320,9 @@ of the latent structured data of the Wikipedia content.</p>
     <span class="n">redirects_filename</span><span class="p">,</span> <span class="n">page_links_filename</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">5000000</span><span class="p">)</span>
 <span class="n">names</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index_map</span><span class="o">.</span><span class="n">iteritems</span><span class="p">())</span>
 
-<span class="k">print</span> <span class="s">&quot;Computing the principal singular vectors using fast_svd&quot;</span>
+<span class="k">print</span> <span class="s">&quot;Computing the principal singular vectors using randomized_svd&quot;</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="n">U</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">fast_svd</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">randomized_svd</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;done in </span><span class="si">%0.3f</span><span class="s">s&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
 
 <span class="c"># print the names of the wikipedia related strongest compenents of the the</span>
@@ -344,8 +387,6 @@ of the latent structured data of the Wikipedia content.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.17.8. sklearn.preprocessing.binarize &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.23.8. sklearn.preprocessing.binarize &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.18.1. sklearn.manifold.LocallyLinearEmbedding" href="sklearn.manifold.LocallyLinearEmbedding.html" />
-    <link rel="prev" title="9.17.7. sklearn.preprocessing.normalize" href="sklearn.preprocessing.normalize.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.24.1.1. sklearn.svm.SVC" href="sklearn.svm.SVC.html" />
+    <link rel="prev" title="8.23.7. sklearn.preprocessing.normalize" href="sklearn.preprocessing.normalize.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.preprocessing.normalize.html" title="9.17.7. sklearn.preprocessing.normalize"
-             accesskey="P">previous</a> |
-          <a href="sklearn.manifold.LocallyLinearEmbedding.html" title="9.18.1. sklearn.manifold.LocallyLinearEmbedding"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.17.8. sklearn.preprocessing.binarize</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.preprocessing.normalize.html" title="8.23.7. sklearn.preprocessing.normalize"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.23.7. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.23.7. sklearn.preprocessing.normalize
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.svm.SVC.html" title="8.24.1.1. sklearn.svm.SVC"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.24.1.1. sklear...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.24.1.1. sklearn.svm.SVC
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.23.8. sklearn.preprocessing.binarize</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,7 +157,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-preprocessing-binarize">
-<h1>9.17.8. sklearn.preprocessing.binarize<a class="headerlink" href="#sklearn-preprocessing-binarize" title="Permalink to this headline">¶</a></h1>
+<h1>8.23.8. sklearn.preprocessing.binarize<a class="headerlink" href="#sklearn-preprocessing-binarize" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.preprocessing.binarize">
 <tt class="descclassname">sklearn.preprocessing.</tt><tt class="descname">binarize</tt><big>(</big><em>X</em>, <em>threshold=0.0</em>, <em>copy=True</em><big>)</big><a class="headerlink" href="#sklearn.preprocessing.binarize" title="Permalink to this definition">¶</a></dt>
@@ -167,8 +203,6 @@ matrix and if axis is 1).</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

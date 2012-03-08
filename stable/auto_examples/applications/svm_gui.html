@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Libsvm GUI &mdash; scikit-learn 0.9 documentation</title>
+    <title>Libsvm GUI &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Topics extraction with Non-Negative Matrix Factorization" href="topics_extraction_with_nmf.html" />
+    <link rel="prev" title="Faces recognition example using eigenfaces and SVMs" href="face_recognition.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="face_recognition.html" title="Faces recognition example using eigenfaces and SVMs"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Faces recognitio...
+	    </span>
+	    <span class="hiddenrellink">
+	    Faces recognition example using eigenfaces and SVMs
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="topics_extraction_with_nmf.html" title="Topics extraction with Non-Negative Matrix Factorization"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Topics extractio...
+	    </span>
+	    <span class="hiddenrellink">
+	    Topics extraction with Non-Negative Matrix Factorization
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Libsvm GUI</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -143,6 +186,7 @@ negative examples click the right button.</p>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">dump_svmlight_file</span>
 
 <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span>
 <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span>
@@ -173,6 +217,12 @@ negative examples click the right button.</p>
     <span class="k">def</span> <span class="nf">set_surface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">surface</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">surface</span> <span class="o">=</span> <span class="n">surface</span>
 
+    <span class="k">def</span> <span class="nf">dump_svmlight_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="n">dump_svmlight_file</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="nb">file</span><span class="p">)</span>
+
 
 <span class="k">class</span> <span class="nc">Controller</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
@@ -185,7 +235,7 @@ negative examples click the right button.</p>
     <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">print</span> <span class="s">&quot;fit the model&quot;</span>
         <span class="n">train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-        <span class="n">X</span> <span class="o">=</span> <span class="n">train</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">train</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">train</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
 
         <span class="n">C</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">complexity</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
@@ -274,14 +324,21 @@ negative examples click the right button.</p>
             <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">button</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">add_example</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">xdata</span><span class="p">,</span> <span class="n">event</span><span class="o">.</span><span class="n">ydata</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">update_example</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">l</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="s">&#39;w&#39;</span>
+        <span class="k">elif</span> <span class="n">l</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="s">&#39;k&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="n">y</span><span class="p">],</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">o&quot;</span> <span class="o">%</span> <span class="n">color</span><span class="p">,</span> <span class="n">scalex</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scaley</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="s">&quot;examples_loaded&quot;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">data</span><span class="p">)):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">update_example</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="s">&quot;example_added&quot;</span><span class="p">:</span>
-            <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">l</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">color</span> <span class="o">=</span> <span class="s">&#39;w&#39;</span>
-            <span class="k">elif</span> <span class="n">l</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-                <span class="n">color</span> <span class="o">=</span> <span class="s">&#39;k&#39;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="n">y</span><span class="p">],</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">o&quot;</span> <span class="o">%</span> <span class="n">color</span><span class="p">,</span> <span class="n">scalex</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scaley</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update_example</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="s">&quot;clear&quot;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
@@ -399,7 +456,18 @@ negative examples click the right button.</p>
                   <span class="n">command</span><span class="o">=</span><span class="n">controller</span><span class="o">.</span><span class="n">clear_data</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">Tk</span><span class="o">.</span><span class="n">LEFT</span><span class="p">)</span>
 
 
+<span class="k">def</span> <span class="nf">get_parser</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">optparse</span> <span class="kn">import</span> <span class="n">OptionParser</span>
+    <span class="n">op</span> <span class="o">=</span> <span class="n">OptionParser</span><span class="p">()</span>
+    <span class="n">op</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;--output&quot;</span><span class="p">,</span>
+              <span class="n">action</span><span class="o">=</span><span class="s">&quot;store&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s">&quot;str&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s">&quot;output&quot;</span><span class="p">,</span>
+              <span class="n">help</span><span class="o">=</span><span class="s">&quot;Path where to dump data.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">op</span>
+
+
 <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="p">):</span>
+    <span class="n">op</span> <span class="o">=</span> <span class="n">get_parser</span><span class="p">()</span>
+    <span class="n">opts</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
     <span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">()</span>
     <span class="n">controller</span> <span class="o">=</span> <span class="n">Controller</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
@@ -407,6 +475,9 @@ negative examples click the right button.</p>
     <span class="n">view</span> <span class="o">=</span> <span class="n">View</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">controller</span><span class="p">)</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add_observer</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
     <span class="n">Tk</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">opts</span><span class="o">.</span><span class="n">output</span><span class="p">:</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">dump_svmlight_file</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
@@ -423,8 +494,6 @@ negative examples click the right button.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

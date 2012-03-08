@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>6. Dataset loading utilities &mdash; scikit-learn 0.9 documentation</title>
+    <title>7. Dataset loading utilities &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
-    <link rel="up" title="&lt;no title&gt;" href="../contents.html" />
-    <link rel="next" title="7. Preprocessing data" href="../modules/preprocessing.html" />
-    <link rel="prev" title="9.2.12. sklearn.linear_model.LassoLarsIC" href="../modules/generated/sklearn.linear_model.LassoLarsIC.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
+    <link rel="up" title="&lt;no title&gt;" href="../user_guide.html" />
+    <link rel="next" title="8. Reference" href="../modules/classes.html" />
+    <link rel="prev" title="6.3. Kernel Approximation" href="../modules/kernel_approximation.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="../auto_examples/index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,60 +77,92 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../modules/generated/sklearn.linear_model.LassoLarsIC.html" title="9.2.12. sklearn.linear_model.LassoLarsIC"
-             accesskey="P">previous</a> |
-          <a href="../modules/preprocessing.html" title="7. Preprocessing data"
-             accesskey="N">next</a> |
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">6. Dataset loading utilities</a><ul>
-<li><a class="reference internal" href="#toy-datasets">6.1. Toy datasets</a></li>
-<li><a class="reference internal" href="#sample-images">6.2. Sample images</a></li>
-<li><a class="reference internal" href="#sample-generators">6.3. Sample generators</a></li>
-<li><a class="reference internal" href="#datasets-in-svmlight-libsvm-format">6.4. Datasets in svmlight / libsvm format</a></li>
-<li><a class="reference internal" href="#the-olivetti-faces-dataset">6.5. The Olivetti faces dataset</a></li>
-<li><a class="reference internal" href="#the-20-newsgroups-text-dataset">6.6. The 20 newsgroups text dataset</a><ul>
-<li><a class="reference internal" href="#usage">6.6.1. Usage</a></li>
-<li><a class="reference internal" href="#examples">6.6.2. Examples</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="../modules/kernel_approximation.html" title="6.3. Kernel Approximation"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    6.3. Kernel Appr...
+	    </span>
+	    <span class="hiddenrellink">
+	    6.3. Kernel Approximation
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="../modules/classes.html" title="8. Reference"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8. Reference
+	    </span>
+	    <span class="hiddenrellink">
+	    8. Reference
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../user_guide.html" title="<no title>" >
+	Up
+	<br>
+	<span class="smallrellink">
+	<no title>
+	</span>
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">7. Dataset loading utilities</a><ul>
+<li><a class="reference internal" href="#general-dataset-api">7.1. General dataset API</a></li>
+<li><a class="reference internal" href="#toy-datasets">7.2. Toy datasets</a></li>
+<li><a class="reference internal" href="#sample-images">7.3. Sample images</a></li>
+<li><a class="reference internal" href="#sample-generators">7.4. Sample generators</a></li>
+<li><a class="reference internal" href="#datasets-in-svmlight-libsvm-format">7.5. Datasets in svmlight / libsvm format</a></li>
+<li><a class="reference internal" href="#the-olivetti-faces-dataset">7.6. The Olivetti faces dataset</a></li>
+<li><a class="reference internal" href="#the-20-newsgroups-text-dataset">7.7. The 20 newsgroups text dataset</a><ul>
+<li><a class="reference internal" href="#usage">7.7.1. Usage</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#downloading-datasets-from-the-mldata-org-repository">6.7. Downloading datasets from the mldata.org repository</a></li>
-<li><a class="reference internal" href="#the-labeled-faces-in-the-wild-face-recognition-dataset">6.8. The Labeled Faces in the Wild face recognition dataset</a><ul>
-<li><a class="reference internal" href="#id5">6.8.1. Usage</a></li>
-<li><a class="reference internal" href="#id6">6.8.2. Examples</a></li>
+<li><a class="reference internal" href="#downloading-datasets-from-the-mldata-org-repository">7.8. Downloading datasets from the mldata.org repository</a></li>
+<li><a class="reference internal" href="#the-labeled-faces-in-the-wild-face-recognition-dataset">7.9. The Labeled Faces in the Wild face recognition dataset</a><ul>
+<li><a class="reference internal" href="#id6">7.9.1. Usage</a></li>
+<li><a class="reference internal" href="#examples">7.9.2. Examples</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -139,9 +171,9 @@
           <div class="body">
             
   <div class="section" id="dataset-loading-utilities">
-<span id="datasets"></span><h1>6. Dataset loading utilities<a class="headerlink" href="#dataset-loading-utilities" title="Permalink to this headline">¶</a></h1>
+<span id="datasets"></span><h1>7. Dataset loading utilities<a class="headerlink" href="#dataset-loading-utilities" title="Permalink to this headline">¶</a></h1>
 <p>The <tt class="docutils literal"><span class="pre">sklearn.datasets</span></tt> package embeds some small toy datasets
-as introduced in the &#8220;Getting Started&#8221; section.</p>
+as introduced in the <a class="reference internal" href="../tutorial.html#loading-example-dataset"><em>Getting Started</em></a> section.</p>
 <p>To evaluate the impact of the scale of the dataset (<tt class="docutils literal"><span class="pre">n_samples</span></tt> and
 <tt class="docutils literal"><span class="pre">n_features</span></tt>) while controlling the statistical properties of the data
 (typically the correlation and informativeness of the features), it is
@@ -149,8 +181,28 @@ also possible to generate synthetic data.</p>
 <p>This package also features helpers to fetch larger datasets commonly
 used by the machine learning community to benchmark algorithm on data
 that comes from the &#8216;real world&#8217;.</p>
+<div class="section" id="general-dataset-api">
+<h2>7.1. General dataset API<a class="headerlink" href="#general-dataset-api" title="Permalink to this headline">¶</a></h2>
+<p>There are three distinct kinds of dataset interfaces for different types
+of datasets.
+The simplest one is the interface for sample images, which is described
+below in the <a class="reference internal" href="#sample-images"><em>Sample images</em></a> section.</p>
+<p>The dataset generation functions and the svmlight loader share a simplistic
+interface, returning a tuple <tt class="docutils literal"><span class="pre">(X,</span> <span class="pre">y)</span></tt> consisting of a n_samples x n_features
+numpy array X and an array of length n_samples containing the targets y.</p>
+<p>The toy datasets as well as the &#8216;real world&#8217; datasets and the datasets
+fetched from mldata.org have more sophisticated structure.
+These functions return a <tt class="docutils literal"><span class="pre">bunch</span></tt> (which is a dictionary that is
+accessible with the &#8216;dict.key&#8217; syntax).
+All datasets have at least two keys, <tt class="docutils literal"><span class="pre">data</span></tt>, containg an array of shape
+<tt class="docutils literal"><span class="pre">n_samples</span> <span class="pre">x</span> <span class="pre">n_features</span></tt> (except for 20newsgroups) and <tt class="docutils literal"><span class="pre">target</span></tt>, a numpy
+array of length <tt class="docutils literal"><span class="pre">n_features</span></tt>, containing the targets.</p>
+<p>The datasets also contain a description in <tt class="docutils literal"><span class="pre">DESCR</span></tt> and some contain
+<tt class="docutils literal"><span class="pre">feature_names</span></tt> and <tt class="docutils literal"><span class="pre">target_names</span></tt>.
+See the dataset descriptions below for details.</p>
+</div>
 <div class="section" id="toy-datasets">
-<h2>6.1. Toy datasets<a class="headerlink" href="#toy-datasets" title="Permalink to this headline">¶</a></h2>
+<h2>7.2. Toy datasets<a class="headerlink" href="#toy-datasets" title="Permalink to this headline">¶</a></h2>
 <p>scikit-learn comes with a few small standard datasets that do not
 require to download any file from some external website.</p>
 <table border="1" class="longtable docutils">
@@ -159,7 +211,7 @@ require to download any file from some external website.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston" title="sklearn.datasets.load_boston"><tt class="xref py py-obj docutils literal"><span class="pre">load_boston</span></tt></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.load_boston.html#sklearn.datasets.load_boston" title="sklearn.datasets.load_boston"><tt class="xref py py-obj docutils literal"><span class="pre">load_boston</span></tt></a>()</td>
 <td>Load and return the boston house-prices dataset (regression).</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris" title="sklearn.datasets.load_iris"><tt class="xref py py-obj docutils literal"><span class="pre">load_iris</span></tt></a>()</td>
@@ -181,7 +233,7 @@ various algorithms implemented in the scikit. They are however often too
 small to be representative of real world machine learning tasks.</p>
 </div>
 <div class="section" id="sample-images">
-<h2>6.2. Sample images<a class="headerlink" href="#sample-images" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>7.3. Sample images<a class="headerlink" href="#sample-images" title="Permalink to this headline">¶</a></h2>
 <p>The scikit also embed a couple of sample JPEG images published under Creative
 Commons license by their authors. Those image can be useful to test algorithms
 and pipeline on 2D data.</p>
@@ -191,16 +243,17 @@ and pipeline on 2D data.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><tt class="xref py py-obj docutils literal"><span class="pre">load_sample_images</span></tt>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.load_sample_images.html#sklearn.datasets.load_sample_images" title="sklearn.datasets.load_sample_images"><tt class="xref py py-obj docutils literal"><span class="pre">load_sample_images</span></tt></a>()</td>
 <td>Load sample images for image manipulation.</td>
 </tr>
-<tr class="row-even"><td><tt class="xref py py-obj docutils literal"><span class="pre">load_sample_image</span></tt>(image_name)</td>
+<tr class="row-even"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.load_sample_image.html#sklearn.datasets.load_sample_image" title="sklearn.datasets.load_sample_image"><tt class="xref py py-obj docutils literal"><span class="pre">load_sample_image</span></tt></a>(image_name)</td>
 <td>Load the numpy array of a single sample image</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_color_quantization.html"><img alt="../_images/plot_color_quantization_11.png" class="align-right" src="../_images/plot_color_quantization_11.png" style="width: 240.0px; height: 180.0px;" /></a>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
 <p class="last">The default coding of images is based on the <tt class="docutils literal"><span class="pre">uint8</span></tt> dtype to
 spare memory.  Often machine learning algorithms work best if the
 input is converted to a floating point representation first.  Also,
@@ -215,9 +268,10 @@ if you plan to use <tt class="docutils literal"><span class="pre">pylab.imshow</
 </div>
 </div>
 <div class="section" id="sample-generators">
-<span id="id1"></span><h2>6.3. Sample generators<a class="headerlink" href="#sample-generators" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>7.4. Sample generators<a class="headerlink" href="#sample-generators" title="Permalink to this headline">¶</a></h2>
 <p>In addition, scikit-learn includes various random sample generators that
 can be used to build artifical datasets of controled size and complexity.</p>
+<a class="reference external image-reference" href="../auto_examples/plot_random_dataset.html"><img alt="../_images/plot_random_dataset_11.png" class="align-center" src="../_images/plot_random_dataset_11.png" style="width: 400.0px; height: 300.0px;" /></a>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -227,59 +281,65 @@ can be used to build artifical datasets of controled size and complexity.</p>
 <tr class="row-odd"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_classification.html#sklearn.datasets.make_classification" title="sklearn.datasets.make_classification"><tt class="xref py py-obj docutils literal"><span class="pre">make_classification</span></tt></a>([n_samples,&nbsp;n_features,&nbsp;...])</td>
 <td>Generate a random n-class classification problem.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_regression.html#sklearn.datasets.make_regression" title="sklearn.datasets.make_regression"><tt class="xref py py-obj docutils literal"><span class="pre">make_regression</span></tt></a>([n_samples,&nbsp;n_features,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_multilabel_classification.html#sklearn.datasets.make_multilabel_classification" title="sklearn.datasets.make_multilabel_classification"><tt class="xref py py-obj docutils literal"><span class="pre">make_multilabel_classification</span></tt></a>([n_samples,&nbsp;...])</td>
+<td>Generate a random multilabel classification problem.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_regression.html#sklearn.datasets.make_regression" title="sklearn.datasets.make_regression"><tt class="xref py py-obj docutils literal"><span class="pre">make_regression</span></tt></a>([n_samples,&nbsp;n_features,&nbsp;...])</td>
 <td>Generate a random regression problem.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_blobs.html#sklearn.datasets.make_blobs" title="sklearn.datasets.make_blobs"><tt class="xref py py-obj docutils literal"><span class="pre">make_blobs</span></tt></a>([n_samples,&nbsp;n_features,&nbsp;centers,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_blobs.html#sklearn.datasets.make_blobs" title="sklearn.datasets.make_blobs"><tt class="xref py py-obj docutils literal"><span class="pre">make_blobs</span></tt></a>([n_samples,&nbsp;n_features,&nbsp;centers,&nbsp;...])</td>
 <td>Generate isotropic Gaussian blobs for clustering.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" title="sklearn.datasets.make_friedman1"><tt class="xref py py-obj docutils literal"><span class="pre">make_friedman1</span></tt></a>([n_samples,&nbsp;n_features,&nbsp;...])</td>
-<td>Generate the &#8220;Friedman #1&#8221; regression problem as described in Friedman [1]</td>
+<tr class="row-odd"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" title="sklearn.datasets.make_friedman1"><tt class="xref py py-obj docutils literal"><span class="pre">make_friedman1</span></tt></a>([n_samples,&nbsp;n_features,&nbsp;...])</td>
+<td>Generate the &#8220;Friedman #1&#8221; regression problem</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_friedman2.html#sklearn.datasets.make_friedman2" title="sklearn.datasets.make_friedman2"><tt class="xref py py-obj docutils literal"><span class="pre">make_friedman2</span></tt></a>([n_samples,&nbsp;noise,&nbsp;random_state])</td>
-<td>Generate the &#8220;Friedman #2&#8221; regression problem as described in Friedman [1]</td>
+<tr class="row-even"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_friedman2.html#sklearn.datasets.make_friedman2" title="sklearn.datasets.make_friedman2"><tt class="xref py py-obj docutils literal"><span class="pre">make_friedman2</span></tt></a>([n_samples,&nbsp;noise,&nbsp;random_state])</td>
+<td>Generate the &#8220;Friedman #2&#8221; regression problem</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_friedman3.html#sklearn.datasets.make_friedman3" title="sklearn.datasets.make_friedman3"><tt class="xref py py-obj docutils literal"><span class="pre">make_friedman3</span></tt></a>([n_samples,&nbsp;noise,&nbsp;random_state])</td>
-<td>Generate the &#8220;Friedman #3&#8221; regression problem as described in Friedman [1]</td>
+<tr class="row-odd"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_friedman3.html#sklearn.datasets.make_friedman3" title="sklearn.datasets.make_friedman3"><tt class="xref py py-obj docutils literal"><span class="pre">make_friedman3</span></tt></a>([n_samples,&nbsp;noise,&nbsp;random_state])</td>
+<td>Generate the &#8220;Friedman #3&#8221; regression problem</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_low_rank_matrix.html#sklearn.datasets.make_low_rank_matrix" title="sklearn.datasets.make_low_rank_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">make_low_rank_matrix</span></tt></a>([n_samples,&nbsp;...])</td>
-<td>Generate a mostly low rank random matrix with bell-shaped singular values profile.</td>
+<tr class="row-even"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_low_rank_matrix.html#sklearn.datasets.make_low_rank_matrix" title="sklearn.datasets.make_low_rank_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">make_low_rank_matrix</span></tt></a>([n_samples,&nbsp;...])</td>
+<td>Generate a mostly low rank matrix with bell-shaped singular values</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_sparse_coded_signal.html#sklearn.datasets.make_sparse_coded_signal" title="sklearn.datasets.make_sparse_coded_signal"><tt class="xref py py-obj docutils literal"><span class="pre">make_sparse_coded_signal</span></tt></a>(n_samples,&nbsp;...[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_sparse_coded_signal.html#sklearn.datasets.make_sparse_coded_signal" title="sklearn.datasets.make_sparse_coded_signal"><tt class="xref py py-obj docutils literal"><span class="pre">make_sparse_coded_signal</span></tt></a>(n_samples,&nbsp;...[,&nbsp;...])</td>
 <td>Generate a signal as a sparse combination of dictionary elements.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_sparse_uncorrelated.html#sklearn.datasets.make_sparse_uncorrelated" title="sklearn.datasets.make_sparse_uncorrelated"><tt class="xref py py-obj docutils literal"><span class="pre">make_sparse_uncorrelated</span></tt></a>([n_samples,&nbsp;...])</td>
-<td>Generate a random regression problem with sparse uncorrelated design as</td>
+<tr class="row-even"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_sparse_uncorrelated.html#sklearn.datasets.make_sparse_uncorrelated" title="sklearn.datasets.make_sparse_uncorrelated"><tt class="xref py py-obj docutils literal"><span class="pre">make_sparse_uncorrelated</span></tt></a>([n_samples,&nbsp;...])</td>
+<td>Generate a random regression problem with sparse uncorrelated design</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_spd_matrix.html#sklearn.datasets.make_spd_matrix" title="sklearn.datasets.make_spd_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">make_spd_matrix</span></tt></a>(n_dim[,&nbsp;random_state])</td>
+<tr class="row-odd"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_spd_matrix.html#sklearn.datasets.make_spd_matrix" title="sklearn.datasets.make_spd_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">make_spd_matrix</span></tt></a>(n_dim[,&nbsp;random_state])</td>
 <td>Generate a random symmetric, positive-definite matrix.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_swiss_roll.html#sklearn.datasets.make_swiss_roll" title="sklearn.datasets.make_swiss_roll"><tt class="xref py py-obj docutils literal"><span class="pre">make_swiss_roll</span></tt></a>([n_samples,&nbsp;noise,&nbsp;random_state])</td>
+<tr class="row-even"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_swiss_roll.html#sklearn.datasets.make_swiss_roll" title="sklearn.datasets.make_swiss_roll"><tt class="xref py py-obj docutils literal"><span class="pre">make_swiss_roll</span></tt></a>([n_samples,&nbsp;noise,&nbsp;random_state])</td>
 <td>Generate a swiss roll dataset.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_s_curve.html#sklearn.datasets.make_s_curve" title="sklearn.datasets.make_s_curve"><tt class="xref py py-obj docutils literal"><span class="pre">make_s_curve</span></tt></a>([n_samples,&nbsp;noise,&nbsp;random_state])</td>
+<tr class="row-odd"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_s_curve.html#sklearn.datasets.make_s_curve" title="sklearn.datasets.make_s_curve"><tt class="xref py py-obj docutils literal"><span class="pre">make_s_curve</span></tt></a>([n_samples,&nbsp;noise,&nbsp;random_state])</td>
 <td>Generate an S curve dataset.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../modules/generated/sklearn.datasets.make_sparse_spd_matrix.html#sklearn.datasets.make_sparse_spd_matrix" title="sklearn.datasets.make_sparse_spd_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">make_sparse_spd_matrix</span></tt></a>([dim,&nbsp;alpha,&nbsp;...])</td>
+<td>Generate a sparse symetric definite positive matrix.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="datasets-in-svmlight-libsvm-format">
-<span id="libsvm-loader"></span><h2>6.4. Datasets in svmlight / libsvm format<a class="headerlink" href="#datasets-in-svmlight-libsvm-format" title="Permalink to this headline">¶</a></h2>
-<p>scikit-learn includes a fast utility function, <tt class="docutils literal"><span class="pre">load_svmlight_format</span></tt>,  to load
+<span id="libsvm-loader"></span><h2>7.5. Datasets in svmlight / libsvm format<a class="headerlink" href="#datasets-in-svmlight-libsvm-format" title="Permalink to this headline">¶</a></h2>
+<p>scikit-learn includes utility functions for loading
 datasets in the svmlight / libsvm format. In this format, each line
 takes the form <tt class="docutils literal"><span class="pre">&lt;label&gt;</span> <span class="pre">&lt;feature-id&gt;:&lt;feature-value&gt;</span>
 <span class="pre">&lt;feature-id&gt;:&lt;feature-value&gt;</span> <span class="pre">...</span></tt>. This format is especially suitable for sparse datasets.
-Scipy sparse CSR matrices are used for <tt class="docutils literal"><span class="pre">X</span></tt> and numpy arrays are used for <tt class="docutils literal"><span class="pre">y</span></tt>.</p>
-<p>You may load a dataset like this:</p>
+In this module, scipy sparse CSR matrices are used for <tt class="docutils literal"><span class="pre">X</span></tt> and numpy arrays are used for <tt class="docutils literal"><span class="pre">y</span></tt>.</p>
+<p>You may load a dataset like as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_svmlight_file</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">load_svmlight_file</span><span class="p">(</span><span class="s">&quot;/path/to/train_dataset.txt&quot;</span><span class="p">)</span>
 <span class="gp">... </span>                                                        
 </pre></div>
 </div>
-<p>You may also load two datasets at once:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">load_svmlight_file</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="s">&quot;/path/to/train_dataset.txt&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="s">&quot;/path/to/test_dataset.txt&quot;</span><span class="p">)</span>                        
+<p>You may also load two (or more) datasets at once:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">load_svmlight_files</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="s">&quot;/path/to/train_dataset.txt&quot;</span><span class="p">,</span> <span class="s">&quot;/path/to/test_dataset.txt&quot;</span><span class="p">))</span>
+<span class="gp">... </span>                                                        
 </pre></div>
 </div>
 <p>In this case, <tt class="docutils literal"><span class="pre">X_train</span></tt> and <tt class="docutils literal"><span class="pre">X_test</span></tt> are guaranteed to have the same number
@@ -291,12 +351,13 @@ features:</p>
 </pre></div>
 </div>
 <div class="topic">
-<p class="topic-title first">Public datasets:</p>
+<p class="topic-title first">Related links:</p>
 <p><span class="target" id="public-datasets-in-svmlight-libsvm-format">Public datasets in svmlight / libsvm format</span>: <a class="reference external" href="http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/">http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/</a></p>
+<p><span class="target" id="faster-api-compatible-implementation">Faster API-compatible implementation</span>: <a class="reference external" href="https://github.com/mblondel/svmlight-loader">https://github.com/mblondel/svmlight-loader</a></p>
 </div>
 </div>
 <div class="section" id="the-olivetti-faces-dataset">
-<span id="olivetti-faces"></span><h2>6.5. The Olivetti faces dataset<a class="headerlink" href="#the-olivetti-faces-dataset" title="Permalink to this headline">¶</a></h2>
+<span id="olivetti-faces"></span><h2>7.6. The Olivetti faces dataset<a class="headerlink" href="#the-olivetti-faces-dataset" title="Permalink to this headline">¶</a></h2>
 <p>This dataset contains a set of face images taken between April 1992 and April
 1994 at AT&amp;T Laboratories Cambridge. The website describing the original
 dataset is now defunct, but archived copies can be accessed through
@@ -321,21 +382,22 @@ consists of 64x64 images.</p>
 <p>When using these images, please give credit to AT&amp;T Laboratories Cambridge.</p>
 </div>
 <div class="section" id="the-20-newsgroups-text-dataset">
-<h2>6.6. The 20 newsgroups text dataset<a class="headerlink" href="#the-20-newsgroups-text-dataset" title="Permalink to this headline">¶</a></h2>
+<h2>7.7. The 20 newsgroups text dataset<a class="headerlink" href="#the-20-newsgroups-text-dataset" title="Permalink to this headline">¶</a></h2>
 <p>The 20 newsgroups dataset comprises around 18000 newsgroups posts on
 20 topics splitted in two subsets: one for training (or development)
 and the other one for testing (or for performance evaluation). The split
 between the train and test set is based upon a messages posted before
 and after a specific date.</p>
-<p>The 20 newsgroups dataset is also available through the generic
-<tt class="docutils literal"><span class="pre">mldata</span></tt> dataset loader introduced earlier. However mldata
-provides a version where the data is already vectorized.</p>
-<p>This is not the case for this loader. Instead, it returns the list of
-the raw text files that can be fed to  text feature extractors such as
-<tt class="xref py py-class docutils literal"><span class="pre">sklearn.feature_extraction.text.Vectorizer</span></tt> with custom
-parameters so as to extract feature vectors.</p>
+<p>This module contains two loaders. The first one,
+<tt class="docutils literal"><span class="pre">sklearn.datasets.fetch_20newsgroups</span></tt>,
+returns a list of the raw text files that can be fed to text feature
+extractors such as <tt class="xref py py-class docutils literal"><span class="pre">sklearn.feature_extraction.text.Vectorizer</span></tt>
+with custom parameters so as to extract feature vectors.
+The second one, <tt class="docutils literal"><span class="pre">sklearn.datasets.fetch_20newsgroups_vectorized</span></tt>,
+returns ready-to-use features, i.e., it is not necessary to use a feature
+extractor.</p>
 <div class="section" id="usage">
-<h3>6.6.1. Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<h3>7.7.1. Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
 <p>The <tt class="docutils literal"><span class="pre">sklearn.datasets.fetch_20newsgroups</span></tt> function is a data
 fetching / caching functions that downloads the data archive from
 the original <a class="reference external" href="http://people.csail.mit.edu/jrennie/20Newsgroups/">20 newsgroups website</a>, extracts the archive contents
@@ -414,15 +476,19 @@ zero features):</p>
 <span class="go">118</span>
 </pre></div>
 </div>
+<p><tt class="docutils literal"><span class="pre">sklearn.datasets.fetch_20newsgroups_vectorized</span></tt> is a function which returns
+ready-to-use tfidf features instead of file names.</p>
+<div class="topic">
+<p class="topic-title first">Examples</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/grid_search_text_feature_extraction.html#example-grid-search-text-feature-extraction-py"><em>Sample pipeline for text feature extraction and evaluation</em></a></li>
+<li><a class="reference internal" href="../auto_examples/document_classification_20newsgroups.html#example-document-classification-20newsgroups-py"><em>Classification of text documents using sparse features</em></a></li>
+</ul>
 </div>
-<div class="section" id="examples">
-<h3>6.6.2. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="../auto_examples/grid_search_text_feature_extraction.html#example-grid-search-text-feature-extraction-py"><em>Sample pipeline for text feature extraction and evaluation</em></a></p>
-<p><a class="reference internal" href="../auto_examples/document_classification_20newsgroups.html#example-document-classification-20newsgroups-py"><em>Classification of text documents using sparse features</em></a></p>
 </div>
 </div>
 <div class="section" id="downloading-datasets-from-the-mldata-org-repository">
-<span id="mldata"></span><h2>6.7. Downloading datasets from the mldata.org repository<a class="headerlink" href="#downloading-datasets-from-the-mldata-org-repository" title="Permalink to this headline">¶</a></h2>
+<span id="mldata"></span><h2>7.8. Downloading datasets from the mldata.org repository<a class="headerlink" href="#downloading-datasets-from-the-mldata-org-repository" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://mldata.org">mldata.org</a> is a public repository for machine learning
 data, supported by the <a class="reference external" href="http://www.pascal-network.org">PASCAL network</a> .</p>
 <p>The <tt class="docutils literal"><span class="pre">sklearn.datasets</span></tt> package is able to directly download data
@@ -486,7 +552,7 @@ can be found at its <a class="reference external" href="http://mldata.org">mldat
 </ul>
 </div>
 <div class="section" id="the-labeled-faces-in-the-wild-face-recognition-dataset">
-<span id="labeled-faces-in-the-wild"></span><h2>6.8. The Labeled Faces in the Wild face recognition dataset<a class="headerlink" href="#the-labeled-faces-in-the-wild-face-recognition-dataset" title="Permalink to this headline">¶</a></h2>
+<span id="labeled-faces-in-the-wild"></span><h2>7.9. The Labeled Faces in the Wild face recognition dataset<a class="headerlink" href="#the-labeled-faces-in-the-wild-face-recognition-dataset" title="Permalink to this headline">¶</a></h2>
 <p>This dataset is a collection of JPEG pictures of famous people collected
 over the internet, all details are available on the official website:</p>
 <blockquote>
@@ -503,8 +569,8 @@ performed on the output of a model trained to perform Face Detection. The
 most popular model for Face Detection is called Viola-Johns and is
 implemented in the OpenCV library. The LFW faces were extracted by this
 face detector from various online websites.</p>
-<div class="section" id="id5">
-<h3>6.8.1. Usage<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>7.9.1. Usage<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p><tt class="docutils literal"><span class="pre">scikit-learn</span></tt> provides two loaders that will automatically download,
 cache, parse the metadata files, decode the jpeg and convert the
 interesting slices into memmaped numpy arrays. This dataset size is more
@@ -581,8 +647,8 @@ University of Massachusetts, Amherst, Technical Report 07-49, October, 2007.</li
 </ul>
 </div>
 </div>
-<div class="section" id="id6">
-<h3>6.8.2. Examples<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="examples">
+<h3>7.9.2. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="../auto_examples/applications/face_recognition.html#example-applications-face-recognition-py"><em>Faces recognition example using eigenfaces and SVMs</em></a></p>
 </div>
 </div>
@@ -597,8 +663,6 @@ University of Massachusetts, Amherst, Technical Report 07-49, October, 2007.</li
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

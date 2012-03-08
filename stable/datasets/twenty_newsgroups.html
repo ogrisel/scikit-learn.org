@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>The 20 newsgroups text dataset &mdash; scikit-learn 0.9 documentation</title>
+    <title>The 20 newsgroups text dataset &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +55,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="../auto_examples/index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,42 +74,35 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel rellarge">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<!-- Ad a link to the 'up' page -->
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">The 20 newsgroups text dataset</a><ul>
 <li><a class="reference internal" href="#usage">Usage</a></li>
-<li><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -124,13 +117,14 @@
 and the other one for testing (or for performance evaluation). The split
 between the train and test set is based upon a messages posted before
 and after a specific date.</p>
-<p>The 20 newsgroups dataset is also available through the generic
-<tt class="docutils literal"><span class="pre">mldata</span></tt> dataset loader introduced earlier. However mldata
-provides a version where the data is already vectorized.</p>
-<p>This is not the case for this loader. Instead, it returns the list of
-the raw text files that can be fed to  text feature extractors such as
-<tt class="xref py py-class docutils literal"><span class="pre">sklearn.feature_extraction.text.Vectorizer</span></tt> with custom
-parameters so as to extract feature vectors.</p>
+<p>This module contains two loaders. The first one,
+<tt class="docutils literal"><span class="pre">sklearn.datasets.fetch_20newsgroups</span></tt>,
+returns a list of the raw text files that can be fed to text feature
+extractors such as <tt class="xref py py-class docutils literal"><span class="pre">sklearn.feature_extraction.text.Vectorizer</span></tt>
+with custom parameters so as to extract feature vectors.
+The second one, <tt class="docutils literal"><span class="pre">sklearn.datasets.fetch_20newsgroups_vectorized</span></tt>,
+returns ready-to-use features, i.e., it is not necessary to use a feature
+extractor.</p>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>The <tt class="docutils literal"><span class="pre">sklearn.datasets.fetch_20newsgroups</span></tt> function is a data
@@ -211,11 +205,15 @@ zero features):</p>
 <span class="go">118</span>
 </pre></div>
 </div>
+<p><tt class="docutils literal"><span class="pre">sklearn.datasets.fetch_20newsgroups_vectorized</span></tt> is a function which returns
+ready-to-use tfidf features instead of file names.</p>
+<div class="topic">
+<p class="topic-title first">Examples</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/grid_search_text_feature_extraction.html#example-grid-search-text-feature-extraction-py"><em>Sample pipeline for text feature extraction and evaluation</em></a></li>
+<li><a class="reference internal" href="../auto_examples/document_classification_20newsgroups.html#example-document-classification-20newsgroups-py"><em>Classification of text documents using sparse features</em></a></li>
+</ul>
 </div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference internal" href="../auto_examples/grid_search_text_feature_extraction.html#example-grid-search-text-feature-extraction-py"><em>Sample pipeline for text feature extraction and evaluation</em></a></p>
-<p><a class="reference internal" href="../auto_examples/document_classification_20newsgroups.html#example-document-classification-20newsgroups-py"><em>Classification of text documents using sparse features</em></a></p>
 </div>
 </div>
 
@@ -228,8 +226,6 @@ zero features):</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

@@ -1,0 +1,11 @@
+
+
+.. _example_tutorial__plot_pca_3d.py:
+
+
+
+**Python source code:** :download:`_plot_pca_3d.py <_plot_pca_3d.py>`
+
+.. literalinclude:: _plot_pca_3d.py
+    :lines: 2-
+    

@@ -16,6 +16,13 @@ with locally linear embedding
     :align: center
 
 
+**Script output**::
+
+  Computing LLE embedding
+  Done. Reconstruction error: 9.74347e-08
+
+
+
 **Python source code:** :download:`plot_swissroll.py <plot_swissroll.py>`
 
 .. literalinclude:: plot_swissroll.py

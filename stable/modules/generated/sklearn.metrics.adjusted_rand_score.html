@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.8.3.1. sklearn.metrics.adjusted_rand_score &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.16.3.1. sklearn.metrics.adjusted_rand_score &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.8.3.2. sklearn.metrics.homogeneity_completeness_v_measure" href="sklearn.metrics.homogeneity_completeness_v_measure.html" />
-    <link rel="prev" title="9.8.2.2. sklearn.metrics.mean_square_error" href="sklearn.metrics.mean_square_error.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.16.3.2. sklearn.metrics.adjusted_mutual_info_score" href="sklearn.metrics.adjusted_mutual_info_score.html" />
+    <link rel="prev" title="8.16.2.2. sklearn.metrics.mean_square_error" href="sklearn.metrics.mean_square_error.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.metrics.mean_square_error.html" title="9.8.2.2. sklearn.metrics.mean_square_error"
-             accesskey="P">previous</a> |
-          <a href="sklearn.metrics.homogeneity_completeness_v_measure.html" title="9.8.3.2. sklearn.metrics.homogeneity_completeness_v_measure"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.8.3.1. sklearn.metrics.adjusted_rand_score</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.metrics.mean_square_error.html" title="8.16.2.2. sklearn.metrics.mean_square_error"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.16.2.2. sklear...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.16.2.2. sklearn.metrics.mean_square_error
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.metrics.adjusted_mutual_info_score.html" title="8.16.3.2. sklearn.metrics.adjusted_mutual_info_score"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.16.3.2. sklear...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.16.3.2. sklearn.metrics.adjusted_mutual_info_score
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.16.3.1. sklearn.metrics.adjusted_rand_score</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,7 +157,7 @@
           <div class="body">
             
   <div class="section" id="sklearn-metrics-adjusted-rand-score">
-<h1>9.8.3.1. sklearn.metrics.adjusted_rand_score<a class="headerlink" href="#sklearn-metrics-adjusted-rand-score" title="Permalink to this headline">¶</a></h1>
+<h1>8.16.3.1. sklearn.metrics.adjusted_rand_score<a class="headerlink" href="#sklearn-metrics-adjusted-rand-score" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.metrics.adjusted_rand_score">
 <tt class="descclassname">sklearn.metrics.</tt><tt class="descname">adjusted_rand_score</tt><big>(</big><em>labels_true</em>, <em>labels_pred</em><big>)</big><a class="headerlink" href="#sklearn.metrics.adjusted_rand_score" title="Permalink to this definition">¶</a></dt>
@@ -170,13 +206,49 @@ close to 0.0. 1.0 stands for perfect match.</p>
 <p class="first admonition-title">See also</p>
 <p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">-</span></tt></p>
 </div>
-<p class="rubric">References</p>
-<ul class="simple">
-<li>L. Hubert and P. Arabie, Comparing Partitions,
-Journal of Classification 1985
-<a class="reference external" href="http://www.springerlink.com/content/x64124718341j1j0/">http://www.springerlink.com/content/x64124718341j1j0/</a></li>
-<li><a class="reference external" href="http://en.wikipedia.org/wiki/Rand_index#Adjusted_Rand_index">http://en.wikipedia.org/wiki/Rand_index#Adjusted_Rand_index</a></li>
-</ul>
+<p class="rubric">Notes</p>
+<p><strong>References</strong>:</p>
+<table class="docutils citation" frame="void" id="hubert1985" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Hubert1985]</td><td><cite>L. Hubert and P. Arabie, Comparing Partitions,
+Journal of Classification 1985</cite>
+<a class="reference external" href="http://www.springerlink.com/content/x64124718341j1j0/">http://www.springerlink.com/content/x64124718341j1j0/</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="wk" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[wk]</td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Rand_index#Adjusted_Rand_index">http://en.wikipedia.org/wiki/Rand_index#Adjusted_Rand_index</a></td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Perfectly maching labelings have a score of 1 even</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics.cluster</span> <span class="kn">import</span> <span class="n">adjusted_rand_score</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adjusted_rand_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="go">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adjusted_rand_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+<p>Labelings that assign all classes members to the same clusters
+are complete be not always pure, hence penalized:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">adjusted_rand_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>  
+<span class="go">0.57...</span>
+</pre></div>
+</div>
+<p>ARI is symmetric, so labelings that have pure clusters with members
+coming from the same classes but unnecessary splits are penalized:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">adjusted_rand_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>  
+<span class="go">0.57...</span>
+</pre></div>
+</div>
+<p>If classes members are completely split across different clusters, the
+assignment is totally incomplete, hence the ARI is very low:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">adjusted_rand_score</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">0.0</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
@@ -190,8 +262,6 @@ Journal of Classification 1985
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>4.3. Clustering &mdash; scikit-learn 0.9 documentation</title>
+    <title>4.3. Clustering &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
     <link rel="up" title="4. Unsupervised learning" href="../unsupervised_learning.html" />
     <link rel="next" title="4.4. Decomposing signals in components (matrix factorization problems)" href="decomposition.html" />
     <link rel="prev" title="4.2. Manifold learning" href="manifold.html" />
@@ -58,7 +58,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="../auto_examples/index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,31 +77,73 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="manifold.html" title="4.2. Manifold learning"
-             accesskey="P">previous</a> |
-          <a href="decomposition.html" title="4.4. Decomposing signals in components (matrix factorization problems)"
-             accesskey="N">next</a> |
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="manifold.html" title="4.2. Manifold learning"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    4.2. Manifold le...
+	    </span>
+	    <span class="hiddenrellink">
+	    4.2. Manifold learning
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="decomposition.html" title="4.4. Decomposing signals in components (matrix factorization problems)"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    4.4. Decomposing...
+	    </span>
+	    <span class="hiddenrellink">
+	    4.4. Decomposing signals in components (matrix factorization problems)
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../unsupervised_learning.html" title="4. Unsupervised learning" >
+	Up
+	<br>
+	<span class="smallrellink">
+	4. Unsupervised ...
+	</span>
+	<span class="hiddenrellink">
+	4. Unsupervised learning
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">4.3. Clustering</a><ul>
 <li><a class="reference internal" href="#k-means">4.3.1. K-means</a><ul>
 <li><a class="reference internal" href="#mini-batch-k-means">4.3.1.1. Mini Batch K-Means</a></li>
@@ -123,17 +165,30 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#ajusted-rand-index">4.3.7.2. Ajusted Rand index</a><ul>
-<li><a class="reference internal" href="#id5">4.3.7.2.1. Presentation and usage</a></li>
-<li><a class="reference internal" href="#id6">4.3.7.2.2. Advantages</a></li>
-<li><a class="reference internal" href="#id7">4.3.7.2.3. Drawbacks</a></li>
+<li><a class="reference internal" href="#id7">4.3.7.2.1. Presentation and usage</a></li>
+<li><a class="reference internal" href="#id8">4.3.7.2.2. Advantages</a></li>
+<li><a class="reference internal" href="#id9">4.3.7.2.3. Drawbacks</a></li>
 <li><a class="reference internal" href="#mathematical-formulation">4.3.7.2.4. Mathematical formulation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#homogeneity-completeness-and-v-measure">4.3.7.3. Homogeneity, completeness and V-measure</a><ul>
-<li><a class="reference internal" href="#id8">4.3.7.3.1. Presentation and usage</a></li>
-<li><a class="reference internal" href="#id9">4.3.7.3.2. Advantages</a></li>
-<li><a class="reference internal" href="#id10">4.3.7.3.3. Drawbacks</a></li>
-<li><a class="reference internal" href="#id11">4.3.7.3.4. Mathematical formulation</a></li>
+<li><a class="reference internal" href="#ajusted-mutual-information">4.3.7.3. Ajusted Mutual Information</a><ul>
+<li><a class="reference internal" href="#id10">4.3.7.3.1. Presentation and usage</a></li>
+<li><a class="reference internal" href="#id11">4.3.7.3.2. Advantages</a></li>
+<li><a class="reference internal" href="#id12">4.3.7.3.3. Drawbacks</a></li>
+<li><a class="reference internal" href="#id13">4.3.7.3.4. Mathematical formulation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#homogeneity-completeness-and-v-measure">4.3.7.4. Homogeneity, completeness and V-measure</a><ul>
+<li><a class="reference internal" href="#id14">4.3.7.4.1. Presentation and usage</a></li>
+<li><a class="reference internal" href="#id15">4.3.7.4.2. Advantages</a></li>
+<li><a class="reference internal" href="#id16">4.3.7.4.3. Drawbacks</a></li>
+<li><a class="reference internal" href="#id17">4.3.7.4.4. Mathematical formulation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#silhouette-coefficient">4.3.7.5. Silhouette Coefficient</a><ul>
+<li><a class="reference internal" href="#id19">4.3.7.5.1. Presentation and usage</a></li>
+<li><a class="reference internal" href="#id20">4.3.7.5.2. Advantages</a></li>
+<li><a class="reference internal" href="#id21">4.3.7.5.3. Drawbacks</a></li>
 </ul>
 </li>
 </ul>
@@ -142,14 +197,8 @@
 </li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -207,21 +256,21 @@ transform method of a trained model of <a class="reference internal" href="gener
 </div>
 <div class="section" id="mini-batch-k-means">
 <span id="mini-batch-kmeans"></span><h3>4.3.1.1. Mini Batch K-Means<a class="headerlink" href="#mini-batch-k-means" title="Permalink to this headline">¶</a></h3>
-<p>The <a class="reference internal" href="generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans" title="sklearn.cluster.MiniBatchKMeans"><tt class="xref py py-class docutils literal"><span class="pre">MiniBatchKMeans</span></tt></a> is a variant of the <tt class="xref py py-class docutils literal"><span class="pre">K-Means</span></tt> algorithm
+<p>The <a class="reference internal" href="generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans" title="sklearn.cluster.MiniBatchKMeans"><tt class="xref py py-class docutils literal"><span class="pre">MiniBatchKMeans</span></tt></a> is a variant of the <a class="reference internal" href="generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="sklearn.cluster.KMeans"><tt class="xref py py-class docutils literal"><span class="pre">KMeans</span></tt></a> algorithm
 using mini-batches, random subset of the dataset, to compute the centroids.</p>
 <p>Althought the <a class="reference internal" href="generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans" title="sklearn.cluster.MiniBatchKMeans"><tt class="xref py py-class docutils literal"><span class="pre">MiniBatchKMeans</span></tt></a> converge faster than the KMeans
 version, the quality of the results, measured by the inertia, the sum of
 the distance of each points to the nearest centroid, is not as good as
 the <a class="reference internal" href="generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans" title="sklearn.cluster.KMeans"><tt class="xref py py-class docutils literal"><span class="pre">KMeans</span></tt></a> algorithm.</p>
 <div class="figure align-center">
-<a class="reference external image-reference" href="../auto_examples/cluster/plot_mini_batch_kmeans.html"><img alt="../_images/plot_mini_batch_kmeans_11.png" src="../_images/plot_mini_batch_kmeans_11.png" style="width: 800.0px; height: 600.0px;" /></a>
+<a class="reference external image-reference" href="../auto_examples/cluster/plot_mini_batch_kmeans.html"><img alt="../_images/plot_mini_batch_kmeans_11.png" src="../_images/plot_mini_batch_kmeans_11.png" style="width: 800.0px; height: 300.0px;" /></a>
 </div>
 <div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
 <li><a class="reference internal" href="../auto_examples/cluster/plot_mini_batch_kmeans.html#example-cluster-plot-mini-batch-kmeans-py"><em>A demo of the K Means clustering algorithm</em></a>: Comparison of KMeans and
 MiniBatchKMeans</li>
-<li><a class="reference internal" href="../auto_examples/document_clustering.html#example-document-clustering-py"><em>Clustering text documents using MiniBatchKmeans</em></a>: Document clustering using sparse
+<li><a class="reference internal" href="../auto_examples/document_clustering.html#example-document-clustering-py"><em>Clustering text documents using k-means</em></a>: Document clustering using sparse
 MiniBatchKMeans</li>
 </ul>
 </div>
@@ -236,7 +285,7 @@ wide web</em> (2010)</li>
 </div>
 </div>
 <div class="section" id="affinity-propagation">
-<h2>4.3.2. Affinity propagation<a class="headerlink" href="#affinity-propagation" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>4.3.2. Affinity propagation<a class="headerlink" href="#affinity-propagation" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="generated/sklearn.cluster.AffinityPropagation.html#sklearn.cluster.AffinityPropagation" title="sklearn.cluster.AffinityPropagation"><tt class="xref py py-class docutils literal"><span class="pre">AffinityPropagation</span></tt></a> clusters data by diffusion in the similarity
 matrix. This algorithm automatically sets its numbers of cluster. It
 will have difficulties scaling to thousands of samples.</p>
@@ -248,7 +297,7 @@ will have difficulties scaling to thousands of samples.</p>
 <ul class="simple">
 <li><a class="reference internal" href="../auto_examples/cluster/plot_affinity_propagation.html#example-cluster-plot-affinity-propagation-py"><em>Demo of affinity propagation clustering algorithm</em></a>: Affinity
 Propagation on a synthetic 2D datasets with 3 classes.</li>
-<li><a class="reference internal" href="../auto_examples/applications/stock_market.html#example-applications-stock-market-py"><em>Finding structure in the stock market</em></a> Affinity Propagation on
+<li><a class="reference internal" href="../auto_examples/applications/plot_stock_market.html#example-applications-plot-stock-market-py"><em>Visualizing the stock market structure</em></a> Affinity Propagation on
 Financial time series to find groups of companies</li>
 </ul>
 </div>
@@ -270,7 +319,7 @@ on a synthetic 2D datasets with 3 classes.</li>
 </div>
 </div>
 <div class="section" id="spectral-clustering">
-<h2>4.3.4. Spectral clustering<a class="headerlink" href="#spectral-clustering" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>4.3.4. Spectral clustering<a class="headerlink" href="#spectral-clustering" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="generated/sklearn.cluster.SpectralClustering.html#sklearn.cluster.SpectralClustering" title="sklearn.cluster.SpectralClustering"><tt class="xref py py-class docutils literal"><span class="pre">SpectralClustering</span></tt></a> does a low-dimension embedding of the
 affinity matrix between samples, followed by a KMeans in the low
 dimensional space. It is especially efficient if the affinity matrix is
@@ -288,7 +337,16 @@ function of the gradient of the image.</p>
 <p class="centered">
 <strong><a class="reference external image-reference" href="../auto_examples/cluster/plot_segmentation_toy.html"><img alt="noisy_img" src="../_images/plot_segmentation_toy_11.png" style="width: 300.0px; height: 300.0px;" /></a>
  <a class="reference external image-reference" href="../auto_examples/cluster/plot_segmentation_toy.html"><img alt="segmented_img" src="../_images/plot_segmentation_toy_21.png" style="width: 300.0px; height: 300.0px;" /></a>
-</strong></p><div class="topic">
+</strong></p><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Shapeless isotropic data</p>
+<p class="last">When the data is really shapeless (i.e. generated from a random
+distribution with no clusters), the spectral-clustering problem is
+ill-conditioned: the different choices are almost equivalent, and
+the spectral clustering solver chooses an arbitrary one, putting
+the first sample alone in one bin.</p>
+</div>
+<div class="topic">
 <p class="topic-title first">Examples:</p>
 <ul class="simple">
 <li><a class="reference internal" href="../auto_examples/cluster/plot_segmentation_toy.html#example-cluster-plot-segmentation-toy-py"><em>Spectral clustering for image segmentation</em></a>: Segmenting objects
@@ -312,7 +370,7 @@ Andrew Y. Ng, Michael I. Jordan, Yair Weiss, 2001</li>
 </div>
 </div>
 <div class="section" id="hierarchical-clustering">
-<span id="id3"></span><h2>4.3.5. Hierarchical clustering<a class="headerlink" href="#hierarchical-clustering" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>4.3.5. Hierarchical clustering<a class="headerlink" href="#hierarchical-clustering" title="Permalink to this headline">¶</a></h2>
 <p>Hierarchical clustering is a general family of clustering algorithms that
 build nested clusters by merging them successively. This hierarchy of
 clusters represented as a tree (or dendrogram). The root of the tree is
@@ -367,8 +425,8 @@ Ward hierarchical clustering.</li>
 </div>
 </div>
 <div class="section" id="dbscan">
-<span id="id4"></span><h2>4.3.6. DBSCAN<a class="headerlink" href="#dbscan" title="Permalink to this headline">¶</a></h2>
-<p>The <tt class="xref py py-class docutils literal"><span class="pre">DBSCAN</span></tt> algorithm clusters data by finding core points which have
+<span id="id6"></span><h2>4.3.6. DBSCAN<a class="headerlink" href="#dbscan" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="generated/sklearn.cluster.DBSCAN.html#sklearn.cluster.DBSCAN" title="sklearn.cluster.DBSCAN"><tt class="xref py py-class docutils literal"><span class="pre">DBSCAN</span></tt></a> algorithm clusters data by finding core points which have
 many neighbours within a given radius. After a core point is found, the cluster
 is expanded by adding its neighbours to the current cluster and recusively
 checking if any are core points. Formally, a point is considered a core point
@@ -397,7 +455,7 @@ and Data Mining, Portland, OR, AAAI Press, pp. 226–231. 1996</li>
 </div>
 </div>
 <div class="section" id="clustering-performance-evaluation">
-<h2>4.3.7. Clustering performance evaluation<a class="headerlink" href="#clustering-performance-evaluation" title="Permalink to this headline">¶</a></h2>
+<span id="clustering-evaluation"></span><h2>4.3.7. Clustering performance evaluation<a class="headerlink" href="#clustering-performance-evaluation" title="Permalink to this headline">¶</a></h2>
 <p>Evaluating the performance of a clustering algorithm is not as trivial as
 counting the number of errors or the precision and recall of a supervised
 classification algorithm. In particular any evaluation metric should not
@@ -434,8 +492,8 @@ is known).</li>
 </div>
 <div class="section" id="ajusted-rand-index">
 <h3>4.3.7.2. Ajusted Rand index<a class="headerlink" href="#ajusted-rand-index" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id5">
-<h4>4.3.7.2.1. Presentation and usage<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id7">
+<h4>4.3.7.2.1. Presentation and usage<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <p>Given the knowledge of the ground truth class assignments <tt class="docutils literal"><span class="pre">labels_true</span></tt>
 and our clustering algorithm assignments of the same samples
 <tt class="docutils literal"><span class="pre">labels_pred</span></tt>, the <strong>adjusted Rand index</strong> is a function that measures
@@ -477,8 +535,8 @@ measure</strong>:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id6">
-<h4>4.3.7.2.2. Advantages<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id8">
+<h4>4.3.7.2.2. Advantages<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><strong>Random (uniform) label assignements have a ARI score close to 0.0</strong>
 for any value of <tt class="docutils literal"><span class="pre">n_clusters</span></tt> and <tt class="docutils literal"><span class="pre">n_samples</span></tt> (which is not the
@@ -492,8 +550,8 @@ blob shapes with results of spectral clustering algorithms which can
 find cluster with &#8220;folded&#8221; shapes.</li>
 </ul>
 </div>
-<div class="section" id="id7">
-<h4>4.3.7.2.3. Drawbacks<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id9">
+<h4>4.3.7.2.3. Drawbacks<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <ul>
 <li><p class="first">Contrary to inertia, <strong>ARI requires the knowlege of the ground truth
 classes</strong> while almost never available in practice or requires manual
@@ -544,10 +602,143 @@ L. Hubert and P. Arabie, Journal of Classification 1985</li>
 </div>
 </div>
 </div>
+<div class="section" id="ajusted-mutual-information">
+<h3>4.3.7.3. Ajusted Mutual Information<a class="headerlink" href="#ajusted-mutual-information" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h4>4.3.7.3.1. Presentation and usage<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<p>Given the knowledge of the ground truth class assignments <tt class="docutils literal"><span class="pre">labels_true</span></tt>
+and our clustering algorithm assignments of the same samples
+<tt class="docutils literal"><span class="pre">labels_pred</span></tt>, the <strong>Adjusted Mutual Information</strong> is a function that
+measures the <strong>agreement</strong> of the two assignements, ignoring permutations
+and <strong>with chance normalization</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>  
+<span class="go">0.22504...</span>
+</pre></div>
+</div>
+<p>One can permute 0 and 1 in the predicted labels and rename <cite>2</cite> by <cite>3</cite> and get
+the same score:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">labels_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>  
+<span class="go">0.22504...</span>
+</pre></div>
+</div>
+<p>Furthermore, <a class="reference internal" href="generated/sklearn.metrics.adjusted_mutual_info_score.html#sklearn.metrics.adjusted_mutual_info_score" title="sklearn.metrics.adjusted_mutual_info_score"><tt class="xref py py-func docutils literal"><span class="pre">adjusted_mutual_info_score</span></tt></a> is <strong>symmetric</strong>: swapping the
+argument does not change the score. It can thus be used as a <strong>consensus
+measure</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels_pred</span><span class="p">,</span> <span class="n">labels_true</span><span class="p">)</span>  
+<span class="go">0.22504...</span>
+</pre></div>
+</div>
+<p>Perfect labeling is scored 1.0:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">labels_pred</span> <span class="o">=</span> <span class="n">labels_true</span><span class="p">[:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+<p>Bad (e.g. independent labelings) have non-positive scores:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">labels_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels_pred</span><span class="p">)</span>  
+<span class="go">-0.10526...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h4>4.3.7.3.2. Advantages<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><strong>Random (uniform) label assignements have a AMI score close to 0.0</strong>
+for any value of <tt class="docutils literal"><span class="pre">n_clusters</span></tt> and <tt class="docutils literal"><span class="pre">n_samples</span></tt> (which is not the
+case for raw Mutual Information or the V-measure for instance).</li>
+<li><strong>Bounded range [0, 1]</strong>:  Values close to zero indicate two label
+assignments that are largely independent, while values close to one
+indicate significant agreement. Further, values of exactly 0 indicate
+<strong>purely</strong> independent label assignments and a AMI of exactly 1 indicates
+that the two label assignments are equal (with or without permutation).</li>
+<li><strong>No assumption is made on the cluster structure</strong>: can be used
+to compare clustering algorithms such as k-means which assumes isotropic
+blob shapes with results of spectral clustering algorithms which can
+find cluster with &#8220;folded&#8221; shapes.</li>
+</ul>
+</div>
+<div class="section" id="id12">
+<h4>4.3.7.3.3. Drawbacks<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p class="first">Contrary to inertia, <strong>AMI requires the knowlege of the ground truth
+classes</strong> while almost never available in practice or requires manual
+assignment by human annotators (as in the supervised learning setting).</p>
+<p>However AMI can also be useful in purely unsupervised setting as a
+building block for a Consensus Index that can be used for clustering
+model selection.</p>
+</li>
+</ul>
+<div class="topic">
+<p class="topic-title first">Examples:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../auto_examples/cluster/plot_adjusted_for_chance_measures.html#example-cluster-plot-adjusted-for-chance-measures-py"><em>Adjustment for chance in clustering performance evaluation</em></a>: Analysis of
+the impact of the dataset size on the value of clustering measures
+for random assignements. This example also includes the Adjusted Rand
+Index.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id13">
+<h4>4.3.7.3.4. Mathematical formulation<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<p>Assume two label assignments (of the same data), <img class="math" src="../_images/math/e2bbebb3bd73f1ae5c64098ab0244f739abf7ca4.png" alt="U"/> with <img class="math" src="../_images/math/eff43e84f8a3bcf7b6965f0a3248bc4d3a9d0cd4.png" alt="R"/>
+classes and <img class="math" src="../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V"/> with <img class="math" src="../_images/math/c3355896da590fc491a10150a50416687626d7cc.png" alt="C"/> classes. The entropy of either is the
+amount of uncertaintly for an array, and can be calculated as:</p>
+<div class="math">
+<p><img src="../_images/math/25064ae845844f56b2006c08eaf08ed3dee125d4.png" alt="H(U) = \sum_{i=1}^{|R|}P(i)log(P(i))"/></p>
+</div><p>Where P(i) is the number of instances in U that are in class <img class="math" src="../_images/math/1ef7ab23d6fc7d336379d457f66aa6ed57d72ec9.png" alt="R_i"/>.
+Likewise, for <img class="math" src="../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V"/>:</p>
+<div class="math">
+<p><img src="../_images/math/de6473e0c12418137281dd9280da1e14392ea20f.png" alt="H(V) = \sum_{j=1}^{|C|}P'(j)log(P'(j))"/></p>
+</div><p>Where P&#8217;(j) is the number of instances in V that are in class <img class="math" src="../_images/math/93655c05b798b5badfb3dceb08d20094ea4b77ac.png" alt="C_j"/>.</p>
+<p>The (non-adjusted) mutual information between <img class="math" src="../_images/math/e2bbebb3bd73f1ae5c64098ab0244f739abf7ca4.png" alt="U"/> and <img class="math" src="../_images/math/12d58aa29201da09d8e620f8698e3a37547f6b4a.png" alt="V"/> is
+calculated by:</p>
+<div class="math">
+<p><img src="../_images/math/ecb5187d01cb5c8cd1e8e6c50df0e9e8c9a0b3fc.png" alt="MI(U, V) = \sum_{i=1}^{|R|}\sum_{j=1}^{|C|}P(i, j)log(\frac{P(i,j)}{P(i)P'(j)})"/></p>
+</div><p>Where P(i, j) is the number of instances with label <img class="math" src="../_images/math/1ef7ab23d6fc7d336379d457f66aa6ed57d72ec9.png" alt="R_i"/>
+and also with label <img class="math" src="../_images/math/93655c05b798b5badfb3dceb08d20094ea4b77ac.png" alt="C_j"/>.</p>
+<p>This value of the mutual information is not adjusted cfor chance and will tend
+to increase as the number of different labels (clusters) increases, regardless
+of the actual amount of &#8220;mutual information&#8221; between the label assignments.</p>
+<p>The expected value for the mutual information can be calculated using the
+following equation, from Vinh, Epps, and Bailey, (2009). In this equation,
+<img class="math" src="../_images/math/412787c048e28774dc63fc27db42dc52ca858de7.png" alt="a_i"/> is the number of instances with label <img class="math" src="../_images/math/fb8df2d00f692a5a5ee3e592916d04a5a3e1060b.png" alt="U_i"/> and
+<img class="math" src="../_images/math/dfbbf3e10280b5771976f3342b10181e4b31d4fd.png" alt="b_j"/> is the number of instances with label <img class="math" src="../_images/math/6fbba8e6f8bc75af045750f417c9000c07feb8dc.png" alt="V_j"/>.</p>
+<div class="math">
+<p><img src="../_images/math/e5aa64e5c87368a5a94b6aee2292e4dde4994713.png" alt="E\{MI(U,V)\}=\sum_{i=1}^R \sum_{j=1}^C \sum_{n_{ij}=(a_i+b_j-N)^+
+}^{\min(a_i, b_j)} \frac{n_{ij}}{N}\log ( \frac{ N.n_{ij}}{a_i b_j})
+\frac{a_i!b_j!(N-a_i)!(N-b_j)!}{N!n_{ij}!(a_i-n_{ij})!(b_j-n_{ij})!
+(N-a_i-b_j+n_{ij})!}"/></p>
+</div><p>Using the expected value, the adjusted mutual information can then be
+calculated using a similar form to that of the adjusted Rand index:</p>
+<div class="math">
+<p><img src="../_images/math/c1f1fa2db7935de6a74f5450679ec1289a5199c7.png" alt="AMI = \frac{MI - Expected\_MI}{max(H(U), H(V)) - Expected\_MI}"/></p>
+</div><div class="topic">
+<p class="topic-title first">References</p>
+<ul class="simple">
+<li>Vinh, Epps, and Bailey, (2009). &#8220;Information theoretic measures
+for clusterings comparison&#8221;. Proceedings of the 26th Annual International
+Conference on Machine Learning - ICML &#8216;09.
+doi:10.1145/1553374.1553511. ISBN 9781605585161.</li>
+<li>Vinh, Epps, and Bailey, (2010). Information Theoretic Measures for
+Clusterings Comparison: Variants, Properties, Normalization and
+Correction for Chance}, JMLR
+<a class="reference external" href="http://jmlr.csail.mit.edu/papers/volume11/vinh10a/vinh10a.pdf">http://jmlr.csail.mit.edu/papers/volume11/vinh10a/vinh10a.pdf</a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Adjusted_Mutual_Information">Wikipedia entry for the Adjusted Mutual Information</a></li>
+</ul>
+</div>
+</div>
+</div>
 <div class="section" id="homogeneity-completeness-and-v-measure">
-<h3>4.3.7.3. Homogeneity, completeness and V-measure<a class="headerlink" href="#homogeneity-completeness-and-v-measure" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id8">
-<h4>4.3.7.3.1. Presentation and usage<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<h3>4.3.7.4. Homogeneity, completeness and V-measure<a class="headerlink" href="#homogeneity-completeness-and-v-measure" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h4>4.3.7.4.1. Presentation and usage<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
 <p>Given the knowledge of the ground truth class assignments of the samples,
 it is possible to define some intuitive metric using conditional entropy
 analysis.</p>
@@ -604,8 +795,8 @@ the <strong>agreement</strong> of two independent assignements on the same datas
 </div>
 </div>
 </div>
-<div class="section" id="id9">
-<h4>4.3.7.3.2. Advantages<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id15">
+<h4>4.3.7.4.2. Advantages<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><strong>Bounded scores</strong>: 0.0 is as bad as it can be, 1.0 is a perfect score</li>
 <li>Intuitive interpretation: clustering with bad V-measure can be
@@ -617,8 +808,8 @@ blob shapes with results of spectral clustering algorithms which can
 find cluster with &#8220;folded&#8221; shapes.</li>
 </ul>
 </div>
-<div class="section" id="id10">
-<h4>4.3.7.3.3. Drawbacks<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id16">
+<h4>4.3.7.4.3. Drawbacks<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
 <ul>
 <li><p class="first">The previously introduced metrics are <strong>not normalized w.r.t. random
 labeling</strong>: this means that depending on the number of samples,
@@ -649,8 +840,8 @@ for random assignements.</li>
 </ul>
 </div>
 </div>
-<div class="section" id="id11">
-<h4>4.3.7.3.4. Mathematical formulation<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id17">
+<h4>4.3.7.4.4. Mathematical formulation<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
 <p>Homogeneity and completeness scores are formally given by:</p>
 <div class="math">
 <p><img src="../_images/math/53926d0bd09a86152fa4b7b14d8f5a684dda7853.png" alt="h = 1 - \frac{H(C|K)}{H(C)}"/></p>
@@ -684,6 +875,74 @@ Andrew Rosenberg and Julia Hirschberg, 2007</li>
 </div>
 </div>
 </div>
+<div class="section" id="silhouette-coefficient">
+<span id="id18"></span><h3>4.3.7.5. Silhouette Coefficient<a class="headerlink" href="#silhouette-coefficient" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id19">
+<h4>4.3.7.5.1. Presentation and usage<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
+<p>If the ground truth labels are not known, evaluation must be performed using
+the model itself. The Silhouette Coefficient
+(<a class="reference internal" href="generated/sklearn.metrics.silhouette_score.html#sklearn.metrics.silhouette_score" title="sklearn.metrics.silhouette_score"><tt class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.silhouette_score</span></tt></a>)
+is an example of such an evaluation, where a
+higher Silhouette Coefficient score relates to a model with better defined
+clusters. The Silhouette Coefficient is defined for each sample and is composed
+of two scores:</p>
+<ul class="simple">
+<li><strong>a</strong>: The mean distance between a sample and all other points in the same
+class.</li>
+<li><strong>b</strong>: The mean distance between a sample and all other points in the <em>next
+nearest cluster</em>.</li>
+</ul>
+<p>The Silhoeutte Coefficient <em>s</em> for a single sample is then given as:</p>
+<div class="math">
+<p><img src="../_images/math/ca8a912edece0f32d9793b84c05636d34328590a.png" alt="s = \frac{b - a}{max(a, b)}"/></p>
+</div><p>The Silhouette Coefficient for a set of samples is given as the mean of the
+Silhouette Coefficient for each sample.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">pairwise_distances</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">target</span>
+</pre></div>
+</div>
+<p>In normal usage, the Silhouette Coefficient is applied to the results of a
+cluster analysis.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kmeans_model</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">kmeans_model</span><span class="o">.</span><span class="n">labels_</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s">&#39;euclidean&#39;</span><span class="p">)</span>
+<span class="gp">... </span>                                                     
+<span class="go">0.5525...</span>
+</pre></div>
+</div>
+<div class="topic">
+<p class="topic-title first">References</p>
+<ul class="simple">
+<li>Peter J. Rousseeuw (1987). &#8220;Silhouettes: a Graphical Aid to the
+Interpretation and Validation of Cluster Analysis&#8221;. Computational
+and Applied Mathematics 20: 53–65. doi:10.1016/0377-0427(87)90125-7.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id20">
+<h4>4.3.7.5.2. Advantages<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>The score is bounded between -1 for incorrect clustering and +1 for highly
+dense clustering. Scores around zero indicate overlapping clusters.</li>
+<li>The score is higher when clusters are dense and well separated, which relates
+to a standard concept of a cluster.</li>
+</ul>
+</div>
+<div class="section" id="id21">
+<h4>4.3.7.5.3. Drawbacks<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>The Silhouette Coefficient is generally higher for convex clusters than other
+concepts of clusters, such as density based clusters like those obtained
+through DBSCAN.</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 
@@ -696,8 +955,6 @@ Andrew Rosenberg and Julia Hirschberg, 2007</li>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

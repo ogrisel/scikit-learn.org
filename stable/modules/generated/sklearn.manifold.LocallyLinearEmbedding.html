@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.18.1. sklearn.manifold.LocallyLinearEmbedding &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.15.1. sklearn.manifold.LocallyLinearEmbedding &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.18.2. sklearn.manifold.Isomap" href="sklearn.manifold.Isomap.html" />
-    <link rel="prev" title="9.17.8. sklearn.preprocessing.binarize" href="sklearn.preprocessing.binarize.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.15.2. sklearn.manifold.Isomap" href="sklearn.manifold.Isomap.html" />
+    <link rel="prev" title="8.14.2.5. sklearn.linear_model.sparse.LogisticRegression" href="sklearn.linear_model.sparse.LogisticRegression.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.preprocessing.binarize.html" title="9.17.8. sklearn.preprocessing.binarize"
-             accesskey="P">previous</a> |
-          <a href="sklearn.manifold.Isomap.html" title="9.18.2. sklearn.manifold.Isomap"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.18.1. sklearn.manifold.LocallyLinearEmbedding</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.linear_model.sparse.LogisticRegression.html" title="8.14.2.5. sklearn.linear_model.sparse.LogisticRegression"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.14.2.5. sklear...
+	    </span>
+	    <span class="hiddenrellink">
+	    8.14.2.5. sklearn.linear_model.sparse.LogisticRegression
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.manifold.Isomap.html" title="8.15.2. sklearn.manifold.Isomap"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.15.2. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.15.2. sklearn.manifold.Isomap
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.15.1. sklearn.manifold.LocallyLinearEmbedding</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,10 +157,10 @@
           <div class="body">
             
   <div class="section" id="sklearn-manifold-locallylinearembedding">
-<h1>9.18.1. sklearn.manifold.LocallyLinearEmbedding<a class="headerlink" href="#sklearn-manifold-locallylinearembedding" title="Permalink to this headline">¶</a></h1>
+<h1>8.15.1. sklearn.manifold.LocallyLinearEmbedding<a class="headerlink" href="#sklearn-manifold-locallylinearembedding" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sklearn.manifold.LocallyLinearEmbedding">
-<em class="property">class </em><tt class="descclassname">sklearn.manifold.</tt><tt class="descname">LocallyLinearEmbedding</tt><big>(</big><em>n_neighbors=5</em>, <em>out_dim=2</em>, <em>reg=0.001</em>, <em>eigen_solver='arpack'</em>, <em>tol=9.9999999999999995e-07</em>, <em>max_iter=100</em>, <em>method='standard'</em>, <em>hessian_tol=0.0001</em>, <em>modified_tol=9.9999999999999998e-13</em><big>)</big><a class="headerlink" href="#sklearn.manifold.LocallyLinearEmbedding" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">sklearn.manifold.</tt><tt class="descname">LocallyLinearEmbedding</tt><big>(</big><em>n_neighbors=5</em>, <em>out_dim=2</em>, <em>reg=0.001</em>, <em>eigen_solver='auto'</em>, <em>tol=1e-06</em>, <em>max_iter=100</em>, <em>method='standard'</em>, <em>hessian_tol=0.0001</em>, <em>modified_tol=1e-12</em>, <em>neighbors_algorithm='auto'</em><big>)</big><a class="headerlink" href="#sklearn.manifold.LocallyLinearEmbedding" title="Permalink to this definition">¶</a></dt>
 <dd><p>Locally Linear Embedding</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -145,13 +181,12 @@ matrix of the distances.</p>
 </div></blockquote>
 <p><strong>eigen_solver</strong> : string, {&#8216;auto&#8217;, &#8216;arpack&#8217;, &#8216;dense&#8217;}</p>
 <blockquote>
-<div><p>auto : algorithm will attempt to choose the best method for input data
-arpack : use arnoldi iteration in shift-invert mode.</p>
-<blockquote>
-<div><p>For this method, M may be a dense matrix, sparse matrix,
-or general linear operator.</p>
-</div></blockquote>
+<div><p>auto : algorithm will attempt to choose the best method for input data</p>
 <dl class="docutils">
+<dt>arpack <span class="classifier-delimiter">:</span> <span class="classifier">use arnoldi iteration in shift-invert mode.</span></dt>
+<dd><p class="first last">For this method, M may be a dense matrix, sparse matrix,
+or general linear operator.</p>
+</dd>
 <dt>dense <span class="classifier-delimiter">:</span> <span class="classifier">use standard dense matrix operations for the eigenvalue</span></dt>
 <dd><p class="first last">decomposition.  For this method, M must be an array
 or matrix type.  This method should be avoided for
@@ -166,7 +201,8 @@ Not used if eigen_solver==&#8217;dense&#8217;.</p>
 </div></blockquote>
 <p><strong>max_iter</strong> : integer</p>
 <blockquote>
-<div><p>maximum number of iterations for the arpack solver.</p>
+<div><p>maximum number of iterations for the arpack solver.
+Not used if eigen_solver==&#8217;dense&#8217;.</p>
 </div></blockquote>
 <p><strong>method</strong> : string [&#8216;standard&#8217; | &#8216;hessian&#8217; | &#8216;modified&#8217;]</p>
 <blockquote>
@@ -192,9 +228,14 @@ see reference [2]</p>
 Only used if method == &#8216;hessian&#8217;</p>
 </div></blockquote>
 <p><strong>modified_tol</strong> : float, optional</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Tolerance for modified LLE method.
 Only used if method == &#8216;modified&#8217;</p>
+</div></blockquote>
+<p><strong>neighbors_algorithm</strong> : string [&#8216;auto&#8217;|&#8217;brute&#8217;|&#8217;kd_tree&#8217;|&#8217;ball_tree&#8217;]</p>
+<blockquote class="last">
+<div><p>algorithm to use for nearest neighbors search,
+passed to neighbors.NearestNeighbors instance</p>
 </div></blockquote>
 </td>
 </tr>
@@ -204,8 +245,8 @@ Only used if method == &#8216;modified&#8217;</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="19%" />
-<col width="32%" />
-<col width="48%" />
+<col width="31%" />
+<col width="51%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><cite>embedding_vectors_</cite></td>
@@ -216,9 +257,10 @@ Only used if method == &#8216;modified&#8217;</p>
 <td>float</td>
 <td>Reconstruction error associated with <cite>embedding_vectors_</cite></td>
 </tr>
-<tr class="row-odd"><td><cite>ball_tree_</cite></td>
-<td>BallTree object</td>
-<td>Ball Tree used for nearest neighbors</td>
+<tr class="row-odd"><td><cite>nbrs_</cite></td>
+<td>NearestNeighbors object</td>
+<td>Stores nearest neighbors instance, including BallTree or KDtree
+if applicable.</td>
 </tr>
 </tbody>
 </table>
@@ -245,7 +287,7 @@ Only used if method == &#8216;modified&#8217;</p>
 </table>
 <dl class="method">
 <dt id="sklearn.manifold.LocallyLinearEmbedding.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>n_neighbors=5</em>, <em>out_dim=2</em>, <em>reg=0.001</em>, <em>eigen_solver='arpack'</em>, <em>tol=9.9999999999999995e-07</em>, <em>max_iter=100</em>, <em>method='standard'</em>, <em>hessian_tol=0.0001</em>, <em>modified_tol=9.9999999999999998e-13</em><big>)</big><a class="headerlink" href="#sklearn.manifold.LocallyLinearEmbedding.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>n_neighbors=5</em>, <em>out_dim=2</em>, <em>reg=0.001</em>, <em>eigen_solver='auto'</em>, <em>tol=1e-06</em>, <em>max_iter=100</em>, <em>method='standard'</em>, <em>hessian_tol=0.0001</em>, <em>modified_tol=1e-12</em>, <em>neighbors_algorithm='auto'</em><big>)</big><a class="headerlink" href="#sklearn.manifold.LocallyLinearEmbedding.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -294,10 +336,10 @@ Only used if method == &#8216;modified&#8217;</p>
 <dt id="sklearn.manifold.LocallyLinearEmbedding.set_params">
 <tt class="descname">set_params</tt><big>(</big><em>**params</em><big>)</big><a class="headerlink" href="#sklearn.manifold.LocallyLinearEmbedding.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of the estimator.</p>
-<p>The method works on simple estimators as well as on nested
-objects (such as pipelines). The former have parameters of the
-form &lt;component&gt;__&lt;parameter&gt; so that it&#8217;s possible to update
-each component of a nested object.</p>
+<p>The method works on simple estimators as well as on nested objects
+(such as pipelines). The former have parameters of the form
+<tt class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></tt> so that it&#8217;s possible to update each
+component of a nested object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -340,8 +382,6 @@ it together with methods that are not scale-invariant (like SVMs)</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

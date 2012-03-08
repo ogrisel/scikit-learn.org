@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>SVM: Separating hyperplane for unbalanced classes &mdash; scikit-learn 0.9 documentation</title>
+    <title>SVM: Separating hyperplane for unbalanced classes &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="SVM-Anova: SVM with univariate feature selection" href="plot_svm_anova.html" />
+    <link rel="prev" title="SVM: Maximum margin separating hyperplane" href="plot_separating_hyperplane.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="plot_separating_hyperplane.html" title="SVM: Maximum margin separating hyperplane"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    SVM: Maximum mar...
+	    </span>
+	    <span class="hiddenrellink">
+	    SVM: Maximum margin separating hyperplane
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="plot_svm_anova.html" title="SVM-Anova: SVM with univariate feature selection"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    SVM-Anova: SVM w...
+	    </span>
+	    <span class="hiddenrellink">
+	    SVM-Anova: SVM with univariate feature selection
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">SVM: Separating hyperplane for unbalanced classes</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -132,9 +175,9 @@ unbalanced classes.</p>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">n_samples_1</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">n_samples_2</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mf">1.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples_1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-          <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples_2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n_samples_1</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n_samples_2</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples_1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+          <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_samples_2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_samples_1</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_samples_2</span><span class="p">)</span>
 
 <span class="c"># fit the model and get the separating hyperplane</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s">&#39;linear&#39;</span><span class="p">)</span>
@@ -158,7 +201,7 @@ unbalanced classes.</p>
 <span class="n">pl</span><span class="o">.</span><span class="n">set_cmap</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">)</span>
 <span class="n">h0</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="s">&#39;k-&#39;</span><span class="p">)</span>
 <span class="n">h1</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">wyy</span><span class="p">,</span> <span class="s">&#39;k--&#39;</span><span class="p">)</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+<span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
 <span class="n">pl</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="n">h0</span><span class="p">,</span> <span class="n">h1</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;no weights&#39;</span><span class="p">,</span> <span class="s">&#39;with weights&#39;</span><span class="p">))</span>
 
 <span class="n">pl</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;tight&#39;</span><span class="p">)</span>
@@ -176,8 +219,6 @@ unbalanced classes.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>4.1.3.3.1. Variational Gaussian Mixture Models &mdash; scikit-learn 0.9 documentation</title>
+    <title>4.1.3.3.1. Variational Gaussian Mixture Models &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
     <link rel="up" title="4.1. Gaussian mixture models" href="mixture.html" />
     <link rel="next" title="4.2. Manifold learning" href="manifold.html" />
     <link rel="prev" title="4.1. Gaussian mixture models" href="mixture.html" />
@@ -58,7 +58,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="../auto_examples/index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,31 +77,73 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="mixture.html" title="4.1. Gaussian mixture models"
-             accesskey="P">previous</a> |
-          <a href="manifold.html" title="4.2. Manifold learning"
-             accesskey="N">next</a> |
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="mixture.html" title="4.1. Gaussian mixture models"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    4.1. Gaussian mi...
+	    </span>
+	    <span class="hiddenrellink">
+	    4.1. Gaussian mixture models
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="manifold.html" title="4.2. Manifold learning"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    4.2. Manifold le...
+	    </span>
+	    <span class="hiddenrellink">
+	    4.2. Manifold learning
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="mixture.html" title="4.1. Gaussian mixture models" >
+	Up
+	<br>
+	<span class="smallrellink">
+	4.1. Gaussian mi...
+	</span>
+	<span class="hiddenrellink">
+	4.1. Gaussian mixture models
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">4.1.3.3.1. Variational Gaussian Mixture Models</a></li>
 <li><a class="reference internal" href="#update-rules-for-vb-inference">4.1.3.3.2. Update rules for VB inference</a><ul>
 <li><a class="reference internal" href="#the-spherical-model">4.1.3.3.2.1. The spherical model</a><ul>
@@ -111,31 +153,25 @@
 </li>
 <li><a class="reference internal" href="#the-diagonal-model">4.1.3.3.2.2. The diagonal model</a><ul>
 <li><a class="reference internal" href="#the-lower-bound">4.1.3.3.2.2.1. The lower bound</a></li>
-<li><a class="reference internal" href="#id3">4.1.3.3.2.2.2. The updates</a></li>
+<li><a class="reference internal" href="#id1">4.1.3.3.2.2.2. The updates</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#the-tied-model">4.1.3.3.2.3. The tied model</a><ul>
-<li><a class="reference internal" href="#id4">4.1.3.3.2.3.1. The lower bound</a></li>
-<li><a class="reference internal" href="#id5">4.1.3.3.2.3.2. The updates</a></li>
+<li><a class="reference internal" href="#id2">4.1.3.3.2.3.1. The lower bound</a></li>
+<li><a class="reference internal" href="#id3">4.1.3.3.2.3.2. The updates</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#the-full-model">4.1.3.3.2.4. The full model</a><ul>
-<li><a class="reference internal" href="#id6">4.1.3.3.2.4.1. The lower bound</a></li>
-<li><a class="reference internal" href="#id7">4.1.3.3.2.4.2. The updates</a></li>
+<li><a class="reference internal" href="#id4">4.1.3.3.2.4.1. The lower bound</a></li>
+<li><a class="reference internal" href="#id5">4.1.3.3.2.4.2. The updates</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -336,7 +372,7 @@ distributions of <img class="math" src="../_images/math/fa35d9fc104207e09a712110
 now) and <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/>.</p>
 <p>The bound for <img class="math" src="../_images/math/de6b344f507b3c5a1a4161252997460c08457ce1.png" alt="\sigma_{k,d}"/> is the same bound for <img class="math" src="../_images/math/86df44d705c06a8b803b6d09f87bb903541e6028.png" alt="\sigma_k"/> and can
 be safelly ommited.</p>
-<p><a href="#id1"><span class="problematic" id="id2">**</span></a>The bound for* <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/> :</p>
+<p><strong>The bound for</strong> <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/> :</p>
 <p>The main difference here is that the precision matrix <img class="math" src="../_images/math/7471b1396fad741ec7484d411165df3c00f7cd5f.png" alt="\bm{\sigma_k}"/>
 scales the norm, so we have an extra term after computing the
 expectation of <img class="math" src="../_images/math/b7708cbf13059104beb68347a6501d892b186a00.png" alt="\mu_k^T\bm{\sigma_k}\mu_k"/>, which is
@@ -350,8 +386,8 @@ E_q[\log P(X_i)] &amp;=&amp; \sum_k \nu_{z_k} \Big( - \frac{D}{2}\log 2\pi
 -\frac{1}{2}((X_i - \nu_{\mu_k})^T\bm{\frac{a_k}{b_k}}(X_i - \nu_{\mu_k})+ \sum_d \sigma_{k,d})- \log 2 \pi e  \Big)
 \end{array}"/></p>
 </div></div>
-<div class="section" id="id3">
-<h3>4.1.3.3.2.2.2. The updates<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>4.1.3.3.2.2.2. The updates<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>The updates only chance for <img class="math" src="../_images/math/2d8c833ed800824727cd7bd2fb9de1a12ad7e674.png" alt="\mu"/> (to weight them with the new
 <img class="math" src="../_images/math/fa35d9fc104207e09a712110ac81612c5b279a6c.png" alt="\sigma"/>), <img class="math" src="../_images/math/b13f21416d84e13708696f34dea81026cda583c9.png" alt="z"/> (but the change is all folded into the
 <img class="math" src="../_images/math/fd84cfe6be87f50bf8cb8bbab071e1041d52b6dd.png" alt="E_q[P(X_i|z_i=k)]"/> term), and the <img class="math" src="../_images/math/c7d457e388298246adb06c587bccd419ea67f7e8.png" alt="a"/> and <img class="math" src="../_images/math/8136a7ef6a03334a7246df9097e5bcc31ba33fd2.png" alt="b"/> variables themselves.</p>
@@ -374,17 +410,17 @@ of the bound:</p>
 </div>
 <div class="section" id="the-tied-model">
 <h2>4.1.3.3.2.3. The tied model<a class="headerlink" href="#the-tied-model" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div>The model then is</div></blockquote>
-<div class="math">
-<p><img src="../_images/math/f85b20e09841db6324dcf04f37b019206520d62a.png" alt="\begin{array}{rcl}
+<p>The model then is
+.. math:</p>
+<div class="highlight-python"><pre>\begin{array}{rcl}
 \phi_k   &amp;\sim&amp; Beta(1, \alpha_1) \\
 \mu_k   &amp;\sim&amp; Normal(0,  \mathbf{I}) \\
 \Sigma &amp;\sim&amp; Wishart(D, \mathbf{I}) \\
 z_{i}     &amp;\sim&amp; SBP(\phi) \\
 X_t &amp;\sim&amp; Normal(\mu_{z_i},  \Sigma^{-1})
-\end{array}"/></p>
-</div><p>Tha variational distribution we&#8217;ll use is</p>
+\end{array}</pre>
+</div>
+<p>Tha variational distribution we&#8217;ll use is</p>
 <div class="math">
 <p><img src="../_images/math/1d0d6a1c0bc29563de734ae0f9738de3dc37b2eb.png" alt="\begin{array}{rcl}
 \phi_k   &amp;\sim&amp; Beta(\gamma_{k,1}, \gamma_{k,2}) \\
@@ -392,8 +428,8 @@ X_t &amp;\sim&amp; Normal(\mu_{z_i},  \Sigma^{-1})
 \Sigma &amp;\sim&amp; Wishart(a, \mathbf{B}) \\
 z_{i}     &amp;\sim&amp; Discrete(\nu_{z_i}) \\
 \end{array}"/></p>
-</div><div class="section" id="id4">
-<h3>4.1.3.3.2.3.1. The lower bound<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</div><div class="section" id="id2">
+<h3>4.1.3.3.2.3.1. The lower bound<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>There are two changes in the lower-bound: for <img class="math" src="../_images/math/c8f77e3035db5fe9a4975967750ac1a6454bda8c.png" alt="\Sigma"/> and for <img class="math" src="../_images/math/6a47ca0fe7cb276abc022af6ac88ddae1a9d6894.png" alt="X"/>.</p>
 <p><strong>The bound for</strong> <img class="math" src="../_images/math/c8f77e3035db5fe9a4975967750ac1a6454bda8c.png" alt="\Sigma"/></p>
 <div class="math">
@@ -414,8 +450,8 @@ E_q[\log P(X_i)] &amp;=&amp; \sum_k \nu_{z_k} \Big( - \frac{D}{2}\log 2\pi
 -\frac{1}{2}((X_i - \nu_{\mu_k})a\mathbf{B}(X_i - \nu_{\mu_k})+ a\mathbf{tr}(\mathbf{B}))- \log 2 \pi e  \Big)
 \end{array}"/></p>
 </div></div>
-<div class="section" id="id5">
-<h3>4.1.3.3.2.3.2. The updates<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>4.1.3.3.2.3.2. The updates<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>As in the last setting, what changes are the trivial update for <img class="math" src="../_images/math/b13f21416d84e13708696f34dea81026cda583c9.png" alt="z"/>,
 the update for <img class="math" src="../_images/math/2d8c833ed800824727cd7bd2fb9de1a12ad7e674.png" alt="\mu"/> and the update for <img class="math" src="../_images/math/c7d457e388298246adb06c587bccd419ea67f7e8.png" alt="a"/> and <img class="math" src="../_images/math/684089822af19d4ccbfae10139f057dbdad68d9f.png" alt="\mathbf{B}"/>.</p>
 <p><strong>The update for</strong> <img class="math" src="../_images/math/2d8c833ed800824727cd7bd2fb9de1a12ad7e674.png" alt="\mu"/></p>
@@ -461,14 +497,14 @@ X_t &amp;\sim&amp; Normal(\mu_{z_i},  \Sigma_{z,i}^{-1})
 \Sigma_k &amp;\sim&amp; Wishart(a_k, \mathbf{B_k}) \\
 z_{i}     &amp;\sim&amp; Discrete(\nu_{z_i}) \\
 \end{array}"/></p>
-</div><div class="section" id="id6">
-<h3>4.1.3.3.2.4.1. The lower bound<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</div><div class="section" id="id4">
+<h3>4.1.3.3.2.4.1. The lower bound<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>All that changes in this lower bound in comparison to the previous one
 is that there are K priors on different <img class="math" src="../_images/math/c8f77e3035db5fe9a4975967750ac1a6454bda8c.png" alt="\Sigma"/> precision matrices
 and there are the correct indices on the bound for X.</p>
 </div>
-<div class="section" id="id7">
-<h3>4.1.3.3.2.4.2. The updates<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>4.1.3.3.2.4.2. The updates<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>All that changes in the updates is that the update for mu uses only
 the proper sigma and the updates for a and B don&#8217;t have a sum over K, so</p>
 <div class="math">
@@ -492,8 +528,6 @@ the proper sigma and the updates for a and B don&#8217;t have a sum over K, so</
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

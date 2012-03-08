@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>9.10.13. sklearn.decomposition.dict_learning &mdash; scikit-learn 0.9 documentation</title>
+    <title>8.5.14. sklearn.decomposition.dict_learning &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
-    <link rel="up" title="9. Class reference" href="../classes.html" />
-    <link rel="next" title="9.10.14. sklearn.decomposition.dict_learning_online" href="sklearn.decomposition.dict_learning_online.html" />
-    <link rel="prev" title="9.10.12. sklearn.decomposition.fastica" href="sklearn.decomposition.fastica.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="8. Reference" href="../classes.html" />
+    <link rel="next" title="8.5.15. sklearn.decomposition.dict_learning_online" href="sklearn.decomposition.dict_learning_online.html" />
+    <link rel="prev" title="8.5.13. sklearn.decomposition.fastica" href="sklearn.decomposition.fastica.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -58,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../../auto_examples/index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -77,42 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="sklearn.decomposition.fastica.html" title="9.10.12. sklearn.decomposition.fastica"
-             accesskey="P">previous</a> |
-          <a href="sklearn.decomposition.dict_learning_online.html" title="9.10.14. sklearn.decomposition.dict_learning_online"
-             accesskey="N">next</a> |
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">9.10.13. sklearn.decomposition.dict_learning</a></li>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="sklearn.decomposition.fastica.html" title="8.5.13. sklearn.decomposition.fastica"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    8.5.13. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.5.13. sklearn.decomposition.fastica
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="sklearn.decomposition.dict_learning_online.html" title="8.5.15. sklearn.decomposition.dict_learning_online"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    8.5.15. sklearn....
+	    </span>
+	    <span class="hiddenrellink">
+	    8.5.15. sklearn.decomposition.dict_learning_online
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../classes.html" title="8. Reference" >
+	Up
+	<br>
+	<span class="smallrellink">
+	8. Reference
+	</span>
+	<span class="hiddenrellink">
+	8. Reference
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">8.5.14. sklearn.decomposition.dict_learning</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -121,20 +157,17 @@
           <div class="body">
             
   <div class="section" id="sklearn-decomposition-dict-learning">
-<h1>9.10.13. sklearn.decomposition.dict_learning<a class="headerlink" href="#sklearn-decomposition-dict-learning" title="Permalink to this headline">¶</a></h1>
+<h1>8.5.14. sklearn.decomposition.dict_learning<a class="headerlink" href="#sklearn-decomposition-dict-learning" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sklearn.decomposition.dict_learning">
 <tt class="descclassname">sklearn.decomposition.</tt><tt class="descname">dict_learning</tt><big>(</big><em>X</em>, <em>n_atoms</em>, <em>alpha</em>, <em>max_iter=100</em>, <em>tol=1e-08</em>, <em>method='lars'</em>, <em>n_jobs=1</em>, <em>dict_init=None</em>, <em>code_init=None</em>, <em>callback=None</em>, <em>verbose=False</em>, <em>random_state=None</em><big>)</big><a class="headerlink" href="#sklearn.decomposition.dict_learning" title="Permalink to this definition">¶</a></dt>
 <dd><p>Solves a dictionary learning matrix factorization problem.</p>
 <p>Finds the best dictionary and the corresponding sparse code for
 approximating the data matrix X by solving:</p>
-<div class="highlight-python"><pre>(U^*, V^*) = argmin 0.5 || X - U V ||_2^2 + alpha * || U ||_1</pre>
+<div class="highlight-python"><pre>(U^*, V^*) = argmin 0.5 || X - U V ||_2^2 + alpha * || U ||_1
+             (U,V)
+            with || V_k ||_2 = 1 for all  0 &lt;= k &lt; n_atoms</pre>
 </div>
-<blockquote>
-<div><blockquote>
-<div>(U,V)</div></blockquote>
-<p>with || V_k ||_2 = 1 for all  0 &lt;= k &lt; n_atoms</p>
-</div></blockquote>
 <p>where V is the dictionary and U is the sparse code.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -210,6 +243,10 @@ the estimated components are sparse.</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="sklearn.decomposition.dict_learning_online.html#sklearn.decomposition.dict_learning_online" title="sklearn.decomposition.dict_learning_online"><tt class="xref py py-obj docutils literal"><span class="pre">dict_learning_online</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.DictionaryLearning.html#sklearn.decomposition.DictionaryLearning" title="sklearn.decomposition.DictionaryLearning"><tt class="xref py py-obj docutils literal"><span class="pre">DictionaryLearning</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.MiniBatchDictionaryLearning.html#sklearn.decomposition.MiniBatchDictionaryLearning" title="sklearn.decomposition.MiniBatchDictionaryLearning"><tt class="xref py py-obj docutils literal"><span class="pre">MiniBatchDictionaryLearning</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.SparsePCA.html#sklearn.decomposition.SparsePCA" title="sklearn.decomposition.SparsePCA"><tt class="xref py py-obj docutils literal"><span class="pre">SparsePCA</span></tt></a>, <a class="reference internal" href="sklearn.decomposition.MiniBatchSparsePCA.html#sklearn.decomposition.MiniBatchSparsePCA" title="sklearn.decomposition.MiniBatchSparsePCA"><tt class="xref py py-obj docutils literal"><span class="pre">MiniBatchSparsePCA</span></tt></a></p>
+</div>
 </dd></dl>
 
 </div>
@@ -223,8 +260,6 @@ the estimated components are sparse.</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

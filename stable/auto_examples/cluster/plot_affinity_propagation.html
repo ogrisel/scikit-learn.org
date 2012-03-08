@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Demo of affinity propagation clustering algorithm &mdash; scikit-learn 0.9 documentation</title>
+    <title>Demo of affinity propagation clustering algorithm &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../../index.html" />
+    <link rel="up" title="Examples" href="../index.html" />
+    <link rel="next" title="Color Quantization using K-Means" href="plot_color_quantization.html" />
+    <link rel="prev" title="Adjustment for chance in clustering performance evaluation" href="plot_adjusted_for_chance_measures.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../../support.html">Support</a></li>
             <li><a href="../../user_guide.html">User Guide</a></li>
             <li><a href="../index.html">Examples</a></li>
-            <li><a href="../../developers/index.html">Development</a></li>
+            <li><a href="../../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="plot_adjusted_for_chance_measures.html" title="Adjustment for chance in clustering performance evaluation"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Adjustment for c...
+	    </span>
+	    <span class="hiddenrellink">
+	    Adjustment for chance in clustering performance evaluation
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="plot_color_quantization.html" title="Color Quantization using K-Means"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Color Quantizati...
+	    </span>
+	    <span class="hiddenrellink">
+	    Color Quantization using K-Means
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="../index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Demo of affinity propagation clustering algorithm</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -119,6 +162,15 @@
 Brendan J. Frey and Delbert Dueck, &#8220;Clustering by Passing Messages
 Between Data Points&#8221;, Science Feb. 2007</p>
 <img alt="../../_images/plot_affinity_propagation_1.png" class="align-center" src="../../_images/plot_affinity_propagation_1.png" />
+<p><strong>Script output</strong>:</p>
+<div class="highlight-python"><pre>Estimated number of clusters: 3
+Homogeneity: 0.906
+Completeness: 0.907
+V-measure: 0.907
+Adjusted Rand Index: 0.941
+Adjusted Mutual Information: 0.906
+Silhouette Coefficient: 0.771</pre>
+</div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_affinity_propagation.py"><tt class="xref download docutils literal"><span class="pre">plot_affinity_propagation.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
@@ -152,6 +204,11 @@ Between Data Points&#8221;, Science Feb. 2007</p>
 <span class="k">print</span> <span class="s">&quot;V-measure: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">v_measure_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
 <span class="k">print</span> <span class="s">&quot;Adjusted Rand Index: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> \
     <span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_rand_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&quot;Adjusted Mutual Information: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> \
+    <span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_mutual_info_score</span><span class="p">(</span><span class="n">labels_true</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="p">(</span><span class="n">S</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">S</span><span class="p">))</span>
+<span class="k">print</span> <span class="p">(</span><span class="s">&quot;Silhouette Coefficient: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span>
+       <span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s">&#39;precomputed&#39;</span><span class="p">))</span>
 
 <span class="c">##############################################################################</span>
 <span class="c"># Plot result</span>
@@ -187,8 +244,6 @@ Between Data Points&#8221;, Science Feb. 2007</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

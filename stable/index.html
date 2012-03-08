@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>scikit-learn: machine learning in Python &mdash; scikit-learn 0.9 documentation</title>
+    <title>scikit-learn: machine learning in Python &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="#" />
-    <link rel="next" title="&lt;no title&gt;" href="contents.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="#" />
+    <link rel="next" title="&lt;no title&gt;" href="user_guide.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -56,7 +56,7 @@
             <li><a href="support.html">Support</a></li>
             <li><a href="user_guide.html">User Guide</a></li>
             <li><a href="auto_examples/index.html">Examples</a></li>
-            <li><a href="developers/index.html">Development</a></li>
+            <li><a href="modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -75,75 +75,54 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
+    <div class="sphinxsidebar">
+    <h3>News</h3>
 
-        <div class="sphinxsidebar">
-        <h3>News</h3>
-
-       <p>scikit-learn 0.9 is available
-         for <a href="https://sourceforge.net/projects/scikit-learn/files/">download</a>.
-         See <a href="whats_new.html">what's new</a> and tips
-         on <a href="install.html">installing</a>.</p>
+    <p>scikit-learn 0.10 is available
+    for <a href="https://sourceforge.net/projects/scikit-learn/files/">download</a>.
+    See <a href="whats_new.html">what's new</a> and tips
+    on <a href="install.html">installing</a>.</p>
 
 
-        <h3>Videos</h3>
-        <p>Watch the 2010
-        ICML <a href="http://videolectures.net/icml2010_varaquaux_scik/">Introductory
-        Video</a> by Gaël Varoquaux.</p>
+    <h3>Videos</h3>
+    <p>Watch the 2010
+    ICML <a href="http://videolectures.net/icml2010_varaquaux_scik/">Introductory
+    Video</a> by Gaël Varoquaux.</p>
 
-        <h3>Participate</h3>
+    <h3>Participate</h3>
 
-        <p>Fork
-        the <a href="http://github.com/scikit-learn/scikit-learn">source
-        code</a>, join the
-        <a href="support.html#mailing-list">mailing
-        lists</a>, report bugs to
-        the <a href="https://github.com/scikit-learn/scikit-learn/issues">issue
-        tracker</a> or participate in the next
-        <a href="http://github.com/scikit-learn/scikit-learn/wiki/Upcoming-events">coding sprint</a>. <a href="developers/index.html">Read More...</a>
-        </p>
+    <p>Fork
+    the <a href="http://github.com/scikit-learn/scikit-learn">source
+    code</a>, join the
+    <a href="support.html#mailing-list">mailing
+    lists</a>, report bugs to
+    the <a href="https://github.com/scikit-learn/scikit-learn/issues">issue
+    tracker</a> or participate in the next
+    <a href="http://github.com/scikit-learn/scikit-learn/wiki/Upcoming-events">coding sprint</a>. <a href="developers/index.html">Read More...</a>
+    </p>
 
-        
+    <h3>Funding</h3>
+    <p>Generous funding provided
+    by <a href="http://www.inria.fr">INRIA</a>,
+    <a href="http://code.google.com/opensource/">Google</a>
+    and others.</p>
+    <p style="text-align: center;"><a href="http://www.inria.fr"><img src="_static/inria-small.jpg"
+    alt="INRIA"/></a></p>
+    <p style="text-align: center;"><a href="http://http://code.google.com/opensource/"><img src="_static/google-logo.png"
+    alt="INRIA"/></a></p>
 
-        <h3>This page</h3>
-         <ul>
-<li><a class="reference internal" href="#">User Guide</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#example-gallery">Example Gallery</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#development">Development</a><ul>
-</ul>
-</li>
-</ul>
+    <p><a href="about.html">Read more ...</a></p>
 
-
-        
-        <h3>Funding</h3>
-        <p>Generous funding provided
-        by <a href="http://www.inria.fr">INRIA</a>,
-        <a href="http://http://code.google.com/opensource/">Google</a>
-        and others.</p>
-        <p style="text-align: center;"><a href="http://www.inria.fr"><img src="_static/inria-small.jpg"
-        alt="INRIA"/></a></p>
-        <p style="text-align: center;"><a href="http://http://code.google.com/opensource/"><img src="_static/google-logo.png"
-        alt="INRIA"/></a></p>
-
-        <p><a href="about.html">Read more ...</a></p>
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    </div>
 
       <div class="content">
             
@@ -151,34 +130,55 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <h1>scikit-learn: machine learning in Python</h1><p><div style="text-align: center; margin: 0px 0 -5px 0;"> <a class="reference external" href="auto_examples/cluster/plot_affinity_propagation.html"><img alt="banner1" src="_images/plot_affinity_propagation_1.png" style="height: 150px;" /></a> <a class="reference external" href="auto_examples/gaussian_process/plot_gp_regression.html"><img alt="banner2" src="_images/plot_gp_regression_1.png" style="height: 150px;" /></a> <a class="reference external" href="auto_examples/svm/plot_oneclass.html"><img alt="banner3" src="_images/plot_oneclass_1.png" style="height: 150px;" /></a> <a class="reference external" href="auto_examples/cluster/plot_lena_ward_segmentation.html"><img alt="banner4" src="_images/plot_lena_ward_segmentation_1.png" style="height: 150px;" /></a> </div></p>
+  <h1>scikit-learn: machine learning in Python</h1>
+<style type="text/css">
+p {
+    margin: 7px 0 7px 0 ;
+}
+span.linkdescr a {
+    color:  #3E4349 ;
+}
+</style><p><div style="text-align: center; margin: -7px 0 -13px 0;"> <a class="reference external" href="auto_examples/svm/plot_oneclass.html"><img alt="banner1" src="_images/plot_oneclass_1.png" style="height: 150px;" /></a> <a class="reference external" href="auto_examples/cluster/plot_ward_structured_vs_unstructured.html"><img alt="banner2" src="_images/plot_ward_structured_vs_unstructured_2.png" style="height: 150px;" /></a> <a class="reference external" href="auto_examples/gaussian_process/plot_gp_regression.html"><img alt="banner3" src="_images/plot_gp_regression_1.png" style="height: 150px;" /></a> <a class="reference external" href="auto_examples/cluster/plot_lena_ward_segmentation.html"><img alt="banner4" src="_images/plot_lena_ward_segmentation_1.png" style="height: 150px;" /></a> </div></p>
 <div class="topic">
 <p class="topic-title first">Easy-to-use and general-purpose machine learning in Python</p>
 <p><tt class="docutils literal"><span class="pre">scikit-learn</span></tt> is a Python module integrating classic machine
 learning algorithms in the tightly-knit world of scientific Python
-packages (<a class="reference external" href="http://numpy.scipy.org">numpy</a>, <a class="reference external" href="http://www.scipy.org">scipy</a>, <a class="reference external" href="http://matplotlib.sourceforge.net/">matplotlib</a>).</p>
-<p>It aims to provide simple and efficient solutions to learning
+packages (<a class="reference external" href="http://numpy.scipy.org">numpy</a>, <a class="reference external" href="http://www.scipy.org">scipy</a>, <a class="reference external" href="http://matplotlib.sourceforge.net/">matplotlib</a>).
+It aims to provide simple and efficient solutions to learning
 problems that are accessible to everybody and reusable in various
 contexts: <strong>machine-learning as a versatile tool for science and
 engineering</strong>.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Features:</th><td class="field-body"><ul class="first simple">
-<li><strong>Solid</strong>: <a class="reference internal" href="supervised_learning.html#supervised-learning"><em>Supervised learning</em></a>: <a class="reference internal" href="modules/svm.html#svm"><em>Support Vector Machines</em></a>, <a class="reference internal" href="modules/linear_model.html#linear-model"><em>Generalized Linear Models</em></a>.</li>
-<li><strong>Work in progress</strong>: <a class="reference internal" href="unsupervised_learning.html#unsupervised-learning"><em>Unsupervised learning</em></a>:
-<a class="reference internal" href="modules/clustering.html#clustering"><em>Clustering</em></a>, <a class="reference internal" href="modules/mixture.html#mixture"><em>Gaussian mixture models</em></a>, <a class="reference internal" href="modules/manifold.html#manifold"><em>Manifold learning</em></a>, <a class="reference internal" href="modules/decomposition.html#ica"><em>ICA</em></a>, <a class="reference internal" href="modules/gaussian_process.html#gaussian-process"><em>Gaussian Processes</em></a>, <a class="reference internal" href="modules/decomposition.html#decompositions"><em>matrix factorization</em></a></li>
-<li><strong>Planned</strong>: Gaussian graphical models</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">License:</th><td class="field-body"><p class="first last">Open source, commercially usable: <strong>BSD license</strong> (3 clause)</p>
-</td>
-</tr>
-</tbody>
-</table>
+<table class="contentstable" style="width: 100% ; margin-top: -8px">
+  <tr valign="top"><td width="28%">
+    <p class="biglink"><a class="biglink" href="supervised_learning.html">
+              Supervised learning</a><br/>
+       <span class="linkdescr">
+              <a href="modules/svm.html">Support vector machines</a>,
+              <a href="modules/linear_model.html">linear models</a>,
+              <a href="modules/naive_bayes.html">naives Bayes</a>,
+              <a href="modules/gaussian_process.html">Gaussian process</a>...
+       </span></p>
+  </td><td align="center" width="32%">
+    <p class="biglink"><a class="biglink" href="unsupervised_learning.html">
+      Unsupervised learning</a><br/>
+       <span class="linkdescr">
+              <a href="modules/clustering.html">Clustering</a>,
+              <a href="modules/mixture.html">Gaussian mixture models</a>,
+              <a href="modules/manifold.html">manifold learning</a>,
+              <a href="modules/decomposition.html">matrix factorization</a>,
+              <a href="modules/covariance.html">covariance</a>...
+       </span></p>
+  </td><td align="right" width="30%">
+    <p class="biglink"><a class="biglink" href="index.html#user-guide">
+      And much more</a><br/>
+       <span class="linkdescr">
+              <a href="model_selection.html">Model selection</a>,
+              <a href="datasets/index.html">datasets</a>,
+              <a href="modules/feature_extraction.html">feature extraction...</a>
+              <strong>See below</strong>.</span></p>
+  </td></tr>
+</table><p><strong>License:</strong> Open source, commercially usable: <strong>BSD license</strong> (3 clause)</p>
 <style type="text/css">
   div.bodywrapper blockquote {
       margin: 0 ;
@@ -213,11 +213,8 @@ engineering</strong>.</p>
       font-weight: normal;
       }
 
-</style><div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This document describes scikit-learn 0.9. For other
-versions and printable format, see <a class="reference internal" href="support.html#documentation-resources"><em>Documentation resources</em></a>.</p>
-</div>
+</style><p>Documentation for scikit-learn <strong>version</strong> 0.10. For other versions and
+printable format, see <a class="reference internal" href="support.html#documentation-resources"><em>Documentation resources</em></a>.</p>
 <div class="section" id="user-guide">
 <h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
@@ -244,8 +241,10 @@ versions and printable format, see <a class="reference internal" href="support.h
 <li class="toctree-l2"><a class="reference internal" href="modules/gaussian_process.html">3.5. Gaussian Processes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules/pls.html">3.6. Partial Least Squares</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules/naive_bayes.html">3.7. Naive Bayes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/multiclass.html">3.8. Multiclass algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/feature_selection.html">3.9. Feature selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/tree.html">3.8. Decision Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/ensemble.html">3.9. Ensemble methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/multiclass.html">3.10. Multiclass and multilabel algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/feature_selection.html">3.11. Feature selection</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="unsupervised_learning.html">4. Unsupervised learning</a><ul>
@@ -254,7 +253,8 @@ versions and printable format, see <a class="reference internal" href="support.h
 <li class="toctree-l2"><a class="reference internal" href="modules/clustering.html">4.3. Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules/decomposition.html">4.4. Decomposing signals in components (matrix factorization problems)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modules/covariance.html">4.5. Covariance estimation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/hmm.html">4.6. Hidden Markov Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/outlier_detection.html">4.6. Novelty and Outlier Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/hmm.html">4.7. Hidden Markov Models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="model_selection.html">5. Model Selection</a><ul>
@@ -262,50 +262,51 @@ versions and printable format, see <a class="reference internal" href="support.h
 <li class="toctree-l2"><a class="reference internal" href="modules/grid_search.html">5.2. Grid Search</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="datasets/index.html">6. Dataset loading utilities</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#toy-datasets">6.1. Toy datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#sample-images">6.2. Sample images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#sample-generators">6.3. Sample generators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#datasets-in-svmlight-libsvm-format">6.4. Datasets in svmlight / libsvm format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#the-olivetti-faces-dataset">6.5. The Olivetti faces dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#the-20-newsgroups-text-dataset">6.6. The 20 newsgroups text dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#downloading-datasets-from-the-mldata-org-repository">6.7. Downloading datasets from the mldata.org repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#the-labeled-faces-in-the-wild-face-recognition-dataset">6.8. The Labeled Faces in the Wild face recognition dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_transforms.html">6. Dataset transformations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/preprocessing.html">6.1. Preprocessing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/feature_extraction.html">6.2. Feature extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/kernel_approximation.html">6.3. Kernel Approximation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="modules/preprocessing.html">7. Preprocessing data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling">7.1. Standardization or Mean Removal and Variance Scaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/preprocessing.html#normalization">7.2. Normalization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/preprocessing.html#binarization">7.3. Binarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets/index.html">7. Dataset loading utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#general-dataset-api">7.1. General dataset API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#toy-datasets">7.2. Toy datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#sample-images">7.3. Sample images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#sample-generators">7.4. Sample generators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#datasets-in-svmlight-libsvm-format">7.5. Datasets in svmlight / libsvm format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#the-olivetti-faces-dataset">7.6. The Olivetti faces dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#the-20-newsgroups-text-dataset">7.7. The 20 newsgroups text dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#downloading-datasets-from-the-mldata-org-repository">7.8. Downloading datasets from the mldata.org repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasets/index.html#the-labeled-faces-in-the-wild-face-recognition-dataset">7.9. The Labeled Faces in the Wild face recognition dataset</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="modules/feature_extraction.html">8. Feature extraction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules/feature_extraction.html#text-feature-extraction">8.1. Text feature extraction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/feature_extraction.html#image-feature-extraction">8.2. Image feature extraction</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="modules/classes.html">9. Class Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.svm">9.1. Support Vector Machines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.linear_model">9.2. Generalized Linear Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.naive_bayes">9.3. Naive Bayes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.neighbors">9.4. Nearest Neighbors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.mixture">9.5. Gaussian Mixture Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.hmm">9.6. Hidden Markov Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.cluster">9.7. Clustering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#metrics">9.8. Metrics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.covariance">9.9. Covariance Estimators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.decomposition">9.10. Signal Decomposition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#linear-discriminant-analysis">9.11. Linear Discriminant Analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.pls">9.12. Partial Least Squares</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.cross_validation">9.13. Cross Validation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.grid_search">9.14. Grid Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.feature_selection">9.15. Feature Selection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.feature_extraction">9.16. Feature Extraction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.preprocessing">9.17. Preprocessing and normalization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#manifold-learning">9.18. Manifold learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#datasets">9.19. Datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.pipeline">9.20. Pipeline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.utils">9.21. Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/classes.html">8. Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.cluster">8.1. <tt class="docutils literal"><span class="pre">sklearn.cluster</span></tt>: Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.covariance">8.2. <tt class="docutils literal"><span class="pre">sklearn.covariance</span></tt>: Covariance Estimators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.cross_validation">8.3. <tt class="docutils literal"><span class="pre">sklearn.cross_validation</span></tt>: Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.datasets">8.4. <tt class="docutils literal"><span class="pre">sklearn.datasets</span></tt>: Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.decomposition">8.5. <tt class="docutils literal"><span class="pre">sklearn.decomposition</span></tt>: Matrix Decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.ensemble">8.6. <tt class="docutils literal"><span class="pre">sklearn.ensemble</span></tt>: Ensemble Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.feature_extraction">8.7. <tt class="docutils literal"><span class="pre">sklearn.feature_extraction</span></tt>: Feature Extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.feature_selection">8.8. <tt class="docutils literal"><span class="pre">sklearn.feature_selection</span></tt>: Feature Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.gaussian_process">8.9. <tt class="docutils literal"><span class="pre">sklearn.gaussian_process</span></tt>: Gaussian Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.grid_search">8.10. <tt class="docutils literal"><span class="pre">sklearn.grid_search</span></tt>: Grid Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.hmm">8.11. <tt class="docutils literal"><span class="pre">sklearn.hmm</span></tt>: Hidden Markov Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.kernel_approximation">8.12. <tt class="docutils literal"><span class="pre">sklearn.kernel_approximation</span></tt> Kernel Approximation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.lda">8.13. <tt class="docutils literal"><span class="pre">sklearn.lda</span></tt>: Linear Discriminant Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.linear_model">8.14. <tt class="docutils literal"><span class="pre">sklearn.linear_model</span></tt>: Generalized Linear Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.manifold">8.15. <tt class="docutils literal"><span class="pre">sklearn.manifold</span></tt>: Manifold Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.metrics">8.16. <tt class="docutils literal"><span class="pre">sklearn.metrics</span></tt>: Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.mixture">8.17. <tt class="docutils literal"><span class="pre">sklearn.mixture</span></tt>: Gaussian Mixture Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.multiclass">8.18. <tt class="docutils literal"><span class="pre">sklearn.multiclass</span></tt>: Multiclass and multilabel classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.naive_bayes">8.19. <tt class="docutils literal"><span class="pre">sklearn.naive_bayes</span></tt>: Naive Bayes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.neighbors">8.20. <tt class="docutils literal"><span class="pre">sklearn.neighbors</span></tt>: Nearest Neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.pls">8.21. <tt class="docutils literal"><span class="pre">sklearn.pls</span></tt>: Partial Least Squares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.pipeline">8.22. <tt class="docutils literal"><span class="pre">sklearn.pipeline</span></tt>: Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.preprocessing">8.23. <tt class="docutils literal"><span class="pre">sklearn.preprocessing</span></tt>: Preprocessing and Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.svm">8.24. <tt class="docutils literal"><span class="pre">sklearn.svm</span></tt>: Support Vector Machines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.tree">8.25. <tt class="docutils literal"><span class="pre">sklearn.tree</span></tt>: Decision Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/classes.html#module-sklearn.utils">8.26. <tt class="docutils literal"><span class="pre">sklearn.utils</span></tt>: Utilities</a></li>
 </ul>
 </li>
 </ul>
@@ -321,12 +322,14 @@ versions and printable format, see <a class="reference internal" href="support.h
 <li class="toctree-l2"><a class="reference internal" href="auto_examples/index.html#clustering">Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="auto_examples/index.html#covariance-estimation">Covariance estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="auto_examples/index.html#decomposition">Decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/index.html#ensemble-methods">Ensemble methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="auto_examples/index.html#gaussian-process-for-machine-learning">Gaussian Process for Machine Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="auto_examples/index.html#generalized-linear-models">Generalized Linear Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="auto_examples/index.html#manifold-learning">Manifold learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="auto_examples/index.html#gaussian-mixture-models">Gaussian Mixture Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="auto_examples/index.html#nearest-neighbors">Nearest Neighbors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="auto_examples/index.html#support-vector-machines">Support Vector Machines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auto_examples/index.html#decision-trees">Decision Trees</a></li>
 </ul>
 </li>
 </ul>
@@ -342,7 +345,7 @@ versions and printable format, see <a class="reference internal" href="support.h
 <li class="toctree-l2"><a class="reference internal" href="developers/index.html#contributing-code">Contributing code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developers/index.html#other-ways-to-contribute">Other ways to contribute</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developers/index.html#coding-guidelines">Coding guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developers/index.html#apis-of-scikit-learn-objects">APIs of scikit learn objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers/index.html#apis-of-scikit-learn-objects">APIs of scikit-learn objects</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="developers/performance.html">How to optimize for speed</a><ul>
@@ -354,10 +357,21 @@ versions and printable format, see <a class="reference internal" href="support.h
 <li class="toctree-l2"><a class="reference internal" href="developers/performance.html#a-sample-algorithmic-trick-warm-restarts-for-cross-validation">A sample algorithmic trick: warm restarts for cross validation</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="developers/utilities.html">Utilities for Developers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="developers/utilities.html#validation-tools">Validation Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers/utilities.html#efficient-linear-algebra-array-operations">Efficient Linear Algebra &amp; Array Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers/utilities.html#efficient-routines-for-sparse-matrices">Efficient Routines for Sparse Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers/utilities.html#graph-routines">Graph Routines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers/utilities.html#backports">Backports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers/utilities.html#testing-functions">Testing Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers/utilities.html#helper-functions">Helper Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers/utilities.html#warnings-and-exceptions">Warnings and Exceptions</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About us</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="about.html#history">History</a></li>
 <li class="toctree-l2"><a class="reference internal" href="about.html#people">People</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#citing-the-scikit-learn">Citing the scikit-learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about.html#citing-scikit-learn">Citing scikit-learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="about.html#funding">Funding</a></li>
 </ul>
 </li>
@@ -374,8 +388,6 @@ versions and printable format, see <a class="reference internal" href="support.h
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">

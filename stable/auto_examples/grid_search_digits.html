@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Parameter estimation using grid search with a nested cross-validation &mdash; scikit-learn 0.9 documentation</title>
+    <title>Parameter estimation using grid search with a nested cross-validation &mdash; scikit-learn 0.10 documentation</title>
     
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.9',
+        VERSION:     '0.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,10 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../about.html" />
-    <link rel="top" title="scikit-learn 0.9 documentation" href="../index.html" />
+    <link rel="top" title="scikit-learn 0.10 documentation" href="../index.html" />
+    <link rel="up" title="Examples" href="index.html" />
+    <link rel="next" title="Sample pipeline for text feature extraction and evaluation" href="grid_search_text_feature_extraction.html" />
+    <link rel="prev" title="Pipeline Anova SVM" href="feature_selection_pipeline.html" />
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -55,7 +58,7 @@
             <li><a href="../support.html">Support</a></li>
             <li><a href="../user_guide.html">User Guide</a></li>
             <li><a href="index.html">Examples</a></li>
-            <li><a href="../developers/index.html">Development</a></li>
+            <li><a href="../modules/classes.html">Reference</a></li>
        </ul>
 
 <div class="search_form">
@@ -74,38 +77,78 @@
 </script>
 
 </div>
-
           </div> <!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
 
-    <!-- <div id="blue_tile"></div> -->
-
-        <div class="sphinxsidebar">
-        <div class="rel">
-          <a href="../np-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../py-modindex.html" title="Python Module Index"
-             >modules</a> |
-          <a href="../genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-        
-
-        <h3>This page</h3>
-         <ul>
+    <div class="sphinxsidebar">
+	<div class="rel">
+	
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  -->
+	<div class="rellink">
+	<a href="feature_selection_pipeline.html" title="Pipeline Anova SVM"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Pipeline Anova S...
+	    </span>
+	    <span class="hiddenrellink">
+	    Pipeline Anova SVM
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="grid_search_text_feature_extraction.html" title="Sample pipeline for text feature extraction and evaluation"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Sample pipeline ...
+	    </span>
+	    <span class="hiddenrellink">
+	    Sample pipeline for text feature extraction and evaluation
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page -->
+	<div class="spacer">
+	&nbsp;
+	</div>
+	<div class="rellink">
+	<a href="index.html" title="Examples" >
+	Up
+	<br>
+	<span class="smallrellink">
+	Examples
+	</span>
+	<span class="hiddenrellink">
+	Examples
+	</span>
+	
+	</a>
+	</div>
+    </div>
+    <p style="text-align: center">This documentation is
+    for scikit-learn <strong>version 0.10</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
 <li><a class="reference internal" href="#">Parameter estimation using grid search with a nested cross-validation</a></li>
 </ul>
 
-
-        
-
-        <h3>Citing</h3>
-        <p>Please consider
-	<a href="about.html#citing-the-scikit-learn">citing the
-	scikit-learn</a>.
-        </div>
+    
+    </div>
 
       <div class="content">
             
@@ -124,7 +167,6 @@ to select the best classifier).</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">__doc__</span>
 
 <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
@@ -134,7 +176,7 @@ to select the best classifier).</p>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">recall_score</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># Loading the Digits dataset</span>
 <span class="n">digits</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span><span class="p">()</span>
 
@@ -147,7 +189,7 @@ to select the best classifier).</p>
 <span class="c"># split the dataset in two equal part respecting label proportions</span>
 <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
 
-<span class="c">################################################################################</span>
+<span class="c">###############################################################################</span>
 <span class="c"># Set the parameters by cross-validation</span>
 <span class="n">tuned_parameters</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;rbf&#39;</span><span class="p">],</span> <span class="s">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">],</span>
                      <span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]},</span>
@@ -164,7 +206,7 @@ to select the best classifier).</p>
     <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">test</span><span class="p">],</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">test</span><span class="p">])</span>
 
     <span class="k">print</span> <span class="s">&quot;Classification report for the best estimator: &quot;</span>
-    <span class="k">print</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator</span>
+    <span class="k">print</span> <span class="n">clf</span><span class="o">.</span><span class="n">best_estimator_</span>
     <span class="k">print</span> <span class="s">&quot;Tuned for &#39;</span><span class="si">%s</span><span class="s">&#39; with optimal value: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span>
         <span class="n">score_name</span><span class="p">,</span> <span class="n">score_func</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
     <span class="k">print</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
@@ -187,8 +229,6 @@ to select the best classifier).</p>
     </div>
 
     <div class="footer">
-        <p style="text-align: center">This documentation is relative
-        to scikit-learn version 0.9<p>
         &copy; 2010–2011, scikit-learn developers (BSD License).
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2. Design by <a href="http://webylimonada.com">Web y Limonada</a>.
     <span style="padding-left: 5ex;">
